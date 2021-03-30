@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/selfselect/selfselect",
+    "pages/hold/hold",
+    "pages/mine/mine",
+    "pages/rank/rank",
+    "pages/search/search",
+    "pages/hot/hot",
+    "pages/fundDetail/fundDetail",
+    "pages/aiForecast/aiForecast"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "image/home_g.jpg",
+      "selectedIconPath": "image/home_b.jpg"
+    },{
+      "pagePath": "pages/selfselect/selfselect",
+      "text":"自选",
+      "iconPath": "image/selfselect_g.jpg",
+      "selectedIconPath": "image/selfselect_b.jpg"
+    },{
+      "pagePath": "pages/hold/hold",
+      "text":"持有",
+      "iconPath": "image/hold_g.jpg",
+      "selectedIconPath": "image/hold_b.jpg"
+    },{
+      "pagePath": "pages/mine/mine",
+      "text":"我的",
+      "iconPath": "image/mine_g.jpg",
+      "selectedIconPath": "image/mine_b.jpg"
+    }]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

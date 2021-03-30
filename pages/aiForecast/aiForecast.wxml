@@ -1,0 +1,4 @@
+<view class="container">
+    <naviBar title="AI预测"></naviBar>
+    <text>这里是AI预测详情页</text>
+</view>

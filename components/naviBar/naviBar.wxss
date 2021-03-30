@@ -1,0 +1,47 @@
+/* components/naviBar/naviBar.wxss */
+.naviBox {
+  position: relative;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  padding-top: 35rpx;
+  background: #0081ff;
+  border: 1rpx solid red;
+}
+.back {
+  display: flex;
+  align-items: center;
+  width: 50rpx;
+  border: 1rpx solid red;
+}
+.back .backIcon{
+  height: 50%;
+}
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex:1;
+  border: 1rpx solid red;
+  font-size: 40rpx;
+}
+.filling {
+  width: 50rpx;
+  border: 1rpx solid red;
+}
+.searchBox{
+  display: flex;
+  margin-top: 25rpx;
+  margin-left: 20rpx;
+  width: 65%;
+  height: 55%;
+  border-radius: 20rpx;
+  background: white;
+  border: 1rpx solid red;
+}
+.searchIcon{
+  height: 90%;
+}
+.searchText{
+  color:#706e6e;
+}

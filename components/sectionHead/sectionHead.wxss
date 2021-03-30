@@ -1,0 +1,14 @@
+/* components/sectionHead/sectionHead.wxss */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60rpx;
+  border: 1rpx solid red;
+  margin-top: 5rpx;
+}
+.container .more {
+  font-size: 30rpx;
+  color: #666;
+}
