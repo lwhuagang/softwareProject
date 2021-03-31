@@ -1,4 +1,0 @@
-var subDate=function(val) {
-  return val.substring(5);
-}
-module.exports.subDate = subDate;

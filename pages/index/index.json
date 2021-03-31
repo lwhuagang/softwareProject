@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "naviBar":"../../components/naviBar/naviBar",
-    "sectionHead":"../../components/sectionHead/sectionHead",
-    "fundGeneral":"../../components/fundGeneral/fundGeneral"
-  }
-}

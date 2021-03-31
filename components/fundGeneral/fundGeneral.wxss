@@ -1,4 +1,0 @@
-/* components/fundGeneral/fundGeneral.wxss */
-.container{
-  border: 1rpx solid green;
-}

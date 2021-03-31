@@ -1,6 +1,0 @@
-<!--pages/hot/hot.wxml-->
-<view>
-  <naviBar title="热门基金"></naviBar>
-  <view>这里是热门基金详情页</view>
-</view>
-

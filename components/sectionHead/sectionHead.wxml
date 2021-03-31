@@ -1,5 +1,0 @@
-<!--components/sectionHead/sectionHead.wxml-->
-<view class="container">
-  <view class="title">{{sectionName}}</view>
-  <navigator class="more" url="{{sectionUrl}}">更多></navigator>
-</view>
