@@ -12,8 +12,8 @@
   </scroll-view>
   <!-- 热门基金推荐 -->
   <sectionHead sectionName="热门基金" sectionUrl="/pages/hot/hot"></sectionHead>
-  <block wx:for="{{hotFunds}}" wx:for-item="fund">
-    <fundGeneral showType="netWorth" fundInfo="{{fund}}"></fundGeneral>
+  <block wx:for="{{hotFunds.length>hotFundNum?hotFundNum:hotFunds.length}}">
+    <fundGeneral showType="netWorth" fundInfo="{{hotFunds[index]}}"></fundGeneral>
   </block>
   <sectionHead sectionName="AI预测" sectionUrl="/pages/aiForecast/aiForecast"></sectionHead>
 </view>
