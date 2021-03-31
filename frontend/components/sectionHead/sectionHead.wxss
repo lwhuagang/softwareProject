@@ -7,8 +7,10 @@
   height: 60rpx;
   border: 1rpx solid red;
   margin-top: 5rpx;
+  padding-left: 5rpx;
 }
 .container .more {
   font-size: 30rpx;
   color: #666;
+  margin-right: 5rpx;
 }

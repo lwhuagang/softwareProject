@@ -2,3 +2,32 @@
 .container{
   border: 1rpx solid green;
 }
+.fundInfoBlock{
+  display: flex;
+  width: 100%;
+}
+.fundNameAndCode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5rpx;
+  border: 1rpx solid red;
+  width: 60%;
+}
+.fundCode {
+  color: #c6c6c6;
+}
+.fundNet {
+  border: 1rpx solid red;
+  width: 20%;
+}
+.fundGrowth{
+  border: 1rpx solid red;
+  width: 20%;
+}
+.greenRate {
+  color: green;
+}
+.redRate {
+  color: red;
+}
