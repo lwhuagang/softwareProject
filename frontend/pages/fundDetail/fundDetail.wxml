@@ -1,0 +1,6 @@
+<!--pages/fundDetail/fundDetail.wxml-->
+<view class="container">
+  <naviBar title="基金详情"></naviBar>
+  <view>基金代码:{{fundInfo.code}}</view>
+</view>
+

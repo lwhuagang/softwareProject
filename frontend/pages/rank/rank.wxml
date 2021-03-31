@@ -1,0 +1,3 @@
+<!--pages/rank/rank.wxml-->
+<naviBar title="排行"></naviBar>
+<!-- 逻辑应为：先使用js的排序函数排序，然后送到fundGeneral中渲染 -->

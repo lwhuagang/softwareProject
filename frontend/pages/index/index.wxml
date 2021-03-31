@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<!-- container的样式是全局样式，定义在app.wxss中 -->
+<view class="container">
+  <!-- 导航栏样式：含有搜索框 -->
+  <naviBar ifSearch="{{true}}"></naviBar>
+  <!-- 功能列表 -->
+  <scroll-view class="sectionPart" scroll-x enhanced showScrollbar>
+    <navigator class="sectionItem" wx:for="{{sectionList}}" wx:for-item="sectionItem" url="{{sectionItem.url}}">
+      <image class="sectionImg" src="{{sectionItem.img}}"></image>
+      <view class="sectionName">{{sectionItem.name}}</view>
+    </navigator>
+  </scroll-view>
+  <!-- 热门基金推荐 -->
+  <sectionHead sectionName="热门基金" sectionUrl="/pages/hot/hot"></sectionHead>
+  <block wx:for="{{hotFunds}}" wx:for-item="fund">
+    <fundGeneral showType="netWorth" fundInfo="{{fund}}"></fundGeneral>
+  </block>
+  <sectionHead sectionName="AI预测" sectionUrl="/pages/aiForecast/aiForecast"></sectionHead>
+</view>
+
