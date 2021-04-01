@@ -3,10 +3,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 725rpx;
   height: 60rpx;
   border: 1rpx solid red;
-  margin-top: 5rpx;
+  margin: 10rpx 10rpx;
   padding-left: 5rpx;
 }
 .container .more {

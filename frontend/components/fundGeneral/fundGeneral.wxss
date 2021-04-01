@@ -1,6 +1,7 @@
 /* components/fundGeneral/fundGeneral.wxss */
 .container{
   border: 1rpx solid green;
+  margin: 10rpx 10rpx;
 }
 .fundInfoBlock{
   display: flex;

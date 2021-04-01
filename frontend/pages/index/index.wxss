@@ -12,29 +12,14 @@
   box-sizing: border-box;
   border-radius: 10rpx;
 }
-.sectionPart{
-  white-space: nowrap;
-  padding: 30rpx 0;
-  border: 1rpx solid red;
-}
-.sectionPart .sectionItem {
-  text-align: center;
-  width: 165rpx;
-  display: inline-block;
-}
-.sectionPart .sectionImg{
-  width: 100rpx;
-  height: 100rpx;
-}
-.sectionPart .sectionName{
-  font-size: 26rpx;
-  margin-top: 8rpx;
-}
 .sectionImg {
   width: 100rpx;
   height: 100rpx;
 }
-
+.sectionName {
+  border: 1rpx solid red;
+  text-align: center;
+}
 .swpItem{
   display: flex;
   justify-content: space-evenly;
