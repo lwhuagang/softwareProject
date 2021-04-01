@@ -25,7 +25,7 @@ Page({
           img:'/image/rank_b.jpg'
       },{
         name:'排行',
-          url:'/pages/rank/rank',
+          url:'/pages/search/search',
           img:'/image/rank_b.jpg'
       },{
         name:'排行',

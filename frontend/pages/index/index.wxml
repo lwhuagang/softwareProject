@@ -4,12 +4,30 @@
   <!-- 导航栏样式：含有搜索框 -->
   <naviBar ifSearch="{{true}}"></naviBar>
   <!-- 功能列表 -->
-  <scroll-view class="sectionPart" scroll-x enhanced showScrollbar>
+  <!-- <scroll-view class="sectionPart" scroll-x enhanced showScrollbar>
     <navigator class="sectionItem" wx:for="{{sectionList}}" wx:for-item="sectionItem" url="{{sectionItem.url}}">
       <image class="sectionImg" src="{{sectionItem.img}}"></image>
       <view class="sectionName">{{sectionItem.name}}</view>
     </navigator>
-  </scroll-view>
+  </scroll-view> -->
+  <swiper indicator-dots indicator-color="gray" indicator-active-color="black" class="swpBlock">
+    <swiper-item class="swpItem" wx:for="{{sectionList.length/5}}" wx:for-index="i">
+      <view class="secUnit" wx:for="{{5}}" wx:for-index="j">
+        <navigator class="sectionItem" url="{{sectionList[i*5+j].url}}">
+          <image class="sectionImg" src="{{sectionList[i*5+j].img}}"></image>
+          <view class="sectionName">{{sectionList[i*5+j].name}}</view>
+        </navigator>
+      </view>
+    </swiper-item>
+  </swiper>
+  <!-- <swiper indicator-dots indicator-color="rgba(255,255,255,0.5）">
+    <swiper-item wx:for="{{sectionList.length/5}}" wx:for-index="i" class="swpItem">
+        <view class="sec5" wx:for="{{5}}" wx:for-index="j">
+            <image class="sectionImg" src="{{sectionList[i*5+j].img}}"></image>
+        </view>
+        <view>阿哲{{i}}</view>
+    </swiper-item>
+  </swiper> -->
   <!-- 热门基金推荐 -->
   <sectionHead sectionName="热门基金" sectionUrl="/pages/hot/hot"></sectionHead>
   <block wx:for="{{hotFunds.length>hotFundNum?hotFundNum:hotFunds.length}}">
