@@ -1,5 +1,25 @@
 <!--pages/register/register.wxml-->
 <view class="container">
   <naviBar title="注册"></naviBar>
+  <view class="regBlock">
+    <view class="proImgSec">
+      选择头像
+    </view>
+    <view class="userNameSec">
+      输入用户名
+    </view>
+    <view class="userMailAddr">
+      输入邮箱
+    </view>
+    <view class="userPhoneNum">
+      输入手机号
+    </view>
+    <view class="userPassword">
+      输入密码
+    </view>
+    <view class="confirmPassword">
+      确认密码
+    </view>
+  </view>
 </view>
 

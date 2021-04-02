@@ -14,7 +14,6 @@ let {
 } = require("../../utils/util.js")
 Page({
   data: {
-    // 功能列表，暂时全用排行代替
       sectionList:[{
           name:'净值',
           url:'/pages/netWorth/netWorth',
@@ -36,15 +35,12 @@ Page({
         url:'/pages/newFund/newFund',
         img:'/image/new.jpg'
       },{
-        name:'待定',
-        url:'',
-        img:''
+        name:'AI推荐',
+        url:'/pages/aiForecast/aiForecast',
+        img:'/image/AI.jpg'
       }],
-      // 展示部分热门基金.hotFunds中得到的是所有热门基金，但是在wxml中仅展示部分
-      //希望有能力时，将首页加载时得到的所有热门基金传递到热门基金详情页，而不用再重复访问.暂时先不做这个
       hotFunds:[],
       hotFundNum:2,
-      //AI预测部分，暂时也以热门基金替代
       aiForecast:[]
   },  
     /**

@@ -1,1 +1,47 @@
 /* pages/register/register.wxss */
+.regBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 1000rpx;
+  width: 100%;
+  border: 2rpx solid red;
+}
+.proImgSec {
+  height: 200rpx;
+  width: 100%;
+  border: 1rpx solid red;
+}
+.userNameSec {
+  height: 200rpx;
+  width: 100%;
+  border: 1rpx solid red;
+}
+.userMailAddr {
+  height: 200rpx;
+  width: 100%;
+  border: 1rpx solid red;
+}
+.userPhoneNum {
+  height: 200rpx;
+  width: 100%;
+  border: 1rpx solid red;
+}
+.userPassword {
+  height: 200rpx;
+  width: 100%;
+  border: 1rpx solid red;
+}
+.confirmPassword {
+  height: 200rpx;
+  width: 100%;
+  border: 1rpx solid red;
+}
+.divLine{
+  background: #E0E3DA;
+  width:92%;
+  height: 5rpx;
+  margin-left: 30rpx;
+  margin-top: 10px;
+}
