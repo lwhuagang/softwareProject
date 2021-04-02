@@ -1,8 +1,12 @@
 <!--pages/mine/mine.wxml-->
 <view class="container">
-
   <naviBar title="我的" showBack="{{false}}"></naviBar>
-  <text> HERE </text>
+  <block wx:if="{{isLogin}}">
+    已登录
+  </block>
+  <block wx:else>
+    未登录
+  </block>
 </view>
 
 

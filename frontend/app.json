@@ -10,7 +10,8 @@
     "pages/fundDetail/fundDetail",
     "pages/aiForecast/aiForecast",
     "pages/evaluate/evaluate",
-    "pages/netWorth/netWorth"
+    "pages/netWorth/netWorth",
+    "pages/newFund/newFund"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -32,9 +32,9 @@ Page({
           url:'/pages/hot/hot',
           img:'/image/hot.jpg'
       },{
-        name:'待定',
-        url:'',
-        img:''
+        name:'新品',
+        url:'/pages/newFund/newFund',
+        img:'/image/new.jpg'
       },{
         name:'待定',
         url:'',
