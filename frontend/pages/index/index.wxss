@@ -1,8 +1,12 @@
+.container {
+  background: #f5f5f5;
+}
 .searchBar{
   display: flex;
   justify-content: space-between;
   height: 50rpx;
   border: 1rpx solid red;
+  background: white;
 }
 .searchBox {
   width: 80%;
@@ -17,7 +21,7 @@
   height: 100rpx;
 }
 .sectionName {
-  border: 1rpx solid red;
+  /* border: 1rpx solid red; */
   text-align: center;
 }
 .swpItem{
@@ -25,13 +29,14 @@
   justify-content: space-evenly;
 }
 .secUnit{
-  border: 1rpx solid red;
+  /* border: 1rpx solid red; */
   height: 100rpx;
   margin-top: 20rpx;
 }
 .swpBlock{
+  background: white;
   height: 250rpx;
-  border: 1rpx solid green;
-  margin: 10rpx 10rpx;
+  border: 1rpx solid gray;
+  margin: 20rpx 10rpx;
   border-radius: 20rpx;
 }

@@ -6,13 +6,13 @@
   display: flex;
   padding-top: 35rpx;
   background: #0081ff;
-  border: 1rpx solid red;
+  /* border: 1rpx solid red; */
 }
 .back {
   display: flex;
   align-items: center;
   width: 50rpx;
-  border: 1rpx solid red;
+  /* border: 1rpx solid red; */
 }
 .back .backIcon{
   height: 50%;
@@ -22,13 +22,13 @@
   align-items: center;
   justify-content: center;
   flex:1;
-  border: 1rpx solid red;
+  /* border: 1rpx solid red; */
   font-size: 40rpx;
   color: white;
 }
 .filling {
   width: 50rpx;
-  border: 1rpx solid red;
+  /* border: 1rpx solid red; */
 }
 .searchBox{
   display: flex;
@@ -38,7 +38,7 @@
   height: 55%;
   border-radius: 20rpx;
   background: white;
-  border: 1rpx solid red;
+  /* border: 1rpx solid red; */
 }
 .searchIcon{
   height: 90%;
