@@ -28,17 +28,19 @@
   border: 1rpx solid gray;
   position: absolute;
   margin-top: 120rpx;
-  height: 60rpx;
+  height: 58rpx;
   width: 88%;
   border-radius: 10rpx;
+  padding: 5rpx;
 }
 .inputUsrPassword {
   border: 1rpx solid gray;
   position: absolute;
   margin-top: 210rpx;
-  height: 60rpx;
+  height: 58rpx;
   width: 88%;
   border-radius: 10rpx;
+  padding: 5rpx;
 }
 .loginBtn {
   border: 1rpx solid red;
