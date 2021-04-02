@@ -29,23 +29,23 @@
   position: absolute;
   margin-top: 120rpx;
   height: 60rpx;
-  width: 92%;
+  width: 88%;
   border-radius: 10rpx;
 }
 .inputUsrPassword {
   border: 1rpx solid gray;
   position: absolute;
-  margin-top: 200rpx;
+  margin-top: 210rpx;
   height: 60rpx;
-  width: 92%;
+  width: 88%;
   border-radius: 10rpx;
 }
 .loginBtn {
   border: 1rpx solid red;
   position: absolute;
   margin-top:480rpx;
-  height: 60rpx;
-  width: 100rpx;
+  height: 70rpx;
+  /* width: 100rpx; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +55,7 @@
   border: 1rpx solid red;
   position: absolute;
   margin-top: 570rpx;
-  height: 60rpx;
+  height: 70rpx;
   display: flex;
   justify-content: center;
   align-items: center;
