@@ -16,28 +16,29 @@ Page({
   data: {
     // 功能列表，暂时全用排行代替
       sectionList:[{
-          name:'排行',
-          url:'/pages/rank/rank',
-          img:'/image/rank_b.jpg'
+          name:'净值',
+          url:'/pages/netWorth/netWorth',
+          img:'/image/netWorth.jpg'
+      },{
+        name:'估值',
+          url:'/pages/evaluate/evaluate',
+          img:'/image/evaluate.jpg'
       },{
         name:'排行',
           url:'/pages/rank/rank',
           img:'/image/rank_b.jpg'
       },{
-        name:'排行',
-          url:'/pages/search/search',
-          img:'/image/rank_b.jpg'
+        name:'热门',
+          url:'/pages/hot/hot',
+          img:'/image/hot.jpg'
       },{
-        name:'排行',
-          url:'/pages/rank/rank',
-          img:'/image/rank_b.jpg'
+        name:'待定',
+        url:'',
+        img:''
       },{
-        name:'排行',
-          url:'/pages/rank/rank',
-          img:'/image/rank_b.jpg'
-      },{name:'排行',
-      url:'/pages/rank/rank',
-      img:'/image/rank_b.jpg'
+        name:'待定',
+        url:'',
+        img:''
       }],
       // 展示部分热门基金.hotFunds中得到的是所有热门基金，但是在wxml中仅展示部分
       //希望有能力时，将首页加载时得到的所有热门基金传递到热门基金详情页，而不用再重复访问.暂时先不做这个

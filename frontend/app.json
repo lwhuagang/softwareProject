@@ -8,7 +8,9 @@
     "pages/search/search",
     "pages/hot/hot",
     "pages/fundDetail/fundDetail",
-    "pages/aiForecast/aiForecast"
+    "pages/aiForecast/aiForecast",
+    "pages/evaluate/evaluate",
+    "pages/netWorth/netWorth"
   ],
   "window":{
     "backgroundTextStyle":"light",
