@@ -7,6 +7,8 @@ Page({
    */
   data: {
     isLogin:false,
+    userName:'',
+    userPassword:'',
   },
 
   /**
@@ -71,5 +73,8 @@ Page({
     wx.navigateTo({
       url: '/pages/register/register',
     })
+  },
+  login:function(data) {
+    console.log(data)
   }
 })

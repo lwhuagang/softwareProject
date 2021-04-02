@@ -1,20 +1,62 @@
-/* pages/mine/mine.wxss */
-.loginBlock {
+.loginContainer {
+  border: 1rpx solid green;
   display: flex;
   flex-direction: column;
+  position: relative;
   align-items: center;
+  height: 1000rpx;
+
 }
-.unLoginImg{
-  border: 1rpx solid red;
-  width: 250rpx;
+.loginImg{
+  position: absolute;
+  width: 200rpx;
+  border: 1rpx solid black;
+  margin-top: 50rpx;
+  background: white;
 }
-.inputUserNameBlock {
+.loginInfo {
   display: flex;
-  border: 1rpx solid red;
-  margin-left: 30rpx;
+  justify-content: center;
+  position: absolute;
+  height: 500rpx;
+  width: 450rpx;
+  border: 10rpx solid #1296db;
+  border-radius: 20rpx;
+  margin-top: 160rpx;
 }
-.inputUserPasswordBlock {
-  display: flex;
+.inputUsrName {
+  border: 1rpx solid gray;
+  position: absolute;
+  margin-top: 120rpx;
+  height: 60rpx;
+  width: 92%;
+  border-radius: 10rpx;
+}
+.inputUsrPassword {
+  border: 1rpx solid gray;
+  position: absolute;
+  margin-top: 200rpx;
+  height: 60rpx;
+  width: 92%;
+  border-radius: 10rpx;
+}
+.loginBtn {
   border: 1rpx solid red;
-  margin-left: 30rpx;
+  position: absolute;
+  margin-top:480rpx;
+  height: 60rpx;
+  width: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1296db;
+}
+.registerBtn{
+  border: 1rpx solid red;
+  position: absolute;
+  margin-top: 570rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

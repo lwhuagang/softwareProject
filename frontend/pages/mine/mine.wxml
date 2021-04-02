@@ -1,25 +1,31 @@
 <!--pages/mine/mine.wxml-->
 <view class="container">
   <naviBar title="我的" showBack="{{false}}"></naviBar>
-  <block wx:if="{{isLogin}}">
+  <view class="hasLoggedContainer" wx:if="{{isLogin}}">
     已登录
-  </block>
-  <block wx:else>
-    未登录
-    <view class="loginBlock">
-      <!-- 灰色头像 -->
-      <image class="unLoginImg" src="/image/unLogin.jpg" mode="widthFix"/>
-      <view class="inputUserNameBlock">
-        <view class="userTitle">用户名:</view>
-        <input class="inputUserName" placeholder="请输入用户名"/>
-      </view>  
-      <view class="inputUserPasswordBlock">
-        <view class="passwordTitle">密码:</view>
-        <input class="inputUserPassword" placeholder="请输入密码" password/>
+  </view>
+  <view wx:else>
+    <form bindsubmit="login">
+      <view class="loginContainer">
+        <view class="loginInfo">
+          <input class="inputUsrName" name="username" placeholder="用户名" focus/>
+          <input class="inputUsrPassword" name="password" password placeholder="密码"/>
+        </view>
+        <image class="loginImg" src="/image/login.jpg" mode="widthFix"/>
+        <button form-type="submit" class="loginBtn">
+          <view class="submitInfo">登录</view>
+        </button>
+        <button bindtap="register" class="registerBtn">
+          <view class="registerInfo">注册</view>
+        </button>
       </view>
-      <button bindtap="register">点击注册</button>
-    </view> 
-  </block>
+    </form>
+    <!-- <view class="loginInfo">
+      <input class="inputUserName" placeholder="用户名" focus model:value="{{userName}}"/>
+      <input class="inputUserPassword" password placeholder="密码" model:value="{{userPassword}}"/>
+    </view>
+    <image class="unLoggedImg" src="/image/login.jpg" mode="widthFix"/> -->
+  </view>
 </view>
 
 
