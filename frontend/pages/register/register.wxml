@@ -1,0 +1,5 @@
+<!--pages/register/register.wxml-->
+<view class="container">
+  <naviBar title="注册"></naviBar>
+</view>
+

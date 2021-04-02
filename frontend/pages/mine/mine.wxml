@@ -6,6 +6,19 @@
   </block>
   <block wx:else>
     未登录
+    <view class="loginBlock">
+      <!-- 灰色头像 -->
+      <image class="unLoginImg" src="/image/unLogin.jpg" mode="widthFix"/>
+      <view class="inputUserNameBlock">
+        <view class="userTitle">用户名:</view>
+        <input class="inputUserName" placeholder="请输入用户名"/>
+      </view>  
+      <view class="inputUserPasswordBlock">
+        <view class="passwordTitle">密码:</view>
+        <input class="inputUserPassword" placeholder="请输入密码" password/>
+      </view>
+      <button bindtap="register">点击注册</button>
+    </view> 
   </block>
 </view>
 

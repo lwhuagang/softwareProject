@@ -11,7 +11,8 @@
     "pages/aiForecast/aiForecast",
     "pages/evaluate/evaluate",
     "pages/netWorth/netWorth",
-    "pages/newFund/newFund"
+    "pages/newFund/newFund",
+    "pages/register/register"
   ],
   "window":{
     "backgroundTextStyle":"light",
