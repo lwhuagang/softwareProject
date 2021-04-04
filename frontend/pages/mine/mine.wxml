@@ -8,7 +8,7 @@
     <form bindsubmit="login">
       <view class="loginContainer">
         <view class="loginInfo">
-          <input class="inputUsrName" name="username" placeholder="用户名/邮箱" focus/>
+          <input class="inputUsrName" name="email" placeholder="邮箱" focus/>
           <input class="inputUsrPassword" name="password" password placeholder="密码" focus/>
         </view>
         <image class="loginImg" src="/image/login.jpg" mode="widthFix"/>
