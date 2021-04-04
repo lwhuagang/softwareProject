@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.software_project.dao.UserDAO">
+    <!--根据邮箱找到user-->
+    <select id="findUserByEmail" parameterType="string" resultType="com.software_project.pojo.User">
+        select * from soft.user where email = #{email}
+    </select>
+
+    <!--向用户表中插入新用户-->
+    <insert id="insertUser" parameterType="com.software_project.pojo.User">
+        insert into soft.user values (#{email},#{password},#{nickname},#{money},#{pic_url})
+    </insert>
+
+</mapper>
