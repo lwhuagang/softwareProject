@@ -81,6 +81,45 @@ Page({
      * 2.收到后端的登录成功与否的信息，如果没有成功登录，提示"用户名或者密码错误";否则，跳转到首页/个人信息页(个人信息页其实是在另一个block里面写的)
      * 3.若成功登录，注意修改全局变量isLogin以及全局用户信息。同时可以考虑将用户名缓存到本地，便于下次直接登录(加入记住我等功能，暂时不要求实现).
      */
+    var that = this;
+    console.log("用户登录====>")
     console.log(data)
+      wx.request({
+        url: 'http://localhost:8080/user/login',
+        method:"POST",
+        data:{
+            email:data.detail.value.email,
+            password:data.detail.value.password
+        },
+        success: res=>{
+          console.log(res)
+          if(res.data==true) {
+            wx.showToast({
+              title: '已登录',     
+              icon: 'success',       
+              duration: 1000,//持续的时间 
+              // 跳转到个人信息主页
+            });
+            app.globalData.isLogin = true;
+            that.setData({
+              isLogin:true
+            })
+          } else {
+            wx.showToast({
+              title: '邮箱或密码错误',
+              icon: 'error',
+              duration:1500
+            });
+          }         
+        },
+        fail:res=>{
+          console.log(res);
+          wx.showToast({
+            title: '网络错误',
+            icon: 'error',
+            duration:1500
+          })
+        }
+      })
   }
 })
