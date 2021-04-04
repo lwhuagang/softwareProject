@@ -2,24 +2,46 @@
 <view class="container">
   <naviBar title="注册"></naviBar>
   <view class="regBlock">
-    <view class="proImgSec">
-      选择头像
-    </view>
-    <view class="userNameSec">
-      输入用户名
-    </view>
-    <view class="userMailAddr">
-      输入邮箱
-    </view>
-    <view class="userPhoneNum">
-      输入手机号
-    </view>
-    <view class="userPassword">
-      输入密码
-    </view>
-    <view class="confirmPassword">
-      确认密码
-    </view>
+        <!-- 昵称 -->
+      <view class="part nickPart">
+        <view class="instr nickIntr">昵称</view>
+        <input class="input inputNick" model:value="{{nickname}}" focus/>
+      </view>
+        <!-- 邮箱 -->
+      <view class="part mailPart">
+        <view class="instr mailInstr">邮箱</view>
+        <input class="input inputEmail" model:value="{{email}}" focus/>
+      </view>
+        <!-- 密码 -->
+      <view class="part pswdPart">
+        <view class="instr pswdIntr">密码</view>
+        <input class="input inputPswd" model:value="{{password}}" focus/>
+      </view>
+        <!-- 确认密码 -->
+      <view class="part cfmPart">
+        <view class="instr cfmInstr">确认密码</view>
+        <input class="input inputConfirm" model:value="{{confirmPswd}}" focus/>
+      </view>
+        <!-- 验证码 -->
+      <view class="captcha captchaPart">
+        <input class="input inputCaptcha" model:value="{{captcha}}" focus/>
+        <button bindtap="getCaptcha">获取验证码</button>
+      </view>
   </view>
+  <!-- <form bindsubmit="login">
+      <view class="loginContainer">
+        <view class="loginInfo">
+          <input class="inputUsrName" name="email" placeholder="邮箱" focus/>
+          <input class="inputUsrPassword" name="password" password placeholder="密码" focus/>
+        </view>
+        <image class="loginImg" src="/image/login.jpg" mode="widthFix"/>
+        <button form-type="submit" class="loginBtn">
+          <view class="submitInfo">登录</view>
+        </button>
+        <button bindtap="register" class="registerBtn">
+          <view class="registerInfo">注册</view>
+        </button>
+      </view>
+    </form> -->
 </view>
 

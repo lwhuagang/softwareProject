@@ -5,7 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      nickname:'',
+      email:'',
+      password:'',
+      confirmPswd:'',
+      captha:'',
+      pic_url:'',
+      money:0
   },
 
   /**
@@ -62,5 +68,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getCaptcha:function(data) {
+      wx.request({
+        url: 'http://localhost:8080/user/captcha',
+        method:"GET",
+        data:{
+          email:this.data.email
+        },
+        success:res=>{
+          console.log(res)
+        }
+      })
   }
 })

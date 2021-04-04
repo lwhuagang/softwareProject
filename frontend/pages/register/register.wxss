@@ -6,42 +6,22 @@
   align-items: center;
   height: 1000rpx;
   width: 100%;
-  border: 2rpx solid red;
+  border: 2rpx solid green;
 }
-.proImgSec {
-  height: 200rpx;
-  width: 100%;
+.part {
   border: 1rpx solid red;
 }
-.userNameSec {
-  height: 200rpx;
-  width: 100%;
+.regInfo {
   border: 1rpx solid red;
 }
-.userMailAddr {
-  height: 200rpx;
+.namePart {
+  border: 1rpx solid blue;
+  display: flex;
   width: 100%;
-  border: 1rpx solid red;
 }
-.userPhoneNum {
-  height: 200rpx;
-  width: 100%;
-  border: 1rpx solid red;
+.nameInstr {
+  border: 1rpx solid black;
 }
-.userPassword {
-  height: 200rpx;
-  width: 100%;
-  border: 1rpx solid red;
-}
-.confirmPassword {
-  height: 200rpx;
-  width: 100%;
-  border: 1rpx solid red;
-}
-.divLine{
-  background: #E0E3DA;
-  width:92%;
-  height: 5rpx;
-  margin-left: 30rpx;
-  margin-top: 10px;
+.inputName {
+  border: 1rpx solid black;
 }
