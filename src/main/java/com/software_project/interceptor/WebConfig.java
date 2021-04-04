@@ -9,11 +9,12 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        //拦截user下面的所有地址,并排除user和user/login和/user/register
+        //拦截user下面的所有地址,并排除user和user/login,/user/register,/user/captcha
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/user/**")
                 .excludePathPatterns("/user")
                 .excludePathPatterns("/user/login")
-                .excludePathPatterns("/user/register");
+                .excludePathPatterns("/user/register")
+                .excludePathPatterns("/user/captcha");
     }
 }

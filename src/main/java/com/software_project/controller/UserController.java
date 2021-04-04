@@ -5,13 +5,11 @@ import com.software_project.service.UserService;
 import com.software_project.utils.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
+import java.util.Map;
 
 @Controller
 @RequestMapping("user")
@@ -35,31 +33,26 @@ public class UserController {
 
     /**
      * 进行账号注册
-     * @param email 用户邮箱属性
-     * @param password 用户密码
-     * @param nickname 用户昵称
-     * @param captcha 用户验证码
+     * @param params 用户注册账号,密码,昵称,起始金额+用户验证码
      * @return 返回用户对象toString()
      */
     @ResponseBody
     @PostMapping("register")
-    public String register(String email,String password,String nickname,int money,String captcha) {
+    public User register(@RequestBody Param params) {
+        // 从params中获取对应属性
+        User user = params.user;
+        String captcha = params.captcha;
         // 先判断该用户是否已经注册过
-        User user_find = userService.findUserByEmail(email);
+        User user_find = userService.findUserByEmail(user.getEmail());
         if (user_find == null){
             // 说明没有被注册过,可以进行注册
             // 注册密码进行md5加密
-            String md5_password = MD5Utils.code(password);
-            User user = new User(email,md5_password,nickname,money,"");
-            User ret_user = userService.register(user, captcha);
-            if (ret_user != null){
-                // 说明用户注册成功
-                return ret_user.toString();
-            }
-            else {
-                // 说明用户注册失败
-                return null;
-            }
+            user.setPic_url("");
+            String md5_password = MD5Utils.code(user.getPassword());
+            user.setPassword(md5_password);
+            // 有对象说明用户注册成功
+            // null说明用户注册失败
+            return userService.register(user, captcha);
         }
         else {
             // 说明被注册过
@@ -68,21 +61,28 @@ public class UserController {
     }
 
     /**
+     * register的参数包装类
+     */
+    static class Param{
+        public User user;
+        public String captcha;
+    }
+
+    /**
      * 输入登录账号和密码,尝试进行登录
-     * @param email 登录邮箱
-     * @param password 登录密码
+     * @param user 主要包含用户邮箱和密码信息
      * @return 是否登录成功的flag
      */
     @ResponseBody
     @PostMapping("login")
-    public boolean login(String email, String password, HttpSession session){
+    public boolean login(@RequestBody User user, HttpSession session){
         // 登录密码进行md5加密,将加密后的密码传入进行比对
-        String md5_password = MD5Utils.code(password);
+        String md5_password = MD5Utils.code(user.getPassword());
         // flag为true说明该账号登录成功,否则说明登录失败
-        boolean flag = userService.login(email,md5_password);
+        boolean flag = userService.login(user.getEmail(),md5_password);
         if (flag) {
             // 说明登陆成功,此时向session中设置属性
-            session.setAttribute("user",email);
+            session.setAttribute("user",user.getEmail());
             return true;
         }
         else {
