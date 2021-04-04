@@ -1,5 +1,6 @@
-package com.software_project.interceptor;
+package com.software_project.config;
 
+import com.software_project.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
