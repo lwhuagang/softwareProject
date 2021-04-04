@@ -7,19 +7,35 @@
     </view>
     <view class="userNameSec">
       输入用户名
+      <input class="inputUsrName" name="username" placeholder="请输入用户名" focus/>
     </view>
     <view class="userMailAddr">
       输入邮箱
+      <input class="inputMailAddr" name="username" placeholder="请输入邮箱" focus/>
     </view>
     <view class="userPhoneNum">
       输入手机号
+      <input class="inputPhoneNum" name="username" placeholder="请输入手机号" focus/>
     </view>
     <view class="userPassword">
       输入密码
+      <input class="inputMailAddr" name="username" placeholder="请输入密码" focus/>
     </view>
     <view class="confirmPassword">
       确认密码
+      <input class="inputMailAddr" name="username" placeholder="请再次输入密码确认" focus/>
     </view>
+    <view class="userVerificationCode">
+      <button form-type="send" class="sendBtn">
+          <view class="sendInfo">向邮箱发送验证码</view>
+      </button>
+      输入验证码
+      <input class="inputMailAddr" name="username" placeholder="请输入验证码" focus/>
+    </view>
+    <button form-type="submit" class="submitBtn">
+      <view class="submitInfo">提交</view>
+    </button>
+    
   </view>
 </view>
 
