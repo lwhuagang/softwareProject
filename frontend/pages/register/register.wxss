@@ -4,24 +4,71 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 1000rpx;
   width: 100%;
-  border: 2rpx solid green;
+  /* border: 2rpx solid green; */
+  box-sizing: border-box;
+  background: white;
 }
 .part {
-  border: 1rpx solid red;
-}
-.regInfo {
-  border: 1rpx solid red;
-}
-.namePart {
-  border: 1rpx solid blue;
+  /* border: 1rpx solid red; */
   display: flex;
   width: 100%;
+  /* margin-top: 20rpx; */
+  height: 58rpx;
 }
-.nameInstr {
-  border: 1rpx solid black;
+.instr{
+  width: 20%;
+  text-align: end;
 }
-.inputName {
-  border: 1rpx solid black;
+.input {
+  margin-left: 20rpx;
+  /* border: 1rpx solid green; */
+  height:58rpx;
+  background: white;
+  border-radius: 5rpx;
+  width: 70%;
+  box-sizing: border-box;
+  border-left: 1rpx solid #dcdcdc;
+}
+.captchaPart {
+  /* border: 1rpx solid rebeccapurple; */
+  display: flex;
+  justify-content: space-evenly;
+  height: 60rpx;
+  width: 100%;
+  /* margin-top: 20rpx; */
+}
+.inputCaptcha{
+  /* border: 1rpx solid red; */
+  margin-right: 5rpx;
+  box-sizing: border-box;
+  height: 100%;
+  background: white;
+  border-radius: 5rpx;
+  border-right: 1rpx solid #dcdcdc;
+}
+.captchaBtn {
+  padding:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:#4285f4;
+  color: white;
+  font-size: medium;
+  flex: 0.7;
+  box-sizing: border-box;
+}
+.divLine{
+  height: 1rpx;
+  width: 100%;
+  background: #dcdcdc;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+.registerPart{
+  margin-top: 550rpx;
+}
+.regBtn{
+  background: #4285f4;
+  color: white;
 }

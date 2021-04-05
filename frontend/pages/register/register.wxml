@@ -4,28 +4,37 @@
   <view class="regBlock">
         <!-- 昵称 -->
       <view class="part nickPart">
-        <view class="instr nickIntr">昵称</view>
+        <view class="instr nickIntr">昵称:</view>
         <input class="input inputNick" model:value="{{nickname}}" focus/>
       </view>
+      <view class="divLine"></view>
         <!-- 邮箱 -->
       <view class="part mailPart">
-        <view class="instr mailInstr">邮箱</view>
+        <view class="instr mailInstr">邮箱:</view>
         <input class="input inputEmail" model:value="{{email}}" focus/>
       </view>
+      <view class="divLine"></view>
         <!-- 密码 -->
       <view class="part pswdPart">
-        <view class="instr pswdIntr">密码</view>
-        <input class="input inputPswd" model:value="{{password}}" focus/>
+        <view class="instr pswdIntr">密码:</view>
+        <input class="input inputPswd" model:value="{{password}}" focus password/>
       </view>
+      <view class="divLine"></view>
         <!-- 确认密码 -->
       <view class="part cfmPart">
-        <view class="instr cfmInstr">确认密码</view>
-        <input class="input inputConfirm" model:value="{{confirmPswd}}" focus/>
+        <view class="instr cfmInstr">确认密码:</view>
+        <input class="input inputConfirm" model:value="{{confirmPswd}}" focus password/>
       </view>
+      <view class="divLine"></view>
         <!-- 验证码 -->
-      <view class="captcha captchaPart">
-        <input class="input inputCaptcha" model:value="{{captcha}}" focus/>
-        <button bindtap="getCaptcha">获取验证码</button>
+      <view class="captchaPart">
+        <input class="inputCaptcha" model:value="{{captcha}}" focus/>
+        <button bindtap="getCaptcha" class="captchaBtn">验证码</button>
+      </view>
+      <view class="divLine"></view>
+      <!-- 注册 -->
+      <view class="registerPart">
+        <button bindtap="register" class="regBtn">注册</button>
       </view>
   </view>
   <!-- <form bindsubmit="login">
