@@ -105,5 +105,15 @@ Page({
           console.log(res)
         }
       })
+  },
+  checkPswd:function() {
+    console.log('检查密码是否一致')
+    if(this.data.password!=this.data.confirmPswd) {
+      wx.showToast({
+        title: '密码不一致',
+        icon:'error',
+        duration:1000
+      })
+    }
   }
 })

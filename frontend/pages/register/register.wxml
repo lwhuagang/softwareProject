@@ -23,7 +23,7 @@
         <!-- 确认密码 -->
       <view class="part cfmPart">
         <view class="instr cfmInstr">确认密码:</view>
-        <input class="input inputConfirm" model:value="{{confirmPswd}}" focus password/>
+        <input class="input inputConfirm" model:value="{{confirmPswd}}" focus password bindblur="checkPswd"/>
       </view>
       <view class="divLine"></view>
         <!-- 验证码 -->
