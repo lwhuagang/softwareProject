@@ -45,4 +45,5 @@
 }
 .searchText{
   color:#706e6e;
+  margin-top: 5rpx;
 }

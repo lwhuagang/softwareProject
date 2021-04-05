@@ -40,7 +40,7 @@ Page({
         img:'/image/AI.jpg'
       }],
       hotFunds:[],
-      hotFundNum:2,
+      hotFundNum:4,
       aiForecast:[]
   },  
     /**

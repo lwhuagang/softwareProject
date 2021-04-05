@@ -24,3 +24,21 @@
   margin: 20rpx 10rpx;
   border-radius: 20rpx;
 }
+.hotPart{
+  border: 1rpx solid #dcdcdc;
+  border-radius: 10rpx;
+  margin: 5rpx 5rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:stretch;
+  background: white;
+  border-radius: 5rpx;
+}
+.divLine{
+  height: 1rpx;
+  width: 100%;
+  background: #dcdcdc;
+  margin-top: 3rpx;
+  margin-bottom: 3rpx;
+}

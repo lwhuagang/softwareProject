@@ -6,6 +6,7 @@
   align-items: center;
   width: 100%;
   /* border: 2rpx solid green; */
+  height: 1800rpx;
   box-sizing: border-box;
   background: white;
 }
@@ -51,17 +52,6 @@
   border-right: 1rpx solid #dcdcdc;
   padding-left: 10rpx;
 }
-.captchaBtn {
-  /* padding:0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background:#4285f4;
-  color: white;
-  font-size: medium;
-  flex: 0.7;
-  box-sizing: border-box; */
-}
 .divLine{
   height: 1rpx;
   width: 100%;
@@ -70,7 +60,7 @@
   margin-bottom: 10rpx;
 }
 .registerPart{
-  margin-top: 550rpx;
+  margin-top: 400rpx;
 }
 .regBtn{
   background: #4285f4;
