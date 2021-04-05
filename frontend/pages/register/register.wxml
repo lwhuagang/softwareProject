@@ -29,7 +29,9 @@
         <!-- 验证码 -->
       <view class="captchaPart">
         <input class="inputCaptcha" model:value="{{captcha}}" focus/>
-        <button bindtap="getCaptcha" class="captchaBtn">验证码</button>
+        <button bindtap="getCaptcha" class="captchaBtn"
+          style="margin-top:0rpx;background:{{capBGColor}};color:{{capTxtColor}};font-size:28rpx;width:250rpx;display:center;justify-content:center;align-items:center;" disabled="{{smsFlag}}"
+        >{{sendTime}}</button>
       </view>
       <view class="divLine"></view>
       <!-- 注册 -->

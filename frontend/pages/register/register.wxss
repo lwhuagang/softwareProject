@@ -18,7 +18,9 @@
 }
 .instr{
   width: 20%;
-  text-align: end;
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
 }
 .input {
   margin-left: 20rpx;
@@ -29,6 +31,7 @@
   width: 70%;
   box-sizing: border-box;
   border-left: 1rpx solid #dcdcdc;
+  padding-left: 10rpx;
 }
 .captchaPart {
   /* border: 1rpx solid rebeccapurple; */
@@ -46,9 +49,10 @@
   background: white;
   border-radius: 5rpx;
   border-right: 1rpx solid #dcdcdc;
+  padding-left: 10rpx;
 }
 .captchaBtn {
-  padding:0;
+  /* padding:0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,7 +60,7 @@
   color: white;
   font-size: medium;
   flex: 0.7;
-  box-sizing: border-box;
+  box-sizing: border-box; */
 }
 .divLine{
   height: 1rpx;

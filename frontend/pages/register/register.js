@@ -11,7 +11,12 @@ Page({
       confirmPswd:'',
       captha:'',
       pic_url:'',
-      money:0
+      money:0,
+      capBGColor:'#4285f4',
+      capTxtColor:'white',
+      sendTime:'发送验证码',
+      smsFlag:false,
+      snsMsgWait: 60
   },
 
   /**
@@ -70,6 +75,26 @@ Page({
 
   },
   getCaptcha:function(data) {
+      var that = this;
+      var inter = setInterval(function(){
+        that.setData({
+          smsFlag:true,
+          capBGColor:'#f5f5f5',
+          capTxtColor:'black',
+          sendTime:that.data.snsMsgWait+'s后重发',
+          snsMsgWait:that.data.snsMsgWait-1
+        });
+        if(that.data.snsMsgWait<0) {
+          clearInterval(inter);
+          that.setData({
+            smsFlag:false,
+            capBGColor:'#4285f4',
+            capTxtColor:'white',
+            sendTime:'获取验证码',
+            snsMsgWait:60
+          });
+        }
+      }.bind(that),1000);
       wx.request({
         url: 'http://localhost:8080/user/captcha',
         method:"GET",
