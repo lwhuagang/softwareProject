@@ -1,4 +1,5 @@
 // pages/register/register.js
+const app = getApp();
 Page({
 
   /**
@@ -9,14 +10,14 @@ Page({
       email:'',
       password:'',
       confirmPswd:'',
-      captha:'',
+      captcha:'',
       pic_url:'',
       money:0,
       capBGColor:'#4285f4',
       capTxtColor:'white',
       sendTime:'发送验证码',
       smsFlag:false,
-      snsMsgWait: 60
+      snsMsgWait: 60,
   },
 
   /**
@@ -75,6 +76,7 @@ Page({
 
   },
   getCaptcha:function(data) {
+      console.log("发送验证码=====>")
       var that = this;
       var inter = setInterval(function(){
         that.setData({
@@ -107,7 +109,7 @@ Page({
       })
   },
   checkPswd:function() {
-    console.log('检查密码是否一致')
+    console.log('检查密码是否一致===>')
     if(this.data.password!=this.data.confirmPswd) {
       wx.showToast({
         title: '密码不一致',
@@ -115,5 +117,69 @@ Page({
         duration:1000
       })
     }
+  },
+  register:function() {
+    console.log("注册====>");
+    var that = this;
+    if(this.data.confirmPswd=='' || this.data.email=='' || this.data.nickname=='' || this.data.confirmPswd!=this.data.password) {
+      wx.showToast({
+        title: '存在非法字段',
+        icon:'error',
+        duration:1000
+      });
+      return;
+    }
+    wx.showLoading({
+      title: '请稍后',
+    });
+    wx.request({
+      url: 'http://localhost:8080/user/register',
+      method:"POST",
+      data:{
+        user:{
+            email:that.data.email,
+            password:that.data.password,
+            nickname:that.data.nickname,
+            money:0,
+            pic_url:that.data.pic_url
+        },
+        captcha:that.data.captcha
+      },
+      success:res=>{
+        console.log(res);
+        wx.hideLoading();
+        if(res.data=="") {
+          wx.showToast({
+            title: '邮箱已注册,或验证码错误',
+            icon:"none",
+            duration:2000
+          });
+          return;
+        }
+        console.log("注册成功"),
+        wx.showToast({
+          title: '注册成功',
+          icon:"success",
+          duration:1000
+        });
+        app.globalData.isLogin = true;
+        setTimeout(
+          function() {
+            wx.switchTab({
+              url: '/pages/mine/mine',
+            })
+          },2000
+        )
+      },
+      fail:res=>{
+        console.log("注册失败");
+        wx.hideLoading();
+        wx.showToast({
+          title: '注册失败',
+          icon:"error",
+          duration:1000
+        });
+      }
+    })
   }
 })
