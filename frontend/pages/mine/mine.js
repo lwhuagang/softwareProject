@@ -32,7 +32,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      console.log("监听页面显示");
+      this.setData({
+        isLogin:app.globalData.isLogin//这是因为wxml中没法直接使用全局变量。注册成功之后跳转到mine时，需要自行设置
+      })
   },
 
   /**
