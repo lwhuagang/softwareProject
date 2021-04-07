@@ -65,6 +65,7 @@ public class UserController {
         }
     }
 
+
     /**
      * register的参数包装类
      */
