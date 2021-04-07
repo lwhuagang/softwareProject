@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
-import java.util.Map;
 
 @Controller
 @RequestMapping("user")
@@ -26,9 +25,9 @@ public class UserController {
      */
     @ResponseBody
     @GetMapping("captcha")
-    public String sendCaptcha(String email) throws MessagingException {
+    public Result sendCaptcha(String email) throws MessagingException {
         userService.sendCaptcha(email);
-        return "验证码发送成功";
+        return new Result(200,true,"验证码发送成功");
     }
 
     /**
@@ -38,7 +37,7 @@ public class UserController {
      */
     @ResponseBody
     @PostMapping("register")
-    public User register(@RequestBody Param params) {
+    public Result register(@RequestBody Param params) {
         // 从params中获取对应属性
         User user = params.user;
         String captcha = params.captcha;
@@ -52,11 +51,17 @@ public class UserController {
             user.setPassword(md5_password);
             // 有对象说明用户注册成功
             // null说明用户注册失败
-            return userService.register(user, captcha);
+            User user_ret = userService.register(user, captcha);
+            if (user_ret == null){
+                return new Result(200,null,"注册失败,验证码输入错误");
+            }
+            else {
+                return new Result(200,user_ret,"注册成功");
+            }
         }
         else {
             // 说明被注册过
-            return null;
+            return new Result(200,null,"注册失败,该账户已被注册");
         }
     }
 
@@ -75,7 +80,7 @@ public class UserController {
      */
     @ResponseBody
     @PostMapping("login")
-    public boolean login(@RequestBody User user, HttpSession session){
+    public Result login(@RequestBody User user, HttpSession session){
         // 登录密码进行md5加密,将加密后的密码传入进行比对
         String md5_password = MD5Utils.code(user.getPassword());
         // flag为true说明该账号登录成功,否则说明登录失败
@@ -83,11 +88,11 @@ public class UserController {
         if (flag) {
             // 说明登陆成功,此时向session中设置属性
             session.setAttribute("user",user.getEmail());
-            return true;
+            return new Result(200,true,"登陆成功");
         }
         else {
             // 登录失败
-            return false;
+            return new Result(200,false,"登陆失败");
         }
     }
 
@@ -96,7 +101,7 @@ public class UserController {
      */
     @ResponseBody
     @GetMapping("test")
-    public String test(){
-        return "成功进入";
+    public Result test(){
+        return new Result(200,"成功进入","你赢了");
     }
 }
