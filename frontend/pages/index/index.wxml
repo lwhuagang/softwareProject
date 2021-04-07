@@ -29,10 +29,15 @@
     </swiper-item>
   </swiper> -->
   <!-- 热门基金推荐 -->
-  <sectionHead sectionName="热门基金" sectionUrl="/pages/hot/hot"></sectionHead>
-  <block wx:for="{{hotFunds.length>hotFundNum?hotFundNum:hotFunds.length}}">
-    <fundGeneral showType="netWorth" fundInfo="{{hotFunds[index]}}"></fundGeneral>
-  </block>
-  <sectionHead sectionName="AI预测" sectionUrl="/pages/aiForecast/aiForecast"></sectionHead>
+  <view class="hotPart">
+    <sectionHead sectionName="热门基金" sectionUrl="/pages/hot/hot"></sectionHead>
+    <view class="divLine"></view>
+    <block wx:for="{{hotFunds.length>hotFundNum?hotFundNum:hotFunds.length}}">
+      <fundGeneral showType="netWorth" fundInfo="{{hotFunds[index]}}"></fundGeneral>
+      <view class="divLine"></view>
+    </block>
+  </view>
+  
+  <!-- <sectionHead sectionName="AI预测" sectionUrl="/pages/aiForecast/aiForecast"></sectionHead> -->
 </view>
 

@@ -32,7 +32,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      console.log("监听页面显示");
+      this.setData({
+        isLogin:app.globalData.isLogin//这是因为wxml中没法直接使用全局变量。注册成功之后跳转到mine时，需要自行设置
+      })
   },
 
   /**
@@ -85,7 +88,7 @@ Page({
     console.log("用户登录====>")
     console.log(data)
       wx.request({
-        url: 'http://localhost:8080/user/login',
+        url: 'http://10.135.149.171:8080/user/login',
         method:"POST",
         data:{
             email:data.detail.value.email,

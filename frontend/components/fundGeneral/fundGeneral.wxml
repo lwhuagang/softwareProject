@@ -1,7 +1,7 @@
 <!--components/fundGeneral/fundGeneral.wxml-->
 <!-- 基金缩略信息条 -->
 <!-- 注意，要根据涨跌情况选用红色或者绿色来渲染 -->
-<wxs src="../../utils/util.wxs" module="handleDate"/>
+<wxs src="../../utils/util.wxs" module="tool"/>
 <view class="container">
     <block wx:if="{{showType}}=='netWorth'">
       <navigator class="fundInfoBlock" url="/pages/fundDetail/fundDetail?fundCode={{fundInfo.code}}">
@@ -10,8 +10,8 @@
           <view class="fundCode">{{fundInfo.code}}</view>
         </view>
         <view class="fundNet">
-          <view >{{fundInfo.netWorth}}</view>
-          <view>{{fundInfo.netWorthDate}}</view>
+          <view class="netWorth">{{fundInfo.netWorth}}</view>
+          <view class="netDate">{{tool.my_slice(fundInfo.netWorthDate,5,10)}}</view>
         </view>   
         <view class="fundGrowth">
           <block wx:if="{{fundInfo.dayGrowth[0]=='-'}}">

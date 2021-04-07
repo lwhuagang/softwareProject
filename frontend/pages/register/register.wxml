@@ -2,40 +2,57 @@
 <view class="container">
   <naviBar title="注册"></naviBar>
   <view class="regBlock">
-    <view class="proImgSec">
-      选择头像
-    </view>
-    <view class="userNameSec">
-      输入用户名
-      <input class="inputUsrName" name="username" placeholder="请输入用户名" focus/>
-    </view>
-    <view class="userMailAddr">
-      输入邮箱
-      <input class="inputMailAddr" name="username" placeholder="请输入邮箱" focus/>
-    </view>
-    <view class="userPhoneNum">
-      输入手机号
-      <input class="inputPhoneNum" name="username" placeholder="请输入手机号" focus/>
-    </view>
-    <view class="userPassword">
-      输入密码
-      <input class="inputMailAddr" name="username" placeholder="请输入密码" focus/>
-    </view>
-    <view class="confirmPassword">
-      确认密码
-      <input class="inputMailAddr" name="username" placeholder="请再次输入密码确认" focus/>
-    </view>
-    <view class="userVerificationCode">
-      <button form-type="send" class="sendBtn">
-          <view class="sendInfo">向邮箱发送验证码</view>
-      </button>
-      输入验证码
-      <input class="inputMailAddr" name="username" placeholder="请输入验证码" focus/>
-    </view>
-    <button form-type="submit" class="submitBtn">
-      <view class="submitInfo">提交</view>
-    </button>
-    
+        <!-- 昵称 -->
+      <view class="part nickPart">
+        <view class="instr nickIntr">昵称:</view>
+        <input class="input inputNick" model:value="{{nickname}}" focus/>
+      </view>
+      <view class="divLine"></view>
+        <!-- 邮箱 -->
+      <view class="part mailPart">
+        <view class="instr mailInstr">邮箱:</view>
+        <input class="input inputEmail" model:value="{{email}}" focus/>
+      </view>
+      <view class="divLine"></view>
+        <!-- 密码 -->
+      <view class="part pswdPart">
+        <view class="instr pswdIntr">密码:</view>
+        <input class="input inputPswd" model:value="{{password}}" focus password/>
+      </view>
+      <view class="divLine"></view>
+        <!-- 确认密码 -->
+      <view class="part cfmPart">
+        <view class="instr cfmInstr">确认密码:</view>
+        <input class="input inputConfirm" model:value="{{confirmPswd}}" focus password bindblur="checkPswd"/>
+      </view>
+      <view class="divLine"></view>
+        <!-- 验证码 -->
+      <view class="captchaPart">
+        <input class="inputCaptcha" model:value="{{captcha}}" focus/>
+        <button bindtap="getCaptcha" class="captchaBtn"
+          style="margin-top:0rpx;background:{{capBGColor}};color:{{capTxtColor}};font-size:28rpx;width:250rpx;display:center;justify-content:center;align-items:center;padding-top:12rpx;" disabled="{{smsFlag}}"
+        >{{sendTime}}</button>
+      </view>
+      <view class="divLine"></view>
+      <!-- 注册 -->
+      <view class="registerPart">
+        <button bindtap="register" class="regBtn">注册</button>
+      </view>
   </view>
+  <!-- <form bindsubmit="login">
+      <view class="loginContainer">
+        <view class="loginInfo">
+          <input class="inputUsrName" name="email" placeholder="邮箱" focus/>
+          <input class="inputUsrPassword" name="password" password placeholder="密码" focus/>
+        </view>
+        <image class="loginImg" src="/image/login.jpg" mode="widthFix"/>
+        <button form-type="submit" class="loginBtn">
+          <view class="submitInfo">登录</view>
+        </button>
+        <button bindtap="register" class="registerBtn">
+          <view class="registerInfo">注册</view>
+        </button>
+      </view>
+    </form> -->
 </view>
 

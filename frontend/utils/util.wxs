@@ -1,4 +1,6 @@
-var subDate=function(val) {
-  return val.substring(5);
+function my_slice(str,a,b) {
+  return str.slice(a,b);
 }
-module.exports.subDate = subDate;
+module.exports = {
+  my_slice: my_slice
+}
