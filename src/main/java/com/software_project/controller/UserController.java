@@ -1,14 +1,24 @@
 package com.software_project.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.software_project.pojo.User;
 import com.software_project.service.UserService;
 import com.software_project.utils.MD5Utils;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 @Controller
 @RequestMapping("user")
@@ -37,7 +47,7 @@ public class UserController {
      */
     @ResponseBody
     @PostMapping("register")
-    public Result register(@RequestBody Param params) {
+    public Result register(@RequestBody Param_register params) {
         // 从params中获取对应属性
         User user = params.user;
         String captcha = params.captcha;
@@ -69,7 +79,7 @@ public class UserController {
     /**
      * register的参数包装类
      */
-    static class Param{
+    static class Param_register{
         public User user;
         public String captcha;
     }
@@ -94,6 +104,50 @@ public class UserController {
         else {
             // 登录失败
             return new Result(200,false,"登陆失败");
+        }
+    }
+
+    /**
+     * 按筛选条件进行基金列表返回,使用restTemplate进行第三方url接口调用
+     * @param params 传入参数 基金类型 时长
+     * @return 返回调用第三方接口获取的基金筛选列表
+     */
+    @ResponseBody
+    @PostMapping("queryByParams")
+    public Result queryByParams(@RequestBody Param_queryByParams params){
+
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        MediaType type = MediaType.parseMediaType("application/json");
+        headers.setContentType(type);
+        headers.add("token","atTPd9c8sA");
+
+        JSONObject param = new JSONObject();
+        param.put("fundType", params.fundType);
+        param.put("sort", params.sort);
+
+        HttpEntity<JSONObject> formEntity = new HttpEntity<>(param,headers);
+        System.out.println(formEntity.getHeaders());
+        System.out.println(formEntity.getBody());
+
+        String s = restTemplate.postForObject("https://api.doctorxiong.club/v1/fund/rank", formEntity, String.class);
+        Object parse = JSONObject.parse(s);
+        return new Result(200,parse,"返回根据输入条件搜索的结果");
+    }
+
+    /**
+     * 筛选条件的参数包装类
+     */
+    static class Param_queryByParams{
+        public String[] fundType;
+        public String sort;
+
+        @Override
+        public String toString() {
+            return "{" +
+                    "fundType='" + Arrays.toString(fundType) + '\'' +
+                    ", sort='" + sort + '\'' +
+                    '}';
         }
     }
 
