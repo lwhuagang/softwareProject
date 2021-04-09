@@ -127,8 +127,6 @@ public class UserController {
         param.put("sort", params.sort);
 
         HttpEntity<JSONObject> formEntity = new HttpEntity<>(param,headers);
-        System.out.println(formEntity.getHeaders());
-        System.out.println(formEntity.getBody());
 
         String s = restTemplate.postForObject("https://api.doctorxiong.club/v1/fund/rank", formEntity, String.class);
         Object parse = JSONObject.parse(s);
