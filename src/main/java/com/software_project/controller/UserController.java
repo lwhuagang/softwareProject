@@ -77,7 +77,7 @@ public class UserController {
 
 
     /**
-     * register的参数包装类
+     * register的参 数包装类
      */
     static class Param_register{
         public User user;
@@ -132,6 +132,7 @@ public class UserController {
         Object parse = JSONObject.parse(s);
         return new Result(200,parse,"返回根据输入条件搜索的结果");
     }
+
 
     /**
      * 筛选条件的参数包装类
