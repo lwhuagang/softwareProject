@@ -1,6 +1,19 @@
 <!--pages/fundDetail/fundDetail.wxml-->
+<naviBar title="基金详情"></naviBar>
 <view class="container">
-  <naviBar title="基金详情"></naviBar>
-  <view>基金代码:{{fundInfo.code}}</view>
+  <view class="bluePad"></view>
+  <view class="blueWave"></view>
+  <view class="fundCard">
+    <view class="fundName">{{fundInfo.name}}</view>
+    <view class="fundCodeAndType">
+      <view class="fundCode">{{fundInfo.code}}</view>
+      <view class="fundType">{{fundInfo.type}}</view>
+    </view>
+  </view>
+
+  <!-- <view class="fundChart">
+    <ec-canvas class="tmpChart" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+  </view> -->
 </view>
+
 

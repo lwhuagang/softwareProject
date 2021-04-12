@@ -4,7 +4,8 @@ function getFund(code,callback) {
     url: 'https://api.doctorxiong.club/v1/fund',
     method: "GET",
     data:{
-      code:code
+      code:code,
+      token:"atTPd9c8sA"
     },
     success: res=>{
       callback(res);
@@ -12,11 +13,13 @@ function getFund(code,callback) {
   })
 }
 function getFundPosition(code,callback) {
+  console.log(code);
   wx.request({
     url: 'https://api.doctorxiong.club/v1/fund/position',
     method:"GET",
     data:{
-      code:code
+      code:code,
+      token:"atTPd9c8sA"
     },
     success: res=>{
       callback(res)
@@ -51,6 +54,9 @@ function getFundDetail(param,callback) {
 function getAllFund(callback) {
   wx.request({
     url: 'https://api.doctorxiong.club/v1/fund/all',
+    data:{
+      token:"atTPd9c8sA"
+    },
     method:"GET",
     success: res=>{
       callback(res)
@@ -61,6 +67,9 @@ function getHotFund(callback) {
   wx.request({
     url: 'https://api.doctorxiong.club/v1/fund/hot',
     method:"GET",
+    data:{
+      token:"atTPd9c8sA"
+    },
     success:res=>{
       callback(res)
     }

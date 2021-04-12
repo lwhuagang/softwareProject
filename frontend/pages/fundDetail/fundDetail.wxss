@@ -1,1 +1,70 @@
 /* pages/fundDetail/fundDetail.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bluePad {
+  margin-top: 0rpx;
+  background: #0081ff;
+  color: #0081ff;
+  width: 100%;
+  height: 100rpx;
+  position: absolute;
+}
+.blueWave {
+  margin-top: 0rpx;
+  background: #0081ff;
+  color: #0081ff;
+  position: absolute;
+  width: 200%;
+  height: 150rpx;
+  border-radius: 200%;
+}
+.fundCard {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 15rpx;
+  width: 86%;
+  height: 400rpx;
+  margin-top: 30rpx;
+  background: white;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+}
+.fundName {
+  /* border: 1rpx solid green; */
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  font-size: 35rpx;
+}
+.fundCodeAndType {
+  /* border: 1rpx solid black; */
+  display: flex;
+}
+.fundCode {
+  color: #c6c6c6;
+  font-size: 30rpx;
+}
+.fundType {
+  margin-left: 20rpx;
+  font-size: 35rpx;
+  background: #e8f1ff;
+  color: #3489fe;
+}
+.fundChart{
+  display: flex;
+  border: 1rpx solid red;
+  border-radius: 20rpx;
+  width: 92%;
+  height: 700rpx;
+  margin-top: 30rpx;
+}
+.tmpChart {
+  width: 1000rpx;
+  height: 1000rpx;
+  border: 1rpx solid red;
+}
