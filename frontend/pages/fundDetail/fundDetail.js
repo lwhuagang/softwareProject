@@ -91,17 +91,17 @@ Page({
     var netWorthData = this.data.fundInfo.netWorthData;
     console.log("netWorthData:");
     console.log(netWorthData)
-    // getFundPosition(
-    //   {code:tmpCode},
-    //   res=>{
-    //     console.log("获取到的持仓详情===>");
-    //     console.log(res);
-    //     this.setData({
-    //       fundPosition:res.data.data,
-    //     })
-    //     console.log(res.data.message);
-    //   }
-    // )
+    getFundPosition(
+      tmpCode,
+      res=>{
+        console.log("获取到的持仓详情===>");
+        console.log(res);
+        this.setData({
+          fundPosition:res.data.data,
+        })
+        console.log(res.data.message);
+      }
+    )
     this.setData({
       ec:{
         onInit:this.initChart
