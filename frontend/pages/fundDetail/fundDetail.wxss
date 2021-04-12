@@ -75,13 +75,18 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-evenly;
-  color: red;
   /* border: 1rpx solid red; */
-  width: 40%;
+  width: 38%;
   height: 140rpx;
   font-size: 50rpx;
   /* margin-top: 10rpx; */
   box-sizing: border-box;
+}
+.redTotalGrowth {
+  color: red;
+}
+.greenTotalGrowth{
+  color:green;
 }
 .note1 {
   color: #a4a4a4;
@@ -112,7 +117,7 @@
 .netWorthPart{
   /* border:1rpx solid red; */
   box-sizing: border-box;
-  width: 30%;
+  width: 32%;
   display: flex;
   flex-direction: column;
   align-items: center;

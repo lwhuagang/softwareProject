@@ -106,8 +106,6 @@ Page({
     })
     //特别注意！这里是异步的！即真实执行顺序并不一定是从上往下的。比如在这里console.log(this.data.fundInfo)，大概率为空
     //如果要对数据进行操作，建议放在别的函数里面！
-    for(var i=0;i<100000000;++i);
-    this.calcTotalGrowthRatio();
   },
 
   /**

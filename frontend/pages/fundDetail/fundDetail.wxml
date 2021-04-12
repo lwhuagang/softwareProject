@@ -13,8 +13,20 @@
     <view class="ratios">
       <!-- 成立以来涨跌幅 -->
       <view class="totalGrowthRatio">
-          +{{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
-          <!-- 这里实在太丑了，不过放到js里面异步操作太难弄了还没学，而且大多都是正增长吧，，就都用红的了，以后有时间再改吧 -->
+          <view class="totalGrowth">
+            <block wx:if="{{fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]>=fundInfo.netWorthData[0][1]}}">
+              <view class="redTotalGrowth">
+                +{{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
+              </view>
+            </block>
+            <block wx:else>
+              <view class="greenTotalGrowth">
+                {{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
+              </view>
+            </block>
+          </view>
+          <!-- +{{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
+          这里实在太丑了，不过放到js里面异步操作太难弄了还没学，而且大多都是正增长吧，，就都用红的了，以后有时间再改吧 -->
           <view class="note1">成立以来涨跌幅</view>
       </view>
       <!-- 日涨跌幅 -->
@@ -37,7 +49,6 @@
     </view>
 
   </view>
-
   <!-- <view class="fundChart">
     <ec-canvas class="tmpChart" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
   </view> -->
