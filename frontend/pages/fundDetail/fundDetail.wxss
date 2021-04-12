@@ -28,7 +28,7 @@
   border: 1rpx solid #dcdcdc;
   border-radius: 15rpx;
   width: 86%;
-  height: 400rpx;
+  height: 330rpx;
   margin-top: 30rpx;
   background: white;
   padding-left: 25rpx;
@@ -40,28 +40,93 @@
   display: flex;
   align-items: center;
   font-size: 35rpx;
+  margin-top: 20rpx;
 }
 .fundCodeAndType {
   /* border: 1rpx solid black; */
   display: flex;
 }
 .fundCode {
-  color: #c6c6c6;
+  color: #a4a4a4;
   font-size: 30rpx;
 }
 .fundType {
   margin-left: 20rpx;
-  font-size: 35rpx;
+  font-size: 30rpx;
   background: #e8f1ff;
   color: #3489fe;
 }
-.fundChart{
+/* .fundChart{
   display: flex;
   border: 1rpx solid red;
   border-radius: 20rpx;
   width: 92%;
   height: 700rpx;
   margin-top: 30rpx;
+} */
+.ratios {
+  display: flex;
+  height: 140rpx;
+  /* border: 1rpx solid green; */
+  margin-top: 10rpx;
+}
+.totalGrowthRatio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  color: red;
+  /* border: 1rpx solid red; */
+  width: 40%;
+  height: 140rpx;
+  font-size: 50rpx;
+  /* margin-top: 10rpx; */
+  box-sizing: border-box;
+}
+.note1 {
+  color: #a4a4a4;
+  font-size: 30rpx;
+}
+.dayGrowthRatio {
+  width: 30%;
+  height: 100%;
+  /* border: 1rpx solid red; */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.greenDayGrowth{
+  color: green;
+  margin-top: 30rpx;
+}
+.redDayGrowth {
+  color: red;
+  margin-top: 30rpx;
+}
+.note2 {
+  color: #a4a4a4;
+  font-size: 30rpx;
+  margin-top: 16rpx;
+}
+.netWorthPart{
+  /* border:1rpx solid red; */
+  box-sizing: border-box;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.netWorth {
+  margin-top: 30rpx;
+  margin-left: 10rpx;
+  color: #424242;
+}
+.netWorthDate {
+  font-size: 30rpx;
+  color: #a4a4a4;
+  margin-top: 16rpx;
+  margin-left: 20rpx;
 }
 .tmpChart {
   width: 1000rpx;

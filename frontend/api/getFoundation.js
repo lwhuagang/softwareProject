@@ -13,7 +13,7 @@ function getFund(code,callback) {
   })
 }
 function getFundPosition(code,callback) {
-  console.log(code);
+  //console.log(code);
   wx.request({
     url: 'https://api.doctorxiong.club/v1/fund/position',
     method:"GET",

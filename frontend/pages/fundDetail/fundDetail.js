@@ -65,18 +65,19 @@ Page({
     fundPosition:{},//基金持仓
     ec:{
       onInit: null
-    }
+    },
+    totalGrowthRatio:0//累计涨幅
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+   onLoad: function (options) {
     // 调用时url为: /pages/fundDetail/fundDetail?fundCode=202015 这种带参数的形式
     var tmpCode = options.fundCode;
     console.log("传入页面的参数:fundCode===>")
     console.log(tmpCode)
-    getFundDetail(
+     getFundDetail(
       {code:tmpCode,
        token:"atTPd9c8sA"
       },
@@ -85,21 +86,17 @@ Page({
           fundInfo:res.data.data
         });
         console.log("获取到的基金详情===>");
-        console.log(res);
+        console.log(this.data.fundInfo)
       }
     )
-    var netWorthData = this.data.fundInfo.netWorthData;
-    console.log("netWorthData:");
-    console.log(netWorthData)
     getFundPosition(
       tmpCode,
       res=>{
-        console.log("获取到的持仓详情===>");
-        console.log(res);
         this.setData({
           fundPosition:res.data.data,
         })
-        console.log(res.data.message);
+        console.log("获取到的持仓详情===>");
+        console.log(this.data.fundPosition);
       }
     )
     this.setData({
@@ -107,6 +104,10 @@ Page({
         onInit:this.initChart
       }
     })
+    //特别注意！这里是异步的！即真实执行顺序并不一定是从上往下的。比如在这里console.log(this.data.fundInfo)，大概率为空
+    //如果要对数据进行操作，建议放在别的函数里面！
+    for(var i=0;i<100000000;++i);
+    this.calcTotalGrowthRatio();
   },
 
   /**
@@ -120,7 +121,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log(this.data.fundInfo)
   },
 
   /**
@@ -157,6 +158,10 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // calcTotalGrowthRatio:function() {
+  //   console.log(this.data)
+  //   console.log(this.data.fundInfo)
+  // },
   initChart:function(canvas, width, height, dpr) {
     const chart = echarts.init(canvas, null, {
       width: width,
