@@ -18,16 +18,16 @@ public class FundController {
         RestTemplate restTemplate = new RestTemplate();
         String s;
         if (startDate == null && endDate == null) {
-            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?code=" + code, String.class);
+            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code, String.class);
         }
         else if (startDate != null && endDate != null) {
-            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?code=" + code + "&startDate=" + startDate + "&endDate=" +endDate, String.class);
+            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=" + startDate + "&endDate=" +endDate, String.class);
         }
         else if (startDate != null) {
-            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?code=" + code + "&startDate=" + startDate, String.class);
+            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=" + startDate, String.class);
         }
         else {
-            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?code=" + code + "&endDate=" + endDate, String.class);
+            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&endDate=" + endDate, String.class);
         }
         Object parse = JSONObject.parse(s);
         // return new Result(200,parse,"返回根据输入条件搜索的结果");
