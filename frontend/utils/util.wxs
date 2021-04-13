@@ -1,6 +1,10 @@
 function my_slice(str,a,b) {
   return str.slice(a,b);
 }
+function my_toFix(num,n) {
+  return num.toFixed(n)
+}
 module.exports = {
-  my_slice: my_slice
+  my_slice: my_slice,
+  my_toFix:my_toFix
 }

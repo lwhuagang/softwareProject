@@ -1,6 +1,57 @@
 <!--pages/fundDetail/fundDetail.wxml-->
+<wxs src="../../utils/util.wxs" module="tool"/>
+<naviBar title="基金详情"></naviBar>
 <view class="container">
-  <naviBar title="基金详情"></naviBar>
-  <view>基金代码:{{fundInfo.code}}</view>
+  <view class="bluePad"></view>
+  <view class="blueWave"></view>
+  <view class="fundCard">
+    <view class="fundName">{{fundInfo.name}}</view>
+    <view class="fundCodeAndType">
+      <view class="fundCode">{{fundInfo.code}}</view>
+      <view class="fundType">{{fundInfo.type}}</view>
+    </view>
+    <view class="ratios">
+      <!-- 成立以来涨跌幅 -->
+      <view class="totalGrowthRatio">
+          <view class="totalGrowth">
+            <block wx:if="{{fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]>=fundInfo.netWorthData[0][1]}}">
+              <view class="redTotalGrowth">
+                +{{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
+              </view>
+            </block>
+            <block wx:else>
+              <view class="greenTotalGrowth">
+                {{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
+              </view>
+            </block>
+          </view>
+          <!-- +{{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
+          这里实在太丑了，不过放到js里面异步操作太难弄了还没学，而且大多都是正增长吧，，就都用红的了，以后有时间再改吧 -->
+          <view class="note1">成立以来涨跌幅</view>
+      </view>
+      <!-- 日涨跌幅 -->
+      <view class="dayGrowthRatio">
+          <view class="dayGrowth">
+            <block wx:if="{{fundInfo.dayGrowth[0]=='-'}}">
+              <view class="greenDayGrowth">{{fundInfo.dayGrowth}}%</view>
+            </block>
+            <block wx:else>
+              <view class="redDayGrowth">{{fundInfo.dayGrowth}}%</view>
+            </block>
+          </view>
+          <view class="note2">日涨跌幅</view>
+      </view>
+      <!-- 净值 -->
+      <view class="netWorthPart">
+        <view class="netWorth">{{fundInfo.netWorth}}</view>
+        <view class="netWorthDate">净值{{tool.my_slice(fundInfo.netWorthDate,5,10)}}</view>
+      </view>
+    </view>
+
+  </view>
+  <!-- <view class="fundChart">
+    <ec-canvas class="tmpChart" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+  </view> -->
 </view>
+
 

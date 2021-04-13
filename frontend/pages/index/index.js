@@ -49,16 +49,16 @@ Page({
   onLoad: function (options) {
       // 测试接口函数
       console.log("getFoundation===>");
-      // wx.request({
-      //   url: 'http://10.136.87.111:8080/user/captcha',
-      //   method:"GET",
-      //   data:{
-      //     email:'2428541469@qq.com'
-      //   },
-      //   success:res=>{
-      //     console.log(res)
-      //   }
-      // })
+      wx.request({
+        url: 'http://localhost:8080/user/captcha',
+        method:"GET",
+        data:{
+          email:'2428541469@qq.com'
+        },
+        success:res=>{
+          console.log(res)
+        }
+      })
 
       // getFund("202015,007339",res=>console.log(res));
 

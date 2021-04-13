@@ -1,1 +1,34 @@
 /* pages/rank/rank.wxss */
+.listHeadItem {
+  width: 150px;
+  font-size: 16px;
+  position: relative;
+  height: 35px;
+  line-height: 30px;
+  background-color: #e6e6e6;
+  align-items: center;
+  border-radius: 20rpx;
+  
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 2px 20px 0 130px;
+  font-size: 15px;
+  color:rgb(93, 93, 95);
+}
+
+.selectHead {
+  background: #e6e6e6;
+  display: flex;
+}
+
+.searchResContainer {
+  background: white;
+}
+
+.divLine{
+  height: 1rpx;
+  width: 100%;
+  background: #dcdcdc;
+  margin-top: 3rpx;
+  margin-bottom: 3rpx;
+}
