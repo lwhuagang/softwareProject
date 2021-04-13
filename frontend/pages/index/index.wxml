@@ -33,7 +33,7 @@
     <sectionHead sectionName="热门基金" sectionUrl="/pages/hot/hot"></sectionHead>
     <view class="divLine"></view>
     <block wx:for="{{hotFunds.length>hotFundNum?hotFundNum:hotFunds.length}}">
-      <fundGeneral showType="netWorth" fundInfo="{{hotFunds[index]}}"></fundGeneral>
+      <fundGeneral showType="netWorth"  periodType="r" fundInfo="{{hotFunds[index]}}"></fundGeneral>
       <view class="divLine"></view>
     </block>
   </view>

@@ -1,3 +1,15 @@
 <!--pages/rank/rank.wxml-->
-<naviBar title="排行"></naviBar>
-<!-- 逻辑应为：先使用js的排序函数排序，然后送到fundGeneral中渲染 -->
+<naviBar title = '排行'></naviBar>
+<view class = "selectHead">
+    <selectList prop-array='{{selectTypeArray}}' select-text = "全部" bind:select='select' />
+    <text class = 'listHeadItem'>基金净值</text>
+    <selectList prop-array='{{selectPeriodArray}}' select-text = "日涨幅" bind:select='select' />
+</view>
+  <!-- 基金排行 -->
+<view class="divLine"></view>
+<view class="searchResContainer">
+    <block wx:for="{{searchFunds.length}}">
+      <fundGeneral showType="netWorth" periodType="{{searchParam.sort}}" fundInfo="{{searchFunds[index]}}"></fundGeneral>
+      <view class="divLine"></view>
+    </block>
+</view>

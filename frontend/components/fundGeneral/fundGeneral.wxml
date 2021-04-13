@@ -14,12 +14,54 @@
           <view class="netDate">{{tool.my_slice(fundInfo.netWorthDate,5,10)}}</view>
         </view>   
         <view class="fundGrowth">
-          <block wx:if="{{fundInfo.dayGrowth[0]=='-'}}">
-            <view class="greenRate">{{fundInfo.dayGrowth}}%</view>
-          </block>
-          <block wx:else>
+          <block wx:if="{{periodType =='r'}}">
+            <block wx:if="{{fundInfo.dayGrowth[0]=='-'}}">
+              <view class="greenRate">{{fundInfo.dayGrowth}}%</view>
+            </block>
+            <block wx:else>
             <view class="redRate">{{fundInfo.dayGrowth}}%</view>
-          </block>    
+            </block>    
+          </block>
+          <block wx:if="{{periodType =='z'}}">
+            <block wx:if="{{fundInfo.lastWeekGrowth[0]=='-'}}">
+              <view class="greenRate">{{fundInfo.lastWeekGrowth}}%</view>
+            </block>
+            <block wx:else>
+            <view class="redRate">{{fundInfo.lastWeekGrowth}}%</view>
+            </block>    
+          </block>
+          <block wx:if="{{periodType =='1y'}}">
+            <block wx:if="{{fundInfo.lastMonthGrowth[0]=='-'}}">
+              <view class="greenRate">{{fundInfo.lastMonthGrowth}}%</view>
+            </block>
+            <block wx:else>
+            <view class="redRate">{{fundInfo.lastMonthGrowth}}%</view>
+            </block>    
+          </block>
+          <block wx:if="{{periodType =='3y'}}">
+            <block wx:if="{{fundInfo.lastThreeMonthsGrowth[0]=='-'}}">
+              <view class="greenRate">{{fundInfo.lastThreeMonthsGrowth}}%</view>
+            </block>
+            <block wx:else>
+            <view class="redRate">{{fundInfo.lastThreeMonthsGrowth}}%</view>
+            </block>    
+          </block>
+          <block wx:if="{{periodType =='6y'}}">
+            <block wx:if="{{fundInfo.lastSixMonthsGrowth[0]=='-'}}">
+              <view class="greenRate">{{fundInfo.lastSixMonthsGrowth}}%</view>
+            </block>
+            <block wx:else>
+            <view class="redRate">{{fundInfo.lastSixMonthsGrowth}}%</view>
+            </block>    
+          </block>     
+          <block wx:if="{{periodType =='1n'}}">
+            <block wx:if="{{fundInfo.lastYearGrowth[0]=='-'}}">
+              <view class="greenRate">{{fundInfo.lastYearGrowth}}%</view>
+            </block>
+            <block wx:else>
+            <view class="redRate">{{fundInfo.lastYearGrowth}}%</view>
+            </block>    
+          </block>       
         </view>  
       </navigator>
     </block>

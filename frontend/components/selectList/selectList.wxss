@@ -1,0 +1,83 @@
+
+.ms-content-box {
+  width: 90px;
+}
+.ms-content {
+  border: 0px solid rgb(236, 218, 227);
+  background: white;
+  font-size: 16px;
+  position: relative;
+  height: 35px;
+  line-height: 30px;
+  background-color: #e6e6e6;
+  align-items: center;
+  border-radius: 20rpx;
+}
+.ms-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 2px 0px 0 12px;
+  font-size: 15px;
+  color:rgb(93, 93, 95);
+}
+.ms-options {
+  background: white;
+  width: inherit;
+  position: absolute;
+  border: 1px solid #8d8d92;
+  border-top: none;
+  box-sizing: border-box;
+  z-index: 3;
+  max-height: 320px;
+  overflow: auto;
+  border-radius: 12rpx;
+}
+.ms-option {
+  height: 40px;
+  line-height: 30px;
+  border-top: 1px solid #e6e6e6;
+  padding: 0 6px;
+  text-align: left;
+  color: rgb(105, 100, 100);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  padding: 10px 15px 0 10px;
+}
+.ms-item:first-child {
+  border-top: none;
+}
+.icon-right, .icon-down, .icon-up {
+  display: inline-block;
+  padding-right: 13rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 10rpx;
+}
+.icon-right::after, .icon-down::after, .icon-up::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  bottom: 2rpx;
+  margin-left: 10rpx;
+  height: 10px;
+  width: 10px;
+  border: solid #bbb;
+  border-width: 2px 2px 0 0;
+}
+.icon-right::after {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.icon-down::after {
+  bottom: 14rpx;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.icon-up::after {
+  bottom: 0rpx;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
