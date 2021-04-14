@@ -21,7 +21,11 @@ public class FundController {
     @Autowired
     private FundService fundService;
 
-
+    /**
+     * 调用外部接口获取基金的详细信息
+     * @param code 基金代码 startDate 开始时间（不必须） endDate 结束时间
+     * @return  result类 包含状态码、基金的详细信息、附加信息
+     */
     @GetMapping("details")
     public Object queryFundDetails(String code, @RequestParam(name = "startDate", required = false) String startDate, @RequestParam(name = "endDate", required = false) String endDate) {
         RestTemplate restTemplate = new RestTemplate();
