@@ -9,12 +9,12 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Data
 @Component
-public class User {
-    private String email;
-    private String password;
-    private String nickname;
-    private double money;
-    private String pic_url;
-    private double hold_profit;
-    private double total_profit;
+public class Fund {
+    private String code;
+    private String name;
+    private String type;
+    private double buyMin;
+    private double buySourceRate;
+    private double buyRate;
+    private String manager;
 }
