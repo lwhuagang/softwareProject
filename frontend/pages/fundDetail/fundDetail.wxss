@@ -56,14 +56,6 @@
   background: #e8f1ff;
   color: #3489fe;
 }
-/* .fundChart{
-  display: flex;
-  border: 1rpx solid red;
-  border-radius: 20rpx;
-  width: 92%;
-  height: 700rpx;
-  margin-top: 30rpx;
-} */
 .ratios {
   display: flex;
   height: 140rpx;
