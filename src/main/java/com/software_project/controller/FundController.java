@@ -30,7 +30,7 @@ public class FundController {
             s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&endDate=" + endDate, String.class);
         }
         Object parse = JSONObject.parse(s);
-        return new Result(200,parse,"返回根据输入条件搜索的结果");
+        return new Result(200,parse,"返回基金详细信息");
         // return parse;
     }
 
