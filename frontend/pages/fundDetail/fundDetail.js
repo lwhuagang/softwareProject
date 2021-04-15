@@ -206,6 +206,10 @@ drawLineChart:function(canvas, width, height, dpr){
       type: 'category',
       boundaryGap: false,
       data: netDate,
+      axisLabel:{
+        showMaxLabel:true,
+        showMinLable:true
+      }
        //show: false
     },
     yAxis: {
