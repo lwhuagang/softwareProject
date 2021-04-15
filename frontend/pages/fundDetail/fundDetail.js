@@ -64,9 +64,8 @@ Page({
     fundCode:0,
     fundInfo:{},//基金详情
     fundPosition:{},//基金持仓
-    ec:{
-      onInit: null
-    },
+    ec_position:null,
+    loadPositionOK:false,//只有这样设置才能等后端数据加载完成之后再渲染前端(前端放在了block里面)
     totalGrowthRatio:0//累计涨幅
   },
 
@@ -79,55 +78,109 @@ Page({
     this.setData({
       fundCode:code //全局变量
     });
-    //回调灾难，名不虚传
     this.loadFundDetail(function(){
-      that.loadFundPosition(function(){
-        //图表取数据要放在这里面！前面设置了延时，到这里大概率已经拿到数据了
-        console.log("finally!");
-        that.test()
-      })
+      //在这里放入绘制折线图和基金档案的函数
     });
-  },
+    this.loadFundPosition(function(){
+      that.loadEcPosition()
+    })
+},
 
 // 加载基金详情
 loadFundDetail:function(callback) {
-    var that = this;
-    getFundDetail(
-      {
-        code:this.data.fundCode,
-        token:"atTPd9c8sA"
-      },
-      res=>{
-        this.setData({
-          fundInfo:res.data.data
-        });
-        console.log("获取到的基金详情===>");
-        console.log(this.data.fundInfo)
-      }
-    );
-    setTimeout(
-      function() {
-        callback()
-      },1000
-    );//同步不知道怎么搞，只好人为设置定时器了
-  },
+  var that = this;
+  getFundDetail(
+    {
+      code:this.data.fundCode,
+      token:"atTPd9c8sA"
+    },
+    res=>{
+      this.setData({
+        fundInfo:res.data.data
+      });
+      console.log("获取到的基金详情===>");
+      console.log(this.data.fundInfo)
+    }
+  );
+  setTimeout(
+    function() {
+      callback()
+    },1000
+  );//同步不知道怎么搞，只好人为设置定时器了
+},
 
 //加载基金持仓详情
 loadFundPosition:function(callback) {
-    getFundPosition(
-      this.data.fundCode,
-      res=>{
-        this.setData({
-          fundPosition:res.data.data,
-        })
-        console.log("获取到的持仓详情?===>");
-        console.log(res);
-      }
-    );
-    setTimeout(function(){
-      callback()
-    },1000)
-  },
+  getFundPosition(
+    this.data.fundCode,
+    res=>{
+      this.setData({
+        fundPosition:res.data.data,
+      })
+      console.log("获取到的持仓详情?===>");
+      console.log(res);
+    }
+  );
+  setTimeout(function(){
+    callback()
+  },1000)
+},
+
+//绘制饼状图
+loadEcPosition:function() {
+  // console.log("loadEcPosition")
+  // console.log(this.data.fundPosition)
+  if(this.data.fundPosition!=null) { //有可能后端也没有数据
+    this.setData({
+      ec_position:{
+        onInit:this.drawPostionPie
+      },
+      loadPositionOK:true
+    })
+  }
+},
+
+drawPostionPie:function(canvas, width, height, dpr) {
+  var that = this;
+  var position = this.data.fundPosition;
+  var bondPct = position.bond=="---"?0:parseFloat(position.bond.slice(0,5))
+  var stockPct = position.stock=="---"?0:parseFloat(position.stock.slice(0,5));
+  var cashPct = position.cash=="---"?0:parseFloat(position.cash.slice(0,5))
+  const chart = echarts.init(canvas, null, {
+    width: width,
+    height: height,
+    devicePixelRatio: dpr // new
+  });
+  canvas.setChart(chart);
+
+  var option = {
+    backgroundColor: "#ffffff",
+    color: ["#37A2DA", "#32C5E9", "#67E0E3", "#91F2DE", "#FFDB5C", "#FF9F7F"],
+    series: [{
+      label: {
+        normal: {
+          fontSize: 10
+        }
+      },
+      type: 'pie',
+      center: ['50%', '50%'],
+      radius: ['0%', '100%'],
+      data: [{
+        value: stockPct,
+        name: '股票  '+stockPct+"%"
+      }, {
+        value: bondPct,
+        name: '债券 '+bondPct+"%"
+      }, {
+        value: cashPct,
+        name: '现金 '+cashPct+"%"
+      }]
+    }]
+  };
+
+  chart.setOption(option);
+  return chart;
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
