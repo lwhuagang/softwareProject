@@ -41,7 +41,8 @@
   /* border: 1rpx solid red; */
 }
 .searchIcon{
-  height: 90%;
+  height: 60rpx;
+  width: 60rpx;
 }
 .searchText{
   color:#706e6e;
