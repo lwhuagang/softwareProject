@@ -66,6 +66,8 @@ Page({
     fundPosition:{},//基金持仓
     ec_position:null,
     loadPositionOK:false,//只有这样设置才能等后端数据加载完成之后再渲染前端(前端放在了block里面)
+    ec_line:null,//折线图
+    loadLineOK:false,//取到数据，才能绘制折线图
     totalGrowthRatio:0//累计涨幅
   },
 
@@ -79,7 +81,7 @@ Page({
       fundCode:code //全局变量
     });
     this.loadFundDetail(function(){
-      //在这里放入绘制折线图和基金档案的函数
+      that.loadEcLine()
     });
     this.loadFundPosition(function(){
       that.loadEcPosition()
@@ -100,6 +102,8 @@ loadFundDetail:function(callback) {
       });
       console.log("获取到的基金详情===>");
       console.log(this.data.fundInfo)
+      console.log(this.data.fundInfo.netWorthDate)
+      
     }
   );
   setTimeout(
@@ -138,6 +142,91 @@ loadEcPosition:function() {
       loadPositionOK:true
     })
   }
+},
+
+loadEcLine:function(){   //有可能后端也没有数据
+  if (this.data.fundInfo!=null){ 
+    this.setData({
+      ec_line:{
+        onInit:this.drawLineChart
+      },
+      loadLineOK:true
+    })
+  }
+},
+getCertainDimension:function(twoDimArr,num){
+  var i;
+  var arr = [];
+  var length = twoDimArr.length;
+  for (i=0; i <length;i++){
+    if (num == 0 &&(i!=0 && i!= length-1)){
+      arr.push('');  //针对横坐标日期进行特殊的存取，只取第一个和最后一个日子，防止横坐标太乱
+    }else{
+          arr.push(twoDimArr[i][num]);
+    }
+  }
+  console.log(arr);
+  return arr;
+},
+
+drawLineChart:function(canvas, width, height, dpr){
+  var fundInfo = this.data.fundInfo;
+  var netWorthData = fundInfo.netWorthData;
+  var netWorth = this.getCertainDimension(netWorthData,1);
+  var netDate = this.getCertainDimension(netWorthData,0);
+  
+  const chart = echarts.init(canvas, null, {
+    width: width,
+    height: height,
+    devicePixelRatio: dpr // new
+  });
+  canvas.setChart(chart);
+
+  var option = {
+    title: {
+      text: '业绩走势',
+      left: 'center'
+    },
+    color: ["#37A2DA"],
+    legend: {
+      data: ['本基金'],
+      top: 20,
+      left: 'center',
+      z: 100
+    },
+    grid: {
+      containLabel: true
+    },
+    tooltip: {
+      show: true,
+      trigger: 'axis'
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: netDate,
+       //show: false
+    },
+    yAxis: {
+      x: 'center',
+      type: 'value',
+      splitLine: {
+        lineStyle: {
+          type: 'dashed'
+        }
+      },
+       //show: false
+    },
+    series: [{
+      name: '本基金',
+      type: 'line',
+      smooth: false,
+      data: netWorth
+    }]
+  };
+
+  chart.setOption(option);
+  return chart;
 },
 
 drawPostionPie:function(canvas, width, height, dpr) {
