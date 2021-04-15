@@ -56,14 +56,6 @@
   background: #e8f1ff;
   color: #3489fe;
 }
-/* .fundChart{
-  display: flex;
-  border: 1rpx solid red;
-  border-radius: 20rpx;
-  width: 92%;
-  height: 700rpx;
-  margin-top: 30rpx;
-} */
 .ratios {
   display: flex;
   height: 140rpx;
@@ -133,8 +125,16 @@
   margin-top: 16rpx;
   margin-left: 20rpx;
 }
-.tmpChart {
-  width: 1000rpx;
-  height: 1000rpx;
+.positionPie {
+  width: 100%;
+  height: 100%;
   border: 1rpx solid red;
+}
+.positionPart{
+  width: 1000rpx;
+  height: 500rpx;
+  border: 1rpx solid red;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1000rpx;
 }

@@ -47,11 +47,11 @@
         <view class="netWorthDate">净值{{tool.my_slice(fundInfo.netWorthDate,5,10)}}</view>
       </view>
     </view>
-
   </view>
-  <!-- <view class="fundChart">
-    <ec-canvas class="tmpChart" id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
-  </view> -->
+  <view class="positionPart">
+      <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}"></ec-canvas>
+  </view>
+
 </view>
 
 
