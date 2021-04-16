@@ -190,7 +190,8 @@ drawLineChart:function(canvas, width, height, dpr){
   var option = {
     title: {
       text: '业绩走势',
-      left:'center'
+      left:'center',
+      top:20
     },
     color: ["#37A2DA"],
     // legend: {
@@ -200,7 +201,9 @@ drawLineChart:function(canvas, width, height, dpr){
     //   z: 100
     // },
     grid: {
-      containLabel: true
+      containLabel: true,
+      bottom:20,
+      left:10
     },
     tooltip: {
       show: true,
@@ -269,7 +272,7 @@ drawPostionPie:function(canvas, width, height, dpr) {
       color: ["#e6e6e6"],
       title: {
         text: '暂无持仓数据',
-        left: 'center'
+        left: 'center',
       },
       series: [{
         label: {

@@ -130,10 +130,6 @@
   width: 100%;
   height: 100%;
 }
-.emptyPie{
-  width: 100%;
-  height: 100%;
-}
 .positionPart{
   background: white;
   width: 94%;
@@ -146,7 +142,6 @@
 }
 
 .detailLine {
-  padding-top: 100rpx;
   width: 100%;
   height: 500rpx;
 }
