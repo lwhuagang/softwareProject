@@ -154,18 +154,21 @@ loadEcLine:function(){   //有可能后端也没有数据
     })
   }
 },
-getCertainDimension:function(twoDimArr,num){
+getCertainDimension:function(twoDimArr,num){//从二维数组里面拿去数据，做一些处理
   var i;
   var arr = [];
   var length = twoDimArr.length;
+  let firstNetWorth = twoDimArr[0][1];
   for (i=0; i <length;i++){
     if (num == 0 &&(i!=0 && i!= length-1)){
       arr.push('');  //针对横坐标日期进行特殊的存取，只取第一个和最后一个日子，防止横坐标太乱
+    }else if(num == 1){     //将净值转化为净值涨幅百分比（相对于第一个点的）
+      var percent = (twoDimArr[i][num] - firstNetWorth)/firstNetWorth * 100;
+      arr.push(percent);
     }else{
-          arr.push(twoDimArr[i][num]);
+      arr.push(twoDimArr[i][num]);
     }
   }
-  console.log(arr);
   return arr;
 },
 
@@ -186,7 +189,6 @@ drawLineChart:function(canvas, width, height, dpr){
   var option = {
     title: {
       text: '业绩走势',
-      left: 'center'
     },
     color: ["#37A2DA"],
     legend: {
@@ -209,6 +211,16 @@ drawLineChart:function(canvas, width, height, dpr){
       axisLabel:{
         showMaxLabel:true,
         showMinLable:true
+      },
+      axisTick :{
+        show : false
+      },
+      axisLine:{
+          lineStyle:{
+            type:'dashed',
+            opacity:0
+
+          },          
       }
        //show: false
     },
@@ -220,9 +232,13 @@ drawLineChart:function(canvas, width, height, dpr){
           type: 'dashed'
         }
       },
+      axisLabel:{
+        formatter:'{value} %'
+      }
        //show: false
     },
     series: [{
+      symbol:'none',
       name: '本基金',
       type: 'line',
       smooth: false,
