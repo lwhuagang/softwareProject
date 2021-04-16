@@ -148,13 +148,12 @@
 .detailLine {
   padding-top: 100rpx;
   width: 100%;
-  height: 500rpx;
+  height: 600rpx;
 }
 .linePart{
   width: 94%;
   height: 500rpx;
   border: 1rpx solid #dcdcdc;
-  border-radius: 10rpx;
   display: flex;
   flex-direction: column;
   margin-top: 400rpx;

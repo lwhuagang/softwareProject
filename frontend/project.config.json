@@ -40,8 +40,8 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.9.5",
-  "appid": "wxa9005b2a71e8bac2",
+  "libVersion": "2.16.0",
+  "appid": "wx784b5a55872f525c",
   "projectname": "Frontend",
   "debugOptions": {
     "hidedInDevtools": []
