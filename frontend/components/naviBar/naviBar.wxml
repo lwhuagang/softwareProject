@@ -2,7 +2,7 @@
 <view class="naviBox">
   <block wx:if="{{ifSearch}}">
     <navigator class="searchBox" url="/pages/search/search">
-      <image class="searchIcon" src="/image/search_g.jpg" mode="heightFix"></image>
+      <image class="searchIcon" src="/image/search_g.jpg"></image>
       <text class="searchText">请输入搜索内容</text>
     </navigator>
   </block>

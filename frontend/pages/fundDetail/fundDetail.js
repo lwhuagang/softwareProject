@@ -174,6 +174,7 @@ drawLineChart:function(canvas, width, height, dpr){
   var netWorthData = fundInfo.netWorthData;
   var netWorth = this.getCertainDimension(netWorthData,1);
   var netDate = this.getCertainDimension(netWorthData,0);
+  console.log("netDate===>",netDate)
   
   const chart = echarts.init(canvas, null, {
     width: width,
@@ -205,6 +206,10 @@ drawLineChart:function(canvas, width, height, dpr){
       type: 'category',
       boundaryGap: false,
       data: netDate,
+      axisLabel:{
+        showMaxLabel:true,
+        showMinLable:true
+      }
        //show: false
     },
     yAxis: {
