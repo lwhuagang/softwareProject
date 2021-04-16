@@ -129,32 +129,94 @@
 .positionPie {
   width: 100%;
   height: 100%;
-  border: 1rpx solid red;
+}
+.emptyPie{
+  width: 100%;
+  height: 100%;
 }
 .positionPart{
-  width: 1000rpx;
-  height: 500rpx;
-  border: 1rpx solid red;
+  background: white;
+  width: 94%;
+  height: 600rpx;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 5rpx;
   display: flex;
   flex-direction: column;
-  margin-top: 100rpx;
+  margin-top: 50rpx;
 }
 
 .detailLine {
-  width: 100%;
-  height: 100%;
-  border: 1rpx solid red;
-}
-.linePart{
+  padding-top: 100rpx;
   width: 100%;
   height: 500rpx;
-  border: 1rpx solid red;
+}
+.linePart{
+  width: 94%;
+  height: 500rpx;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 10rpx;
   display: flex;
   flex-direction: column;
-  margin-top: 500rpx;
-  justify-content: space-between;
+  margin-top: 400rpx;
+  justify-content: center;
   box-sizing: border-box;
   align-items: center;
-
-
+  background:white;
+}
+.growthData{
+  width: 94%;
+  height: 420rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 10rpx;
+  margin-top: 50rpx;
+  background: white;
+}
+.growthTitle {
+  width: 98%;
+  height: 60rpx;
+  /* border: 1rpx solid green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3rpx solid #9a9ba2;
+  font-size: medium;
+}
+.growthLegend{
+  width: 98%;
+  height: 50rpx;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1rpx solid #dcdcdc;
+  /* border: 1rpx solid blue; */
+}
+.growthTimeNote{
+  color: #ababab;
+  width: 50%;
+  text-align: center;
+}
+.growthNote{
+  color: #ababab;
+  width: 50%;
+  text-align: center;
+}
+.growthItem {
+  width: 100%;
+  height: 60rpx;
+  /* border: 1rpx solid red; */
+  display: flex;
+  justify-content: space-around;
+}
+.divLine{
+  width: 100%;
+  background: #f5f5f5;
+  height: 3rpx;
+}
+.growthTime {
+  /* border: 1rpx solid blue; */
+  width: 50%;
+  box-sizing: border-box;
+  text-align: center;
 }
