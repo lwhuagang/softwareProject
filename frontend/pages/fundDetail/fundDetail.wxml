@@ -48,9 +48,54 @@
       </view>
     </view>
   </view>
+  <!-- 走势图 -->
   <view class="linePart">
     <ec-canvas wx:if="{{loadLineOK}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line }}" force-use-old-canvas="true"></ec-canvas>
   </view>
+  <!-- 涨幅数据 -->
+  <view class="growthData">
+      <view class="growthTitle">阶段涨幅</view>
+      <view class="divLine"></view>
+      <view class="growthLegend">
+        <view class="growthTimeNote">周期</view>
+        <view class="growthNote">涨跌幅</view>
+      </view>
+      <view class="growthItem lastWeek">
+        <view class="growthTime">近1周</view>
+        <view class="growthValue" wx:if="{{fundInfo.lastWeekGrowth==''}}" style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
+        <view class="growthValue" wx:elif="{{fundInfo.lastWeekGrowth[0]=='-'}}" style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastWeekGrowth}}%</view>
+        <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">{{fundInfo.lastWeekGrowth}}%</view>
+      </view>
+      <view class="divLine"></view>
+      <view class="growthItem lastMonth">
+        <view class="growthTime">近1月</view>
+        <view class="growthValue" wx:if="{{fundInfo.lastMonthGrowth==''}}" style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
+        <view class="growthValue" wx:elif="{{fundInfo.lastMonthGrowth[0]=='-'}}" style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastMonthGrowth}}%</view>
+        <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">{{fundInfo.lastMonthGrowth}}%</view>
+      </view>
+      <view class="divLine"></view>
+      <view class="growthItem lastThreeMonths">
+        <view class="growthTime">近3月</view>
+        <view class="growthValue" wx:if="{{fundInfo.lastThreeMonthsGrowth==''}}" style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
+        <view class="growthValue" wx:elif="{{fundInfo.lastThreeMonthsGrowth[0]=='-'}}" style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastThreeMonthsGrowth}}%</view>
+        <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">{{fundInfo.lastThreeMonthsGrowth}}%</view>
+      </view>
+      <view class="divLine"></view>
+      <view class="growthItem lastSixMonths">
+        <view class="growthTime">近6月</view>
+        <view class="growthValue" wx:if="{{fundInfo.lastSixMonthsGrowth==''}}" style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
+        <view class="growthValue" wx:elif="{{fundInfo.lastSixMonthsGrowth[0]=='-'}}" style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastSixMonthsGrowth}}%</view>
+        <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">{{fundInfo.lastSixMonthsGrowth}}%</view>
+      </view>
+      <view class="divLine"></view>
+      <view class="growthItem lastYear">
+        <view class="growthTime">近1年</view>
+        <view class="growthValue" wx:if="{{fundInfo.lastYearGrowth==''}}" style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
+        <view class="growthValue" wx:elif="{{fundInfo.lastYearGrowth[0]=='-'}}" style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastYearGrowth}}%</view>
+        <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">{{fundInfo.lastYearGrowth}}%</view>
+      </view>
+  </view>
+  <!-- 持仓详情 -->
   <view class="positionPart">
       <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}" force-use-old-canvas="true"></ec-canvas>
   </view>

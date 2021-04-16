@@ -64,7 +64,7 @@ Page({
     fundCode:0,
     fundInfo:{},//基金详情
     fundPosition:{},//基金持仓
-    ec_position:null,
+    ec_position:null,//绘制饼状图
     loadPositionOK:false,//只有这样设置才能等后端数据加载完成之后再渲染前端(前端放在了block里面)
     ec_line:null,//折线图
     loadLineOK:false,//取到数据，才能绘制折线图
@@ -78,7 +78,10 @@ Page({
     var code = options.fundCode;
     var that = this;
     this.setData({
-      fundCode:code //全局变量
+      fundCode:code, //全局变量
+      ec_position_empty:{
+        onInit:this.drawEmptyPie
+      }
     });
     this.loadFundDetail(function(){
       that.loadEcLine()
@@ -134,14 +137,12 @@ loadFundPosition:function(callback) {
 loadEcPosition:function() {
   // console.log("loadEcPosition")
   // console.log(this.data.fundPosition)
-  if(this.data.fundPosition!=null) { //有可能后端也没有数据
-    this.setData({
-      ec_position:{
-        onInit:this.drawPostionPie
-      },
-      loadPositionOK:true
-    })
-  }
+  this.setData({
+    ec_position:{
+      onInit:this.drawPostionPie
+    },
+    loadPositionOK:true
+  })
 },
 
 loadEcLine:function(){   //有可能后端也没有数据
@@ -189,14 +190,15 @@ drawLineChart:function(canvas, width, height, dpr){
   var option = {
     title: {
       text: '业绩走势',
+      left:'center'
     },
     color: ["#37A2DA"],
-    legend: {
-      data: ['本基金'],
-      top: 20,
-      left: 'center',
-      z: 100
-    },
+    // legend: {
+    //   data: ['本基金'],
+    //   top: 20,
+    //   left: 'center',
+    //   z: 100
+    // },
     grid: {
       containLabel: true
     },
@@ -253,43 +255,83 @@ drawLineChart:function(canvas, width, height, dpr){
 drawPostionPie:function(canvas, width, height, dpr) {
   var that = this;
   var position = this.data.fundPosition;
-  var bondPct = position.bond=="---"?0:parseFloat(position.bond.slice(0,5))
-  var stockPct = position.stock=="---"?0:parseFloat(position.stock.slice(0,5));
-  var cashPct = position.cash=="---"?0:parseFloat(position.cash.slice(0,5))
-  const chart = echarts.init(canvas, null, {
-    width: width,
-    height: height,
-    devicePixelRatio: dpr // new
-  });
-  canvas.setChart(chart);
-
-  var option = {
-    backgroundColor: "#ffffff",
-    color: ["#37A2DA", "#32C5E9", "#67E0E3", "#91F2DE", "#FFDB5C", "#FF9F7F"],
-    series: [{
-      label: {
-        normal: {
-          fontSize: 10
-        }
+  if(position==null) { //绘制空饼状图
+    console.log("isNull")
+    const chart = echarts.init(canvas, null, {
+      width: width,
+      height: height,
+      devicePixelRatio: dpr // new
+    });
+    canvas.setChart(chart);
+  
+    var option = {
+      backgroundColor: "#ffffff",
+      color: ["#e6e6e6"],
+      title: {
+        text: '暂无持仓数据',
+        left: 'center'
       },
-      type: 'pie',
-      center: ['50%', '50%'],
-      radius: ['0%', '100%'],
-      data: [{
-        value: stockPct,
-        name: '股票  '+stockPct+"%"
-      }, {
-        value: bondPct,
-        name: '债券 '+bondPct+"%"
-      }, {
-        value: cashPct,
-        name: '现金 '+cashPct+"%"
+      series: [{
+        label: {
+          normal: {
+            fontSize: 10
+          }
+        },
+        type: 'pie',
+        center: ['50%', '50%'],
+        radius: ['0%', '68%'],
+        data: [{
+          value: 100,
+        }]
       }]
-    }]
-  };
+    };
+  
+    chart.setOption(option);
+    return chart;
+  } else {
+    var bondPct = position.bond=="---"?0:parseFloat(position.bond.slice(0,5))
+    var stockPct = position.stock=="---"?0:parseFloat(position.stock.slice(0,5));
+    var cashPct = position.cash=="---"?0:parseFloat(position.cash.slice(0,5))
+    const chart = echarts.init(canvas, null, {
+      width: width,
+      height: height,
+      devicePixelRatio: dpr // new
+    });
+    canvas.setChart(chart);
+  
+    var option = {
+      backgroundColor: "#ffffff",
+      color: ["#ef7340", "#eeb329", "#006fbe", "#33a1f0"],
+      title: {
+        text: '持仓详情',
+        left: 'center'
+      },
+      series: [{
+        label: {
+          normal: {
+            fontSize: 10
+          }
+        },
+        type: 'pie',
+        center: ['50%', '50%'],
+        radius: ['0%', '68%'],
+        data: [{
+          value: stockPct,
+          name: '股票  '+stockPct+"%"
+        }, {
+          value: bondPct,
+          name: '债券 '+bondPct+"%"
+        }, {
+          value: cashPct,
+          name: '现金 '+cashPct+"%"
+        }]
+      }]
+    };
+  
+    chart.setOption(option);
+    return chart;
+  }
 
-  chart.setOption(option);
-  return chart;
 },
   /**
    * 生命周期函数--监听页面初次渲染完成
