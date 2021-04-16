@@ -147,7 +147,7 @@
 }
 .linePart{
   width: 100%;
-  height: 500rpx;
+  height: 700rpx;
   border: 1rpx solid red;
   display: flex;
   flex-direction: column;
