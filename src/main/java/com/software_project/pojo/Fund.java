@@ -29,4 +29,5 @@ public class Fund {
     private double yesRate;
     // 持有收益率
     private double rate;
+
 }
