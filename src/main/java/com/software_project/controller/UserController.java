@@ -1,5 +1,8 @@
 package com.software_project.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.software_project.pojo.Fund;
 import com.software_project.pojo.User;
 import com.software_project.service.FundService;
@@ -9,6 +12,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
@@ -51,7 +55,7 @@ public class UserController {
         if (user_find == null){
             // 说明没有被注册过,可以进行注册
             // 注册密码进行md5加密
-            user.setPic_url("");
+            user.setPicUrl("");
             String md5_password = MD5Utils.code(user.getPassword());
             user.setPassword(md5_password);
             // 有对象说明用户注册成功
@@ -112,6 +116,36 @@ public class UserController {
         User user = userService.findUserByEmail(email); //待返回user
         List<Fund> funds = fundService.getHoldFund(email);
         Ret_HavingList ret = new Ret_HavingList(user, funds);
+        double totalProfit = 0;
+        double totalHold = 0;
+
+        RestTemplate restTemplate = new RestTemplate();
+        for (Fund fund : ret.funds) {
+            // 计算每支基金的昨日收益和昨日收益率,并更新该用户该基金持有收益和持有收益率
+            String code = fund.getCode();
+            String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=2021-04-01", String.class);
+            JSONObject jsonObject = JSON.parseObject(s);
+            JSONObject data =(JSONObject) jsonObject.get("data");
+            double growth = Double.parseDouble(data.getString("dayGrowth"));
+            // 计算昨日收益和昨日收益率
+            fund.setYesRate(growth); // 单位百分比
+            fund.setYesProfit(growth/100.0 * fund.getHold());
+            totalProfit += fund.getYesProfit(); //累加昨日总收益
+            // 更新该基金持有收益和持有收益率
+            fund.setHoldProfit(fund.getHoldProfit() + fund.getYesProfit()); // 持有收益
+            fund.setHold(fund.getHold() + fund.getYesProfit()); // 总持有金额
+            fund.setRate(fund.getHoldProfit() / fund.getHold() * 100); //持有收益率 单位百分比
+            totalHold += fund.getHold(); //累加用户总持有金额
+        }
+        // 更新user类中的持有收益和总收益(昨日收益总和)
+        ret.user.setHoldProfit(user.getHoldProfit() + totalProfit);
+        ret.user.setTotalProfit(user.getTotalProfit() + totalProfit);
+        ret.user.setBuyMoney(totalHold);
+
+        // 将修改的数据写回数据库
+        // 更新user buyMoney,holdProfit,TotalProfit
+        // 更新hold totalHold holdProfit
+
         return new Result(200,ret,"根据用户邮箱获取用户和该用户持有的所有基金");
     }
 

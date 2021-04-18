@@ -15,6 +15,10 @@
     </select>
 
     <select id="holdFund" resultType="com.software_project.pojo.Fund">
-        select * from soft.hold h right join soft.fund f on f.code = h.fundCode where userEmail = #{email}
+        select * from soft.hold h left join soft.fund f on f.code = h.fundCode
+        union
+        select * from soft.hold h right join soft.fund f on f.code = h.fundCode
+        where userEmail = #{email}
     </select>
+
 </mapper>
