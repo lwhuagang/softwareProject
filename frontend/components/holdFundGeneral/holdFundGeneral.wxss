@@ -1,0 +1,81 @@
+/* components/fundGeneral/fundGeneral.wxss */
+.container{
+  display: flex;
+  flex-direction: column;
+  /*border: 1rpx solid #dcdcdc;
+  border-radius: 15rpx;*/
+  width: 100%;
+  height: 120rpx;
+  background: white;
+  justify-content: center;
+}
+.fundInfoBlock{
+  display: flex;
+  width: 100%;
+}
+.fundNameAndCode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 25rpx;
+  /* border: 1rpx solid red; */
+  width: 58%;
+}
+.fundName {
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size: 26rpx;
+  /* 强制不换行，多的用省略号 */
+}
+.fundCode {
+  color: #c6c6c6;
+}
+.fundMoneyAndLastProfit {
+  /* border: 1rpx solid red; */
+  width: 25%;
+  border-left: 1rpx solid #dcdcdc;
+  padding-left: 3rpx;
+  border-right: 1rpx solid #dcdcdc;
+  padding-right: 3rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.netWorth {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20rpx;
+}
+.netDate {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20rpx;
+  align-items: center;
+  color: #c6c6c6;
+  font-size: 30rpx;
+}
+.fundProfitAndRate{
+  /* border: 1rpx solid red; */
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.greenProfit {
+  color: green;
+}
+.redProfit {
+  color: red;
+}
+.greenRate {
+  color: green;
+  font-size: smaller;
+}
+.redRate {
+  color: red;
+  font-size: smaller;
+}

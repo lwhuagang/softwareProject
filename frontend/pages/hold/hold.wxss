@@ -1,1 +1,286 @@
 /* pages/hold/hold.wxss */
+/* pages/fundDetail/fundDetail.wxss */
+.container {
+  height: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bluePad {
+  margin-top: 0rpx;
+  background: #0081ff;
+  color: #0081ff;
+  width: 100%;
+  height: 100rpx;
+  position: absolute;
+}
+.blueWave {
+  margin-top: 0rpx;
+  background: #0081ff;
+  color: #0081ff;
+  position: absolute;
+  width: 200%;
+  height: 150rpx;
+  border-radius: 200%;
+}
+.fundCard {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 15rpx;
+  width: 86%;
+  height: 350rpx;
+  margin-top: 30rpx;
+  background: white;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+}
+.holdTotalTitle {
+  /* border: 1rpx solid green; */
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #a4a4a4;
+  justify-content: center;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+.holdTotal {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  margin-top: 20rpx;
+  font-size: 70rpx;
+  color: #1769db;
+}
+.profits {
+  display: flex;
+  height: 150rpx;
+  /* border: 1rpx solid green; */
+  margin-top: 20rpx;
+  padding-bottom: 200rpx;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /*border: 1rpx solid red;*/
+  width: 38%;
+  height: 120rpx;
+  font-size: 50rpx;
+  margin-top: 10rpx; 
+  box-sizing: border-box;
+  padding-left: 10 rpx;
+}
+.middleItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /*border: 1rpx solid red;*/
+  width: 40%;
+  height: 120rpx;
+  font-size: 50rpx;
+  margin-top: 10rpx; 
+  box-sizing: border-box;
+  padding-left: 10 rpx;
+  border-left: 1rpx solid #dcdcdc;
+  border-right: 1rpx solid #dcdcdc;
+}
+.itemTitle {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  color: #a4a4a4;
+  font-size: 26rpx;
+}
+.itemValue {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  padding-top: 15rpx;
+  color: #4d4d4d;
+  font-size: 38rpx;
+}
+
+.dayGrowthRatio {
+  width: 30%;
+  height: 100%;
+  /* border: 1rpx solid red; */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.netWorthPart{
+  /* border:1rpx solid red; */
+  box-sizing: border-box;
+  width: 32%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.netWorth {
+  margin-top: 30rpx;
+  margin-left: 10rpx;
+  color: #424242;
+}
+.netWorthDate {
+  font-size: 30rpx;
+  color: #a4a4a4;
+  margin-top: 16rpx;
+  margin-left: 20rpx;
+}
+.positionPie {
+  width: 100%;
+  height: 100%;
+}
+.positionPart{
+  background: white;
+  width: 94%;
+  height: 600rpx;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 5rpx;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50rpx;
+}
+.detailLine {
+  width: 100%;
+  height: 500rpx;
+}
+.headPart{
+  width: 94%;
+  height: 90rpx;
+  border-top: 1rpx solid #dcdcdc;
+  border-left: 1rpx solid #dcdcdc;
+  border-right: 1rpx solid #dcdcdc;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  margin-top: 420rpx;
+  justify-content: center;
+  box-sizing: border-box;
+  background:white;
+}
+.headTitle{
+  height: 200rpx;
+  /*background-color: antiquewhite;*/
+  margin-top: 20rpx; 
+  padding-left: 40rpx;
+  font-size: 35rpx;
+  color: #4d4d4d;
+}
+.holdHeadItems{
+  display: flex;
+  /* border: 1rpx solid green; */
+}
+.holdHeadLeftItem{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /*border: 1rpx solid red;*/
+  width: 68%;
+  height: 80rpx;
+  font-size: 25rpx;
+  box-sizing: border-box;
+  padding-left: 10 rpx;
+}
+.holdHeadMiddleItem{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /*border: 1rpx solid red;*/
+  width: 42%;
+  height: 80rpx;
+  font-size: 25rpx;
+  box-sizing: border-box;
+  padding-left: 10 rpx;
+}
+.holdHeadRightItem{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /*border: 1rpx solid red;*/
+  width: 33%;
+  height: 80rpx;
+  font-size: 25rpx;
+  box-sizing: border-box;
+  padding-left: 10 rpx;
+}
+.listPart{
+  width: 94%;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0rpx;
+  justify-content: center;
+  box-sizing: border-box;
+  background:white;
+}
+.growthData{
+  width: 94%;
+  height: 420rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 10rpx;
+  margin-top: 50rpx;
+  background: white;
+}
+.growthTitle {
+  width: 98%;
+  height: 60rpx;
+  /* border: 1rpx solid green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3rpx solid #9a9ba2;
+  font-size: medium;
+}
+.growthLegend{
+  width: 98%;
+  height: 50rpx;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1rpx solid #dcdcdc;
+  /* border: 1rpx solid blue; */
+}
+.growthTimeNote{
+  color: #ababab;
+  width: 50%;
+  text-align: center;
+}
+.growthNote{
+  color: #ababab;
+  width: 50%;
+  text-align: center;
+}
+.growthItem {
+  width: 100%;
+  height: 60rpx;
+  /* border: 1rpx solid red; */
+  display: flex;
+  justify-content: space-around;
+}
+.divLine{
+  width: 100%;
+  background: #f5f5f5;
+  height: 3rpx;
+}
+.growthTime {
+  /* border: 1rpx solid blue; */
+  width: 50%;
+  box-sizing: border-box;
+  text-align: center;
+}
