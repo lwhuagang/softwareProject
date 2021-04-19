@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "naviBar":"../../components/naviBar/naviBar"
+    "naviBar":"../../components/naviBar/naviBar",
+    "sectionHead":"../../components/sectionHead/sectionHead",
+    "holdFundGeneral":"../../components/holdFundGeneral/holdFundGeneral"
   }
 }

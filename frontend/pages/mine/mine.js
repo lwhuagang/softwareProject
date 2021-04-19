@@ -88,7 +88,7 @@ Page({
     console.log("用户登录====>")
     console.log(data)
       wx.request({
-        url: 'http://10.135.149.171:8080/user/login',
+        url: 'http://localhost:8080/user/login',
         method:"POST",
         data:{
             email:data.detail.value.email,
