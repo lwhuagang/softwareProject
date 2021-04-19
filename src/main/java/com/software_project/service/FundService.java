@@ -27,4 +27,6 @@ public interface FundService {
      * @return 将查询到的基金列表封装为result返回
      */
     Fund searchFundByCode(int code);
+
+
 }

@@ -2,6 +2,7 @@ package com.software_project.dao;
 
 import com.software_project.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -21,4 +22,13 @@ public interface UserDAO {
      * @param user 用户对象
      */
     void insertUser(User user);
+
+    /**
+     * 该方法用于更新用户表中的一下几个属性
+     * @param email 用户id
+     * @param buyMoney  用户用于基金的金额
+     * @param holdProfit   用户的总持有收益
+     * @param totalProfit  用户的累计收益
+     */
+    void updateUserBHT(@Param("email") String email, @Param("buyMoney") double buyMoney, @Param("holdProfit") double holdProfit, @Param("totalProfit") double totalProfit);
 }

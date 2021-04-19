@@ -35,4 +35,15 @@ public interface UserService {
      * @return 找寻user
      */
     User findUserByEmail(String email);
+
+    /**
+     * 该方法用于更新用户表中的一下几个属性
+     * @param email 用户id
+     * @param buyMoney  用户用于基金的金额
+     * @param holdProfit   用户的总持有收益
+     * @param totalProfit  用户的累计收益
+     */
+    void updateUserBHT(String email, double buyMoney, double holdProfit, double totalProfit);
+
+
 }

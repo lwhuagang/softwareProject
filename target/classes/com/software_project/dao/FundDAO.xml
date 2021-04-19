@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.software_project.dao.FundDAO">
+
+    <insert id="insertFund">
+        insert into soft.fund values (#{code},#{name},#{type},#{buyMin},#{buySourceRate},#{buyRate},#{manager})
+    </insert>
+
+    <select id="searchByCode" resultType="com.software_project.pojo.Fund">
+        select * from soft.fund where code = #{code}
+    </select>
+
+    <select id="searchByName" resultType="com.software_project.pojo.Fund">
+        select * from soft.fund where name like concat('%',#{name},'%')
+    </select>
+
+    <select id="holdFund" resultType="com.software_project.pojo.Fund">
+        select * from soft.hold h left join soft.fund f on f.code = h.fundCode
+        union
+        select * from soft.hold h right join soft.fund f on f.code = h.fundCode
+        where userEmail = #{email}
+    </select>
+
+</mapper>

@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.software_project.pojo.Fund;
 import com.software_project.pojo.User;
 import com.software_project.service.FundService;
+import com.software_project.service.HoldService;
 import com.software_project.service.UserService;
 import com.software_project.utils.MD5Utils;
 import lombok.AllArgsConstructor;
@@ -27,6 +28,9 @@ public class UserController {
 
     @Autowired
     private FundService fundService;
+
+    @Autowired
+    private HoldService holdService;
 
     /**
      * 发送验证码
@@ -106,13 +110,14 @@ public class UserController {
     }
 
     /**
-     * 根据用户邮箱查询到该用户持有的所有基金
+     * 根据用户邮箱计算该用户持有的所有基金收益信息，并更新到数据库中
+     * 注：这个接口一天只能调一次，因为一天只能计算一次
      * 同时获取该用户持有金额,持有收益,累计收益(直接返回user也可)
      * @param email 传入的用户email
      * @return 封装为result返回
      */
-    @GetMapping("/havingList")
-    public Result havingList(String email) {
+    @GetMapping("/calculate")
+    public Result calculate(String email) {
         User user = userService.findUserByEmail(email); //待返回user
         List<Fund> funds = fundService.getHoldFund(email);
         Ret_HavingList ret = new Ret_HavingList(user, funds);
@@ -143,11 +148,30 @@ public class UserController {
         ret.user.setBuyMoney(totalHold);
 
         // 将修改的数据写回数据库
-        // 更新user buyMoney,holdProfit,TotalProfit
-        // 更新hold totalHold holdProfit
+        // 更新user buyMoney,holdProfit,TotalProfit     us er表中的数据
+        userService.updateUserBHT(ret.user.getEmail(), ret.user.getBuyMoney(), ret.user.getHoldProfit(), ret.user.getTotalProfit());
+        String userEmail = ret.user.getEmail();
+        // 更新hold holdProfit          hold表中数据,是对所有的持有基金进行更新
+        for (Fund fund: ret.funds) {
+            holdService.updateHoldHH(userEmail, fund.getFundCode(), fund.getHold(), fund.getHoldProfit());
+        }
 
-        return new Result(200,ret,"根据用户邮箱获取用户和该用户持有的所有基金");
+        return new Result(200,ret,"根据用户邮箱计算该用户当日的基金收益信息");
     }
+
+    /**
+     * 根据用户邮箱查询到该用户持有的所有基金
+     * @param email         用户id
+     * @return              封装为result返回
+     */
+    @GetMapping("/havingList")
+    public Result havingList(String email) {
+        User user = userService.findUserByEmail(email); //待返回user
+        List<Fund> funds = fundService.getHoldFund(email);
+        Ret_HavingList ret = new Ret_HavingList(user, funds);
+        return new Result(200, ret, "根据用户邮箱获取用户和该用户持有的所有基金");
+    }
+
 
     /**
      * register的参 数包装类

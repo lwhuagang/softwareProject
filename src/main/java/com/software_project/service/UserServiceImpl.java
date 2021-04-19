@@ -66,4 +66,10 @@ public class UserServiceImpl implements UserService{
     public User findUserByEmail(String email){
         return userDAO.findUserByEmail(email);
     }
+
+    @Override
+    public void updateUserBHT(String email, double buyMoney, double holdProfit, double totalProfit) {
+        userDAO.updateUserBHT(email, buyMoney, holdProfit, totalProfit);
+    }
+
 }
