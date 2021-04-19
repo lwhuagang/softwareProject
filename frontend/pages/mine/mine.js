@@ -104,6 +104,7 @@ Page({
               // 跳转到个人信息主页
             });
             app.globalData.isLogin = true;
+            app.globalData.userInfo.email = data.detail.value.email
             that.setData({
               isLogin:true
             })

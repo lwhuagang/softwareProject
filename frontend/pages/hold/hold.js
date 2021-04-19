@@ -1,4 +1,5 @@
 // pages/hold/hold.js
+const app = getApp();
 let {
   getHold
 } = require("../../api/getUserFunds.js");
@@ -51,8 +52,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //console.log(app.globalData.userInfo.email)
     getHold(
-      "18231041@buaa.edu.cn",
+      app.globalData.userInfo.email,
       res => {
         this.setData({
           user: res.data.obj.user,

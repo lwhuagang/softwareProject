@@ -14,7 +14,10 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
+    userInfo: {
+      email:"",
+      password:null
+    },
     isLogin: false
   }
 })
