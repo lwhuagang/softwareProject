@@ -95,6 +95,7 @@
   </view>
   <!-- 持仓详情 -->
   <view class="positionPart">
+    <view class="positionNote">基金持仓</view>
       <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}" force-use-old-canvas="true"></ec-canvas>
       <view class="total" wx:if="{{fundPosition!=null}}">
         <view class="totalNum">{{fundPosition.total}}亿元</view>
@@ -102,8 +103,45 @@
         <view class="totalDate">{{fundPosition.date}}</view>
       </view>
   </view>
+  <view class="stockPart" wx:if="{{fundPosition!=null}}">
+    <view class="stockNote">
+      <view class="stockNameNote">股票名称</view>
+      <view class="stockPriceNote">价格(万元)</view>
+      <view class="stockPercentNote">持仓占比</view>
+      <view class="stockNumNote">股数(万股)</view>
+    </view>
+    <view wx:for="{{fundPosition.stockList.length<5?fundPosition.stockList.length:5}}" wx:for-index="i">
+      <view class="stockItem">
+        <view class="stockNameAndCode">
+          <view class="stockName">{{fundPosition.stockList[i][1]}}</view>
+          <view class="stockCode">{{fundPosition.stockList[i][0]}}</view>
+        </view>
+        <view class="stockPrice">{{fundPosition.stockList[i][4]}}</view>
+        <view class="stockPercent">{{fundPosition.stockList[i][2]}}</view>
+        <view class="stockNum">{{fundPosition.stockList[i][3]}}</view>
+      </view>
+    </view>
+    <navigator class="positionDetail" url="/pages/positionDetail/positionDetail?fundCode={{fundInfo.code}}">查看完整持仓信息</navigator>
+  </view>
   <!-- 基金档案 -->
-  <view class="docPart"></view>
+  <view class="docPart">
+    <view class="docNote">基金档案</view>
+    <view class="docItem">
+      <view class="docItemNote">基金规模</view>
+      <view class="docItemDiv"></view>
+      <view class="docItemValue">{{fundInfo.fundScale}}</view>
+    </view>
+    <view class="docItem">
+      <view class="docItemNote">成立时间</view>
+      <view class="docItemDiv"></view>
+      <view class="docItemValue">{{fundInfo.totalNetWorthData[0][0]}}</view>
+    </view>
+    <view class="docItem">
+      <view class="docItemNote">基金经理</view>
+      <view class="docItemDiv"></view>
+      <view class="docItemValue">{{fundInfo.manager}}</view>
+    </view>
+  </view>
 </view>
 
 

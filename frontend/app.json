@@ -12,7 +12,8 @@
     "pages/evaluate/evaluate",
     "pages/netWorth/netWorth",
     "pages/newFund/newFund",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/positionDetail/positionDetail"
   ],
   "window":{
     "backgroundTextStyle":"light",

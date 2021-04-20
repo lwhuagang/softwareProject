@@ -1,0 +1,35 @@
+<!--pages/positionDetail/positionDetail.wxml-->
+<naviBar title="持仓详情"></naviBar>
+<view class="container">
+  <!-- 持仓详情 -->
+  <view class="positionPart">
+    <view class="positionNote">{{fundPosition.title}}</view>
+      <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}" force-use-old-canvas="true"></ec-canvas>
+      <view class="total" wx:if="{{fundPosition!=null}}">
+        <view class="totalNum">{{fundPosition.total}}亿元</view>
+        <view class="totalNote">净资产</view>
+        <view class="totalDate">{{fundPosition.date}}</view>
+      </view>
+  </view>
+  <view class="stockPart">
+    <view class="stockNote">
+      <view class="stockNameNote">股票名称</view>
+      <view class="stockPriceNote">价格(万元)</view>
+      <view class="stockPercentNote">持仓占比</view>
+      <view class="stockNumNote">股数(万股)</view>
+    </view>
+    <view wx:for="{{fundPosition.stockList.length}}" wx:for-index="i">
+      <view class="stockItem">
+        <view class="stockNameAndCode">
+          <view class="stockName">{{fundPosition.stockList[i][1]}}</view>
+          <view class="stockCode">{{fundPosition.stockList[i][0]}}</view>
+        </view>
+        <view class="stockPrice">{{fundPosition.stockList[i][4]}}</view>
+        <view class="stockPercent">{{fundPosition.stockList[i][2]}}</view>
+        <view class="stockNum">{{fundPosition.stockList[i][3]}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
