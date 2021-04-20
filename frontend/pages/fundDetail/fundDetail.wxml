@@ -124,7 +124,24 @@
     <navigator class="positionDetail" url="/pages/positionDetail/positionDetail?fundCode={{fundInfo.code}}">查看完整持仓信息</navigator>
   </view>
   <!-- 基金档案 -->
-  <view class="docPart"></view>
+  <view class="docPart">
+    <view class="docNote">基金档案</view>
+    <view class="docItem">
+      <view class="docItemNote">基金规模</view>
+      <view class="docItemDiv"></view>
+      <view class="docItemValue">{{fundInfo.fundScale}}</view>
+    </view>
+    <view class="docItem">
+      <view class="docItemNote">成立时间</view>
+      <view class="docItemDiv"></view>
+      <view class="docItemValue">{{fundInfo.totalNetWorthData[0][0]}}</view>
+    </view>
+    <view class="docItem">
+      <view class="docItemNote">基金经理</view>
+      <view class="docItemDiv"></view>
+      <view class="docItemValue">{{fundInfo.manager}}</view>
+    </view>
+  </view>
 </view>
 
 
