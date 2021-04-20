@@ -178,7 +178,7 @@ drawLineChart:function(canvas, width, height, dpr){
   var netWorthData = fundInfo.netWorthData;
   var netWorth = this.getCertainDimension(netWorthData,1);
   var netDate = this.getCertainDimension(netWorthData,0);
-  console.log("netDate===>",netDate)
+  //console.log("netDate===>",netDate)
   
   const chart = echarts.init(canvas, null, {
     width: width,
@@ -295,6 +295,7 @@ drawPostionPie:function(canvas, width, height, dpr) {
     var bondPct = position.bond=="---"?0:parseFloat(position.bond.slice(0,5))
     var stockPct = position.stock=="---"?0:parseFloat(position.stock.slice(0,5));
     var cashPct = position.cash=="---"?0:parseFloat(position.cash.slice(0,5))
+    var other = (100-bondPct-stockPct-cashPct)>0?(100-bondPct-stockPct-cashPct):0;
     const chart = echarts.init(canvas, null, {
       width: width,
       height: height,
@@ -304,7 +305,7 @@ drawPostionPie:function(canvas, width, height, dpr) {
   
     var option = {
       backgroundColor: "#ffffff",
-      color: ["#ef7340", "#eeb329", "#006fbe", "#33a1f0"],
+      color: ["#ef7340", "#eeb329", "#006fbe", "#33a1f0","#32a0ee"],
       title: {
         text: '持仓详情',
         left: 'center'
@@ -317,7 +318,7 @@ drawPostionPie:function(canvas, width, height, dpr) {
         },
         type: 'pie',
         center: ['50%', '50%'],
-        radius: ['0%', '68%'],
+        radius: ['45%', '68%'],
         data: [{
           value: stockPct,
           name: '股票  '+stockPct+"%"
@@ -327,6 +328,9 @@ drawPostionPie:function(canvas, width, height, dpr) {
         }, {
           value: cashPct,
           name: '现金 '+cashPct+"%"
+        },{
+          value: other,
+          name: '其他 '+other+'%'
         }]
       }]
     };

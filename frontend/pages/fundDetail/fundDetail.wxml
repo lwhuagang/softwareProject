@@ -96,7 +96,14 @@
   <!-- 持仓详情 -->
   <view class="positionPart">
       <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}" force-use-old-canvas="true"></ec-canvas>
+      <view class="total" wx:if="{{fundPosition!=null}}">
+        <view class="totalNum">{{fundPosition.total}}亿元</view>
+        <view class="totalNote">净资产</view>
+        <view class="totalDate">{{fundPosition.date}}</view>
+      </view>
   </view>
+  <!-- 基金档案 -->
+  <view class="docPart"></view>
 </view>
 
 

@@ -140,7 +140,25 @@
   flex-direction: column;
   margin-top: 50rpx;
 }
-
+.total{
+  position: absolute;
+  margin-top: 240rpx;
+  margin-left:280rpx;
+  /* 岂可修，老是放不到中心 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1rpx solid red; */
+}
+.totalNum{
+  font-size: large;
+}
+.totalNote{
+  font-size: small;
+}
+.totalDate{
+  font-size: small;
+}
 .detailLine {
   width: 100%;
   height: 600rpx;
