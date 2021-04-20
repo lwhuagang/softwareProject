@@ -103,7 +103,7 @@
         <view class="totalDate">{{fundPosition.date}}</view>
       </view>
   </view>
-  <view class="stockPart">
+  <view class="stockPart" wx:if="{{fundPosition!=null}}">
     <view class="stockNote">
       <view class="stockNameNote">股票名称</view>
       <view class="stockPriceNote">价格(万元)</view>

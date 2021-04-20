@@ -3,7 +3,7 @@
 <view class="container">
   <!-- 持仓详情 -->
   <view class="positionPart">
-    <view class="positionNote">基金持仓</view>
+    <view class="positionNote">{{fundPosition.title}}</view>
       <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}" force-use-old-canvas="true"></ec-canvas>
       <view class="total" wx:if="{{fundPosition!=null}}">
         <view class="totalNum">{{fundPosition.total}}亿元</view>
