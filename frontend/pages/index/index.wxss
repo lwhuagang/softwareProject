@@ -23,6 +23,7 @@
   height: 250rpx;
   margin: 20rpx 10rpx;
   border-radius: 20rpx;
+  border: 1rpx solid #dcdcdc;
 }
 .hotPart{
   border: 1rpx solid #dcdcdc;
@@ -40,5 +41,5 @@
   width: 100%;
   background: #dcdcdc;
   margin-top: 3rpx;
-  margin-bottom: 3rpx;
+  /* margin-bottom: 3rpx; */
 }
