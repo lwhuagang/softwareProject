@@ -61,3 +61,7 @@
   justify-content: center;
   align-items: center;
 }
+.userEmailPart{
+  display: flex;
+  border: 1rpx solid red;
+}

@@ -47,10 +47,6 @@
             {{sendTime}}
           </button>
         </block>
-
-        <!-- <button bindtap="getCaptcha" class="captchaBtn"
-          style="margin-top:-10rpx;background:{{capBGColor}};color:{{capTxtColor}};font-size:28rpx;width:250rpx;display:flex;justify-content:center;align-items:center;height:90rpx;" disabled="{{smsFlag}}" plain
-        >{{sendTime}}</button> -->
       </view>
       <view class="divLine"></view>
       <!-- 注册 -->
@@ -58,20 +54,5 @@
         <button bindtap="register" class="regBtn">注册</button>
       </view>
   </view>
-  <!-- <form bindsubmit="login">
-      <view class="loginContainer">
-        <view class="loginInfo">
-          <input class="inputUsrName" name="email" placeholder="邮箱" focus/>
-          <input class="inputUsrPassword" name="password" password placeholder="密码" focus/>
-        </view>
-        <image class="loginImg" src="/image/login.jpg" mode="widthFix"/>
-        <button form-type="submit" class="loginBtn">
-          <view class="submitInfo">登录</view>
-        </button>
-        <button bindtap="register" class="registerBtn">
-          <view class="registerInfo">注册</view>
-        </button>
-      </view>
-    </form> -->
 </view>
 
