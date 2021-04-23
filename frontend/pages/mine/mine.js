@@ -7,17 +7,25 @@ Page({
    */
   data: {
     isLogin:false,
-    userName:'',
-    userPassword:'',
+    userInfo:null,
+    try2Edit:false,//是否编辑个人信息
+    tmpInfo:{
+      nickname:'',
+      email:'',
+      password:'',
+      money:0,
+      pic_url:''
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      var that = this
-      that.setData({
+      this.setData({
+        userInfo:app.globalData.userInfo,
         isLogin:app.globalData.isLogin,
+        tmpInfo:app.globalData.userInfo
       })
   },
 
@@ -32,10 +40,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-      console.log("监听页面显示");
-      this.setData({
-        isLogin:app.globalData.isLogin//这是因为wxml中没法直接使用全局变量。注册成功之后跳转到mine时，需要自行设置
-      })
+    this.setData({
+      userInfo:app.globalData.userInfo,
+      isLogin:app.globalData.isLogin,
+      tmpInfo:app.globalData.userInfo
+    })
   },
 
   /**

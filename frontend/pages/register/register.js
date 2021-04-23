@@ -13,11 +13,11 @@ Page({
       captcha:'',
       pic_url:'',
       money:0,
-      capBGColor:'#4285f4',
-      capTxtColor:'white',
       sendTime:'发送验证码',
       smsFlag:false,
       snsMsgWait: 60,
+      maxMoney:20,//用户设置的最大初始金额
+      defaultMoney:10,//默认用户的初始金额
   },
 
   /**
@@ -107,7 +107,7 @@ Page({
         }
       })
   },
-  checkPswd:function() {
+checkPswd:function() {
     console.log('检查密码是否一致===>')
     if(this.data.password!=this.data.confirmPswd) {
       wx.showToast({
@@ -117,7 +117,7 @@ Page({
       })
     }
   },
-  register:function() {
+register:function() {
     console.log("注册====>");
     var that = this;
     if(this.data.confirmPswd=='' || this.data.email=='' || this.data.nickname=='' || this.data.confirmPswd!=this.data.password) {
@@ -139,36 +139,50 @@ Page({
             email:that.data.email,
             password:that.data.password,
             nickname:that.data.nickname,
-            money:0,
+            money:that.data.money,
             pic_url:that.data.pic_url
         },
         captcha:that.data.captcha
       },
       success:res=>{
         console.log(res);
-        wx.hideLoading();
-        if(res.data=="") {
+        console.log(res.data.message);
+        // wx.hideLoading();
+        if(res.data.message=="注册失败,验证码输入错误") {
           wx.showToast({
-            title: '邮箱已注册,或验证码错误',
+            title: '验证码错误',
             icon:"none",
             duration:2000
           });
           return;
+        } else if(res.data.message=="注册失败,该账户已被注册") {
+          wx.showToast({
+            title: '账户已被注册',
+            icon:"error",
+            duration:2000
+          });
+          return;
+        } else if(res.data.message=="注册成功") {
+          wx.showToast({
+            title: '注册成功',
+            icon:"success",
+            duration:2000
+          });
+          app.globalData.isLogin = true;
+          app.globalData.userInfo.email=that.data.email
+          app.globalData.userInfo.password=that.data.password
+          app.globalData.userInfo.nickname=that.data.nickname
+          app.globalData.userInfo.money=that.data.money
+          app.globalData.userInfo.pic_url=that.data.pic_url
+          setTimeout(
+            function() {
+              wx.switchTab({
+                url: '/pages/mine/mine',
+              })
+            },1000
+          )
+          return;
         }
-        console.log("注册成功"),
-        wx.showToast({
-          title: '注册成功',
-          icon:"success",
-          duration:1000
-        });
-        app.globalData.isLogin = true;
-        setTimeout(
-          function() {
-            wx.switchTab({
-              url: '/pages/mine/mine',
-            })
-          },2000
-        )
       },
       fail:res=>{
         console.log("注册失败");
@@ -180,5 +194,11 @@ Page({
         });
       }
     })
-  }
+  },
+setMoney:function(e) {
+  // console.log(e.detail)
+  this.setData({
+    money:e.detail
+  })
+}
 })

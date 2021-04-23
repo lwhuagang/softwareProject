@@ -2,7 +2,15 @@
 <view class="container">
   <naviBar title="我的" showBack="{{false}}"></naviBar>
   <view class="hasLoggedContainer" wx:if="{{isLogin}}">
-    已登录
+    <view class="nicknamePart">
+      <view class="nicknameNote">昵称</view>
+      <input class="nicknameValue" model:value="{{tmpNickname}}" placeholder="{{userInfo.nickname}}" disabled="{{!try2Edit}}" />
+    </view>
+    <view class="emailPart">
+      <view class="emailNote">邮箱</view>
+      <input class="emailValue" model:value="{{tmpEmail}}" placeholder="{{userInfo.email}}" disabled="{{!try2Edit}}" />
+    </view>
+
   </view>
   <view wx:else>
     <form bindsubmit="login">

@@ -15,9 +15,12 @@ App({
   },
   globalData: {
     userInfo: {
-      email:"18231096@buaa.edu.cn",
-      password:null
+      email:"2428541469@qq.com",
+      password:"1234",
+      nickname:"",
+      money:0,
+      pic_url:""
     },
-    isLogin: false
+    isLogin: false 
   }
 })
