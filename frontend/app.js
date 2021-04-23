@@ -15,7 +15,7 @@ App({
   },
   globalData: {
     userInfo: {
-      email:"",
+      email:"18231096@buaa.edu.cn",
       password:null
     },
     isLogin: false
