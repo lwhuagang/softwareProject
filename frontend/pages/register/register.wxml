@@ -26,12 +26,31 @@
         <input class="input inputConfirm" model:value="{{confirmPswd}}" focus password bindblur="checkPswd"/>
       </view>
       <view class="divLine"></view>
+      <!-- 初始金额 -->
+      <view class="part moneyPart">
+        <view class="moneyNote">初始金额(千元):</view>
+        <view class="moneyBtn">
+          <stepper min="1" max="{{maxMoney}}" integer value="{{defaultMoney}}" bind:change="setMoney"></stepper>
+        </view>
+      </view>
+      <view class="divLine"></view>
         <!-- 验证码 -->
       <view class="captchaPart">
         <input class="inputCaptcha" model:value="{{captcha}}" focus/>
-        <button bindtap="getCaptcha" class="captchaBtn"
-          style="margin-top:0rpx;background:{{capBGColor}};color:{{capTxtColor}};font-size:28rpx;width:250rpx;display:center;justify-content:center;align-items:center;padding-top:12rpx;" disabled="{{smsFlag}}"
-        >{{sendTime}}</button>
+        <block wx:if="{{smsFlag==false}}">
+          <button class="captchaBtn1" bindtap="getCaptcha" plain>
+            发送验证码
+          </button>
+        </block>
+        <block wx:else>
+          <button class="captchaBtn2" disabled>
+            {{sendTime}}
+          </button>
+        </block>
+
+        <!-- <button bindtap="getCaptcha" class="captchaBtn"
+          style="margin-top:-10rpx;background:{{capBGColor}};color:{{capTxtColor}};font-size:28rpx;width:250rpx;display:flex;justify-content:center;align-items:center;height:90rpx;" disabled="{{smsFlag}}" plain
+        >{{sendTime}}</button> -->
       </view>
       <view class="divLine"></view>
       <!-- 注册 -->

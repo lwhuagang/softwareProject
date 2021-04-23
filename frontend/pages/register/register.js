@@ -18,6 +18,8 @@ Page({
       sendTime:'发送验证码',
       smsFlag:false,
       snsMsgWait: 60,
+      maxMoney:20,//用户设置的最大初始金额
+      defaultMoney:10,//默认用户的初始金额
   },
 
   /**
@@ -107,7 +109,7 @@ Page({
         }
       })
   },
-  checkPswd:function() {
+checkPswd:function() {
     console.log('检查密码是否一致===>')
     if(this.data.password!=this.data.confirmPswd) {
       wx.showToast({
@@ -117,7 +119,7 @@ Page({
       })
     }
   },
-  register:function() {
+register:function() {
     console.log("注册====>");
     var that = this;
     if(this.data.confirmPswd=='' || this.data.email=='' || this.data.nickname=='' || this.data.confirmPswd!=this.data.password) {
@@ -180,5 +182,8 @@ Page({
         });
       }
     })
-  }
+  },
+setMoney:function(e) {
+  console.log(e.detail)
+}
 })

@@ -16,18 +16,18 @@
   display: flex;
   width: 100%;
   /* margin-top: 20rpx; */
-  height: 58rpx;
+  height: 80rpx;
 }
 .instr{
   width: 20%;
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   justify-content: center;
 }
 .input {
   margin-left: 20rpx;
   /* border: 1rpx solid green; */
-  height:58rpx;
+  height:100%;
   background: white;
   border-radius: 5rpx;
   width: 70%;
@@ -39,7 +39,7 @@
   /* border: 1rpx solid rebeccapurple; */
   display: flex;
   justify-content: space-evenly;
-  height: 60rpx;
+  height: 80rpx;
   width: 100%;
   /* margin-top: 20rpx; */
 }
@@ -50,15 +50,14 @@
   height: 100%;
   background: white;
   border-radius: 5rpx;
-  border-right: 1rpx solid #dcdcdc;
   padding-left: 10rpx;
 }
 .divLine{
   height: 1rpx;
   width: 100%;
   background: #dcdcdc;
-  margin-top: 10rpx;
-  margin-bottom: 10rpx;
+  /* margin-top: 10rpx;
+  margin-bottom: 10rpx; */
 }
 .registerPart{
   margin-top: 400rpx;
@@ -66,4 +65,34 @@
 .regBtn{
   background: #4285f4;
   color: white;
+}
+.moneyPart{
+  display: flex;
+}
+.moneyNote{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.moneyBtn{
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.captchaBtn1{
+  width: 300rpx!important;
+  margin-top: 0!important;
+  box-sizing: border-box!important;
+  background: #4285f4!important;
+  color: white!important;
+}
+.captchaBtn2{
+  border: 1rpx solid #dcdcdc!important;
+  margin-top: 0!important;
+  box-sizing: border-box!important;
+  width: 300rpx!important;
+  color: black!important;
 }

@@ -10,7 +10,6 @@
 .loginImg{
   position: absolute;
   width: 200rpx;
-  /* border: 1rpx solid black; */
   margin-top: 50rpx;
   background: white;
   border-radius: 50%;
@@ -45,11 +44,9 @@
   padding: 5rpx;
 }
 .loginBtn {
-  /* border: 1rpx solid red; */
   position: absolute;
   margin-top:480rpx;
   height: 70rpx;
-  /* width: 100rpx; */
   display: flex;
   justify-content: center;
   align-items: center;
