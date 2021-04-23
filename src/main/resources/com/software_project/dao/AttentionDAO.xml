@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.software_project.dao.AttentionDAO">
+
+
+    <insert id="insertAttention" parameterType="com.software_project.pojo.Attention">
+        insert into soft.attention values (#{email}, #{fundCode})
+    </insert>
+    <delete id="deleteAttention" parameterType="com.software_project.pojo.Attention">
+        delete from soft.attention where email = #{email} and fundCode = #{fundCode}
+    </delete>
+    <select id="watchList" resultType="com.software_project.pojo.Fund" parameterType="java.lang.String">
+        select * from soft.fund f left join soft.attention a on f.code = a.fundCode
+        where a.email = #{email}
+    </select>
+</mapper>

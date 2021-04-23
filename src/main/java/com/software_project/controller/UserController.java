@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.software_project.pojo.Fund;
 import com.software_project.pojo.User;
+import com.software_project.service.AttentionService;
 import com.software_project.service.FundService;
 import com.software_project.service.HoldService;
 import com.software_project.service.UserService;
@@ -31,6 +32,9 @@ public class UserController {
 
     @Autowired
     private HoldService holdService;
+
+    @Autowired
+    private AttentionService attentionService;
 
     /**
      * 发送验证码
@@ -172,6 +176,13 @@ public class UserController {
         return new Result(200, ret, "根据用户邮箱获取用户和该用户持有的所有基金");
     }
 
+    @GetMapping("watchList")
+    public Result watchList(String email) {
+        User user = userService.findUserByEmail(email);
+        List<Fund> funds = attentionService.getWatchList(email);
+        Ret_HavingList ret = new Ret_HavingList(user, funds);
+        return new Result(200, ret, "根据用户邮箱获取用户和该用户关注的所有基金");
+    }
 
     /**
      * register的参 数包装类

@@ -1,7 +1,11 @@
 package com.software_project.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.extension.api.R;
+import com.software_project.pojo.Attention;
 import com.software_project.pojo.Fund;
+import com.software_project.pojo.User;
+import com.software_project.service.AttentionService;
 import com.software_project.service.FundService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +25,16 @@ public class FundController {
     @Autowired
     private FundService fundService;
 
+    @Autowired
+    private AttentionService attentionService;
+
     /**
      * 调用外部接口获取基金的详细信息
      * @param code 基金代码 startDate 开始时间（不必须） endDate 结束时间
      * @return  result类 包含状态码、基金的详细信息、附加信息
      */
     @GetMapping("details")
-    public Object queryFundDetails(String code, @RequestParam(name = "startDate", required = false) String startDate, @RequestParam(name = "endDate", required = false) String endDate) {
+    public Result queryFundDetails(String code, @RequestParam(name = "startDate", required = false) String startDate, @RequestParam(name = "endDate", required = false) String endDate) {
         RestTemplate restTemplate = new RestTemplate();
         String s;
         if (startDate == null && endDate == null) {
@@ -46,6 +53,20 @@ public class FundController {
         return new Result(200,parse,"返回基金详细信息");
         // return parse;
     }
+
+    @PostMapping("addWatch")
+    public Result addWatch(@RequestBody Attention attention) {
+        attentionService.addWatch(attention);
+        return new Result(200, attention, "关注条目内容");
+    }
+
+
+    @PostMapping("deleteWatch")
+    public Result deleteWatch(@RequestBody Attention attention) {
+        attentionService.deleteWatch(attention);
+        return new Result(200, attention, "取消关注条目");
+    }
+
 
     /**
      * 按筛选条件进行基金列表返回,使用restTemplate进行第三方url接口调用
