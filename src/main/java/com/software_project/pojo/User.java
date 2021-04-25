@@ -14,8 +14,12 @@ public class User {
     private String password;
     private String nickname;
     private double money;
-    private double buyMoney;
     private String picUrl;
+    private boolean admin;
     private double holdProfit;
     private double totalProfit;
+    private double buyMoney;
+    private double initMoney;
+    private double dayProfit;
+    private double holdCost;
 }

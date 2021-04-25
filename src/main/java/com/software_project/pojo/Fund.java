@@ -18,16 +18,16 @@ public class Fund {
     private double buySourceRate;
     private double buyRate;
     private String manager;
+    private double netWorth;
     // hold表属性
     private double hold;
     private String userEmail;
     private String fundCode;
     private double holdProfit;
+    private double yesProfit; // 昨日收益
+    private double holdCost;
     // 计算属性
-    // 昨日收益
-    private double yesProfit;
-    private double yesRate;
-    // 持有收益率
-    private double rate;
+    private double rate; // 持有收益率
+    private double yesRate; // 昨日收益率
 
 }
