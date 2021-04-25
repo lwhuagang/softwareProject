@@ -19,7 +19,8 @@
     "pages/totalTradeRec/totalTradeRec",
     "pages/fundTradeRec/fundTradeRec",
     "pages/buyIn/buyIn",
-    "pages/sellOut/sellOut"
+    "pages/sellOut/sellOut",
+    "pages/dealRule/dealRule"
   ],
   "window":{
     "backgroundTextStyle":"light",
