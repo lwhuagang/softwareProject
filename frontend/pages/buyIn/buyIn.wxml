@@ -1,0 +1,5 @@
+<!--pages/buyIn/buyIn.wxml-->
+<naviBar title="买入"></naviBar>
+<view class="container">
+  买入{{fundCode}}
+</view>

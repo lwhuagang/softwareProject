@@ -1,0 +1,5 @@
+<!--pages/sellOut/sellOut.wxml-->
+<naviBar title="卖出"></naviBar>
+<view class="container">
+  卖出{{fundCode}}
+</view>

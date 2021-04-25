@@ -79,9 +79,6 @@ Page({
     var that = this;
     this.setData({
       fundCode:code, //全局变量
-      ec_position_empty:{
-        onInit:this.drawEmptyPie
-      }
     });
     this.loadFundDetail(function(){
       that.loadEcLine()
@@ -188,11 +185,11 @@ drawLineChart:function(canvas, width, height, dpr){
   canvas.setChart(chart);
 
   var option = {
-    title: {
-      text: '业绩走势',
-      left:'center',
-      top:20
-    },
+    // title: {
+    //   text: '业绩走势',
+    //   left:'center',
+    //   top:20
+    // },
     color: ["#37A2DA"],
     // legend: {
     //   data: ['本基金'],
@@ -203,7 +200,8 @@ drawLineChart:function(canvas, width, height, dpr){
     grid: {
       containLabel: true,
       bottom:20,
-      left:10
+      left:10,
+      y:20
     },
     tooltip: {
       show: true,
@@ -292,9 +290,9 @@ drawPostionPie:function(canvas, width, height, dpr) {
     chart.setOption(option);
     return chart;
   } else {
-    var bondPct = position.bond=="---"?0:parseFloat(position.bond.slice(0,5))
-    var stockPct = position.stock=="---"?0:parseFloat(position.stock.slice(0,5));
-    var cashPct = position.cash=="---"?0:parseFloat(position.cash.slice(0,5))
+    var bondPct = position.bond=="---"?0:parseFloat(position.bond.substring(0,5))
+    var stockPct = position.stock=="---"?0:parseFloat(position.stock.substring(0,5));
+    var cashPct = position.cash=="---"?0:parseFloat(position.cash.substring(0,5))
     var other = (100-bondPct-stockPct-cashPct)>0?(100-bondPct-stockPct-cashPct):0;
     const chart = echarts.init(canvas, null, {
       width: width,
@@ -387,6 +385,13 @@ drawPostionPie:function(canvas, width, height, dpr) {
    */
   onShareAppMessage: function () {
 
+  },
+  selfSelect:function() {
+    wx.showModal({
+      title:"加自选",
+      content:"这里填写加自选的逻辑,见selfSelect函数",
+      cancelColor: 'cancelColor',
+    })
   },
   test:function() {
     console.log("It's a test");

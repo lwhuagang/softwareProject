@@ -1,0 +1,143 @@
+<wxs src="../../utils/addmul.wxs" module="tool"/>
+<wxs src="../../utils/util.wxs" module="tool2"/>
+<naviBar title="资产详情"></naviBar>
+<view class="container">
+  <!-- 基金卡片 -->
+  <view class="fundCard">
+    <view class="fundName">{{fundInfo.name}}</view>
+    <view class="fundSubCard">
+      <view class="fundCodeAndType">
+        <view class="fundCode">{{fundInfo.code}}</view>
+        <view class="fundType">{{fundInfo.type}}</view>
+      </view>
+      <navigator class="gotoFundDetail" url="/pages/fundDetail/fundDetail?fundCode={{fundInfo.code}}">详情</navigator>
+    </view>
+  </view>
+  <!-- 收益详情 -->
+  <view class="incomePart">
+    <view class="moneyPart">
+      <view class="moneyNote">金额(元)</view>
+      <view class="moneyValue">{{tool.toFix2(moneyValue)}}</view>
+    </view>
+    <view class="incomeDetail">
+      <view class="detailSon yesIncomePart">
+        <view class="yesIncomeNote">昨日收益(元)</view>
+        <view class="yesIncomeValue">{{tool.toFix2(yesIncomeValue)}}</view>
+      </view>
+      <view class="detailSon holdIncomePart">
+        <view class="holdIncomeNote">持有收益(元)</view>
+        <view class="holdIncomeValue">{{tool.toFix2(holdIncomeValue)}}</view>
+      </view>
+      <view class="detailSon holdIncomeRatioPart">
+        <view class="holdIncomeRatioNote">持有收益率</view>
+        <view class="holdIncomeRatioValue">{{tool.toFix2(holdIncomeRationValue)}}%</view>
+      </view>
+    </view>
+    <block wx:if="{{foldded}}">
+      <view class="showMorePart">
+        <image src="../../image/unfold.png" class="showMoreImg" mode="heightFix" bindtap="changeFold"></image>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="showMorePart">
+        <image src="../../image/fold.png" class="showMoreImg" mode="heightFix" bindtap="changeFold"></image>
+        <view class="moreInfo">
+          <view class="subMoreInfo">
+            <view class="subInfoSon holdMoney">
+              持有金额 {{tool.toFix2(holdMoney)}}
+            </view>
+            <view class="subInfoSon unAckMoney">
+              待确认金额 {{tool.toFix2(unAckMoney)}}
+            </view>
+          </view>
+          <view class="subMoreInfo">
+            <view class="subInfoSon posCost">
+              持仓成本价 {{tool.toFix2(posCost)}}
+            </view>
+            <view class="subInfoSon holdPart">
+              持有份额 {{tool.toFix2(holdPart)}}
+            </view>
+          </view>
+          <view class="subMoreInfo">
+            <view class="subInfoSon dayGrowth">
+              日涨幅 {{fundInfo.dayGrowth}}%
+            </view>
+            <view class="subInfoSon netWorth">
+              基金净值 {{fundInfo.netWorth}} ({{tool2.my_slice(fundInfo.netWorthDate,5,10)}})
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="recPart">
+    <navigator class="subRec incomeDetail" url="/pages/incomeDetail/incomeDetail">
+      <image src="../../image/incomeDetail.png" style="height: 40rpx" mode="heightFix"></image>
+      <view class="recNote">收益明细</view>
+    </navigator>
+    <navigator class="subRec tradeRec" url="/pages/fundTradeRec/fundTradeRec">
+      <image src="../../image/tradeRec.png" style="height:40rpx" mode="heightFix"></image>
+      <view class="recNote">交易记录</view>
+    </navigator>
+  </view>
+  <!-- 折线图 -->
+  <view class="linePart">
+    <view class="lineHead">
+      <view class="subLineHead acc">
+        <block wx:if="{{lineChoice=='累计盈亏'}}">
+          <view class="accNote" style="color:#2e9cec;text-align:center;">累计盈亏</view>
+          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:3rpx;"></view>
+        </block>
+        <block wx:else>
+          <view class="accNote" style="text-align:center;" bindtap="swap2Acc">累计盈亏</view>
+        </block>
+      </view>
+      <view class="subLineHead worthGrowth">
+        <block wx:if="{{lineChoice=='业绩走势'}}">
+          <view class="worthNote" style="color:#2e9cec;text-align:center;">业绩走势</view>
+          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:3rpx;"></view>
+        </block>
+        <block wx:else>
+          <view class="worthNote" style="text-align:center;" bindtap="swap2Worth">业绩走势</view>
+        </block>
+      </view>
+      <view class="subLineHead expectWorth">
+        <block wx:if="{{lineChoice=='净值估算'}}">
+          <view class="expectNote" style="color:#2e9cec;text-align:center;">净值估算</view>
+          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:3rpx;"></view>
+        </block>
+        <block wx:else>
+          <view class="expectNote" style="text-align:center;" bindtap="swap2Exp">净值估算</view>
+        </block>
+      </view>
+    </view>
+    <view class="lineBody">
+      <!-- 累计盈亏和净值估算暂时勇敢业绩走势来代替！ -->
+      <!-- 注意，如果要用真机调试，请仿照基金详情页强制使用旧版。但是此时如果打开折叠部分会使字迹有重影！ -->
+      <block wx:if="{{lineChoice=='累计盈亏'}}">
+        <view class="linePart">
+          <ec-canvas wx:if="{{loadLine_worth_OK}}" class="linePic" canvas-id="mychart-line" ec="{{ ec_line_worth }}" ></ec-canvas>
+        </view>
+      </block>
+      <block wx:elif="{{lineChoice=='业绩走势'}}">
+        <view class="linePart">
+          <ec-canvas wx:if="{{loadLine_worth_OK}}"class="linePic" canvas-id="mychart-line" ec="{{ ec_line_worth }}" ></ec-canvas>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="linePart">
+          <ec-canvas wx:if="{{loadLine_worth_OK}}"class="linePic" canvas-id="mychart-line" ec="{{ ec_line_worth }}" ></ec-canvas>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+<view class="bottomBar">
+  <navigator class="bottomButton" url="/pages/sellOut/sellOut?fundCode={{fundCode}}">
+    <view class="sellOut">卖出</view>
+  </navigator>
+  <navigator class="bottomButton" url="/pages/buyIn/buyIn?fundCode={{fundCode}}">
+    <view class="buyIn">买入</view>
+  </navigator>
+</view>
+

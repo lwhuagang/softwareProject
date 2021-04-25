@@ -146,16 +146,13 @@
 <!--
   底部功能栏区
 -->
-<view class="under">
-    <view  class="button" bindtap="Click" >
-      <view class="zixuan" >
-        自选
-      </view>
-    </view>
-    <view class="button" >
-      <view class="mairu">
-        买入
-      </view>
-    </view>
+<view class="bottomBar">
+  <view class="bottomButton" bindtap="selfSelect">
+    <view class="selfSelect">自选</view>
+  </view>
+  <navigator class="bottomButton" url="/pages/buyIn/buyIn?fundCode={{fundCode}}">
+    <view class="buyIn">买入</view>
+  </navigator>
 </view>
+
 

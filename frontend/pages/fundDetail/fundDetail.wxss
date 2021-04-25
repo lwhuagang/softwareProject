@@ -129,7 +129,7 @@
 
 .detailLine {
   width: 100%;
-  height: 600rpx;
+  height: 500rpx;
 }
 .linePart{
   width: 94%;
@@ -380,7 +380,7 @@
 }
 
 /* 底部按钮 */
-.under{
+.bottomBar{
   background:#FFFFFF;
   display:flex;
   position:fixed; 
@@ -389,25 +389,26 @@
   margin-bottom: 0px;
 }
 
-.button{
-width:100%;
-height: 100rpx;
+.bottomButton{
+  width:100%;
+  height: 100rpx;
+  border-top: 2rpx solid #dcdcdc;
 }
-.zixuan{
-font-size:30rpx;
-color:black;
-width:100%;
-background:white;
-height: 100%;
-text-align: center;
-line-height:95rpx;
+.selfSelect{
+  font-size:30rpx;
+  color:black;
+  width:100%;
+  background:white;
+  height: 100%;
+  text-align: center;
+  line-height:95rpx;
 }
 
-.mairu{
-font-size:30rpx;
-color:#ffffff;
-width:100%;
-background: #0081ff;
-text-align: center;
-line-height:95rpx;
+.buyIn{
+  font-size:30rpx;
+  color:#ffffff;
+  width:100%;
+  background: #0081ff;
+  text-align: center;
+  line-height:95rpx;
 }
