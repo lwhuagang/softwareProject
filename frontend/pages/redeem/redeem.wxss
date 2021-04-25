@@ -1,0 +1,100 @@
+.container {
+  height: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding : 30rpx 20px;
+ 
+}
+.fundName{
+  height: 100rpx;
+  width:100%;
+  height:100rpx;
+  background: white;
+  border-radius: 20rpx;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  margin-bottom: 20rpx;
+  
+}
+.redeem{
+  height:300rpx;
+  width:96%;
+  background:white;
+  border-radius: 20rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+.redeem .header{
+  display: flex;
+  justify-content: space-between;
+
+}
+.redeem .unit{
+  height: 70rpx;
+}
+.redeem .rule{
+  color: #0081FF;
+  font-size: 30rpx;
+  height: 40rpx;
+  width: 130rpx;
+  margin-top: 10rpx;
+}
+
+.redeem .inputUnit{
+  height:120rpx;
+}
+.redeem .inputUnitView{
+  font-size: 70rpx;
+}
+.redeem .divLine{
+  height: 1rpx;
+  width: 100%;
+  background: #dcdcdc;
+  margin-top: 3rpx;
+  margin-bottom: 20rpx;
+  /* margin-bottom: 3rpx; */
+}
+.redeem .unitBtn{
+  display: flex;
+  justify-content: center;
+
+}
+.redeem .box{
+  flex:1;
+  text-align: center
+}
+.redeem .unitBtn1{
+  width: 55px;
+  text-align: center;
+  border: 1px solid red;
+  border-radius: 30rpx;
+  font-size: 35rpx;
+}
+.redeem .unitBtn2{
+  width: 55px;
+  text-align: center;
+  border: 1px solid red;
+  border-radius: 30rpx;
+  font-size: 35rpx;
+
+}
+.redeem .unitBtn3{
+  width: 55px;
+  text-align: center;
+  border: 1px solid red;
+  border-radius: 30rpx;
+  font-size: 35rpx;
+
+}
+.redeem .unitBtn4{
+  width: 55px;
+  text-align: center;
+  border: 1px solid red;
+  border-radius: 30rpx;
+  font-size: 35rpx;
+
+}

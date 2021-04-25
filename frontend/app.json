@@ -13,7 +13,8 @@
     "pages/netWorth/netWorth",
     "pages/newFund/newFund",
     "pages/register/register",
-    "pages/positionDetail/positionDetail"
+    "pages/positionDetail/positionDetail",
+    "pages/redeem/redeem"
   ],
   "window":{
     "backgroundTextStyle":"light",
