@@ -143,5 +143,19 @@
     </view>
   </view>
 </view>
-
+<!--
+  底部功能栏区
+-->
+<view class="under">
+    <view  class="button" bindtap="Click" >
+      <view class="zixuan" >
+        自选
+      </view>
+    </view>
+    <view class="button" >
+      <view class="mairu">
+        买入
+      </view>
+    </view>
+</view>
 
