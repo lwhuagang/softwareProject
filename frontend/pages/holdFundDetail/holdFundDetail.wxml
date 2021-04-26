@@ -137,7 +137,7 @@
    url="/pages/sellOut/sellOut?fundCode={{fundCode}}&fundName={{fundInfo.name}}">
     <view class="sellOut">卖出</view>
   </navigator>
-  <navigator class="bottomButton" url="/pages/buyIn/buyIn?fundCode={{fundCode}}">
+  <navigator class="bottomButton" url="/pages/buyIn/buyIn?fundCode={{fundCode}}&fundName={{fundInfo.name}}">
     <view class="buyIn">买入</view>
   </navigator>
 </view>

@@ -14,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    fundName:"",
     fundCode:0,
     fundInfo:{},//基金详情
     buyMin:null,
@@ -25,9 +26,11 @@ Page({
    */
   onLoad: function (options) {
       var fundCode = options.fundCode;
+      var fundName = options.fundName;
       console.log("买入===>",fundCode);
       this.setData({
-        fundCode:fundCode
+        fundCode:fundCode,
+        fundName:fundName
       });
       this.loadFundDetail(function(){
       });

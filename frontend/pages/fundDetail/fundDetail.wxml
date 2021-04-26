@@ -150,7 +150,7 @@
   <view class="bottomButton" bindtap="selfSelect">
     <view class="selfSelect">自选</view>
   </view>
-  <navigator class="bottomButton" url="/pages/buyIn/buyIn?fundCode={{fundCode}}">
+  <navigator class="bottomButton" url="/pages/buyIn/buyIn?fundCode={{fundCode}}&fundName={{fundInfo.name}}">
     <view class="buyIn">买入</view>
   </navigator>
 </view>
