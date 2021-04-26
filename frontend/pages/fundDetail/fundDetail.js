@@ -245,10 +245,10 @@ drawPostionPie:function(canvas, width, height, dpr) {
     chart.setOption(option);
     return chart;
   } else {
-    var bondPct = position.bond=="---"?0:parseFloat(position.bond.substring(0,5))
-    var stockPct = position.stock=="---"?0:parseFloat(position.stock.substring(0,5));
-    var cashPct = position.cash=="---"?0:parseFloat(position.cash.substring(0,5))
-    var other = (100-bondPct-stockPct-cashPct)>0?(100-bondPct-stockPct-cashPct):0;
+    var bondPct = position.bond=="---"?0:parseFloat(position.bond.substring(0,5)).toFixed(2);
+    var stockPct = position.stock=="---"?0:parseFloat(position.stock.substring(0,5)).toFixed(2);
+    var cashPct = position.cash=="---"?0:parseFloat(position.cash.substring(0,5)).toFixed(2);
+    var other =  (100-bondPct-stockPct-cashPct)>0?(100-bondPct-stockPct-cashPct).toFixed(2):0;
     const chart = echarts.init(canvas, null, {
       width: width,
       height: height,
