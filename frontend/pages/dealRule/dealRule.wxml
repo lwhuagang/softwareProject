@@ -1,2 +1,70 @@
 <!--pages/dealRule/dealRule.wxml-->
 <naviBar title="交易规则"></naviBar>
+<view class="container">
+  <view class="header">
+    <view class="subHeader buyIn">
+      <block wx:if="{{selectRule=='买入规则'}}">
+        <view class="headNote buyInNote" style="color:#2e9cec;text-align:center;">买入规则</view>
+        <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:5rpx;"></view>
+      </block>
+      <block wx:else>
+        <view class="headNote buyInNote" style="text-align:center" bindtap="swap2BuyIn">买入规则</view>
+        <view class="noteLine" style="background:#f2f2f2;margin-top:15rpx;width:100%;height:3rpx;"></view>
+      </block>
+    </view>
+    <view class="subHeader sellOut">
+      <block wx:if="{{selectRule=='卖出规则'}}">
+        <view class="headNote sellOutNote" style="color:#2e9cec;text-align:center;">卖出规则</view>
+        <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:5rpx;"></view>
+      </block>
+      <block wx:else>
+        <view class="headNote sellOutNote" style="text-align:center" bindtap="swap2SellOut">卖出规则</view>
+        <view class="noteLine" style="background:#f2f2f2;margin-top:15rpx;width:100%;height:3rpx;"></view>
+      </block>
+    </view>
+  </view>
+  <!-- 不同的两个页面 -->
+  <view class="pageContent">
+    <!-- 买入规则界面 -->
+    <block wx:if="{{selectRule=='买入规则'}}">
+      <view class="buyInProcedure">
+        <view class="buyInProTitle">买入流程</view>
+        <image src="/image/buyInProc.png" style="width:100%" mode="widthFix"></image>
+        <view class="ruleNote">
+          T日:交易日，以每天{{buyInStart}}为界限，{{buyInStart}}(不含)之前为T日，{{buyInStart}}(含)及之后为T+1日。周末和法定节假日属于非交易日，以支付成功时间为准。
+        </view>
+        <view class="ruleNote">
+          T日申请，将按T日基金净值确认份额。份额确认当日，基金净值更新后即可查看首笔盈亏。开放赎回的基金在买入确认后下一T日可卖出。
+        </view>
+      </view>
+      <view class="ratioPart">
+        <view class="ratioTitle">买入费率(前端申购)</view>
+        <view class="ratioFormHead">
+          <view class="headItem">金额</view>
+          <view class="headItem">优惠费率</view>
+        </view>
+        <view class="buyInRatePart">
+          <view wx:for="{{buyInRateList.length}}" class="buyInRateItem">
+            <view class="subBuyInItem">
+              <view class="buyInStep">{{buyInRateList[index].step}}</view>
+              <view class="buyInSrcRate">{{buyInRateList[index].srcRate}}</view>
+              <view class="buyInRate">{{buyInRateList[index].rate}}</view>
+            </view>
+            <view class="divLine"></view>
+          </view>
+        </view>
+      </view>
+      <!-- 申购计算 -->
+      <view class="calcRule">
+        <view class="calcRuleTitle">申购计算:</view>
+        <view class="calcRuleItem">净申购金额=申购金额/(1+申购费率)</view>
+        <view class="calcRuleItem">申购费用=申购金额-净申购金额</view>
+        <view class="calcRuleItem">申购份额=净申购金额/T日基金份额净值</view>
+      </view>
+    </block>
+    <!-- 卖出规则界面 -->
+    <block wx:else>
+
+    </block>
+  </view>
+</view>

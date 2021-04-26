@@ -86,28 +86,31 @@
       <view class="subLineHead acc">
         <block wx:if="{{lineChoice=='累计盈亏'}}">
           <view class="accNote" style="color:#2e9cec;text-align:center;">累计盈亏</view>
-          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:3rpx;"></view>
+          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:5rpx;"></view>
         </block>
         <block wx:else>
           <view class="accNote" style="text-align:center;" bindtap="swap2Acc">累计盈亏</view>
+          <view class="noteLine" style="background:#f6f6f6;margin-top:15rpx;width:100%;height:2rpx;"></view>
         </block>
       </view>
       <view class="subLineHead worthGrowth">
         <block wx:if="{{lineChoice=='业绩走势'}}">
           <view class="worthNote" style="color:#2e9cec;text-align:center;">业绩走势</view>
-          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:3rpx;"></view>
+          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:5rpx;"></view>
         </block>
         <block wx:else>
           <view class="worthNote" style="text-align:center;" bindtap="swap2Worth">业绩走势</view>
+          <view class="noteLine" style="background:#f6f6f6;margin-top:15rpx;width:100%;height:2rpx;"></view>
         </block>
       </view>
       <view class="subLineHead expectWorth">
         <block wx:if="{{lineChoice=='净值估算'}}">
           <view class="expectNote" style="color:#2e9cec;text-align:center;">净值估算</view>
-          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:3rpx;"></view>
+          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:5rpx;"></view>
         </block>
         <block wx:else>
           <view class="expectNote" style="text-align:center;" bindtap="swap2Exp">净值估算</view>
+          <view class="noteLine" style="background:#f6f6f6;margin-top:15rpx;width:100%;height:2rpx;"></view>
         </block>
       </view>
     </view>
