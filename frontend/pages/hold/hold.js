@@ -20,9 +20,9 @@ Page({
       "total_profit": 0.0
     },
     "funds": [{
-        "code": "111444",
-        "name": "银河创新成长混合",
-        "type": "股票型",
+        "code": "008099",
+        "name": "中航瑞明纯债A",
+        "type": "债券型",
         "buyMin": 200.0,
         "buyMoney": 10000.89,
         "yesProfit": 7.89,
@@ -30,7 +30,7 @@ Page({
         "holdProfitRate": 3.23,
         "buySourceRate": 0.2,
         "buyRate": 0.2,
-        "manager": "张强"
+        "manager": "茅勇峰"
       },
       {
         "code": "111444",

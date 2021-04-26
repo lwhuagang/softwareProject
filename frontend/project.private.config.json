@@ -19,8 +19,9 @@
           "scene": null
         },
         {
-          "name": "pages/redeem/redeem",
-          "pathName": "pages/redeem/redeem",
+          "name": "pages/sellOut/sellOut",
+          "pathName": "pages/sellOut/sellOut",
+          "query": "",
           "scene": null
         }
       ]

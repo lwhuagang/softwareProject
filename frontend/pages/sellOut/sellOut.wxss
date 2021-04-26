@@ -43,12 +43,32 @@
   width: 130rpx;
   margin-top: 10rpx;
 }
-
-.redeem .inputUnit{
-  height:120rpx;
-}
 .redeem .inputUnitView{
   font-size: 70rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.redeem .inputUnit{
+  height:120rpx;
+  border: 1px solid red;
+  flex:8
+}
+
+.redeem .inputUnitView .img{
+  height: 120rpx; 
+  width:60rpx;
+  border: 1px solid blue;
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.redeem .inputUnitView image{
+  width: 40rpx;
+  
+  
+  border: 1px solid red;
+
 }
 .redeem .divLine{
   height: 1rpx;
@@ -68,32 +88,33 @@
   text-align: center
 }
 .redeem .unitBtn1{
-  width: 55px;
+  width: 60px;
   text-align: center;
-  border: 1px solid red;
   border-radius: 30rpx;
   font-size: 35rpx;
+
 }
 .redeem .unitBtn2{
-  width: 55px;
+  width: 60px;
   text-align: center;
-  border: 1px solid red;
+  border: 1px solid #666666;
+  color:#666666;
   border-radius: 30rpx;
   font-size: 35rpx;
 
 }
 .redeem .unitBtn3{
-  width: 55px;
+  width: 60px;
   text-align: center;
-  border: 1px solid red;
+  border: 1px solid #aaaaaa;
   border-radius: 30rpx;
   font-size: 35rpx;
 
 }
 .redeem .unitBtn4{
-  width: 55px;
+  width: 60px;
   text-align: center;
-  border: 1px solid red;
+  border: 1px solid #aaaaaa;
   border-radius: 30rpx;
   font-size: 35rpx;
 

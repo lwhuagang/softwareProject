@@ -14,7 +14,12 @@
     "pages/newFund/newFund",
     "pages/register/register",
     "pages/positionDetail/positionDetail",
-    "pages/redeem/redeem"
+    "pages/holdFundDetail/holdFundDetail",
+    "pages/incomeDetail/incomeDetail",
+    "pages/totalTradeRec/totalTradeRec",
+    "pages/fundTradeRec/fundTradeRec",
+    "pages/buyIn/buyIn",
+    "pages/sellOut/sellOut"
   ],
   "window":{
     "backgroundTextStyle":"light",

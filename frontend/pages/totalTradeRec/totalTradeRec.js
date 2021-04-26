@@ -1,14 +1,10 @@
-// pages/redeem/redeem.js
+// pages/totalTradeRec/totalTradeRec.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    fundName:"易方达蓝筹精选混合",
-    maxUnit:10,
-    fundCode:"005827",
-    
 
   },
 
