@@ -23,6 +23,11 @@
           "pathName": "pages/sellOut/sellOut",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/buyIn/buyIn",
+          "pathName": "pages/buyIn/buyIn",
+          "scene": null
         }
       ]
     }

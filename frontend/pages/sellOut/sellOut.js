@@ -7,7 +7,7 @@ Page({
   data: {
     fundCode:0,
     fundName:"易方达蓝筹精选混合",
-    maxUnit:10,
+    maxUnit:1000,
     grey:"#666666",
     blue:"#0081FF",
     btn1Color:"",
@@ -106,9 +106,14 @@ Page({
     
   },
   deleteUnit:function(){
-    console.log(1)
     this.setData({
       chooseUnit:null
+    })
+  },
+  sellSubmit:function(){
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      content:"这里是确认卖出函数，暂时还没有调用后端接口，请耐心等待"
     })
   },
   /**

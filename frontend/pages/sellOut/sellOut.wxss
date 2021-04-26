@@ -17,10 +17,10 @@
   align-items: center;
   padding-left: 30rpx;
   margin-bottom: 20rpx;
+  font-size: 45rpx;
   
 }
 .redeem{
-  height:300rpx;
   width:96%;
   background:white;
   border-radius: 20rpx;
@@ -35,6 +35,8 @@
 }
 .redeem .unit{
   height: 70rpx;
+  font-weight: bold;
+  font-size: 40rpx;
 }
 .redeem .rule{
   color: #0081FF;
@@ -49,16 +51,16 @@
   justify-content: space-between;
 }
 .redeem .inputUnit{
-  height:120rpx;
-  border: 1px solid red;
-  flex:8
+  height:130rpx;
+  flex:8;
+  font-size: 80rpx;
 }
 
 .redeem .inputUnitView .img{
   height: 120rpx; 
   width:60rpx;
-  border: 1px solid blue;
-  flex:1;
+  flex:1.3;
+  padding-left: 20rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,16 +68,13 @@
 .redeem .inputUnitView image{
   width: 40rpx;
   
-  
-  border: 1px solid red;
-
 }
 .redeem .divLine{
   height: 1rpx;
   width: 100%;
   background: #dcdcdc;
   margin-top: 3rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 30rpx;
   /* margin-bottom: 3rpx; */
 }
 .redeem .unitBtn{
@@ -117,5 +116,56 @@
   border: 1px solid #aaaaaa;
   border-radius: 30rpx;
   font-size: 35rpx;
+}
+.bottomNote{
+  margin-top: 30rpx;
+  border-top: 2rpx solid #dcdcdc;
+  padding-left:20rpx;
+  padding-bottom: 20rpx;
+  padding-top:20rpx;
+  font-size: small;
+  /* text-decoration-line: line-through; */
+  color:#808080;
+}
+.sellMinWarn{
+  color:#ea5f2c;
+}
 
+.confirmPart{
+  display:flex;
+  position: absolute; 
+  width:100%;
+  bottom:50rpx;
+}
+.confirmButton{
+  border: 1rpx solid red;
+  width: 100%;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.confirmButtonDisable{
+  width: 100%;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:#a6c7fa;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  height: 80rpx;
+  color:white;
+}
+.confirmButtonAble{
+  width: 100%;
+  border-radius: 10rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:#1678ff;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  height: 80rpx;
+  color:white;
 }

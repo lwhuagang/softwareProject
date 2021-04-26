@@ -8,14 +8,15 @@
   <view class="redeem">
     <view class="header">
        <view class="unit">卖出份额</view>
-      <navigator class="rule"> 交易规则</navigator>
+      <navigator class="rule" url="/pages/dealRule/dealRule"> 交易规则</navigator>
     </view>
     
     <view class="inputUnitView">
-      <input class="inputUnit" type="digit" placeholder="最多可卖出{{maxUnit}}份" placeholder-style="font-size:35rpx" value="{{chooseUnit}}">
+      <input class="inputUnit" type="digit" placeholder="最多可卖出{{maxUnit}}份" placeholder-style="font-size:35rpx" value="{{chooseUnit>maxUnit?maxUnit:chooseUnit}}" 
+      model:value="{{chooseUnit}}">
       </input>
       <view class="img" bindtap="deleteUnit"> 
-        <image src="/image/delete.png" mode="widthFix" bindtap="deleteUnit"></image>
+        <image wx:if="{{chooseUnit!=null && chooseUnit!=''}}" src="/image/delete.png" mode="widthFix" bindtap="deleteUnit" bindtap="deleteUnit"></image>
       </view>
     </view>
     <view class="divLine"></view>
@@ -37,11 +38,27 @@
         bindtap="unitBtn4">全部</view>
       </view>
     </view>
-   
+
+    <view class="showRule">
+      <block wx:if="{{chooseUnit==null ||chooseUnit==''|| chooseUnit >= 1}}">
+        <view class="bottomNote">
+          <text>15点前卖出，将按xx月xx日(星期x)净值计算金额，并于xx月xx日(星期x)到账，卖出费率:0.00%~1.50%(若持有时长少于7天，本基金平台将收取1.50%赎回手续费，详见交易规则)</text>
+        </view>
+      </block>
+      <block wx:else="{{chooseUnit!=null && chooseUnit < 1}}">
+        <view class="bottomNote sellMinWarn">最少卖出1份</view>
+      </block>
+    </view>
   </view>
-  <view class="showRule">
-    
+  <view class="confirmPart">
+    <view wx:if="{{chooseUnit==null || chooseUnit=='' || chooseUnit < 1}}"
+     class="confirmButtonDisable">
+      确定
+    </view>
+    <view wx:else class="confirmButtonAble" bindtap="sellSubmit">
+      确定
+    </view>
   </view>
- 
+  
     
 </view>
