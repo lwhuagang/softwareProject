@@ -1,4 +1,13 @@
 // pages/buyIn/buyIn.js
+const app = getApp();
+let {
+  getFund,
+  getFundPosition,
+  getFundRank,
+  getFundDetail,
+  getAllFund,
+  getHotFund,
+} = require("../../api/getFoundation.js")
 Page({
 
   /**
@@ -6,8 +15,11 @@ Page({
    */
   data: {
     fundCode:0,
+    fundInfo:{},//基金详情
+    buyMin:null,
+    money:null,
+    shortCutList:[2000,3000,5000]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -16,9 +28,43 @@ Page({
       console.log("买入===>",fundCode);
       this.setData({
         fundCode:fundCode
-      })
+      });
+      this.loadFundDetail(function(){
+      });
   },
-
+  loadFundDetail:function(callback) {
+    var that = this;
+    getFundDetail(
+      {
+        code:this.data.fundCode,
+        token:"atTPd9c8sA"
+      },
+      res=>{
+        this.setData({
+          fundInfo:res.data.data,
+          buyMin: parseInt(res.data.data.buyMin)
+        });    
+      }
+    );
+    ;//同步不知道怎么搞，只好人为设置定时器了
+  },
+  cancel:function(){
+    this.setData({
+      money:null
+    })
+  },
+  shortCut:function(e) {
+    console.log(e)
+    this.setData({
+      money:parseInt(e.currentTarget.dataset.item)//wxml中用了data-item
+    })
+  },
+  buySubmit:function(){
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      content:"这里是确认买入函数，暂时还没有调用后端接口，请耐心等待"
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,5 +1,50 @@
 <!--pages/buyIn/buyIn.wxml-->
+<wxs src="../../utils/addmul.wxs" module="tool"/>
 <naviBar title="买入"></naviBar>
 <view class="container">
-  买入{{fundCode}}
+  <view class="fundName">
+    {{fundInfo.name}}
+  </view>
+  <view class="buyPart">
+    <view class="buyTitle">
+      <view class="buyNote">买入金额</view>
+      <navigator class="toDealRule" url="/pages/dealRule/dealRule">交易规则</navigator>
+    </view>
+    <view class="valPart">
+      <view class="inputPart">
+        <image src="/image/RMB.png" style="height:60rpx" mode="heightFix"></image>
+        <input class="inputSubPart" placeholder="最低买入{{tool.toFix2(fundInfo.buyMin)}}元 " type="number" value="{{money}}" model:value="{{money}}" style="font-size:200%" placeholder-style="font-size:medium"/>
+        <view class="cancelPart" bindtap="cancel">
+          <image wx:if="{{money!=null && money!=''}}" src="/image/delete.png" style="height:40rpx;" mode="heightFix" bindtap="cancel"/>
+        </view>
+      </view>
+      <view class="shortCutPart">
+        <view class="shortCut" wx:for="{{shortCutList}}"wx:for-item="val" data-item="{{val}}" bindtap="shortCut" >{{val}}元</view>
+      </view>
+      <block wx:if="{{money==null || money==''}}">
+        <view class="bottomNote">
+          <text>买入费率</text>
+          <text style="text-decoration-line: line-through;">{{fundInfo.buySourceRate}}%</text>
+          <text style="color:#f46443;margin-left:10rpx;">{{fundInfo.buyRate}}%</text>
+          <text>,预计xx月xx日(星期x)以xx月xx日(星期x)净值确认份额(卖出手续费详见交易规则)</text>
+        </view>
+      </block>
+      <block wx:elif="{{buyMin!=null && money<buyMin}}">
+        <view class="bottomNote buyMinWarn">最低买入{{tool.toFix2(buyMin)}}元</view>
+      </block>
+      <block wx:else>
+        <view class="bottomNote">
+          <text>估算买入费用{{tool.toFix2(money*fundInfo.buyRate/100)}}元,预计xx月xx日(星期x)以xx月xx日(星期x)净值确认份额(卖出手续费详见交易规则)</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+<view class="confirmPart">
+  <view wx:if="{{money==null || money=='' || buyMin==null || money<buyMin}}" class="confirmButtonDisable">
+    确定
+  </view>
+  <view wx:else class="confirmButtonAble" bindtap="buySubmit">
+    确定
+  </view>
 </view>
