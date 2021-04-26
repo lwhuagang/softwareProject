@@ -1,1 +1,29 @@
+<wxs src="../../utils/util.wxs" module="tool" />
+<wxs module="filters" src="../../utils/addmul.wxs"></wxs>
 <naviBar title="自选" showBack="{{false}}"></naviBar>
+<view class="container">
+  <view class="bluePad"></view>
+  <view class="blueWave"></view>
+  <view class="headPart">
+    <view class="holdHeadItems">
+      <!-- 成立以来涨跌幅 -->
+      <view class="holdHeadLeftItem">
+        <view class="itemTitle">基金名称</view>
+      </view>
+      <!-- 日涨跌幅 -->
+      <view class="holdHeadMiddleItem">
+        <view class="itemTitle">净值</view>
+      </view>
+      <!-- 净值 -->
+      <view class="holdHeadRightItem">
+        <view class="itemTitle">估值</view>
+      </view>
+    </view>
+  </view>
+  <view class="listPart">
+    <block wx:for="{{funds.length}}">
+      <selfSelectFundGeneral fundInfo="{{funds[index]}}"></selfSelectFundGeneral>
+      <view class="divLine"></view>
+    </block>
+  </view>
+</view>

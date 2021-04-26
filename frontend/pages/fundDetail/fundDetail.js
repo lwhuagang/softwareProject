@@ -342,10 +342,28 @@ drawPostionPie:function(canvas, width, height, dpr) {
 
   },
   selfSelect:function() {
-    wx.showModal({
-      title:"加自选",
-      content:"这里填写加自选的逻辑,见selfSelect函数",
-      cancelColor: 'cancelColor',
+    wx.request({
+      url: 'http://localhost:8080/fund/addWatch',
+      method:"POST",
+      data:{
+        email: app.globalData.userInfo.email,
+        fundCode: this.data.fundCode
+      },
+      success:res=>{
+        if (res.statusCode == "200") {
+          wx.showModal({
+            title:"添加成功",
+            content:"您已成功关注该基金!",
+            cancelColor: 'cancelColor',
+          })
+        } else{
+          wx.showModal({
+            title:"添加失败",
+            content:"您已经关注该基金或该基金不在数据库中，请检查您的操作！",
+            cancelColor: 'cancelColor',
+          })
+        }
+      }
     })
   },
   test:function() {

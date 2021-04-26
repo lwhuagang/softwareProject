@@ -1,4 +1,4 @@
-/* components/fundGeneral/fundGeneral.wxss */
+/* components/selfSelectFundGeneral/selfSelectFundGeneral.wxss *//* components/fundGeneral/fundGeneral.wxss */
 .container{
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@
   justify-content: center;
   padding-left: 25rpx;
   /* border: 1rpx solid red; */
-  width: 350rpx;
+  width: 340rpx;
 }
 .fundName {
   overflow:hidden; 
@@ -44,14 +44,15 @@
   justify-content: space-between;
 }
 .netWorth {
+  color: #646262;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   margin-right: 20rpx;
 }
 .netDate {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-right: 20rpx;
   align-items: center;
   color: #c6c6c6;
@@ -72,10 +73,16 @@
   color: red;
 }
 .greenRate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: green;
   font-size: smaller;
 }
 .redRate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: red;
   font-size: smaller;
 }

@@ -1,0 +1,31 @@
+<!-- 基金缩略信息条 -->
+<!-- 注意，要根据涨跌情况选用红色或者绿色来渲染 -->
+<wxs src="../../utils/util.wxs" module="tool" />
+<wxs module="filters" src="../../utils/addmul.wxs"></wxs>
+<view class="container">
+  <navigator class="fundInfoBlock" url="/pages/fundDetail/fundDetail?fundCode={{fundInfo.code}}">
+    <view class="fundNameAndCode">
+      <view class="fundName">{{fundInfo.name}}</view>
+      <view class="fundCode">{{fundInfo.code}}</view>
+    </view>
+    <!-- 基金金额与昨日收益 -->
+    <view class="fundMoneyAndLastProfit">
+      <view class="netWorth">{{filters.toFix2(fundInfo.netWorth)}}</view>
+        <block wx:if="{{fundInfo.holdProfitRate < 0}}">
+          <view class="greenRate">{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
+        </block>
+        <block wx:else>
+          <view class="redRate">+{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
+        </block>
+    </view>
+    <view class="fundProfitAndRate">
+        <view class="netWorth">{{filters.toFix2(fundInfo.expectWorth)}}</view>
+        <block wx:if="{{fundInfo.holdProfitRate < 0}}">
+          <view class="greenRate">{{filters.toFix2(fundInfo.expectGrowth)}}%</view>
+        </block>
+        <block wx:else>
+          <view class="redRate">+{{filters.toFix2(fundInfo.expectGrowth)}}%</view>
+        </block>
+    </view>
+  </navigator>
+</view>

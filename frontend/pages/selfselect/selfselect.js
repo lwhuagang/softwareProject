@@ -1,18 +1,33 @@
 // pages/selfselect/selfselect.js
+const app = getApp();
+let {
+  getSelfSelect
+} = require("../../api/getUserFunds.js");
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    "funds": []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log("获得selfSelect===>");
+    getSelfSelect(
+      app.globalData.userInfo.email,
+      res => {
+        this.setData({
+          funds: res.data.obj.funds
+        });
+        console.log("获得selfSelect===>");
+        console.log(res);
+      }
+    )
   },
 
   /**
@@ -26,7 +41,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    getSelfSelect(
+      app.globalData.userInfo.email,
+      res => {
+        this.setData({
+          funds: res.data.obj.funds
+        });
+        console.log("获得selfSelect===>");
+        console.log(res);
+      }
+    )
   },
 
   /**

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "naviBar":"../../components/naviBar/naviBar"
+    "naviBar":"../../components/naviBar/naviBar",
+    "selfSelectFundGeneral":"../../components/selfSelectFundGeneral/selfSelectFundGeneral"
   }
 }
