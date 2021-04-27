@@ -1,0 +1,65 @@
+/* components/blankFundGeneral/blankFundGeneral.wxss *//* components/fundGeneral/fundGeneral.wxss */
+.container{
+  /* border: 1rpx solid green; */
+  margin: 10rpx 10rpx;
+}
+.fundInfoBlock{
+  display: flex;
+  width: 100%;
+}
+.fundNameAndCode {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5rpx;
+  /* border: 1rpx solid red; */
+  /* width: 58%; */
+}
+.fundName {
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-size: 35rpx;
+  /* 强制不换行，多的用省略号 */
+}
+.fundCode {
+  color: #c6c6c6;
+}
+.fundNet {
+  /* border: 1rpx solid red; */
+  width: 20%;
+  border-left: 1rpx solid #dcdcdc;
+  padding-left: 3rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.netWorth {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 20rpx;
+}
+.netDate {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20rpx;
+  align-items: center;
+  color: #c6c6c6;
+  font-size: 30rpx;
+}
+.fundGrowth{
+  /* border: 1rpx solid red; */
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.greenRate {
+  color: green;
+}
+.redRate {
+  color: red;
+}

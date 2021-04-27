@@ -1,5 +1,5 @@
 <!--pages/fundDetail/fundDetail.wxml-->
-<wxs src="../../utils/util.wxs" module="tool"/>
+<wxs src="../../utils/util.wxs" module="tool" />
 <naviBar title="基金详情"></naviBar>
 <view class="container">
   <view class="bluePad"></view>
@@ -13,31 +13,31 @@
     <view class="ratios">
       <!-- 成立以来涨跌幅 -->
       <view class="totalGrowthRatio">
-          <view class="totalGrowth">
-            <block wx:if="{{fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]>=fundInfo.netWorthData[0][1]}}">
-              <view class="redTotalGrowth">
-                +{{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
-              </view>
-            </block>
-            <block wx:else>
-              <view class="greenTotalGrowth">
-                {{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
-              </view>
-            </block>
-          </view>
-          <view class="note1">成立以来涨跌幅</view>
+        <view class="totalGrowth">
+          <block wx:if="{{fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]>=fundInfo.netWorthData[0][1]}}">
+            <view class="redTotalGrowth">
+              +{{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
+            </view>
+          </block>
+          <block wx:else>
+            <view class="greenTotalGrowth">
+              {{tool.my_toFix((fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]-fundInfo.netWorthData[0][1])/(fundInfo.netWorthData[0][1])*100,2)}}%
+            </view>
+          </block>
+        </view>
+        <view class="note1">成立以来涨跌幅</view>
       </view>
       <!-- 日涨跌幅 -->
       <view class="dayGrowthRatio">
-          <view class="dayGrowth">
-            <block wx:if="{{fundInfo.dayGrowth[0]=='-'}}">
-              <view class="greenDayGrowth">{{fundInfo.dayGrowth}}%</view>
-            </block>
-            <block wx:else>
-              <view class="redDayGrowth">{{fundInfo.dayGrowth}}%</view>
-            </block>
-          </view>
-          <view class="note2">日涨跌幅</view>
+        <view class="dayGrowth">
+          <block wx:if="{{fundInfo.dayGrowth[0]=='-'}}">
+            <view class="greenDayGrowth">{{fundInfo.dayGrowth}}%</view>
+          </block>
+          <block wx:else>
+            <view class="redDayGrowth">{{fundInfo.dayGrowth}}%</view>
+          </block>
+        </view>
+        <view class="note2">日涨跌幅</view>
       </view>
       <!-- 净值 -->
       <view class="netWorthPart">
@@ -48,60 +48,77 @@
   </view>
   <!-- 走势图 -->
   <view class="linePart">
-    <ec-canvas wx:if="{{loadLineOK}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line }}" force-use-old-canvas="true"></ec-canvas>
+    <ec-canvas wx:if="{{loadLineOK}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line }}"
+      force-use-old-canvas="true"></ec-canvas>
   </view>
   <!-- 涨幅数据 -->
   <view class="growthData">
-      <view class="growthTitle">阶段涨幅</view>
-      <view class="divLine"></view>
-      <view class="growthLegend">
-        <view class="growthTimeNote">周期</view>
-        <view class="growthNote">涨跌幅</view>
-      </view>
-      <view class="growthItem lastWeek">
-        <view class="growthTime">近1周</view>
-        <view class="growthValue" wx:if="{{fundInfo.lastWeekGrowth==''}}" style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
-        <view class="growthValue" wx:elif="{{fundInfo.lastWeekGrowth[0]=='-'}}" style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastWeekGrowth}}%</view>
-        <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">{{fundInfo.lastWeekGrowth}}%</view>
-      </view>
-      <view class="divLine"></view>
-      <view class="growthItem lastMonth">
-        <view class="growthTime">近1月</view>
-        <view class="growthValue" wx:if="{{fundInfo.lastMonthGrowth==''}}" style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
-        <view class="growthValue" wx:elif="{{fundInfo.lastMonthGrowth[0]=='-'}}" style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastMonthGrowth}}%</view>
-        <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">{{fundInfo.lastMonthGrowth}}%</view>
-      </view>
-      <view class="divLine"></view>
-      <view class="growthItem lastThreeMonths">
-        <view class="growthTime">近3月</view>
-        <view class="growthValue" wx:if="{{fundInfo.lastThreeMonthsGrowth==''}}" style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
-        <view class="growthValue" wx:elif="{{fundInfo.lastThreeMonthsGrowth[0]=='-'}}" style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastThreeMonthsGrowth}}%</view>
-        <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">{{fundInfo.lastThreeMonthsGrowth}}%</view>
-      </view>
-      <view class="divLine"></view>
-      <view class="growthItem lastSixMonths">
-        <view class="growthTime">近6月</view>
-        <view class="growthValue" wx:if="{{fundInfo.lastSixMonthsGrowth==''}}" style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
-        <view class="growthValue" wx:elif="{{fundInfo.lastSixMonthsGrowth[0]=='-'}}" style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastSixMonthsGrowth}}%</view>
-        <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">{{fundInfo.lastSixMonthsGrowth}}%</view>
-      </view>
-      <view class="divLine"></view>
-      <view class="growthItem lastYear">
-        <view class="growthTime">近1年</view>
-        <view class="growthValue" wx:if="{{fundInfo.lastYearGrowth==''}}" style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
-        <view class="growthValue" wx:elif="{{fundInfo.lastYearGrowth[0]=='-'}}" style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastYearGrowth}}%</view>
-        <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">{{fundInfo.lastYearGrowth}}%</view>
-      </view>
+    <view class="growthTitle">阶段涨幅</view>
+    <view class="divLine"></view>
+    <view class="growthLegend">
+      <view class="growthTimeNote">周期</view>
+      <view class="growthNote">涨跌幅</view>
+    </view>
+    <view class="growthItem lastWeek">
+      <view class="growthTime">近1周</view>
+      <view class="growthValue" wx:if="{{fundInfo.lastWeekGrowth==''}}"
+        style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
+      <view class="growthValue" wx:elif="{{fundInfo.lastWeekGrowth[0]=='-'}}"
+        style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastWeekGrowth}}%</view>
+      <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">
+        {{fundInfo.lastWeekGrowth}}%</view>
+    </view>
+    <view class="divLine"></view>
+    <view class="growthItem lastMonth">
+      <view class="growthTime">近1月</view>
+      <view class="growthValue" wx:if="{{fundInfo.lastMonthGrowth==''}}"
+        style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
+      <view class="growthValue" wx:elif="{{fundInfo.lastMonthGrowth[0]=='-'}}"
+        style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastMonthGrowth}}%</view>
+      <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">
+        {{fundInfo.lastMonthGrowth}}%</view>
+    </view>
+    <view class="divLine"></view>
+    <view class="growthItem lastThreeMonths">
+      <view class="growthTime">近3月</view>
+      <view class="growthValue" wx:if="{{fundInfo.lastThreeMonthsGrowth==''}}"
+        style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
+      <view class="growthValue" wx:elif="{{fundInfo.lastThreeMonthsGrowth[0]=='-'}}"
+        style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastThreeMonthsGrowth}}%</view>
+      <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">
+        {{fundInfo.lastThreeMonthsGrowth}}%</view>
+    </view>
+    <view class="divLine"></view>
+    <view class="growthItem lastSixMonths">
+      <view class="growthTime">近6月</view>
+      <view class="growthValue" wx:if="{{fundInfo.lastSixMonthsGrowth==''}}"
+        style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
+      <view class="growthValue" wx:elif="{{fundInfo.lastSixMonthsGrowth[0]=='-'}}"
+        style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastSixMonthsGrowth}}%</view>
+      <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">
+        {{fundInfo.lastSixMonthsGrowth}}%</view>
+    </view>
+    <view class="divLine"></view>
+    <view class="growthItem lastYear">
+      <view class="growthTime">近1年</view>
+      <view class="growthValue" wx:if="{{fundInfo.lastYearGrowth==''}}"
+        style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
+      <view class="growthValue" wx:elif="{{fundInfo.lastYearGrowth[0]=='-'}}"
+        style="width:50%;box-sizing:border-box;text-align:center;color:green">{{fundInfo.lastYearGrowth}}%</view>
+      <view class="growthValue" wx:else style="width:50%;box-sizing:border-box;text-align:center;color:red">
+        {{fundInfo.lastYearGrowth}}%</view>
+    </view>
   </view>
   <!-- 持仓详情 -->
   <view class="positionPart">
     <view class="positionNote">基金持仓</view>
-      <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}" force-use-old-canvas="true"></ec-canvas>
-      <view class="total" wx:if="{{fundPosition!=null}}">
-        <view class="totalNum">{{fundPosition.total}}亿元</view>
-        <view class="totalNote">净资产</view>
-        <view class="totalDate">{{fundPosition.date}}</view>
-      </view>
+    <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}"
+      force-use-old-canvas="true"></ec-canvas>
+    <view class="total" wx:if="{{fundPosition!=null}}">
+      <view class="totalNum">{{fundPosition.total}}亿元</view>
+      <view class="totalNote">净资产</view>
+      <view class="totalDate">{{fundPosition.date}}</view>
+    </view>
   </view>
   <view class="stockPart" wx:if="{{fundPosition!=null}}">
     <view class="stockNote">
@@ -121,7 +138,8 @@
         <view class="stockNum">{{fundPosition.stockList[i][3]}}</view>
       </view>
     </view>
-    <navigator class="positionDetail" url="/pages/positionDetail/positionDetail?fundCode={{fundInfo.code}}">查看完整持仓信息</navigator>
+    <navigator class="positionDetail" url="/pages/positionDetail/positionDetail?fundCode={{fundInfo.code}}">查看完整持仓信息
+    </navigator>
   </view>
   <!-- 基金档案 -->
   <view class="docPart">
@@ -147,12 +165,17 @@
   底部功能栏区
 -->
 <view class="bottomBar">
-  <view class="bottomButton" bindtap="selfSelect">
-    <view class="selfSelect">自选</view>
-  </view>
+  <block wx:if="{{isSelfSelect == false}}">
+    <view class="bottomButton" bindtap="selfSelect">
+      <view class="selfSelect">自选</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="bottomButton" bindtap="deleteSelfSelect">
+      <view class="selfSelect">取消自选</view>
+    </view>
+  </block>
   <navigator class="bottomButton" url="/pages/buyIn/buyIn?fundCode={{fundCode}}&fundName={{fundInfo.name}}">
     <view class="buyIn">买入</view>
   </navigator>
 </view>
-
-

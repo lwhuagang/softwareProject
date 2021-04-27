@@ -8,10 +8,10 @@
       <view class="fundName">{{fundInfo.name}}</view>
       <view class="fundCode">{{fundInfo.code}}</view>
     </view>
-    <!-- 基金金额与昨日收益 -->
+    <!-- 净值 与 估值-->
     <view class="fundMoneyAndLastProfit">
       <view class="netWorth">{{filters.toFix2(fundInfo.netWorth)}}</view>
-        <block wx:if="{{fundInfo.holdProfitRate < 0}}">
+        <block wx:if="{{fundInfo.dayGrowth[0] == '-'}}">
           <view class="greenRate">{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
         </block>
         <block wx:else>
@@ -20,7 +20,7 @@
     </view>
     <view class="fundProfitAndRate">
         <view class="netWorth">{{filters.toFix2(fundInfo.expectWorth)}}</view>
-        <block wx:if="{{fundInfo.holdProfitRate < 0}}">
+        <block wx:if="{{fundInfo.expectGrowth[0] == '-'}}">
           <view class="greenRate">{{filters.toFix2(fundInfo.expectGrowth)}}%</view>
         </block>
         <block wx:else>

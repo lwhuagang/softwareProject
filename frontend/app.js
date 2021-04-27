@@ -16,8 +16,8 @@ App({
   globalData: {
     userInfo: {
       email:"18231041@buaa.edu.cn",
-      password:"@hqy20000724",
-      nickname:"",
+      password:"",
+      nickname:"HQY今天有bug吗",
       money:0,
       pic_url:""
     },

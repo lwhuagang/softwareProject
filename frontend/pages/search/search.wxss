@@ -1,1 +1,112 @@
 /* pages/search/search.wxss */
+
+.search-bar {
+  position: relative;
+  padding: 8px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #EFEFF4;
+  border-top: 1rpx solid #D7D6DC;
+  border-bottom: 1rpx solid #D7D6DC;
+}
+.search-bar_icon {
+  position: absolute;
+  left: 3px;
+  top: 2px;
+}
+.search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+          flex: auto;
+  border-radius: 10px;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E6EA;
+}
+.search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+.search-bar_cancel {
+  margin-left: 10px;
+  line-height: 28px;
+  color: #525252;
+  white-space: nowrap;
+}
+
+.hotPart{
+  border: 1rpx solid #dcdcdc;
+  border-radius: 10rpx;
+  margin: 5rpx 5rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:stretch;
+  background: white;
+  border-radius: 5rpx;
+}
+.divLine{
+  height: 1rpx;
+  width: 100%;
+  background: #dcdcdc;
+  margin-top: 3rpx;
+  /* margin-bottom: 3rpx; */
+}
+
+.fundName {
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  /* 强制不换行，多的用省略号 */
+}
+
+
+.history {
+  background-color: white;
+  padding: 4%;
+}
+ 
+.history_title {
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  color: #a8a7a7fa;
+  align-items: center;
+}
+ 
+.history_text {
+  padding: 4% 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+ 
+.history_text>text {
+  background-color: #f7f7f7;
+  padding: 1% 3%;
+  margin: 2%;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+}
+ 
+.history_text>text:first-child{
+  margin-left: 0;
+}
+ 
+.none{
+  margin-top: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

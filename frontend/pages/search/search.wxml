@@ -1,1 +1,33 @@
-<naviBar title="搜索"></naviBar>
+<view>
+
+  <naviBar title="搜索"></naviBar>
+  <!-- 搜索框 -->
+  <view class="search-bar">
+    <view class="search-bar__form">
+      <!-- 搜索框 -->
+      <view class="search-bar__box">
+        <icon class="search-bar_icon" type="search" size="22"></icon>
+        <input type="text" class="search-bar__input" bindinput="bindKeyInput" placeholder="{{inputValue}}"/>
+      </view>
+    </view>
+    <!-- 搜索按钮,调用搜索查询方法 -->
+    <text class="search-bar_cancel" bindtap="search">搜索</text>
+  </view>
+  <view class="history" wx:if="{{true}}">
+    <view class="history_title">
+      <text>历史搜索</text>
+      <image src="../../image/delete.png" mode="widthFix" style="width:5%;" bindtap="cleanhistory"></image>
+    </view>
+    <view class="history_text">
+      <text wx:for="{{newArray}}" wx:key="key" data-text="{{item}}" bindtap="textfz">{{item}}</text>
+    </view>
+  </view>
+  
+  <view class="hotPart">
+    <block wx:for="{{funds.length}}">
+      <blankFundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}"></blankFundGeneral>
+      <view class="divLine"></view>
+    </block>
+  </view>
+  
+</view>
