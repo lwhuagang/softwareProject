@@ -145,7 +145,7 @@ public class UserController {
             fund.setHold(fund.getHold() + fund.getYesProfit()); // 总持有金额
             fund.setRate(fund.getHoldProfit() / fund.getHold() * 100); //持有收益率 单位百分比
             totalHold += fund.getHold(); //累加用户总持有金额
-        }
+    }
         // 更新user类中的持有收益和总收益(昨日收益总和)
         ret.user.setHoldProfit(user.getHoldProfit() + totalProfit);
         ret.user.setTotalProfit(user.getTotalProfit() + totalProfit);
@@ -159,7 +159,6 @@ public class UserController {
         for (Fund fund: ret.funds) {
             holdService.updateHoldHH(userEmail, fund.getFundCode(), fund.getHold(), fund.getHoldProfit());
         }
-
         return new Result(200,ret,"根据用户邮箱计算该用户当日的基金收益信息");
     }
 
