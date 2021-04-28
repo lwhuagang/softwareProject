@@ -1,22 +1,20 @@
 package com.software_project.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.extension.api.R;
 import com.software_project.pojo.Attention;
 import com.software_project.pojo.Fund;
-import com.software_project.pojo.User;
 import com.software_project.service.AttentionService;
 import com.software_project.service.FundService;
-import lombok.Data;
+import com.software_project.vo.Param_queryByParams;
+import com.software_project.vo.Param_searchFund;
+import com.software_project.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RequestMapping("fund")
@@ -94,22 +92,6 @@ public class FundController {
     }
 
     /**
-     * 筛选条件的参数包装类
-     */
-    static class Param_queryByParams {
-        public String[] fundType;
-        public String sort;
-
-        @Override
-        public String toString() {
-            return "{" +
-                    "fundType='" + Arrays.toString(fundType) + '\'' +
-                    ", sort='" + sort + '\'' +
-                    '}';
-        }
-    }
-
-    /**
      * @param params 传入参数code或者是name
      * @return 返回按name模糊查询基金列表or按code精准查询基金
      */
@@ -130,12 +112,4 @@ public class FundController {
         }
     }
 
-    /**
-     * 筛选条件的参数包装类
-     */
-    @Data
-    static class Param_searchFund {
-        public int code;
-        public String name;
-    }
 }

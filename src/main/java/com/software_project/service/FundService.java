@@ -1,6 +1,5 @@
 package com.software_project.service;
 
-import com.software_project.controller.Result;
 import com.software_project.pojo.Fund;
 
 import java.util.List;

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.software_project.dao.OperationDAO">
+    <insert id="insertDeal">
+        insert into soft.record values (#{userEmail},#{fundCode},#{type},#{time},#{flag},#{count})
+    </insert>
+
+    <update id="subMoney">
+        update soft.user set money = money - #{money} where email = #{email}
+    </update>
+</mapper>

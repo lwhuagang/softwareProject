@@ -3,9 +3,7 @@ package com.software_project.dao;
 import com.software_project.pojo.Attention;
 import com.software_project.pojo.Fund;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
-import sun.java2d.pipe.AAShapePipe;
 
 import java.util.List;
 

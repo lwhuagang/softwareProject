@@ -1,7 +1,6 @@
 package com.software_project.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.software_project.pojo.Fund;
 import com.software_project.pojo.User;
@@ -10,8 +9,9 @@ import com.software_project.service.FundService;
 import com.software_project.service.HoldService;
 import com.software_project.service.UserService;
 import com.software_project.utils.MD5Utils;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.software_project.vo.Param_register;
+import com.software_project.vo.Result;
+import com.software_project.vo.Ret_HavingList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -82,14 +82,6 @@ public class UserController {
         }
     }
 
-
-    /**
-     * register的参 数包装类
-     */
-    static class Param_register{
-        public User user;
-        public String captcha;
-    }
 
     /**
      * 输入登录账号和密码,尝试进行登录
@@ -182,16 +174,6 @@ public class UserController {
         List<Fund> funds = attentionService.getWatchList(email);
         Ret_HavingList ret = new Ret_HavingList(user, funds);
         return new Result(200, ret, "根据用户邮箱获取用户和该用户关注的所有基金");
-    }
-
-    /**
-     * register的参 数包装类
-     */
-    @AllArgsConstructor
-    @Data
-    static class Ret_HavingList{
-        public User user;
-        public List<Fund> funds;
     }
 
     /**

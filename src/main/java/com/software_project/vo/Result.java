@@ -1,4 +1,4 @@
-package com.software_project.controller;
+package com.software_project.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
