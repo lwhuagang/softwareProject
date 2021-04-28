@@ -2,6 +2,8 @@ package com.software_project.service;
 
 import com.software_project.pojo.Record;
 
+import java.util.List;
+
 public interface OperationService {
     /**
      * 保存交易记录,在当天晚上统一处理
@@ -10,9 +12,8 @@ public interface OperationService {
     void insertDeal(Record record);
 
     /**
-     * 将用户可用金额减去其买入金额
-     * @param email 用户id
-     * @param money 用户买入金额
+     * 获取所有没有处理的交易记录,以便后续更新
+     * @return 交易记录列表
      */
-    void subMoney(String email,double money);
+    List<Record> getAllUndoRecord();
 }

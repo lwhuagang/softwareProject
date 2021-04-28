@@ -19,4 +19,5 @@ public class Record {
     private Date time;
     private boolean flag; //true 该交易已处理,false 未处理
     private double count;
+    private boolean flagTime; //true 该时间已经加了12小时,false 未加12小时
 }

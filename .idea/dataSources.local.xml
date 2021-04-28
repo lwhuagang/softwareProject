@@ -11,7 +11,10 @@
       <user-name>root</user-name>
       <schema-mapping>
         <introspection-scope>
-          <node kind="schema" qname="soft" />
+          <node kind="schema">
+            <name qname="FUNDS" />
+            <name qname="soft" />
+          </node>
         </introspection-scope>
       </schema-mapping>
     </data-source>

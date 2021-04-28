@@ -5,6 +5,11 @@
         update soft.user set buyMoney = #{buyMoney}, holdProfit = #{holdProfit}, totalProfit = #{totalProfit}
         where  email = #{email}
     </update>
+    <update id="updateUser">
+        update soft.user set email = #{email},password = #{password},nickname = #{nickname}
+        ,money = #{money},picUrl=#{picUrl},admin = #{admin},holdProfit = #{holdProfit},totalProfit=#{totalProfit}
+        ,buyMoney = #{buyMoney},initMoney = #{initMoney},dayProfit = #{dayProfit},holdCost = #{holdCost}
+    </update>
     <!--根据邮箱找到user-->
     <select id="findUserByEmail" parameterType="string" resultType="com.software_project.pojo.User">
         select * from soft.user where email = #{email}
@@ -12,7 +17,7 @@
 
     <!--向用户表中插入新用户-->
     <insert id="insertUser" parameterType="com.software_project.pojo.User">
-        insert into soft.user values (#{email},#{password},#{nickname},#{money},#{pic_url})
+        insert into soft.user values (#{email},#{password},#{nickname},#{money},#{picUrl},#{admin},#{holdProfit},#{totalProfit},#{buyMoney},#{initMoney},#{dayProfit},#{holdCost})
     </insert>
 
 </mapper>

@@ -1,5 +1,7 @@
 package com.software_project.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.software_project.pojo.Fund;
 import com.software_project.pojo.Hold;
 import com.software_project.pojo.Record;
@@ -13,11 +15,13 @@ import com.software_project.vo.Param_Sell;
 import com.software_project.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("fundOperation")
@@ -102,8 +106,41 @@ public class OperationController {
      * @return 返回是否更新成功
      */
     @GetMapping("update")
-    public static Result update(){
+    public Result update(){
+        List<Record> records = operationService.getAllUndoRecord();
+        for (Record record : records) {
+            User user = userService.findUserByEmail(record.getUserEmail());
+            Fund fund = fundService.searchFundByCode(Integer.parseInt(record.getFundCode()));
+            if (!record.isType()){
+                // 判断交易时间在下午三点前还是三点后
+                Date time = record.getTime();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(time);
+                int hour = cal.get(Calendar.HOUR_OF_DAY);
+                if (hour >= 15){
+                    // 减去12小时,在明天更新时便不会被跳过.
+                    record.setFlagTime(true);
+                    record.setTime(addDateMinut(time,-12));
+                    // 更新回record表中
+                    operationService.insertDeal(record);
+                    continue;
+                }
+                // 买入操作更新
+                double buyMoney = record.getCount();
+                double buyIn_fee = buyMoney * fund.getBuyRate(); // 以当前买入费率为准
+                double net_buyMoney = buyMoney - buyIn_fee;
+                // 获取当日净值
+                RestTemplate restTemplate = new RestTemplate();
+                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + record.getFundCode(), String.class);
 
+                double buyIn_share = net_buyMoney/
+            }
+            else {
+                // 卖出操作更新
+
+            }
+        }
+        return null;
     }
 
     public static String addDateMinut(int hour){
@@ -116,5 +153,15 @@ public class OperationController {
         date = cal.getTime();
         System.out.println("after:" + sdf.format(date));  //显示更新后的日期
         return sdf.format(date);
+    }
+
+    public static Date addDateMinut(Date date, int hour){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.HOUR, hour);// 24小时制
+        date = cal.getTime();
+        System.out.println("after:" + sdf.format(date));  //显示更新后的日期
+        return date;
     }
 }

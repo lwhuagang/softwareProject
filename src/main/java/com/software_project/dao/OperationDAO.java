@@ -4,6 +4,8 @@ import com.software_project.pojo.Record;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface OperationDAO {
@@ -13,9 +15,5 @@ public interface OperationDAO {
      */
     void insertDeal(Record record);
 
-
-    /**
-     * @param money 用户买入该基金金额(未扣除手续费)
-     */
-    void subMoney(String email, double money);
+    List<Record> getAllUndoRecord();
 }

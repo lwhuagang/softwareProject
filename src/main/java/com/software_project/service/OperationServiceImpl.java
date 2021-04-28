@@ -5,6 +5,8 @@ import com.software_project.pojo.Record;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OperationServiceImpl implements OperationService{
 
@@ -17,7 +19,8 @@ public class OperationServiceImpl implements OperationService{
     }
 
     @Override
-    public void subMoney(String email, double money) {
-        operationDAO.subMoney(email,money);
+    public List<Record> getAllUndoRecord() {
+        return operationDAO.getAllUndoRecord();
     }
+
 }

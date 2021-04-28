@@ -4,8 +4,8 @@
     <insert id="insertDeal">
         insert into soft.record values (#{userEmail},#{fundCode},#{type},#{time},#{flag},#{count})
     </insert>
-
-    <update id="subMoney">
-        update soft.user set money = money - #{money} where email = #{email}
-    </update>
+    <select id="getAllUndoRecord" resultType="com.software_project.pojo.Record">
+        /*较为耗时*/
+        select * from soft.record where flag = 0
+    </select>
 </mapper>
