@@ -1,7 +1,7 @@
 <wxs src="../../utils/util.wxs" module="tool" />
 <wxs module="filters" src="../../utils/addmul.wxs"></wxs>
 <naviBar title="持有" showBack="{{false}}"></naviBar>
-<view class="container">
+<view class="container" wx:if="{{isLogin}}">
   <view class="bluePad"></view>
   <view class="blueWave"></view>
   <view class="fundCard">
