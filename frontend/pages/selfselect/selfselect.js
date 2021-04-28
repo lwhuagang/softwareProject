@@ -10,24 +10,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "funds": []
+    "funds": [],
+    isLogin:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log("获得selfSelect===>");
-    getSelfSelect(
-      app.globalData.userInfo.email,
-      res => {
-        this.setData({
-          funds: res.data.obj.funds
-        });
-        console.log("获得selfSelect===>");
-        console.log(res);
-      }
-    )
+    this.setData({
+      isLogin:app.globalData.isLogin
+    })
+    if(app.globalData.isLogin==false) {
+      wx.showModal({
+        cancelColor: 'cancelColor',
+        title:'请先登录',
+        content:'点击确定跳转到登录界面',
+        success(res) {
+          if(res.confirm) {
+           wx.switchTab({
+             url: '/pages/mine/mine',
+           })
+          } else if(res.cancel) {
+            wx.switchTab({
+              url: '/pages/index/index',
+            })
+          }
+        }
+      })
+    } else {
+      console.log("获得selfSelect===>");
+      getSelfSelect(
+        app.globalData.userInfo.email,
+        res => {
+          this.setData({
+            funds: res.data.obj.funds
+          });
+          console.log("获得selfSelect===>");
+          console.log(res);
+        }
+      )
+    }
   },
 
   /**
@@ -41,16 +64,39 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    getSelfSelect(
-      app.globalData.userInfo.email,
-      res => {
-        this.setData({
-          funds: res.data.obj.funds
-        });
-        console.log("获得selfSelect===>");
-        console.log(res);
-      }
-    )
+    this.setData({
+      isLogin:app.globalData.isLogin
+    })
+    if(app.globalData.isLogin==false) {
+      wx.showModal({
+        cancelColor: 'cancelColor',
+        title:'请先登录',
+        content:'点击确定跳转到登录界面',
+        success(res) {
+          if(res.confirm) {
+           wx.switchTab({
+             url: '/pages/mine/mine',
+           })
+          } else if(res.cancel) {
+            wx.switchTab({
+              url: '/pages/index/index',
+            })
+          }
+        }
+      })
+    } else {
+      getSelfSelect(
+        app.globalData.userInfo.email,
+        res => {
+          this.setData({
+            funds: res.data.obj.funds
+          });
+          console.log("获得selfSelect===>");
+          console.log(res);
+        }
+      )
+    }
+
   },
 
   /**
