@@ -133,7 +133,7 @@ public class OperationController {
                 RestTemplate restTemplate = new RestTemplate();
                 String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + record.getFundCode(), String.class);
 
-                double buyIn_share = net_buyMoney;
+                double buyIn_share = net_buyMoney/
             }
             else {
                 // 卖出操作更新

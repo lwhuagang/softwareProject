@@ -26,6 +26,7 @@ public class Fund {
     private double holdProfit;
     private double yesProfit; // 昨日收益
     private double holdCost;
+    private double share;
     // 计算属性
     private double rate; // 持有收益率
     private double yesRate; // 昨日收益率

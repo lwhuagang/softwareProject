@@ -72,4 +72,9 @@ public class UserServiceImpl implements UserService{
         userDAO.updateUserBHT(email, buyMoney, holdProfit, totalProfit);
     }
 
+    @Override
+    public void updateUser(User user) {
+        userDAO.updateUser(user);
+    }
+
 }

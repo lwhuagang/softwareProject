@@ -4,4 +4,7 @@
     <update id="updateHoldHH" >
         update soft.hold set hold = #{hold}, holdProfit=#{holdProfit} where userEmail = #{email} and fundCode = #{fundCode}
     </update>
+    <select id="getHoldByUserEmailAndFundCode" resultType="com.software_project.pojo.Hold">
+        select * from soft.hold where userEmail = #{email} and fundCode = #{fundCode}
+    </select>
 </mapper>

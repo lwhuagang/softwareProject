@@ -46,4 +46,8 @@ public interface UserService {
     void updateUserBHT(String email, double buyMoney, double holdProfit, double totalProfit);
 
 
+    /**
+     * @param user 待更新用户
+     */
+    void updateUser(User user);
 }
