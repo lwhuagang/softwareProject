@@ -130,7 +130,7 @@ public class UserController {
 
         RestTemplate restTemplate = new RestTemplate();
         for (Fund fund : ret.funds) {
-            // 计算每支基金的昨日收益和昨日收益率, 并更新该用户该基金持有收益和持有收益率
+            // 计算每支基金的昨日收益和昨日收益率,并更新该用户该基金持有收益和持有收益率
             String code = fund.getCode();
             String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=2021-04-01", String.class);
             JSONObject jsonObject = JSON.parseObject(s);
@@ -145,7 +145,7 @@ public class UserController {
             fund.setHold(fund.getHold() + fund.getYesProfit()); // 总持有金额
             fund.setRate(fund.getHoldProfit() / fund.getHold() * 100); //持有收益率 单位百分比
             totalHold += fund.getHold(); //累加用户总持有金额
-    }
+        }
         // 更新user类中的持有收益和总收益(昨日收益总和)
         ret.user.setHoldProfit(user.getHoldProfit() + totalProfit);
         ret.user.setTotalProfit(user.getTotalProfit() + totalProfit);
@@ -159,6 +159,7 @@ public class UserController {
         for (Fund fund: ret.funds) {
             holdService.updateHoldHH(userEmail, fund.getFundCode(), fund.getHold(), fund.getHoldProfit());
         }
+
         return new Result(200,ret,"根据用户邮箱计算该用户当日的基金收益信息");
     }
 
@@ -179,20 +180,7 @@ public class UserController {
     public Result watchList(String email) {
         User user = userService.findUserByEmail(email);
         List<Fund> funds = attentionService.getWatchList(email);
-        // 这里返回的funds应该是从外部接口里面调用获取的基金详细信息
-        // 用fund的code查询基金的详细信息
-        StringBuilder fundCodes = new StringBuilder();
-        for (Fund fund : funds) {
-            fundCodes.append(fund.getCode());
-            fundCodes.append(",");
-        }
-        fundCodes.deleteCharAt(fundCodes.length()-1);
-        System.out.println(fundCodes);
-        String s;
-        RestTemplate restTemplate = new RestTemplate();
-        s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund?token=atTPd9c8sA&code=" + fundCodes, String.class);
-        Object parse = JSONObject.parse(s);
-        Ret_WatchList ret = new Ret_WatchList(user, parse);
+        Ret_HavingList ret = new Ret_HavingList(user, funds);
         return new Result(200, ret, "根据用户邮箱获取用户和该用户关注的所有基金");
     }
 
@@ -204,13 +192,6 @@ public class UserController {
     static class Ret_HavingList{
         public User user;
         public List<Fund> funds;
-    }
-
-    @AllArgsConstructor
-    @Data
-    static class Ret_WatchList{
-        public User user;
-        public Object funds;
     }
 
     /**
