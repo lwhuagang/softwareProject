@@ -4,7 +4,7 @@
 
 
     <insert id="insertAttention" parameterType="com.software_project.pojo.Attention">
-        insert into soft.attention values (#{email}, #{fundCode})
+        insert into soft.attention values (#{email}, #{fundCode}, NOW())
     </insert>
     <delete id="deleteAttention" parameterType="com.software_project.pojo.Attention">
         delete from soft.attention where email = #{email} and fundCode = #{fundCode}
