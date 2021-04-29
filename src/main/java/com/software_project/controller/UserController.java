@@ -10,6 +10,8 @@ import com.software_project.service.FundService;
 import com.software_project.service.HoldService;
 import com.software_project.service.UserService;
 import com.software_project.utils.MD5Utils;
+import com.software_project.vo.Ret_HavingList;
+import com.software_project.vo.Ret_WatchList;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -196,22 +198,7 @@ public class UserController {
         return new Result(200, ret, "根据用户邮箱获取用户和该用户关注的所有基金");
     }
 
-    /**
-     * register的参 数包装类
-     */
-    @AllArgsConstructor
-    @Data
-    static class Ret_HavingList{
-        public User user;
-        public List<Fund> funds;
-    }
 
-    @AllArgsConstructor
-    @Data
-    static class Ret_WatchList{
-        public User user;
-        public Object funds;
-    }
 
     /**
      * 测试拦截器功能是否正常
