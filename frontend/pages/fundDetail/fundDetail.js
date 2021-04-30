@@ -37,6 +37,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showToast({
+      title: '加载中',
+      icon:'loading'
+    })
     var code = options.fundCode;
     var that = this;
     this.setData({
@@ -46,7 +50,7 @@ Page({
       that.loadEcLine()
     });
     this.loadFundPosition(function () {
-      that.loadEcPosition()
+      that.loadEcPosition();
     })
     getSelfSelect(
       app.globalData.userInfo.email,
@@ -316,7 +320,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    wx.hideToast();
   },
 
   /**
