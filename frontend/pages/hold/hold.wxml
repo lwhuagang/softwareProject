@@ -25,6 +25,16 @@
       </view>
     </view>
   </view>
+  <view class="recPart">
+    <navigator class="subRec incomeDetail" url="/pages/incomeDetail/incomeDetail">
+      <image src="../../image/incomeDetail.png" style="height: 40rpx" mode="heightFix"></image>
+      <view class="recNote">收益明细</view>
+    </navigator>
+    <navigator class="subRec tradeRec" url="/pages/fundTradeRec/fundTradeRec">
+      <image src="../../image/tradeRec.png" style="height:40rpx" mode="heightFix"></image>
+      <view class="recNote">交易记录</view>
+    </navigator>
+  </view>
   <view class="headPart">
     <view class="holdHeadItems">
       <!-- 成立以来涨跌幅 -->

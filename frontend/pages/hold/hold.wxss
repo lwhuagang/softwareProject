@@ -25,7 +25,7 @@
 }
 .fundCard {
   display: flex;
-  position: absolute;
+  position: relative;
   flex-direction: column;
   border: 1rpx solid #dcdcdc;
   border-radius: 15rpx;
@@ -36,17 +36,7 @@
   padding-left: 25rpx;
   padding-right: 25rpx;
 }
-.holdTotalTitle {
-  /* border: 1rpx solid green; */
-  height: 80rpx;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #a4a4a4;
-  justify-content: center;
-  font-size: 30rpx;
-  margin-top: 20rpx;
-}
+
 .holdTotal {
   display: flex;
   align-items: center;
@@ -163,7 +153,6 @@
   border-radius: 10rpx;
   display: flex;
   flex-direction: column;
-  margin-top: 420rpx;
   justify-content: center;
   box-sizing: border-box;
   background:white;
@@ -283,4 +272,42 @@
   width: 50%;
   box-sizing: border-box;
   text-align: center;
+}
+
+.holdTotalTitle {
+  /* border: 1rpx solid green; */
+  height: 80rpx;
+  align-items: center;
+  text-align: center;
+  color: #a4a4a4;
+  justify-content: center;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+.recPart{
+  display: flex;
+  background: white;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  padding:5rpx 0;
+  width: 93%;
+  /* border-top: 1rpx solid #dcdcdc;
+  border-bottom: 1rpx solid #dcdcdc; */
+}
+.subRec{
+  display: flex;
+  padding-bottom: 0;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+}
+.recNote{
+  font-size: small;
+}
+.incomeDetail{
+  height: 80rpx;
+  display: flex;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  padding-bottom: 5rpx;
 }

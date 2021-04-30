@@ -27,6 +27,12 @@
         {
           "name": "pages/buyIn/buyIn",
           "pathName": "pages/buyIn/buyIn",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/hold/hold",
+          "pathName": "pages/hold/hold",
           "scene": null
         }
       ]
