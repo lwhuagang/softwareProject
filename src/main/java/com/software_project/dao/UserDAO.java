@@ -30,7 +30,7 @@ public interface UserDAO {
      * @param holdProfit   用户的总持有收益
      * @param totalProfit  用户的累计收益
      */
-    void updateUserBHT(@Param("email") String email, @Param("buyMoney") double buyMoney, @Param("holdProfit") double holdProfit, @Param("totalProfit") double totalProfit);
+    void updateUserBHT(@Param("email") String email, @Param("buyMoney") double buyMoney, @Param("holdProfit") double holdProfit, @Param("totalProfit") double totalProfit, @Param("dayProfit") double dayProfit);
 
 
     /**

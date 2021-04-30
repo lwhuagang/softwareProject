@@ -68,8 +68,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void updateUserBHT(String email, double buyMoney, double holdProfit, double totalProfit) {
-        userDAO.updateUserBHT(email, buyMoney, holdProfit, totalProfit);
+    public void updateUserBHT(String email, double buyMoney, double holdProfit, double totalProfit, double dayProfit) {
+        userDAO.updateUserBHT(email, buyMoney, holdProfit, totalProfit, dayProfit);
     }
 
     @Override

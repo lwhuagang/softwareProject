@@ -15,7 +15,7 @@ public interface HoldDAO {
      * @param hold          用户在该基金上的持有量
      * @param holdProfit    用户在该基金上的持有收益
      */
-    void updateHoldHH(@Param("email") String email, @Param("fundCode") String fundCode, @Param("hold") double hold, @Param("holdProfit") double holdProfit);
+    void updateHoldHH(@Param("email") String email, @Param("fundCode") String fundCode, @Param("hold") double hold, @Param("holdProfit") double holdProfit, @Param("yesProfit") double yesProfit);
 
     /**
      * 根据用户email和fundcode得到对应的hold关系

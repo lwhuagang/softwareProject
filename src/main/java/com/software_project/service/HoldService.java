@@ -9,8 +9,9 @@ public interface HoldService {
      * @param fundCode      基金代码
      * @param hold          用户在该基金上的持有量
      * @param holdProfit    用户在该基金上的持有收益
+     * @param yesProfit     用户在该基金上的昨日收益
      */
-    void updateHoldHH(String email, String fundCode, double hold, double holdProfit);
+    void updateHoldHH(String email, String fundCode, double hold, double holdProfit, double yesProfit);
 
     /**
      * 根据用户email和fundcode得到对应的hold关系

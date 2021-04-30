@@ -131,34 +131,60 @@ public class UserController {
 
         RestTemplate restTemplate = new RestTemplate();
         for (Fund fund : ret.funds) {
-            // 计算每支基金的昨日收益和昨日收益率, 并更新该用户该基金持有收益和持有收益率
+            // 获取基金详细信息的对象
             String code = fund.getCode();
             String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=2021-04-01", String.class);
             JSONObject jsonObject = JSON.parseObject(s);
             JSONObject data =(JSONObject) jsonObject.get("data");
-            double growth = Double.parseDouble(data.getString("dayGrowth"));
-            // 计算昨日收益和昨日收益率
+
+            // 先更新基金的单位净值：这个之后不会使用，我们是直接通过比例和持有金额计算之后的持有金额
+            double netWorth = Double.parseDouble(data.getString("netWorth"));   // 基金的单位净值
+            fund.setNetWorth(netWorth);
+
+            // 更新该基金的昨日收益率
+            double growth = Double.parseDouble(data.getString("dayGrowth"));// 每日增长比例，返回的结果是一个double类型的小于100的数
             fund.setYesRate(growth); // 单位百分比
+
+            // 更新基金的昨日收益， 这个在最后统一更新
             fund.setYesProfit(growth/100.0 * fund.getHold());
+
+            // 计算该用户总的昨日收益
             totalProfit += fund.getYesProfit(); //累加昨日总收益
-            // 更新该基金持有收益和持有收益率
+
+            // 更新该基金持有收益、持有金额和持有收益率
             fund.setHoldProfit(fund.getHoldProfit() + fund.getYesProfit()); // 持有收益
-            fund.setHold(fund.getHold() + fund.getYesProfit()); // 总持有金额
+//            fund.setHold(fund.getHold() + fund.getYesProfit()); // 总持有金额，算法二
+            fund.setHold(fund.getShare() * netWorth); // 总持有金额，算法一
             fund.setRate(fund.getHoldProfit() / fund.getHold() * 100); //持有收益率 单位百分比
+
+            // 计算该用户总的持有金额
             totalHold += fund.getHold(); //累加用户总持有金额
+//            // 计算每支基金的昨日收益和昨日收益率, 并更新该用户该基金持有收益和持有收益率
+//            double growth = Double.parseDouble(data.getString("dayGrowth"));// 每日增长比例，返回的结果是一个double类型的小于100的数
+//            // 计算昨日收益和昨日收益率
+//            fund.setYesRate(growth); // 单位百分比
+//            fund.setYesProfit(growth/100.0 * fund.getHold());
+//            totalProfit += fund.getYesProfit(); //累加昨日总收益
+//            // 更新该基金持有收益和持有收益率
+//            fund.setHoldProfit(fund.getHoldProfit() + fund.getYesProfit()); // 持有收益
+//            fund.setHold(fund.getHold() + fund.getYesProfit()); // 总持有金额
+//            fund.setRate(fund.getHoldProfit() / fund.getHold() * 100); //持有收益率 单位百分比
+//            totalHold += fund.getHold(); //累加用户总持有金额
     }
         // 更新user类中的持有收益和总收益(昨日收益总和)
-        ret.user.setHoldProfit(user.getHoldProfit() + totalProfit);
-        ret.user.setTotalProfit(user.getTotalProfit() + totalProfit);
+        ret.user.setHoldProfit(user.getHoldProfit() + totalProfit); // 总的持有收益
+        ret.user.setTotalProfit(user.getTotalProfit() + totalProfit);   // 用户的总收益
         ret.user.setBuyMoney(totalHold);
+        ret.user.setDayProfit(totalProfit); // 该用户昨日的总收益
+
 
         // 将修改的数据写回数据库
-        // 更新user buyMoney,holdProfit,TotalProfit     us er表中的数据
-        userService.updateUserBHT(ret.user.getEmail(), ret.user.getBuyMoney(), ret.user.getHoldProfit(), ret.user.getTotalProfit());
+        // 更新user buyMoney,holdProfit,TotalProfit, dayProfit     user表中的数据
+        userService.updateUserBHT(ret.user.getEmail(), ret.user.getBuyMoney(), ret.user.getHoldProfit(), ret.user.getTotalProfit(), ret.user.getDayProfit());
         String userEmail = ret.user.getEmail();
         // 更新hold holdProfit          hold表中数据,是对所有的持有基金进行更新
         for (Fund fund: ret.funds) {
-            holdService.updateHoldHH(userEmail, fund.getFundCode(), fund.getHold(), fund.getHoldProfit());
+            holdService.updateHoldHH(userEmail, fund.getFundCode(), fund.getHold(), fund.getHoldProfit(), fund.getYesProfit());
         }
         return new Result(200,ret,"根据用户邮箱计算该用户当日的基金收益信息");
     }

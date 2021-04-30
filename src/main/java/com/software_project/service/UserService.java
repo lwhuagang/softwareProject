@@ -42,8 +42,9 @@ public interface UserService {
      * @param buyMoney  用户用于基金的金额
      * @param holdProfit   用户的总持有收益
      * @param totalProfit  用户的累计收益
+     * @param dayProfit    用户的昨日收益
      */
-    void updateUserBHT(String email, double buyMoney, double holdProfit, double totalProfit);
+    void updateUserBHT(String email, double buyMoney, double holdProfit, double totalProfit, double dayProfit);
 
 
     /**

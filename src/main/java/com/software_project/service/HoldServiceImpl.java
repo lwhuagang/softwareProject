@@ -11,8 +11,8 @@ public class HoldServiceImpl  implements HoldService{
     private HoldDAO holdDAO;
 
     @Override
-    public void updateHoldHH(String email, String fundCode, double hold, double holdProfit) {
-        holdDAO.updateHoldHH(email, fundCode, hold, holdProfit);
+    public void updateHoldHH(String email, String fundCode, double hold, double holdProfit, double yesProfit) {
+        holdDAO.updateHoldHH(email, fundCode, hold, holdProfit, yesProfit);
     }
 
     @Override
