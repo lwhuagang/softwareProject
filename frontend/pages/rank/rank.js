@@ -56,7 +56,8 @@ Page({
     searchParam: {
       fundType: ["gp"],
       sort: "r",
-      pageSize: 20,
+      pageIndex:1,
+      pageSize: 11,
       token:"atTPd9c8sA",
     },
   },
@@ -83,6 +84,7 @@ Page({
             token:"atTPd9c8sA",
             sort: this.data.searchParam.sort,
             pageSize: this.data.searchParam.pageSize,
+            pageIndex:1,
           }
         });
       } 
@@ -93,6 +95,7 @@ Page({
             fundType:[e.detail.fundType],
             sort: this.data.searchParam.sort,
             pageSize: this.data.searchParam.pageSize,
+            pageIndex:1,
           }
         });
       }
@@ -105,14 +108,47 @@ Page({
           fundType: this.data.searchParam.fundType,
           sort: e.detail.periodType,
           pageSize: this.data.searchParam.pageSize,
+          pageIndex:1,
         }
       });
     }
     getFundRank(this.data.searchParam, res => {
+      console.log("res==>",res);
       this.setData({
         searchFunds:res.data.data.rank
       });
     });
+  },
+  onReachBottom:function(e) {
+    this.loadFundList();
+  },
+  loadFundList:function(e) {
+    console.log("加载更多");
+    let tmpSearchParam={
+      fundType:this.data.searchParam.fundType,
+      sort:this.data.searchParam.sort,
+      pageIndex:this.data.searchParam.pageIndex+1,
+      pageSize:this.data.searchParam.pageSize,
+      token:"atTPd9c8sA",
+    };
+    this.setData({
+      searchParam:tmpSearchParam
+    });
+    let tmpList = this.data.searchFunds;
+    getFundRank(this.data.searchParam, res => {
+      console.log(res);
+      wx.showToast({
+        title: '数据加载中',
+        icon: 'loading',
+        duration: 3000,
+      });
+      res.data.data.rank.forEach(i=>{
+        tmpList.push(i);
+      })
+      this.setData({
+        searchFunds:tmpList
+      });
+      wx.hideToast();
+    });
   }
-
 })
