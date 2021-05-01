@@ -8,7 +8,7 @@
   <!-- 基金排行 -->
 <view class="divLine"></view>
 <view class="searchResContainer">
-  <scroll-view scroll-y style="heigth:100%;" bindscrolltolower="onReachBottom">
+  <scroll-view scroll-y style="height:100%;" bindscrolltolower="onReachBottom">
     <block wx:for="{{searchFunds.length}}">
       <fundGeneral showType="netWorth" periodType="{{searchParam.sort}}" fundInfo="{{searchFunds[index]}}"></fundGeneral>
       <view class="divLine"></view>

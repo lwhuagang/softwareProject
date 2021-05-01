@@ -143,7 +143,7 @@
   </view>
   <!-- 基金档案 -->
   <view class="docPart">
-    <view class="docNote">基金档案</view>
+    <view class="docNote">基金概况</view>
     <view class="docItem">
       <view class="docItemNote">基金规模</view>
       <view class="docItemDiv"></view>

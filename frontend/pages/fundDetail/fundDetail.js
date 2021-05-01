@@ -150,7 +150,7 @@ Page({
 
   drawLineChart: function (canvas, width, height, dpr) {
     var fundInfo = this.data.fundInfo;
-    var netWorthData = fundInfo.netWorthData;
+    var netWorthData = fundInfo.totalNetWorthData;
     var netWorth = this.getCertainDimension(netWorthData, 1);
     var netDate = this.getCertainDimension(netWorthData, 0);
     //console.log("netDate===>",netDate)
@@ -200,7 +200,6 @@ Page({
           lineStyle: {
             type: 'dashed',
             opacity: 0
-
           },
         }
         //show: false

@@ -10,6 +10,7 @@
       </view>
       <view class="tradeNum"> 1000000000元</view>
     </view>
+    <view class="divLine"></view>
   </view>
 </scroll-view>
 

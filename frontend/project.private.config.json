@@ -39,6 +39,12 @@
         {
           "name": "pages/fundTradeRec/fundTradeRec",
           "pathName": "pages/fundTradeRec/fundTradeRec",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/rank/rank",
+          "pathName": "pages/rank/rank",
           "scene": null
         }
       ]
