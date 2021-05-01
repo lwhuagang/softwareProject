@@ -15,7 +15,12 @@ public class OperationServiceImpl implements OperationService{
 
     @Override
     public void insertDeal(Record record) {
-        operationDAO.insertDeal(record);
+        try {
+            operationDAO.insertDeal(record);
+        }
+        catch (Exception e){
+            operationDAO.updateDeal(record);
+        }
     }
 
     @Override

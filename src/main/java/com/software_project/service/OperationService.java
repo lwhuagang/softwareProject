@@ -7,6 +7,7 @@ import java.util.List;
 public interface OperationService {
     /**
      * 保存交易记录,在当天晚上统一处理
+     * 如果有交易记录则直接更新
      * @param record 交易记录
      */
     void insertDeal(Record record);

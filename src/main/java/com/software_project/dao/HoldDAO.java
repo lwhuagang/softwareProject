@@ -24,4 +24,13 @@ public interface HoldDAO {
      * @return hold关系
      */
     Hold getHoldByUserEmailAndFundCode(@Param("email") String email, @Param("fundCode") String fundCode);
+
+
+    /**
+     * 更新hold对象
+     * @param hold 传入hold对象
+     */
+    void updateHold(Hold hold);
+
+    void insertHold(Hold hold);
 }

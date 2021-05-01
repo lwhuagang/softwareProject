@@ -14,12 +14,14 @@ import com.software_project.vo.Result;
 import com.software_project.vo.Ret_HavingList;
 import com.software_project.vo.Ret_WatchList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("user")
@@ -36,6 +38,9 @@ public class UserController {
 
     @Autowired
     private AttentionService attentionService;
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
 
     /**
      * 发送验证码
@@ -170,7 +175,30 @@ public class UserController {
 //            fund.setHold(fund.getHold() + fund.getYesProfit()); // 总持有金额
 //            fund.setRate(fund.getHoldProfit() / fund.getHold() * 100); //持有收益率 单位百分比
 //            totalHold += fund.getHold(); //累加用户总持有金额
-    }
+            // 更新每支基金对应每个用户的累计收益
+            // 更新基金累计收益
+            String s1 = redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getFundCode());
+            double total;
+            if (s1==null){
+                total = 0;
+            }
+            else {
+                total = Double.parseDouble(s1);
+                total += fund.getYesProfit();
+            }
+            if (redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1) == null){
+                // 创建一个累计收益list
+                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));
+            }
+            else if (Objects.requireNonNull(redisTemplate.opsForList().range(user.getEmail() + "" + fund.getFundCode(), 0, -1)).size() >= 30) {
+                // 只存储三十天的累计收益
+                redisTemplate.opsForList().leftPop(user.getEmail() + "" + fund.getFundCode());
+                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));
+            }
+            else{
+                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));
+            }
+        }
         // 更新user类中的持有收益和总收益(昨日收益总和)
         ret.user.setHoldProfit(user.getHoldProfit() + totalProfit); // 总的持有收益
         ret.user.setTotalProfit(user.getTotalProfit() + totalProfit);   // 用户的总收益
