@@ -1,18 +1,23 @@
-// pages/fundTradeRec/fundTradeRec.js
+import common from "../../utils/public.js";
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    tradeTime:"",
+    fundName:"易方达蓝筹精选混合"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var nowTime = new Date()
+    this.setData({
+      tradeTime:common.getMyData(nowTime.getTime()/1000, "Y-m-d H:i:s") //因为getTiem获取到的是ms
+    })
   },
 
   /**

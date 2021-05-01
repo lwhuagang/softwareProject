@@ -48,10 +48,9 @@
 }
 .profits {
   display: flex;
-  height: 150rpx;
+  height: 51px;
   /* border: 1rpx solid green; */
   margin-top: 20rpx;
-  padding-bottom: 200rpx;
 }
 .item {
   display: flex;

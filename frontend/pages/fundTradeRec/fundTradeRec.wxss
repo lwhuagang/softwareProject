@@ -1,1 +1,32 @@
-/* pages/fundTradeRec/fundTradeRec.wxss */
+.record{
+  display: flex;
+  border: 1px solid red;
+  flex-wrap: nowrap;
+
+}
+
+.typeName{
+  border: 1px solid green;
+  margin-left: 1px;
+  padding-left: 8px;
+  padding-top: 2px;
+  width: 40px;
+}
+
+.fundNameAndTime{
+  padding-top: 2px;
+  border: 1px solid purple;
+}
+.fundNameAndTime .tradeTime{
+  font-size: 13px;
+  color: #777777;
+}
+
+.tradeNum{
+  border: 1px solid blue;
+  padding-top: 2px;
+  font-size: small;
+  overflow-wrap: break-word;
+  position: absolute;
+  right: 10rpx;
+}

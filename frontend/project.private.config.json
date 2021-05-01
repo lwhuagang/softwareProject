@@ -33,6 +33,12 @@
         {
           "name": "pages/hold/hold",
           "pathName": "pages/hold/hold",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/fundTradeRec/fundTradeRec",
+          "pathName": "pages/fundTradeRec/fundTradeRec",
           "scene": null
         }
       ]
