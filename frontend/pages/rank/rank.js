@@ -57,7 +57,7 @@ Page({
       fundType: ["gp"],
       sort: "r",
       pageIndex:1,
-      pageSize: 11,
+      pageSize: 18,
       token:"atTPd9c8sA",
     },
   },

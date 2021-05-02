@@ -55,7 +55,7 @@ Page({
     getSelfSelect(
       app.globalData.userInfo.email,
       res => {
-        var funds = res.data.obj.funds;
+        var funds = res.data.obj.funds.data;
         var i = 0;
         for (i = 0; i < funds.length; i++) {
           if (funds[i].code == this.data.fundCode) {
@@ -391,6 +391,7 @@ Page({
       }
     })
   },
+  
   deleteSelfSelect: function () {
     wx.request({
       url: 'http://localhost:8080/fund/deleteWatch',

@@ -30,7 +30,7 @@
   border: 1rpx solid #dcdcdc;
   border-radius: 15rpx;
   width: 86%;
-  height: 350rpx;
+  height: 390rpx;
   margin-top: 30rpx;
   background: white;
   padding-left: 25rpx;
@@ -283,15 +283,16 @@
   font-size: 30rpx;
   margin-top: 20rpx;
 }
+
 .recPart{
   display: flex;
+  border: 1rpx solid #dcdcdc;
+  border-radius: 15rpx;
   background: white;
-  margin-top: 15rpx;
-  margin-bottom: 15rpx;
+  margin-top: 17rpx;
+  margin-bottom: 17rpx;
   padding:5rpx 0;
   width: 93%;
-  /* border-top: 1rpx solid #dcdcdc;
-  border-bottom: 1rpx solid #dcdcdc; */
 }
 .subRec{
   display: flex;

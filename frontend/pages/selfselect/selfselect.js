@@ -39,15 +39,14 @@ Page({
         }
       })
     } else {
-      console.log("获得selfSelect===>");
       getSelfSelect(
         app.globalData.userInfo.email,
         res => {
           this.setData({
-            funds: res.data.obj.funds
+            funds: res.data.obj.funds.data
           });
           console.log("获得selfSelect===>");
-          console.log(res);
+          console.log(this.data.funds);
         }
       )
     }
@@ -89,10 +88,10 @@ Page({
         app.globalData.userInfo.email,
         res => {
           this.setData({
-            funds: res.data.obj.funds
+            funds: res.data.obj.funds.data
           });
           console.log("获得selfSelect===>");
-          console.log(res);
+          console.log(this.data.funds);
         }
       )
     }

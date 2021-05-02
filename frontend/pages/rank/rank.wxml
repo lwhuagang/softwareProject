@@ -3,7 +3,7 @@
 <view class = "selectHead">
     <selectList prop-array='{{selectTypeArray}}' select-text = "全部" bind:select='select' />
     <text class = 'listHeadItem'>基金净值</text>
-    <selectList prop-array='{{selectPeriodArray}}' select-text = "日涨幅" bind:select='select' />
+    <selectList prop-array='{{selectPeriodArray}}' select-text = "日涨幅"  class = "growth" bind:select='select' />
 </view>
   <!-- 基金排行 -->
 <view class="divLine"></view>
