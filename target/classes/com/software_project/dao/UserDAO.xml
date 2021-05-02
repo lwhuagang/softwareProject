@@ -9,6 +9,7 @@
         update soft.user set email = #{email},password = #{password},nickname = #{nickname}
         ,money = #{money},picUrl=#{picUrl},admin = #{admin},holdProfit = #{holdProfit},totalProfit=#{totalProfit}
         ,buyMoney = #{buyMoney},initMoney = #{initMoney},dayProfit = #{dayProfit},holdCost = #{holdCost}
+        where email = #{email}
     </update>
     <!--根据邮箱找到user-->
     <select id="findUserByEmail" parameterType="string" resultType="com.software_project.pojo.User">

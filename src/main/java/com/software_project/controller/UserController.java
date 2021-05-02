@@ -20,6 +20,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -151,52 +152,56 @@ public class UserController {
             fund.setYesRate(growth); // 单位百分比
 
             // 更新基金的昨日收益， 这个在最后统一更新
-            fund.setYesProfit(growth/100.0 * fund.getHold());
+            fund.setYesProfit(growth/100.0 * fund.getShare() * netWorth);
 
             // 计算该用户总的昨日收益
             totalProfit += fund.getYesProfit(); //累加昨日总收益
 
             // 更新该基金持有收益、持有金额和持有收益率
             fund.setHoldProfit(fund.getHoldProfit() + fund.getYesProfit()); // 持有收益
-//            fund.setHold(fund.getHold() + fund.getYesProfit()); // 总持有金额，算法二
+//            fund.setHold(fund.getShare() * netWorth + fund.getYesProfit()); // 总持有金额，算法二
             fund.setHold(fund.getShare() * netWorth); // 总持有金额，算法一
             fund.setRate(fund.getHoldProfit() / fund.getHold() * 100); //持有收益率 单位百分比
 
             // 计算该用户总的持有金额
-            totalHold += fund.getHold(); //累加用户总持有金额
+            totalHold += fund.getShare() * netWorth; //累加用户总持有金额
 //            // 计算每支基金的昨日收益和昨日收益率, 并更新该用户该基金持有收益和持有收益率
 //            double growth = Double.parseDouble(data.getString("dayGrowth"));// 每日增长比例，返回的结果是一个double类型的小于100的数
 //            // 计算昨日收益和昨日收益率
 //            fund.setYesRate(growth); // 单位百分比
-//            fund.setYesProfit(growth/100.0 * fund.getHold());
+//            fund.setYesProfit(growth/100.0 * fund.getShare() * netWorth);
 //            totalProfit += fund.getYesProfit(); //累加昨日总收益
 //            // 更新该基金持有收益和持有收益率
 //            fund.setHoldProfit(fund.getHoldProfit() + fund.getYesProfit()); // 持有收益
-//            fund.setHold(fund.getHold() + fund.getYesProfit()); // 总持有金额
-//            fund.setRate(fund.getHoldProfit() / fund.getHold() * 100); //持有收益率 单位百分比
-//            totalHold += fund.getHold(); //累加用户总持有金额
+//            fund.setHold(fund.getShare() * netWorth + fund.getYesProfit()); // 总持有金额
+//            fund.setRate(fund.getHoldProfit() / fund.getShare() * netWorth * 100); //持有收益率 单位百分比
+//            totalHold += fund.getShare() * netWorth; //累加用户总持有金额
             // 更新每支基金对应每个用户的累计收益
             // 更新基金累计收益
-            String s1 = redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getFundCode());
+            String s1;
             double total;
-            if (s1==null){
-                total = 0;
-            }
-            else {
+            try {
+                s1 = redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getFundCode());
                 total = Double.parseDouble(s1);
                 total += fund.getYesProfit();
             }
-            if (redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1) == null){
+            catch (Exception e){
+                total = 0;
+            }
+            String key = user.getEmail() + "" + fund.getFundCode();
+            try{
+                if (redisTemplate.opsForList().range(key, 0, -1).size() >= 30) {
+                    // 只存储三十天的累计收益
+                    redisTemplate.opsForList().leftPop(key);
+                    redisTemplate.opsForList().rightPush(key, String.valueOf(total));
+                }
+                else{
+                    redisTemplate.opsForList().rightPush(key, String.valueOf(total));
+                }
+            }
+            catch (Exception e){
                 // 创建一个累计收益list
-                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));
-            }
-            else if (Objects.requireNonNull(redisTemplate.opsForList().range(user.getEmail() + "" + fund.getFundCode(), 0, -1)).size() >= 30) {
-                // 只存储三十天的累计收益
-                redisTemplate.opsForList().leftPop(user.getEmail() + "" + fund.getFundCode());
-                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));
-            }
-            else{
-                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));
+                redisTemplate.opsForList().rightPush(key, String.valueOf(total));
             }
         }
         // 更新user类中的持有收益和总收益(昨日收益总和)

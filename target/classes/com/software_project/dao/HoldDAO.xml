@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.software_project.dao.HoldDAO">
+    <insert id="insertHold">
+        insert into soft.hold values (#{hold},#{userEmail},#{fundCode},#{holdProfit},#{yesProfit},#{holdCost},#{share})
+    </insert>
     <update id="updateHoldHH" >
         update soft.hold set hold = #{hold}, holdProfit=#{holdProfit}, yesProfit=#{yesProfit} where userEmail = #{email} and fundCode = #{fundCode}
     </update>
     <update id="updateHold">
-        update soft.hold set hold = #{hold}, holdProfit = #{holdProfit}, yesProfit=#{yesProfit},holdCost = #{holdCost},share = #{share}
+        update soft.hold set hold = #{hold}, holdProfit = #{holdProfit}, yesProfit=#{yesProfit},holdCost = #{holdCost},share = #{share} where fundCode = #{fundCode} and userEmail = #{userEmail}
     </update>
     <select id="getHoldByUserEmailAndFundCode" resultType="com.software_project.pojo.Hold">
         select * from soft.hold where userEmail = #{email} and fundCode = #{fundCode}
