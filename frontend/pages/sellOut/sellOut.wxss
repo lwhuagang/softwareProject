@@ -40,10 +40,12 @@
 }
 .redeem .rule{
   color: #0081FF;
-  font-size: 30rpx;
+  font-size: small;
   height: 40rpx;
   width: 130rpx;
   margin-top: 10rpx;
+  font-weight: bold;
+
 }
 .redeem .inputUnitView{
   font-size: 70rpx;
