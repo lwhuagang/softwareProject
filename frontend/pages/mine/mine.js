@@ -86,6 +86,7 @@ Page({
       url: '/pages/register/register',
     })
   },
+  
   login:function(data) {
     /**
      * 要完成的逻辑:

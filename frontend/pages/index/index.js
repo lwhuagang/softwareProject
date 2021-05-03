@@ -15,24 +15,20 @@ let {
 Page({
   data: {
       sectionList:[{
-          name:'净值',
-          url:'/pages/netWorth/netWorth',
-          img:'/image/netWorth.jpg'
-      },{
-        name:'估值',
-          url:'/pages/evaluate/evaluate',
-          img:'/image/evaluate.jpg'
-      },{
         name:'排行',
           url:'/pages/rank/rank',
-          img:'/image/rank_b.jpg'
+          img:'/image/rank_b.png'
       },{
         name:'热门',
           url:'/pages/hot/hot',
-          img:'/image/hot.jpg'
+          img:'/image/hot_b.jpg'
       },{
+        name:'搜索',
+        url:'/pages/search/search',
+        img:'/image/search_b.jpg'
+    },{
         name:'新品',
-        url:'/pages/newFund/newFund',
+        url:'/pages/personalCenter/personalCenter',
         img:'/image/new.jpg'
       },{
         name:'AI推荐',

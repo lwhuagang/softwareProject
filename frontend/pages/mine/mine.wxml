@@ -2,24 +2,53 @@
 <view class="container">
   <naviBar title="我的" showBack="{{false}}"></naviBar>
   <view class="hasLoggedContainer" wx:if="{{isLogin}}">
+    <!--
     <view class="nicknamePart">
       <view class="nicknameNote">昵称</view>
-      <input class="nicknameValue" model:value="{{tmpNickname}}" placeholder="{{userInfo.nickname}}" disabled="{{!try2Edit}}" />
+      <input class="nicknameValue" model:value="{{tmpNickname}}" placeholder="{{userInfo.nickname}}"
+        disabled="{{!try2Edit}}" />
     </view>
     <view class="emailPart">
       <view class="emailNote">邮箱</view>
-      <input class="emailValue" model:value="{{tmpEmail}}" placeholder="{{userInfo.email}}" disabled="{{!try2Edit}}" />
+      <input class="emailValue" model:value="{{tmpEmail}}" placeholder="{{userInfo.email}}" disabled="{{try2Edit}}" />
     </view>
-
+    -->
+    <view>
+      <view class="top">
+        <view class="center">
+          <view class="center_top">
+            <view class="center_img">
+              <image src="../../image/userInfo.jpg"></image>
+            </view>
+            <view class="center_info">
+              <view class="center_name">{{userInfo.nickname}}</view>
+              <view class="center_email">{{userInfo.email}}</view>
+            </view>
+          </view>
+          <view class="center_down">
+            <view class="center_rank">
+              <image class="rank_icon" src="../../image/new.jpg"></image>
+              <text class="rank_text">我的信息</text>
+            </view>
+            <view class="center_score">
+              <image class="rank_icon" src="../../image/new.jpg"></image>
+              <text class="rank_text">我的消息</text>
+            </view>
+          </view>
+        </view>
+        <image src='http://docfile.funkingka.cn/FqzmiFqvXbHg-cfbquNRlawHUgHt' mode='scaleToFill' class='gif-wave'>
+        </image>
+      </view>
+    </view>
   </view>
   <view wx:else>
     <form bindsubmit="login">
       <view class="loginContainer">
         <view class="loginInfo">
-          <input class="inputUsrName" name="email" placeholder="邮箱" focus/>
-          <input class="inputUsrPassword" name="password" password placeholder="密码" focus/>
+          <input class="inputUsrName" name="email" placeholder="邮箱" focus />
+          <input class="inputUsrPassword" name="password" password placeholder="密码" focus />
         </view>
-        <image class="loginImg" src="/image/login.jpg" mode="widthFix"/>
+        <image class="loginImg" src="/image/login.jpg" mode="widthFix" />
         <button form-type="submit" class="loginBtn">
           <view class="submitInfo">登录</view>
         </button>
@@ -35,5 +64,3 @@
     <image class="unLoggedImg" src="/image/login.jpg" mode="widthFix"/> -->
   </view>
 </view>
-
-
