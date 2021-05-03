@@ -10,6 +10,7 @@
       <view class="sectionName">{{sectionItem.name}}</view>
     </navigator>
   </scroll-view> -->
+
   <swiper indicator-dots indicator-color="gray" indicator-active-color="black" class="swpBlock">
     <swiper-item class="swpItem" wx:for="{{sectionList.length/5}}" wx:for-index="i">
       <view class="secUnit" wx:for="{{5}}" wx:for-index="j">

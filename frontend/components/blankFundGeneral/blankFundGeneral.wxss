@@ -20,7 +20,7 @@
   overflow:hidden; 
   text-overflow:ellipsis;
   white-space:nowrap;
-  font-size: 35rpx;
+  font-size: 30rpx;
   /* 强制不换行，多的用省略号 */
 }
 .fundCode {

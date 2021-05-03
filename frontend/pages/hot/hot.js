@@ -1,16 +1,36 @@
 // pages/hot/hot.js
+const app = getApp()
+let {
+  getFund,
+  getFundPosition,
+  getFundRank,
+  getFundDetail,
+  getAllFund,
+  getHotFund,
+} = require("../../api/getFoundation.js")
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    funds:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    getHotFund(
+      res=>{
+        this.setData({
+          funds:res.data.data.rank
+        });
+        console.log("获得热门基金===>");
+        console.log(this.data.funds);
+      }
+    )
   },
 
   /**
