@@ -2,7 +2,6 @@ package com.software_project.vo;
 
 import com.software_project.pojo.Fund;
 import com.software_project.pojo.Hold;
-import javafx.scene.shape.HLineTo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

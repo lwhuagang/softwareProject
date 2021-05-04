@@ -5,7 +5,7 @@
         insert into soft.record values (#{userEmail},#{fundCode},#{type},#{time},#{flag},#{count},#{flagTime})
     </insert>
     <update id="updateDeal">
-        update soft.record set flagTime = #{flagTime} where userEmail = #{userEmail} and fundCode=#{fundCode} and time = #{time}
+        update soft.record set flagTime = #{flagTime},flag = #{flag} where userEmail = #{userEmail} and fundCode=#{fundCode} and time = #{time}
     </update>
     <select id="getAllUndoRecord" resultType="com.software_project.pojo.Record">
         /*较为耗时*/
