@@ -12,9 +12,8 @@ public interface FundDAO {
 
     /**
      * @param fund 待插入的基金
-     * @return 如果插入成功,返回基金,否则返回null
      */
-    Fund insertFund(Fund fund);
+    void insertFund(Fund fund);
 
     /**
      * @param code 待查询基金的代码

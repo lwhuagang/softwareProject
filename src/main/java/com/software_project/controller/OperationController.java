@@ -53,9 +53,12 @@ public class OperationController {
             double money = params.getMoney();
             User user = userService.findUserByEmail(email);
             Fund fund = fundService.searchFundByCode(Integer.parseInt(fundCode));
-            if (money >= user.getMoney() || money < fund.getBuyMin()) {
+            // 金额检查
+            if (money >= user.getMoney() || money < fund.getBuyMin()) {  // buyMin 起购额度
                 throw new Exception("买入金额输入有误,需满足范围");
             }
+
+            // 创建交易记录：包括时间判断
             Record record = new Record();
             record.setUserEmail(email);
             record.setFundCode(fundCode);
@@ -64,7 +67,6 @@ public class OperationController {
             record.setTime(goodsC_date);
             record.setFlag(false);//true 该交易已处理,false 未处理
             record.setCount(money);
-
             // 判断交易时间在下午三点前还是三点后
             Date time = record.getTime();
             Calendar cal = Calendar.getInstance();
@@ -74,10 +76,14 @@ public class OperationController {
             record.setFlagTime(hour < 15);
 
             operationService.insertDeal(record);
+
+            // 更新持有信息：该用户在该基金上的各种信息
             // 插入一个持有关系
             if (holdService.getHoldByUserEmailAndFundCode(email,fundCode) == null){
-                holdService.insertHold(new Hold(0,email,fundCode,0,0,0,0));
+                holdService.insertHold(new Hold(0, email,fundCode,0,0,0,0));
             }
+
+            // 更新用户信息
             // 扣除用户金额
             user.setBuyMoney(user.getMoney() - money);
             userService.updateUser(user);
@@ -124,7 +130,7 @@ public class OperationController {
     }
 
     /**
-     * 更新买入卖出相关数据
+     * 更新买入卖出相关数据， 每天都需要调用的
      * @return 返回是否更新成功
      */
     @GetMapping("update")
@@ -153,14 +159,14 @@ public class OperationController {
                 double netWorth = Double.parseDouble(data.getString("netWorth"));
                 // 买入份额计算
                 double buyIn_share = net_buyMoney/netWorth;
-                // 更新hold表
+                // 更新hold表          TODO 更新的信息是否完整
                 //HoldVO hold_ret = new HoldVO();
                 hold.setShare(hold.getShare()+buyIn_share);
                 hold.setHoldCost(hold.getHoldCost()+net_buyMoney);
                 // 更新基金累计收益
                 Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getFundCode())));
                 total -= buyIn_fee;
-                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));
+                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));  // TODO 什么意思
                 holdService.updateHold(hold);
 //                // 设置hold返回数据
 //                hold_ret.setUserEmail(user.getEmail());
@@ -177,7 +183,7 @@ public class OperationController {
                 user.setBuyMoney(user.getBuyMoney()+net_buyMoney);
                 user.setHoldCost(user.getHoldCost()+net_buyMoney);
                 user.setTotalProfit(user.getTotalProfit() - buyIn_fee);
-                userService.updateUser(user);
+                userService.updateUser(user);           // TODO 这里是不是会不断的重复更新，应该可以在所有的信息都处理完毕之后一次性对用户的信息进行更新
                 // 设置user返回数据
 //                UserVO user_ret = new UserVO(user);
 //                user_ret.setPropertyProfitRate(user.getTotalProfit()/user.getInitMoney());

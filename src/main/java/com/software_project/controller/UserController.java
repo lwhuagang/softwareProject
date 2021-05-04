@@ -4,14 +4,17 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.software_project.pojo.Fund;
+import com.software_project.pojo.Hold;
 import com.software_project.pojo.User;
 import com.software_project.service.AttentionService;
 import com.software_project.service.FundService;
 import com.software_project.service.HoldService;
 import com.software_project.service.UserService;
 import com.software_project.utils.MD5Utils;
+import com.software_project.vo.HoldVO;
 import com.software_project.vo.Result;
 import com.software_project.vo.Ret_HavingList;
+import com.software_project.vo.Ret_HoldVOList;
 import com.software_project.vo.Ret_WatchList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -118,6 +121,84 @@ public class UserController {
             // 登录失败
             return new Result(200,false,"登陆失败");
         }
+    }
+
+    @GetMapping("/updateDatBase")
+    public Result updateAllFundsFromOutside() {
+        RestTemplate restTemplate = new RestTemplate();
+        String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/all?token=atTPd9c8sA", String.class);
+        JSONObject jsonObject = JSON.parseObject(s);
+        List funds = jsonObject.getJSONArray("data");
+        for (Object fund : funds) {
+            String code;
+            String name;
+            String type;
+            double buyMin;  // buyMin 起购额度
+            double buySourceRate;   // 原始的买入费率
+            double buyRate;         // 当前的买入费率
+            String manager;         // 基金经理
+            double netWorth;        // 基金净值
+            code = (String)((List) fund).get(0);
+            name = (String)((List) fund).get(2);
+            type = (String)((List) fund).get(3);
+            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + ((List) fund).get(0), String.class);
+            jsonObject = JSON.parseObject(s);
+            JSONObject data =(JSONObject) jsonObject.get("data");
+            if (data != null) {
+                if (data.getString("buyMin") != null && !data.getString("buyMin").equals("")) {
+                    buyMin = Double.parseDouble(data.getString("buyMin"));
+                }
+                else {
+                    buyMin = 0;
+                }
+                if (data.getString("buySourceRate") != null && !data.getString("buySourceRate").equals("")) {
+                    buySourceRate = Double.parseDouble(data.getString("buySourceRate"));
+                }
+                else {
+                    buySourceRate = 0;
+                }
+                if (data.getString("buyRate") != null && !data.getString("buyRate").equals("")) {
+                    buyRate = Double.parseDouble(data.getString("buyRate"));
+                }
+                else {
+                    buyRate = 0;
+                }
+                if (data.getString("manager") != null) {
+                    manager = data.getString("manager");
+                }
+                else {
+                    manager = "";
+                }
+
+                if (data.getString("netWorth") != null) {
+                    netWorth = Double.parseDouble(data.getString("netWorth"));
+                }
+                else {
+                    netWorth = 0;
+                }
+            }
+            else {
+                buyMin = 0;
+                buySourceRate = 0;
+                buyRate = 0;
+                manager = "";
+                netWorth = 0;
+            }
+
+            Fund fund1 = new Fund();
+            fund1.setCode(code);
+            fund1.setName(name);
+            fund1.setType(type);
+            fund1.setBuyMin(buyMin);
+            fund1.setBuySourceRate(buySourceRate);
+            fund1.setBuyRate(buyRate);
+            fund1.setManager(manager);
+            fund1.setNetWorth(netWorth);
+            if (fundService.searchFundByCode(Integer.parseInt(code)) == null) {
+                fundService.insertFund(fund1);
+            }
+        }
+        return new Result(200, s,"更新数据库中的基金");
     }
 
     /**
@@ -231,8 +312,14 @@ public class UserController {
     public Result havingList(String email) {
         User user = userService.findUserByEmail(email); //待返回user
         List<Fund> funds = fundService.getHoldFund(email);
-        Ret_HavingList ret = new Ret_HavingList(user, funds);
-        return new Result(200, ret, "根据用户邮箱获取用户和该用户持有的所有基金");
+        List<HoldVO> holdVOS = new ArrayList<>();
+        for (Fund fund : funds) {
+            Hold hold = holdService.getHoldByUserEmailAndFundCode(email, fund.getFundCode());
+            HoldVO holdVO = new HoldVO(email, fund, hold);
+            holdVO.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1));
+        }
+        Ret_HoldVOList ret = new Ret_HoldVOList(user, holdVOS);
+        return new Result(200, ret, "根据用户邮箱获取用户和该用户持有的所有基金及其持有信息");
     }
 
     @GetMapping("watchList")

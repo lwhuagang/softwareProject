@@ -26,4 +26,10 @@ public class FundServiceImpl implements FundService{
     public Fund searchFundByCode(int code) {
         return fundDAO.searchByCode(code);
     }
+
+    @Override
+    public Fund insertFund(Fund fund) {
+        fundDAO.insertFund(fund);
+        return fund;
+    }
 }

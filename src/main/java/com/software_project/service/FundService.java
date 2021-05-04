@@ -27,5 +27,12 @@ public interface FundService {
      */
     Fund searchFundByCode(int code);
 
+    /**
+     * 插入新的基金
+     * @param fund 待插入的基金
+     * @return 待插入的基金信息
+     */
+    Fund insertFund(Fund fund);
+
 
 }
