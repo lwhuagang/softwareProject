@@ -20,4 +20,13 @@ public interface HoldService {
      * @return hold关系
      */
     Hold getHoldByUserEmailAndFundCode(String email,String fundCode);
+
+
+    /**
+     * 更新hold对象
+     * @param hold hold
+     */
+    void updateHold(Hold hold);
+
+    void insertHold(Hold hold);
 }

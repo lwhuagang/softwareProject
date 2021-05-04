@@ -10,18 +10,16 @@ import com.software_project.service.FundService;
 import com.software_project.service.HoldService;
 import com.software_project.service.OperationService;
 import com.software_project.service.UserService;
-import com.software_project.vo.Param_Buy;
-import com.software_project.vo.Param_Sell;
-import com.software_project.vo.Result;
+import com.software_project.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 @RequestMapping("fundOperation")
@@ -37,6 +35,9 @@ public class OperationController {
 
     @Autowired
     HoldService holdService;
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
 
     /**
      * 主要实现将用户购买操作存入到record表中,等待晚上统一处理
@@ -63,7 +64,20 @@ public class OperationController {
             record.setTime(goodsC_date);
             record.setFlag(false);//true 该交易已处理,false 未处理
             record.setCount(money);
+
+            // 判断交易时间在下午三点前还是三点后
+            Date time = record.getTime();
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(time);
+            int hour = cal.get(Calendar.HOUR_OF_DAY);
+            // false:不在当天交易,true:在当天交易
+            record.setFlagTime(hour < 15);
+
             operationService.insertDeal(record);
+            // 插入一个持有关系
+            if (holdService.getHoldByUserEmailAndFundCode(email,fundCode) == null){
+                holdService.insertHold(new Hold(0,email,fundCode,0,0,0,0));
+            }
             // 扣除用户金额
             user.setBuyMoney(user.getMoney() - money);
             userService.updateUser(user);
@@ -75,7 +89,7 @@ public class OperationController {
     }
 
     @PostMapping("sell")
-    public Result sell(@RequestBody Param_Sell params) throws Exception {
+    public Result sell(@RequestBody Param_Sell params) {
         try {
             String email = params.getEmail();
             String fundCode = params.getFundCode();
@@ -92,12 +106,20 @@ public class OperationController {
             record.setTime(goodsC_date);
             record.setFlag(false);//true 该交易已处理,false 未处理
             record.setCount(share);
+
+            // 判断交易时间在下午三点前还是三点后
+            Date time = record.getTime();
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(time);
+            int hour = cal.get(Calendar.HOUR_OF_DAY);
+            // false:不在当天交易,true:在当天交易
+            record.setFlagTime(hour < 15);
+
             operationService.insertDeal(record);
             return new Result(200, true, "卖出操作记录成功");
         }
         catch (Exception e){
-            throw e;
-            //return new Result(200, false, "卖出操作记录失败");
+            return new Result(200, false, "卖出操作记录失败");
         }
     }
 
@@ -111,34 +133,94 @@ public class OperationController {
         for (Record record : records) {
             User user = userService.findUserByEmail(record.getUserEmail());
             Fund fund = fundService.searchFundByCode(Integer.parseInt(record.getFundCode()));
+            Hold hold = holdService.getHoldByUserEmailAndFundCode(user.getEmail(),fund.getFundCode());
+            if (!record.isFlagTime()){
+                // 代表这个交易记录不处理,设置为false后跳过
+                record.setFlagTime(true);
+                operationService.insertDeal(record);
+                continue;
+            }
             if (!record.isType()){
-                // 判断交易时间在下午三点前还是三点后
-                Date time = record.getTime();
-                Calendar cal = Calendar.getInstance();
-                cal.setTime(time);
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                if (hour >= 15){
-                    // 减去12小时,在明天更新时便不会被跳过.
-                    record.setFlagTime(true);
-                    record.setTime(addDateMinut(time,-12));
-                    // 更新回record表中
-                    operationService.insertDeal(record);
-                    continue;
-                }
-                // 买入操作更新
-                double buyMoney = record.getCount();
-                double buyIn_fee = buyMoney * fund.getBuyRate(); // 以当前买入费率为准
-                double net_buyMoney = buyMoney - buyIn_fee;
+                // 买入操作更新数据定义
+                double buyMoney = record.getCount(); // 用户买入金额
+                double buyIn_fee = buyMoney * fund.getBuyRate(); // 以当前买入费率为准,买入手续费
+                double net_buyMoney = buyMoney - buyIn_fee; // 净买入金额
                 // 获取当日净值
                 RestTemplate restTemplate = new RestTemplate();
-                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + record.getFundCode(), String.class);
-
-                double buyIn_share = net_buyMoney;
+                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + fund.getFundCode(), String.class);
+                JSONObject jsonObject = JSON.parseObject(s);
+                JSONObject data =(JSONObject) jsonObject.get("data");
+                double netWorth = Double.parseDouble(data.getString("netWorth"));
+                // 买入份额计算
+                double buyIn_share = net_buyMoney/netWorth;
+                // 更新hold表
+                //HoldVO hold_ret = new HoldVO();
+                hold.setShare(hold.getShare()+buyIn_share);
+                hold.setHoldCost(hold.getHoldCost()+net_buyMoney);
+                // 更新基金累计收益
+                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getFundCode())));
+                total -= buyIn_fee;
+                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));
+                holdService.updateHold(hold);
+//                // 设置hold返回数据
+//                hold_ret.setUserEmail(user.getEmail());
+//                hold_ret.setFundCode(fund.getFundCode());
+//                hold_ret.setHold(hold.getHold());
+//                hold_ret.setShare(hold.getShare()+buyIn_share);
+//                hold_ret.setHoldCost(hold.getHoldCost());
+//                hold_ret.setHold(hold.getShare() * netWorth);
+//                hold_ret.setHoldProfit(hold.getHold() - hold.getHoldCost());
+//                hold_ret.setYesProfit(hold.getYesProfit());
+//                hold_ret.setHoldProfitRate(hold_ret.getHoldProfit()/hold_ret.getHoldCost());
+//                hold_ret.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1));
+                // 更新user表
+                user.setBuyMoney(user.getBuyMoney()+net_buyMoney);
+                user.setHoldCost(user.getHoldCost()+net_buyMoney);
+                user.setTotalProfit(user.getTotalProfit() - buyIn_fee);
+                userService.updateUser(user);
+                // 设置user返回数据
+//                UserVO user_ret = new UserVO(user);
+//                user_ret.setPropertyProfitRate(user.getTotalProfit()/user.getInitMoney());
+//                user_ret.setHoldProfitRate(user.getHoldProfit()/user.getHoldCost());
+//                List<Object> result = new ArrayList<>();
+//                result.add(user_ret);
+//                result.add(hold_ret);
+//                return new Result(200,result,"买入操作更新成功");
             }
             else {
-                // 卖出操作更新
-
-            }
+                // 卖出出操作更新
+                // 卖出操作更新数据定义
+                double sellShare = record.getCount(); // 用户卖出份额
+                // 获取当日净值
+                RestTemplate restTemplate = new RestTemplate();
+                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + fund.getFundCode(), String.class);
+                JSONObject jsonObject = JSON.parseObject(s);
+                JSONObject data =(JSONObject) jsonObject.get("data");
+                double netWorth = Double.parseDouble(data.getString("netWorth"));
+                double sellMoney = sellShare * netWorth; // 卖出金额
+                // 计算持仓成本价
+                double cost = user.getHoldCost() / hold.getShare();
+                double sellCost = sellShare*cost; // 卖出成本
+                double sellFee = sellCost * 0.1/100;//暂定卖出手续费为0.1%
+                double net_sellMoney = sellMoney - sellFee; // 净卖出金额
+                double sellProfit = sellMoney - sellCost;
+                //double net_sellProfit = sellProfit - sellFee; //净卖出收益
+                // 更新hold表
+                // HoldVO hold_ret = new HoldVO();
+                hold.setShare(hold.getShare()-sellShare);
+                hold.setHoldCost(hold.getHoldCost()-sellCost);
+                // 更新基金累计收益
+                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getFundCode())));
+                total -= sellFee;
+                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));
+                holdService.updateHold(hold);
+                // 更新user表
+                user.setHoldProfit(user.getHoldProfit() - sellProfit);
+                user.setBuyMoney(user.getBuyMoney() - net_sellMoney);
+                user.setHoldCost(user.getHoldCost()- sellCost);
+                user.setMoney(user.getMoney() + net_sellMoney);
+                userService.updateUser(user);
+           }
         }
         return null;
     }
@@ -155,13 +237,13 @@ public class OperationController {
         return sdf.format(date);
     }
 
-    public static Date addDateMinut(Date date, int hour){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.HOUR, hour);// 24小时制
-        date = cal.getTime();
-        System.out.println("after:" + sdf.format(date));  //显示更新后的日期
-        return date;
-    }
+//    public static void main(String[] args) {
+//        // 获取当日净值
+//        RestTemplate restTemplate = new RestTemplate();
+//        String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + "000001", String.class);
+//        JSONObject jsonObject = JSON.parseObject(s);
+//        JSONObject data =(JSONObject) jsonObject.get("data");
+//        double netWorth = Double.parseDouble(data.getString("netWorth"));   // 基金的单位净值
+//        System.out.println(netWorth);
+//    }
 }

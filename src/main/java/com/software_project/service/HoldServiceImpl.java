@@ -19,4 +19,16 @@ public class HoldServiceImpl  implements HoldService{
     public Hold getHoldByUserEmailAndFundCode(String email, String fundCode) {
         return holdDAO.getHoldByUserEmailAndFundCode(email,fundCode);
     }
+
+    @Override
+    public void updateHold(Hold hold) {
+        holdDAO.updateHold(hold);
+    }
+
+    @Override
+    public void insertHold(Hold hold) {
+        holdDAO.insertHold(hold);
+    }
+
+
 }

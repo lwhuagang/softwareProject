@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.software_project.dao.UserDAO">
     <update id="updateUserBHT" parameterType="com.software_project.pojo.User">
-        update soft.user set buyMoney = #{buyMoney}, holdProfit = #{holdProfit}, totalProfit = #{totalProfit}
+        update soft.user set buyMoney = #{buyMoney}, holdProfit = #{holdProfit}, totalProfit = #{totalProfit}, dayprofit = #{dayProfit}
         where  email = #{email}
     </update>
     <update id="updateUser">
         update soft.user set email = #{email},password = #{password},nickname = #{nickname}
         ,money = #{money},picUrl=#{picUrl},admin = #{admin},holdProfit = #{holdProfit},totalProfit=#{totalProfit}
         ,buyMoney = #{buyMoney},initMoney = #{initMoney},dayProfit = #{dayProfit},holdCost = #{holdCost}
+        where email = #{email}
     </update>
     <!--根据邮箱找到user-->
     <select id="findUserByEmail" parameterType="string" resultType="com.software_project.pojo.User">

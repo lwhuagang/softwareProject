@@ -15,5 +15,7 @@ public interface OperationDAO {
      */
     void insertDeal(Record record);
 
+    void updateDeal(Record record);
+
     List<Record> getAllUndoRecord();
 }
