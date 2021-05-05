@@ -1,18 +1,21 @@
 <!--pages/rank/rank.wxml-->
-<naviBar title = '排行'></naviBar>
+<view class="container">
+  <!-- 基金排行 -->
+  <view class="divLine1"></view>
+  <view class="searchResContainer">
+    <scroll-view scroll-y style="height:100%;" bindscrolltolower="onReachBottom">
+      <block wx:for="{{searchFunds.length}}">
+        <fundGeneral showType="netWorth" periodType="{{searchParam.sort}}" fundInfo="{{searchFunds[index]}}"></fundGeneral>
+        <view class="divLine"></view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
 <view class = "selectHead">
     <selectList prop-array='{{selectTypeArray}}' select-text = "全部" bind:select='select' />
     <text class = 'listHeadItem'>基金净值</text>
     <selectList prop-array='{{selectPeriodArray}}' select-text = "日涨幅"  class = "growth" bind:select='select' />
 </view>
-  <!-- 基金排行 -->
-<view class="divLine"></view>
-<view class="searchResContainer">
-  <scroll-view scroll-y style="height:100%;" bindscrolltolower="onReachBottom">
-    <block wx:for="{{searchFunds.length}}">
-      <fundGeneral showType="netWorth" periodType="{{searchParam.sort}}" fundInfo="{{searchFunds[index]}}"></fundGeneral>
-      <view class="divLine"></view>
-    </block>
-  </scroll-view>
-
+<view class="head">
+  <naviBar title = '排行'></naviBar>
 </view>

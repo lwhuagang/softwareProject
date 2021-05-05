@@ -1,6 +1,3 @@
-<naviBar title = "卖出">
-</naviBar>
-
 <view class="container">
   <view class= "fundName">
     {{fundName}}
@@ -61,4 +58,7 @@
   </view>
   
     
+</view>
+<view class="head">
+  <naviBar title = "卖出"></naviBar>
 </view>

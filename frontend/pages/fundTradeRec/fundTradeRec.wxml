@@ -1,16 +1,21 @@
 <!--pages/fundTradeRec/fundTradeRec.wxml-->
-<naviBar title="交易记录"></naviBar>
-<scroll-view scroll-y> 
-  <view wx:for="{{15}}">
-    <view class="record">
-      <view class="typeName">买入</view>
-      <view class="fundNameAndTime">
-        <view class="fundName"> {{fundName}}</view>
-        <view class="tradeTime"> {{tradeTime}}</view>
+<view class="container">
+  <scroll-view scroll-y> 
+    <view wx:for="{{15}}">
+      <view class="record">
+        <view class="typeName">买入</view>
+        <view class="fundNameAndTime">
+          <view class="fundName"> {{fundName}}</view>
+          <view class="tradeTime"> {{tradeTime}}</view>
+        </view>
+        <view class="tradeNum"> 1000000000元</view>
       </view>
-      <view class="tradeNum"> 1000000000元</view>
+      <view class="divLine"></view>
     </view>
-    <view class="divLine"></view>
-  </view>
-</scroll-view>
+  </scroll-view>
+</view>
+<view class="head">
+  <naviBar title="交易记录"></naviBar>
+</view>
+
 

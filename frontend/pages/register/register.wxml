@@ -1,6 +1,5 @@
 <!--pages/register/register.wxml-->
 <view class="container">
-  <naviBar title="注册"></naviBar>
   <view class="regBlock">
         <!-- 昵称 -->
       <view class="part nickPart">
@@ -54,5 +53,8 @@
         <button bindtap="register" class="regBtn">注册</button>
       </view>
   </view>
+</view>
+<view class="head">
+  <naviBar title="注册"></naviBar>
 </view>
 

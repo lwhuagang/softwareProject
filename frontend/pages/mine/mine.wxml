@@ -1,6 +1,6 @@
 <!--pages/mine/mine.wxml-->
 <view class="container">
-  <naviBar title="我的" showBack="{{false}}"></naviBar>
+
   <view class="hasLoggedContainer" wx:if="{{isLogin}}">
     <!--
     <view class="nicknamePart">
@@ -63,4 +63,7 @@
     </view>
     <image class="unLoggedImg" src="/image/login.jpg" mode="widthFix"/> -->
   </view>
+</view>
+<view class="head">
+  <naviBar title="我的" showBack="{{false}}"></naviBar>
 </view>

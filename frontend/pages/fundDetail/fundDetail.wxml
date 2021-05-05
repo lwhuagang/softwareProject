@@ -1,6 +1,6 @@
 <!--pages/fundDetail/fundDetail.wxml-->
 <wxs src="../../utils/util.wxs" module="tool" />
-<naviBar title="基金详情"></naviBar>
+
 <view class="container">
   <view class="bluePad"></view>
   <view class="blueWave"></view>
@@ -160,6 +160,9 @@
       <view class="docItemValue">{{fundInfo.manager}}</view>
     </view>
   </view>
+</view>
+<view class="head">
+  <naviBar title="基金详情"></naviBar>
 </view>
 <!--
   底部功能栏区

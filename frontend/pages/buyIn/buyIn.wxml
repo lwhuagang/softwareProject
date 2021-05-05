@@ -1,6 +1,5 @@
 <!--pages/buyIn/buyIn.wxml-->
 <wxs src="../../utils/addmul.wxs" module="tool"/>
-<naviBar title="买入"></naviBar>
 <view class="container">
   <view class="fundName">
     {{fundName}}
@@ -39,6 +38,9 @@
       </block>
     </view>
   </view>
+</view>
+<view class="head">
+  <naviBar title="买入"></naviBar>
 </view>
 <view class="confirmPart">
   <view wx:if="{{money==null || money=='' || buyMin==null || money<buyMin}}" class="confirmButtonDisable">

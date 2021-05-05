@@ -1,6 +1,5 @@
 <!--pages/hot/hot.wxml-->
 <view class="container">
-  <naviBar title="AI预测"></naviBar>
   <view>
     <block wx:for="{{funds.length}}">
       <fundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}"></fundGeneral>
@@ -8,4 +7,6 @@
     </block>
   </view>
 </view>
-
+<view class="head">
+  <naviBar title="AI预测"></naviBar>
+</view>
