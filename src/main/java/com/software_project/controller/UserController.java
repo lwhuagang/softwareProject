@@ -317,6 +317,7 @@ public class UserController {
             Hold hold = holdService.getHoldByUserEmailAndFundCode(email, fund.getFundCode());
             HoldVO holdVO = new HoldVO(email, fund, hold);
             holdVO.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1));
+            holdVOS.add(holdVO);
         }
         Ret_HoldVOList ret = new Ret_HoldVOList(user, holdVOS);
         return new Result(200, ret, "根据用户邮箱获取用户和该用户持有的所有基金及其持有信息");
