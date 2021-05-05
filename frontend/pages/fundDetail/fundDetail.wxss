@@ -1,6 +1,6 @@
 /* pages/fundDetail/fundDetail.wxss */
 .container {
-  height: 1500px;
+  height: 3000rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
