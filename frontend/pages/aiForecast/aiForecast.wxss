@@ -1,1 +1,8 @@
 /* pages/aiForecast/aiForecast.wxss */
+.divLine{
+  height: 1rpx;
+  width: 100%;
+  background: #dcdcdc;
+  margin-top: 3rpx;
+  /* margin-bottom: 3rpx; */
+}

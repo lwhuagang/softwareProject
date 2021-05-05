@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "user": {
+    user: {
       "email": "18231106@buaa.edu.cn",
       "password": "e10adc3949ba59abbe56e057f20f883e",
       "nickname": "yangxi",
@@ -19,7 +19,7 @@ Page({
       "hold_profit": 0.0,
       "total_profit": 0.0
     },
-    "funds": [{
+    funds: [{
         "code": "111444",
         "name": "银河创新成长混合",
         "type": "股票型",
