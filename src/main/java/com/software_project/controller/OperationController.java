@@ -63,7 +63,7 @@ public class OperationController {
             record.setUserEmail(email);
             record.setFundCode(fundCode);
             record.setType(false);//false 代表 买入,true 代表 卖出
-            Timestamp goodsC_date = Timestamp.valueOf(addDateMinut(8));//把时间转换
+            Timestamp goodsC_date = Timestamp.valueOf(addDateMinut());//把时间转换
             record.setTime(goodsC_date);
             record.setFlag(false);//true 该交易已处理,false 未处理
             record.setCount(money);
@@ -84,12 +84,13 @@ public class OperationController {
             }
 
             // 更新用户信息
-            // 扣除用户金额
-            user.setBuyMoney(user.getMoney() - money);
+            // 扣除用户可用金额
+            user.setMoney(user.getMoney() - money);
             userService.updateUser(user);
             return new Result(200, true, "买入操作记录成功");
         }
         catch (Exception e){
+            e.printStackTrace();
             return new Result(200, false, "买入操作记录失败");
         }
     }
@@ -108,7 +109,7 @@ public class OperationController {
             record.setUserEmail(email);
             record.setFundCode(fundCode);
             record.setType(true);//false 代表 买入,true 代表 卖出
-            Timestamp goodsC_date = Timestamp.valueOf(addDateMinut(8));//把时间转换
+            Timestamp goodsC_date = Timestamp.valueOf(addDateMinut());//把时间转换
             record.setTime(goodsC_date);
             record.setFlag(false);//true 该交易已处理,false 未处理
             record.setCount(share);
@@ -137,11 +138,14 @@ public class OperationController {
     public Result update(){
         List<Record> records = operationService.getAllUndoRecord();
         for (Record record : records) {
+            if (record.isFlag()) {
+                continue; // 该条交易记录已处理
+            }
             User user = userService.findUserByEmail(record.getUserEmail());
             Fund fund = fundService.searchFundByCode(Integer.parseInt(record.getFundCode()));
-            Hold hold = holdService.getHoldByUserEmailAndFundCode(user.getEmail(),fund.getFundCode());
+            Hold hold = holdService.getHoldByUserEmailAndFundCode(user.getEmail(),fund.getCode());
             if (!record.isFlagTime()){
-                // 代表这个交易记录不处理,设置为false后跳过
+                // 代表这个交易记录今日不处理,设置为false后跳过
                 record.setFlagTime(true);
                 operationService.insertDeal(record);
                 continue;
@@ -153,7 +157,7 @@ public class OperationController {
                 double net_buyMoney = buyMoney - buyIn_fee; // 净买入金额
                 // 获取当日净值
                 RestTemplate restTemplate = new RestTemplate();
-                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + fund.getFundCode(), String.class);
+                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + fund.getCode() + "&startDate=2020-05-01", String.class);
                 JSONObject jsonObject = JSON.parseObject(s);
                 JSONObject data =(JSONObject) jsonObject.get("data");
                 double netWorth = Double.parseDouble(data.getString("netWorth"));
@@ -164,13 +168,13 @@ public class OperationController {
                 hold.setShare(hold.getShare()+buyIn_share);
                 hold.setHoldCost(hold.getHoldCost()+net_buyMoney);
                 // 更新基金累计收益
-                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getFundCode())));
+                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getCode())));
                 total -= buyIn_fee;
-                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));  // TODO 什么意思
+                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getCode(), String.valueOf(total));  // TODO 什么意思
                 holdService.updateHold(hold);
 //                // 设置hold返回数据
 //                hold_ret.setUserEmail(user.getEmail());
-//                hold_ret.setFundCode(fund.getFundCode());
+//                hold_ret.setFundCode(fund.getCode());
 //                hold_ret.setHold(hold.getHold());
 //                hold_ret.setShare(hold.getShare()+buyIn_share);
 //                hold_ret.setHoldCost(hold.getHoldCost());
@@ -178,7 +182,7 @@ public class OperationController {
 //                hold_ret.setHoldProfit(hold.getHold() - hold.getHoldCost());
 //                hold_ret.setYesProfit(hold.getYesProfit());
 //                hold_ret.setHoldProfitRate(hold_ret.getHoldProfit()/hold_ret.getHoldCost());
-//                hold_ret.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1));
+//                hold_ret.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getCode(), 0, -1));
                 // 更新user表
                 user.setBuyMoney(user.getBuyMoney()+net_buyMoney);
                 user.setHoldCost(user.getHoldCost()+net_buyMoney);
@@ -199,7 +203,7 @@ public class OperationController {
                 double sellShare = record.getCount(); // 用户卖出份额
                 // 获取当日净值
                 RestTemplate restTemplate = new RestTemplate();
-                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + fund.getFundCode(), String.class);
+                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + fund.getCode() + "&startDate=2020-05-01", String.class);
                 JSONObject jsonObject = JSON.parseObject(s);
                 JSONObject data =(JSONObject) jsonObject.get("data");
                 double netWorth = Double.parseDouble(data.getString("netWorth"));
@@ -216,9 +220,9 @@ public class OperationController {
                 hold.setShare(hold.getShare()-sellShare);
                 hold.setHoldCost(hold.getHoldCost()-sellCost);
                 // 更新基金累计收益
-                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getFundCode())));
+                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getCode())));
                 total -= sellFee;
-                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getFundCode(), String.valueOf(total));
+                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getCode(), String.valueOf(total));
                 holdService.updateHold(hold);
                 // 更新user表
                 user.setHoldProfit(user.getHoldProfit() - sellProfit);
@@ -227,17 +231,19 @@ public class OperationController {
                 user.setMoney(user.getMoney() + net_sellMoney);
                 userService.updateUser(user);
            }
+            // 将record的flag设置为true代表已经处理
+            record.setFlag(true);
+            operationService.insertDeal(record);
         }
         return null;
     }
 
-    public static String addDateMinut(int hour){
+    public static String addDateMinut(){
         Date date = new Date();//获得系统时间.
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println("front:" + sdf.format(date)); //显示输入的日期
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        cal.add(Calendar.HOUR, hour);// 24小时制
         date = cal.getTime();
         System.out.println("after:" + sdf.format(date));  //显示更新后的日期
         return sdf.format(date);
