@@ -63,10 +63,35 @@ Page({
     })
   },
   buySubmit:function(){
-    wx.showModal({
-      cancelColor: 'cancelColor',
-      content:"这里是确认买入函数，暂时还没有调用后端接口，请耐心等待"
-    })
+      wx.request({
+        url: 'http://localhost:8080/fundOperation/buy',
+        method:"POST",
+        data:{
+          email:app.globalData.userInfo.email,
+          fundCode:this.data.fundCode,
+          money:this.data.money
+        },
+        success:res=>{
+          if(res.statusCode=="200") {
+            if(res.data.message=="买入操作记录成功") {
+              wx.showModal({
+                title:"买入成功!",
+                cancelColor: 'cancelColor',
+              })
+            } else {
+              wx.showModal({
+                title:"余额不足！",
+                cancelColor: 'cancelColor',
+              })
+            }
+          } else {
+            wx.showModal({
+              title:"操作失败！",
+              cancelColor: 'cancelColor',
+            })
+          }
+        }
+      })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
