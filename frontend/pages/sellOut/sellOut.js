@@ -1,4 +1,13 @@
 // pages/sellOut/sellOut.js
+const app = getApp();
+let {
+  getFund,
+  getFundPosition,
+  getFundRank,
+  getFundDetail,
+  getAllFund,
+  getHotFund,
+} = require("../../api/getFoundation.js")
 Page({
 
   /**
@@ -32,6 +41,23 @@ Page({
       btn3Color:this.data.grey,
       btn4Color:this.data.grey,
     })
+    this.loadFundDetail(function(){
+    })
+  },
+  loadFundDetail:function(callback) {
+    var that = this;
+    getFundDetail(
+      {
+        code:this.data.fundCode,
+        token:"atTPd9c8sA"
+      },
+      res=>{
+        this.setData({
+          fundInfo:res.data.data,
+        });    
+      }
+    );
+    ;//同步不知道怎么搞，只好人为设置定时器了
   },
   unitBtn1:function(){
     if (this.data.btn1Color == this.data.grey){
@@ -111,9 +137,36 @@ Page({
     })
   },
   sellSubmit:function(){
-    wx.showModal({
-      cancelColor: 'cancelColor',
-      content:"这里是确认卖出函数，暂时还没有调用后端接口，请耐心等待"
+    console.log("卖出份额=======>"+this.data.chooseUnit)
+    wx.request({
+      url: 'http://localhost:8080/fundOperation/sell',
+      method:"POST",
+      data:{
+        email:app.globalData.userInfo.email,
+        fundCode:this.data.fundCode,
+        sellShare:this.data.chooseUnit
+      },
+      success:res=>{
+        console.log(res)
+        if(res.statusCode=="200") {
+          if(res.data.message=="卖出操作记录成功") {
+            wx.showModal({
+              title:"卖出成功!",
+              cancelColor: 'cancelColor',
+            })
+          } else {
+            wx.showModal({
+              title:"份额不足！",
+              cancelColor: 'cancelColor',
+            })
+          }
+        } else {
+          wx.showModal({
+            title:"操作失败！",
+            cancelColor: 'cancelColor',
+          })
+        }
+      }
     })
   },
   /**
