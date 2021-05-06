@@ -365,13 +365,14 @@ Page({
   },
   selfSelect: function () {
     wx.request({
-      url: 'http://localhost:8080/fund/addWatch',
+      url: 'http://10.136.94.184:8080/fund/addWatch',
       method: "POST",
       data: {
         email: app.globalData.userInfo.email,
         fundCode: this.data.fundCode
       },
       success: res => {
+        console.log("==>",res);
         if (res.statusCode == "200") {
           wx.showModal({
             title: "添加成功",
@@ -394,7 +395,7 @@ Page({
   
   deleteSelfSelect: function () {
     wx.request({
-      url: 'http://localhost:8080/fund/deleteWatch',
+      url: 'http://10.136.94.184:8080/fund/deleteWatch',
       method: "POST",
       data: {
         email: app.globalData.userInfo.email,

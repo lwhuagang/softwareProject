@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "funds": [],
+    funds: [],
     isLogin:false,
   },
 
@@ -39,14 +39,16 @@ Page({
         }
       })
     } else {
+
       getSelfSelect(
         app.globalData.userInfo.email,
         res => {
-          this.setData({
-            funds: res.data.obj.funds.data
-          });
-          console.log("获得selfSelect===>");
-          console.log(this.data.funds);
+          console.log("selfselect==>",res)
+          if(res.data.obj.funds!="") {
+            this.setData({
+              funds: res.data.obj.funds.data
+            });
+          }
         }
       )
     }
@@ -84,14 +86,18 @@ Page({
         }
       })
     } else {
+
       getSelfSelect(
         app.globalData.userInfo.email,
         res => {
-          this.setData({
-            funds: res.data.obj.funds.data
-          });
+          console.log("selfselect==>",res)
+          if(res.data.obj.funds!="") {
+            this.setData({
+              funds: res.data.obj.funds.data
+            });
+          }
           console.log("获得selfSelect===>");
-          console.log(this.data.funds);
+          console.log(this.data.funds); 
         }
       )
     }

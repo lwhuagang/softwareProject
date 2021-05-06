@@ -139,7 +139,7 @@ Page({
   sellSubmit:function(){
     console.log("卖出份额=======>"+this.data.chooseUnit)
     wx.request({
-      url: 'http://localhost:8080/fundOperation/sell',
+      url: 'http://10.136.94.184:8080/fundOperation/sell',
       method:"POST",
       data:{
         email:app.globalData.userInfo.email,
