@@ -52,20 +52,27 @@ Page({
     this.loadFundPosition(function () {
       that.loadEcPosition();
     })
-    getSelfSelect(
-      app.globalData.userInfo.email,
-      res => {
-        var funds = res.data.obj.funds.data;
-        var i = 0;
-        for (i = 0; i < funds.length; i++) {
-          if (funds[i].code == this.data.fundCode) {
-            this.setData({
-              isSelfSelect: true,
-            });
+    if(app.globalData.isLogin == false){
+      this.setData({
+        isSelfSelect: false,
+      });
+    }else{
+      getSelfSelect(
+        app.globalData.userInfo.email,
+        res => {
+          var funds = res.data.obj.funds.data;
+          var i = 0;
+          for (i = 0; i < funds.length; i++) {
+            if (funds[i].code == this.data.fundCode) {
+              this.setData({
+                isSelfSelect: true,
+              });
+            }
           }
         }
-      }
-    )
+      )
+    }
+    
   },
 
   // 加载基金详情
@@ -161,7 +168,7 @@ Page({
       devicePixelRatio: dpr // new
     });
     canvas.setChart(chart);
-
+    
     var option = {
       // title: {
       //   text: '业绩走势',
@@ -326,7 +333,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(app.globalData.isLogin == false){
+      this.setData({
+        isSelfSelect: false,
+      });
+    }else{
+      getSelfSelect(
+        app.globalData.userInfo.email,
+        res => {
+          var funds = res.data.obj.funds.data;
+          var i = 0;
+          for (i = 0; i < funds.length; i++) {
+            if (funds[i].code == this.data.fundCode) {
+              this.setData({
+                isSelfSelect: true,
+              });
+            }
+          }
+        }
+      )
+    }
   },
 
   /**
@@ -364,33 +390,51 @@ Page({
 
   },
   selfSelect: function () {
-    wx.request({
-      url: 'http://10.136.94.184:8080/fund/addWatch',
-      method: "POST",
-      data: {
-        email: app.globalData.userInfo.email,
-        fundCode: this.data.fundCode
-      },
-      success: res => {
-        console.log("==>",res);
-        if (res.statusCode == "200") {
-          wx.showModal({
-            title: "添加成功",
-            content: "您已成功关注该基金!",
-            cancelColor: 'cancelColor',
-          })
-          this.setData({
-            isSelfSelect: true
-          })
-        } else {
-          wx.showModal({
-            title: "添加失败",
-            content: "您已经关注该基金或该基金不在数据库中，请检查您的操作！",
-            cancelColor: 'cancelColor',
-          })
+    if (app.globalData.isLogin == false){
+      wx.showModal({
+        cancelColor: 'cancelColor',
+        title:'请先登录',
+        content:'点击确定跳转到登录界面',
+        success(res) {
+          if(res.confirm) {
+           wx.switchTab({
+             url: '/pages/mine/mine',
+           })
+          } else if(res.cancel) {
+            
+          }
         }
-      }
-    })
+      })
+    }else{
+      wx.request({
+        url: 'http://10.136.94.184:8080/fund/addWatch',
+        method: "POST",
+        data: {
+          email: app.globalData.userInfo.email,
+          fundCode: this.data.fundCode
+        },
+        success: res => {
+          console.log("==>",res);
+          if (res.statusCode == "200") {
+            wx.showModal({
+              title: "添加成功",
+              content: "您已成功关注该基金!",
+              cancelColor: 'cancelColor',
+            })
+            this.setData({
+              isSelfSelect: true
+            })
+          } else {
+            wx.showModal({
+              title: "添加失败",
+              content: "您已经关注该基金或该基金不在数据库中，请检查您的操作！",
+              cancelColor: 'cancelColor',
+            })
+          }
+        }
+      })
+    }
+    
   },
   
   deleteSelfSelect: function () {
@@ -427,4 +471,27 @@ Page({
     console.log(this.data.fundPosition) //如果输出是null，去看getFundPosition里面，极有可能是没有基金的持仓详情
     console.log("test over!");
   },
+  gotoBuy:function(e) {
+    if (app.globalData.isLogin == false){
+      wx.showModal({
+        cancelColor: 'cancelColor',
+        title:'请先登录',
+        content:'点击确定跳转到登录界面',
+        success(res) {
+          if(res.confirm) {
+           wx.switchTab({
+             url: '/pages/mine/mine',
+           })
+          } else if(res.cancel) {
+            
+          }
+        }
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/buyIn/buyIn?fundCode='+this.data.fundCode+'&fundName='+this.data.fundInfo.name,
+      })
+    }
+    
+  }
 })

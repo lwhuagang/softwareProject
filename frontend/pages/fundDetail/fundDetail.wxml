@@ -178,7 +178,7 @@
       <view class="selfSelect">取消自选</view>
     </view>
   </block>
-  <navigator class="bottomButton" url="/pages/buyIn/buyIn?fundCode={{fundCode}}&fundName={{fundInfo.name}}">
+  <view class="bottomButton" bindtap="gotoBuy">
     <view class="buyIn">买入</view>
-  </navigator>
+  </view>
 </view>
