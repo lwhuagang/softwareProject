@@ -1,7 +1,6 @@
 package com.software_project.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.software_project.pojo.Fund;
 import com.software_project.pojo.Hold;
@@ -25,7 +24,6 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("user")
@@ -44,7 +42,7 @@ public class UserController {
     private AttentionService attentionService;
 
     @Autowired
-    StringRedisTemplate redisTemplate;
+    private StringRedisTemplate redisTemplate;
 
     /**
      * 发送验证码
@@ -262,27 +260,25 @@ public class UserController {
             String s1;
             double total;
             try {
-                s1 = redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getFundCode());
+                s1 = redisTemplate.opsForList().rightPop(user.getEmail().substring(0,8) + ":" + fund.getFundCode());
                 total = Double.parseDouble(s1);
                 total += fund.getYesProfit();
             }
             catch (Exception e){
                 total = 0;
             }
-            String key = user.getEmail() + "" + fund.getFundCode();
-            try{
-                if (redisTemplate.opsForList().range(key, 0, -1).size() >= 30) {
-                    // 只存储三十天的累计收益
-                    redisTemplate.opsForList().leftPop(key);
-                    redisTemplate.opsForList().rightPush(key, String.valueOf(total));
-                }
-                else{
-                    redisTemplate.opsForList().rightPush(key, String.valueOf(total));
-                }
-            }
-            catch (Exception e){
-                // 创建一个累计收益list
+            String key = user.getEmail().substring(0,8) + ":" + fund.getFundCode();
+            if (redisTemplate.opsForList().range(key,0,-1).size() >= 30) {
+                // 只存储三十天的累计收益
+                redisTemplate.opsForList().leftPop(key);
                 redisTemplate.opsForList().rightPush(key, String.valueOf(total));
+                redisTemplate.opsForList().rightPush(key, String.valueOf(0));
+                System.out.println(redisTemplate.opsForList().range(key,0,-1));
+            }
+            else{
+                redisTemplate.opsForList().rightPush(key, String.valueOf(total));
+                redisTemplate.opsForList().rightPush(key, String.valueOf(0));
+                System.out.println(redisTemplate.opsForList().range(key,0,-1));
             }
         }
         // 更新user类中的持有收益和总收益(昨日收益总和)
@@ -316,7 +312,7 @@ public class UserController {
         for (Fund fund : funds) {
             Hold hold = holdService.getHoldByUserEmailAndFundCode(email, fund.getFundCode());
             HoldVO holdVO = new HoldVO(email, fund, hold);
-            holdVO.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1));
+            holdVO.setTotalProfit(redisTemplate.opsForList().range(user.getEmail().substring(0,8) + ":" + fund.getFundCode(), 0, -1));
             holdVOS.add(holdVO);
         }
         Ret_HoldVOList ret = new Ret_HoldVOList(user, holdVOS);
