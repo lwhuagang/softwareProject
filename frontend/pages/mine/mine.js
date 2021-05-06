@@ -153,19 +153,19 @@ Page({
         success: res=>{
           console.log(res)
           if(res.data.code==200 && res.data.message=="登陆成功") {
+            app.globalData.isLogin = true;
+            app.globalData.userInfo=res.data.obj;
+            that.setData({
+              isLogin:true,
+              userInfo:res.data.obj 
+            })
             wx.showToast({
               title: '已登录',     
               icon: 'success',       
               duration: 1000,//持续的时间 
               // 跳转到个人信息主页
             });
-            app.globalData.isLogin = true;
             console.log("登录信息===>",res);
-            app.globalData.userInfo=res.data.obj
-            that.setData({
-              isLogin:true,
-              userInfo:res.data.obj 
-            })
           } else {
             wx.showToast({
               title: '邮箱或密码错误',

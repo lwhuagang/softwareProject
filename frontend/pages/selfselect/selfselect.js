@@ -48,6 +48,10 @@ Page({
             this.setData({
               funds: res.data.obj.funds.data
             });
+          } else {
+            this.setData({
+              funds:[]
+            })
           }
         }
       )
@@ -95,9 +99,11 @@ Page({
             this.setData({
               funds: res.data.obj.funds.data
             });
+          } else {
+            this.setData({
+              funds:[]
+            })
           }
-          console.log("获得selfSelect===>");
-          console.log(this.data.funds); 
         }
       )
     }
