@@ -40,7 +40,7 @@ Page({
     //     "manager": "张强"
     //   }
     // ],
-    isLogin:false,
+    isLogin:null,
   },
 
   /**
@@ -69,15 +69,19 @@ Page({
       })
     } else {
           //console.log(app.globalData.userInfo.email)
+    wx.showLoading({
+      title: '加载中',
+    })
     getHold(
       app.globalData.userInfo.email,
       res => {
         this.setData({
           user: res.data.obj.user,
-          funds: res.data.obj.funds
+          funds: res.data.obj.holdVOS
         });
         console.log("获得hold===>");
         console.log(res);
+        wx.hideLoading();
       }
     )
     }
@@ -104,15 +108,19 @@ Page({
         }
       })
     } else {
-      console.log("获得hold===>");
+      wx.showLoading({
+        title: '加载中', 
+      })
       getHold(
         app.globalData.userInfo.email,
         res => {
           this.setData({
             user: res.data.obj.user,
-            funds: res.data.obj.funds
+            funds: res.data.obj.holdVOS
           });
+          console.log("获得hold===>");
           console.log(res);
+          wx.hideLoading();
         }
       )
     }

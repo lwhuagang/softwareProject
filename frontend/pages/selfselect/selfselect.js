@@ -18,6 +18,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    });
+    setTimeout(function(){
+      wx.hideLoading({
+        success: (res) => {},
+      })
+    },100)
     this.setData({
       isLogin:app.globalData.isLogin
     })
@@ -69,6 +77,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.showLoading({
+      title: '加载中',
+    });
+    setTimeout(function(){
+      wx.hideLoading({
+        success: (res) => {},
+      })
+    },100)
     this.setData({
       isLogin:app.globalData.isLogin
     })

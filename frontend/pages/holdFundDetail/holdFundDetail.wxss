@@ -152,7 +152,7 @@
 .lineBody{
   height: 800rpx;
 }
-.linePart{
+.sublinePart{
   height: 450rpx;
 }
 .linePic{

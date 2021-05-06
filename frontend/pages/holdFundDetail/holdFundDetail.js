@@ -8,7 +8,8 @@ let {
   getFundDetail,
   getAllFund,
   getHotFund,
-} = require("../../api/getFoundation.js")
+} = require("../../api/getFoundation.js");
+let config = require("../../config.js");
 Page({
 
   /**
@@ -44,9 +45,9 @@ Page({
     this.setData({
       fundCode:code, //全局变量
     });
-    this.setData({
-      fundCode:code, //全局变量
-    });
+    wx.request({
+      url: 'url',
+    })
     this.loadFundDetail(function(){
       that.loadEcLine_acc();//累计盈亏
       that.loadEcLine_worth();//业绩走势
