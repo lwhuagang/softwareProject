@@ -1,5 +1,6 @@
 // pages/mine/mine.js
-const app = getApp()
+const app = getApp();
+let config = require("../../config.js");
 Page({
 
   /**
@@ -28,7 +29,7 @@ Page({
           isLogin:app.globalData.isLogin
         })
         wx.request({
-          url: 'http://10.136.94.184:8080/user/message',
+          url: config.service+'/user/message',
           method:"GET",
           data:{
             email:app.globalData.userInfo.email
@@ -69,7 +70,7 @@ Page({
         isLogin:app.globalData.isLogin
       })
       wx.request({
-        url: 'http://10.136.94.184:8080/user/message',
+        url: config.service+'/user/message',
         method:"GET",
         data:{
           email:app.globalData.userInfo.email
@@ -143,7 +144,7 @@ Page({
     console.log("用户登录====>")
     console.log(data)
       wx.request({
-        url: 'http://10.136.94.184:8080/user/login',
+        url: config.service+'/user/login',
         method:"POST",
         data:{
             email:data.detail.value.email,

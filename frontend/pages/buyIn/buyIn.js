@@ -7,7 +7,8 @@ let {
   getFundDetail,
   getAllFund,
   getHotFund,
-} = require("../../api/getFoundation.js")
+} = require("../../api/getFoundation.js");
+let config = require("../../config.js");
 Page({
 
   /**
@@ -64,7 +65,7 @@ Page({
   },
   buySubmit:function(){
       wx.request({
-        url: 'http://10.136.94.184:8080/fundOperation/buy',
+        url: config.service+'/fundOperation/buy',
         method:"POST",
         data:{
           email:app.globalData.userInfo.email,

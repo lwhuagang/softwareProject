@@ -13,6 +13,7 @@ let {
   getHold,
   getSelfSelect
 } = require("../../api/getUserFunds.js")
+let config = require("../../config.js")
 
 Page({
 
@@ -407,7 +408,7 @@ Page({
       })
     }else{
       wx.request({
-        url: 'http://10.136.94.184:8080/fund/addWatch',
+        url: config.service+'/fund/addWatch',
         method: "POST",
         data: {
           email: app.globalData.userInfo.email,
@@ -439,7 +440,7 @@ Page({
   
   deleteSelfSelect: function () {
     wx.request({
-      url: 'http://10.136.94.184:8080/fund/deleteWatch',
+      url: config.service+'/fund/deleteWatch',
       method: "POST",
       data: {
         email: app.globalData.userInfo.email,

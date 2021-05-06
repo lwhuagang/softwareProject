@@ -1,5 +1,6 @@
 // pages/register/register.js
 const app = getApp();
+let config = require("../../config.js")
 Page({
 
   /**
@@ -97,7 +98,7 @@ Page({
         }
       }.bind(that),1000);
       wx.request({
-        url: 'http://10.136.94.184:8080/user/captcha',
+        url: config.service+'/user/captcha',
         method:"GET",
         data:{
           email:this.data.email
@@ -132,7 +133,7 @@ register:function() {
       title: '请稍后',
     });
     wx.request({
-      url: 'http://10.136.94.184:8080/user/register',
+      url: config.service+'/user/register',
       method:"POST",
       data:{
         user:{

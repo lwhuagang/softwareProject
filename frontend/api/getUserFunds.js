@@ -1,6 +1,7 @@
+let config = require("../config.js")
 function getHold(email, callback) {
   wx.request({
-    url: 'http://10.136.94.184:8080/user/havingList',
+    url: config.service+'/user/havingList',
     method: "GET",
     data: {
       email: email
@@ -13,7 +14,7 @@ function getHold(email, callback) {
 
 function getSelfSelect(email, callback) {
   wx.request({
-    url: 'http://10.136.94.184:8080/user/watchList',
+    url: config.service+'/user/watchList',
     method: "GET",
     data: {
       email: email
@@ -27,7 +28,7 @@ function getSelfSelect(email, callback) {
 function getSearch(fundCode, name, callback) {
   if (fundCode != "") {
     wx.request({
-      url: 'http://10.136.94.184:8080/fund/searchFund',
+      url: config.service+'/fund/searchFund',
       method: "POST",
       data: {
         code: fundCode,
@@ -39,7 +40,7 @@ function getSearch(fundCode, name, callback) {
     })
   } else {
     wx.request({
-      url: 'http://10.136.94.184:8080/fund/searchFund',
+      url: config.service+'/fund/searchFund',
       method: "POST",
       data: {
         name: name
