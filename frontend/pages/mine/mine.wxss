@@ -190,3 +190,6 @@ Page {
   mix-blend-mode: screen;
   height: 100rpx;
 }
+.logOutBtn{
+  margin-top:500rpx;
+}
