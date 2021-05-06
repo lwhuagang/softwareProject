@@ -19,33 +19,34 @@ Page({
       "hold_profit": 0.0,
       "total_profit": 0.0
     },
-    funds: [{
-        "code": "111444",
-        "name": "银河创新成长混合",
-        "type": "股票型",
-        "buyMin": 200.0,
-        "buyMoney": 10000.89,
-        "yesProfit": 7.89,
-        "holdProfit": 102.79,
-        "holdProfitRate": 3.23,
-        "buySourceRate": 0.2,
-        "buyRate": 0.2,
-        "manager": "张强"
-      },
-      {
-        "code": "111444",
-        "name": "银河创新成长混合",
-        "type": "股票型",
-        "buyMin": 200.0,
-        "buyMoney": 10000.89,
-        "yesProfit": 7.89,
-        "holdProfit": 102.79,
-        "holdProfitRate": 3.23,
-        "buySourceRate": 0.2,
-        "buyRate": 0.2,
-        "manager": "张强"
-      }
-    ],
+    funds:[],
+    // funds: [{
+    //     "code": "111444",
+    //     "name": "银河创新成长混合",
+    //     "type": "股票型",
+    //     "buyMin": 200.0,
+    //     "buyMoney": 10000.89,
+    //     "yesProfit": 7.89,
+    //     "holdProfit": 102.79,
+    //     "holdProfitRate": 3.23,
+    //     "buySourceRate": 0.2,
+    //     "buyRate": 0.2,
+    //     "manager": "张强"
+    //   },
+    //   {
+    //     "code": "111444",
+    //     "name": "银河创新成长混合",
+    //     "type": "股票型",
+    //     "buyMin": 200.0,
+    //     "buyMoney": 10000.89,
+    //     "yesProfit": 7.89,
+    //     "holdProfit": 102.79,
+    //     "holdProfitRate": 3.23,
+    //     "buySourceRate": 0.2,
+    //     "buyRate": 0.2,
+    //     "manager": "张强"
+    //   }
+    // ],
     isLogin:false,
   },
 

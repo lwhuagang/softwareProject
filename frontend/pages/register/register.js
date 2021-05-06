@@ -6,13 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-      nickname:'',
+      nickname:'', 
       email:'',
       password:'',
       confirmPswd:'',
       captcha:'',
       pic_url:'',
-      money:0,
+      money:10, 
       sendTime:'发送验证码',
       smsFlag:false,
       snsMsgWait: 60,
@@ -97,7 +97,7 @@ Page({
         }
       }.bind(that),1000);
       wx.request({
-        url: 'http://localhost:8080/user/captcha',
+        url: 'http://10.136.94.184:8080/user/captcha',
         method:"GET",
         data:{
           email:this.data.email
@@ -132,14 +132,14 @@ register:function() {
       title: '请稍后',
     });
     wx.request({
-      url: 'http://localhost:8080/user/register',
+      url: 'http://10.136.94.184:8080/user/register',
       method:"POST",
       data:{
         user:{
             email:that.data.email,
             password:that.data.password,
             nickname:that.data.nickname,
-            money:that.data.money,
+            money:that.data.money*1000,
             pic_url:that.data.pic_url
         },
         captcha:that.data.captcha
@@ -172,7 +172,7 @@ register:function() {
           app.globalData.userInfo.email=that.data.email
           app.globalData.userInfo.password=that.data.password
           app.globalData.userInfo.nickname=that.data.nickname
-          app.globalData.userInfo.money=that.data.money
+          app.globalData.userInfo.money=that.data.money*1000
           app.globalData.userInfo.pic_url=that.data.pic_url
           setTimeout(
             function() {

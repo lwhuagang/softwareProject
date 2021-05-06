@@ -22,11 +22,34 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      this.setData({
-        userInfo:app.globalData.userInfo,
-        isLogin:app.globalData.isLogin,
-        tmpInfo:app.globalData.userInfo
-      })
+      var that = this;
+      if(app.globalData.isLogin==true) {
+        that.setData({
+          isLogin:app.globalData.isLogin
+        })
+        wx.request({
+          url: 'http://10.136.94.184:8080/user/message',
+          method:"GET",
+          data:{
+            email:app.globalData.userInfo.email
+          },
+          success:res=>{
+            console.log(res);
+            if(res.data.code==200) {
+              app.globalData.userInfo=res.data.obj
+              that.setData({
+                userInfo:res.data.obj,
+                tmpInfo:res.data.obj
+              })
+            }
+          }
+        })
+      } else {
+        this.setData({
+          isLogin:app.globalData.isLogin,
+        })
+      }
+
   },
 
   /**
@@ -40,11 +63,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      userInfo:app.globalData.userInfo,
-      isLogin:app.globalData.isLogin,
-      tmpInfo:app.globalData.userInfo
-    })
+    var that = this;
+    if(app.globalData.isLogin==true) {
+      that.setData({
+        isLogin:app.globalData.isLogin
+      })
+      wx.request({
+        url: 'http://10.136.94.184:8080/user/message',
+        method:"GET",
+        data:{
+          email:app.globalData.userInfo.email
+        },
+        success:res=>{
+          console.log(res);
+          if(res.data.code==200) {
+            app.globalData.userInfo=res.data.obj
+            that.setData({
+              userInfo:res.data.obj,
+              tmpInfo:res.data.obj
+            })
+          }
+        }
+      })
+    } else {
+      this.setData({
+        isLogin:app.globalData.isLogin,
+      })
+    }
   },
 
   /**
@@ -58,7 +103,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+      console.log("卸载");
   },
 
   /**
@@ -98,7 +143,7 @@ Page({
     console.log("用户登录====>")
     console.log(data)
       wx.request({
-        url: 'http://localhost:8080/user/login',
+        url: 'http://10.136.94.184:8080/user/login',
         method:"POST",
         data:{
             email:data.detail.value.email,
@@ -106,7 +151,7 @@ Page({
         },
         success: res=>{
           console.log(res)
-          if(res.data==true) {
+          if(res.data.code==200 && res.data.message=="登陆成功") {
             wx.showToast({
               title: '已登录',     
               icon: 'success',       
@@ -114,9 +159,11 @@ Page({
               // 跳转到个人信息主页
             });
             app.globalData.isLogin = true;
-            app.globalData.userInfo.email = data.detail.value.email
+            console.log("登录信息===>",res);
+            app.globalData.userInfo=res.data.obj
             that.setData({
-              isLogin:true
+              isLogin:true,
+              userInfo:res.data.obj 
             })
           } else {
             wx.showToast({

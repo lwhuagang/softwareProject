@@ -64,7 +64,7 @@ Page({
   },
   buySubmit:function(){
       wx.request({
-        url: 'http://localhost:8080/fundOperation/buy',
+        url: 'http://10.136.94.184:8080/fundOperation/buy',
         method:"POST",
         data:{
           email:app.globalData.userInfo.email,
@@ -77,7 +77,12 @@ Page({
               wx.showModal({
                 title:"买入成功!",
                 cancelColor: 'cancelColor',
-              })
+              });
+              setTimeout(function(){
+                wx.navigateBack({
+                  delta: 1,
+                })
+              },3000)
             } else {
               wx.showModal({
                 title:"余额不足！",
