@@ -182,5 +182,12 @@ Page({
           })
         }
       })
+  },
+  logOut:function() {
+    app.globalData.isLogin=false;
+    this.setData({
+      isLogin:false,
+      userInfo:null
+    })
   }
 })
