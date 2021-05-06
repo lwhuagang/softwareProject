@@ -35,6 +35,8 @@ public class HoldVO {
     private double perHoldCost; // 持仓成本价
     private List<String> totalProfit; // 三十天累计收益
 
+    private double toVerifyMoney;     // 持有金额+未完成的交易中的金额
+
     public HoldVO(String userEmail, Fund fund, Hold hold) {
         this.userEmail = userEmail;
         this.fundCode = fund.getFundCode();

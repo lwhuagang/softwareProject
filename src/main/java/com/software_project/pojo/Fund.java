@@ -31,4 +31,5 @@ public class Fund {
     private double rate; // 持有收益率
     private double yesRate; // 昨日收益率
 
+
 }

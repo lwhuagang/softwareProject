@@ -3,6 +3,7 @@ package com.software_project.service;
 import com.software_project.pojo.User;
 
 import javax.mail.MessagingException;
+import java.util.List;
 
 public interface UserService {
 
@@ -51,4 +52,11 @@ public interface UserService {
      * @param user 待更新用户
      */
     void updateUser(User user);
+
+    /**
+     * 获取所有用户信息
+     * @return 返回所有用户信息
+     */
+    List<User> getAllUsers();
+
 }

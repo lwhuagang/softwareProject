@@ -15,6 +15,9 @@
     <select id="findUserByEmail" parameterType="string" resultType="com.software_project.pojo.User">
         select * from soft.user where email = #{email}
     </select>
+    <select id="getAllUsers" resultType="com.software_project.pojo.User">
+        select * from soft.user
+    </select>
 
     <!--向用户表中插入新用户-->
     <insert id="insertUser" parameterType="com.software_project.pojo.User">

@@ -5,6 +5,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Mapper
 public interface UserDAO {
@@ -38,4 +40,10 @@ public interface UserDAO {
      * @param user user对象
      */
     void updateUser(User user);
+
+    /**
+     * 获取所有的用户信息
+     * @return 返回所有用户列表
+     */
+    List<User> getAllUsers();
 }

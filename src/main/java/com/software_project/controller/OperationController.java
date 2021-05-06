@@ -85,6 +85,7 @@ public class OperationController {
 
             // 更新用户信息
             // 扣除用户可用金额
+            // 更新用户的总持有金额
             user.setMoney(user.getMoney() - money);
             userService.updateUser(user);
             return new Result(200, true, "买入操作记录成功");
