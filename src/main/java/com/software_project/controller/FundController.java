@@ -3,10 +3,14 @@ package com.software_project.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.software_project.pojo.Attention;
 import com.software_project.pojo.Fund;
+import com.software_project.pojo.Hold;
 import com.software_project.service.AttentionService;
 import com.software_project.service.FundService;
+import com.software_project.service.HoldService;
+import com.software_project.vo.HoldVO;
 import com.software_project.vo.Param_queryByParams;
 import com.software_project.vo.Param_searchFund;
+import com.software_project.vo.Param_userAndFund;
 import com.software_project.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -25,6 +29,9 @@ public class FundController {
 
     @Autowired
     private AttentionService attentionService;
+
+    @Autowired
+    private HoldService holdService;
 
     /**
      * 调用外部接口获取基金的详细信息
@@ -111,5 +118,14 @@ public class FundController {
             return new Result(200,null,"没有搜索条件!");
         }
     }
+
+//    @PostMapping("selfMsg")
+//    public Result getSelfMsg(@RequestBody Param_userAndFund params) {
+//        Fund fund = fundService.searchFundByCode(Integer.parseInt(params.fundCode));
+//        Hold hold = holdService.getHoldByUserEmailAndFundCode(params.userEmail, params.fundCode);
+//        HoldVO holdVO = new HoldVO(params.userEmail, fund, hold);
+//        holdVO.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1));
+//        holdVO.setToVerifyMoney(getVerifyMoney(user.getEmail(), fund.getFundCode()));     // 设置待确认金额
+//    }
 
 }

@@ -31,6 +31,7 @@ public class HoldVO {
     private double yesProfit; // 昨日收益
     private double holdCost; // 持有成本
     private double share; // 持有份额
+    // 需要计算的数据
     private double holdProfitRate; // 持有收益率
     private double perHoldCost; // 持仓成本价
     private List<String> totalProfit; // 三十天累计收益

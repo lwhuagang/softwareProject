@@ -169,9 +169,9 @@ public class OperationController {
                 hold.setShare(hold.getShare()+buyIn_share);
                 hold.setHoldCost(hold.getHoldCost()+net_buyMoney);
                 // 更新基金累计收益
-                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getCode())));
+                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail().substring(0,8) + ":" + fund.getFundCode())));
                 total -= buyIn_fee;
-                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getCode(), String.valueOf(total));  // TODO 什么意思
+                redisTemplate.opsForList().rightPush(user.getEmail().substring(0,8) + ":" + fund.getFundCode(), String.valueOf(total));  // TODO 什么意思
                 holdService.updateHold(hold);
 //                // 设置hold返回数据
 //                hold_ret.setUserEmail(user.getEmail());
@@ -221,9 +221,9 @@ public class OperationController {
                 hold.setShare(hold.getShare()-sellShare);
                 hold.setHoldCost(hold.getHoldCost()-sellCost);
                 // 更新基金累计收益
-                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getCode())));
+                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail().substring(0,8) + ":" + fund.getFundCode())));
                 total -= sellFee;
-                redisTemplate.opsForList().rightPush(user.getEmail() + "" + fund.getCode(), String.valueOf(total));
+                redisTemplate.opsForList().rightPush(user.getEmail().substring(0,8) + ":" + fund.getFundCode(), String.valueOf(total));
                 holdService.updateHold(hold);
                 // 更新user表
                 user.setHoldProfit(user.getHoldProfit() - sellProfit);

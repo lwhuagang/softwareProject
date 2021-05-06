@@ -278,30 +278,26 @@ public class UserController {
                 // 更新基金累计收益
                 String s1;
                 double total;
-                // 获取最近一天的累计收益， 更新累计收益
                 try {
-                    s1 = redisTemplate.opsForList().rightPop(user.getEmail() + "" + fund.getFundCode());
+                    s1 = redisTemplate.opsForList().rightPop(user.getEmail().substring(0,8) + ":" + fund.getFundCode());
                     total = Double.parseDouble(s1);
                     total += fund.getYesProfit();
                 }
                 catch (Exception e){
                     total = 0;
                 }
-                // 将累计收益存储到redis中
-                String key = user.getEmail() + "" + fund.getFundCode();
-                try{
-                    if (Objects.requireNonNull(redisTemplate.opsForList().range(key, 0, -1)).size() >= 30) {
-                        // 只存储三十天的累计收益
-                        redisTemplate.opsForList().leftPop(key);
-                        redisTemplate.opsForList().rightPush(key, String.valueOf(total));
-                    }
-                    else{
-                        redisTemplate.opsForList().rightPush(key, String.valueOf(total));
-                    }
-                }
-                catch (Exception e){
-                    // 创建一个累计收益list
+                String key = user.getEmail().substring(0,8) + ":" + fund.getFundCode();
+                if (redisTemplate.opsForList().range(key,0,-1).size() >= 30) {
+                    // 只存储三十天的累计收益
+                    redisTemplate.opsForList().leftPop(key);
                     redisTemplate.opsForList().rightPush(key, String.valueOf(total));
+                    redisTemplate.opsForList().rightPush(key, String.valueOf(0));
+                    System.out.println(redisTemplate.opsForList().range(key,0,-1));
+                }
+                else{
+                    redisTemplate.opsForList().rightPush(key, String.valueOf(total));
+                    redisTemplate.opsForList().rightPush(key, String.valueOf(0));
+                    System.out.println(redisTemplate.opsForList().range(key,0,-1));
                 }
             }
             // 更新user类中的持有收益和总收益(昨日收益总和)
@@ -339,6 +335,8 @@ public class UserController {
             HoldVO holdVO = new HoldVO(email, fund, hold);
             holdVO.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1));
             holdVO.setToVerifyMoney(getVerifyMoney(user.getEmail(), fund.getFundCode()));     // 设置待确认金额
+            // 计算
+            //holdVOS.s
             holdVOS.add(holdVO);
         }
         Ret_HoldVOList ret = new Ret_HoldVOList(user, holdVOS);
