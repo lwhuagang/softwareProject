@@ -40,7 +40,7 @@ public class HoldVO {
 
     public HoldVO(String userEmail, Fund fund, Hold hold) {
         this.userEmail = userEmail;
-        this.fundCode = fund.getFundCode();
+        this.fundCode = fund.getCode();
 
         this.name = fund.getName();
         this.type = fund.getType();
