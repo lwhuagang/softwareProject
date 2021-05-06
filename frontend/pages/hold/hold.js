@@ -12,10 +12,6 @@ Page({
   data: {
     "user": {
     },
-<<<<<<< HEAD
-    "funds": [
-    ],
-=======
     funds:[],
     // funds: [{
     //     "code": "111444",
@@ -44,7 +40,6 @@ Page({
     //     "manager": "张强"
     //   }
     // ],
->>>>>>> c3441eb8ac1043c5a3a4b8765ff696775cb77aea
     isLogin:false,
   },
 
