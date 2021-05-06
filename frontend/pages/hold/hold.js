@@ -41,6 +41,7 @@ Page({
     //   }
     // ],
     isLogin:null,
+    totalMoney:0,
   },
 
   /**
@@ -51,6 +52,7 @@ Page({
       isLogin:app.globalData.isLogin
     })
     if(app.globalData.isLogin==false) {
+      console.log("isFalse!!!!");
       wx.showModal({
         cancelColor: 'cancelColor',
         title:'请先登录',
@@ -79,6 +81,15 @@ Page({
           user: res.data.obj.user,
           funds: res.data.obj.holdVOS
         });
+        var tmpMoney = 0;
+        console.log("atHold:",res);
+        res.data.obj.holdVOS.forEach(element => {
+          tmpMoney+=element.holdCost+element.holdProfit+element.toVerifyMoney
+        });
+        console.log("tmpMoney==>",tmpMoney)
+        this.setData({
+          totalMoney:tmpMoney
+        })
         console.log("获得hold===>");
         console.log(res);
         wx.hideLoading();
@@ -118,6 +129,14 @@ Page({
             user: res.data.obj.user,
             funds: res.data.obj.holdVOS
           });
+          var tmpMoney = 0;
+          res.data.obj.holdVOS.forEach(element => {
+            tmpMoney+=element.holdProfit+element.holdCost+element.toVerifyMoney
+          });
+          console.log("tmpMoney==>",tmpMoney)
+          this.setData({
+            totalMoney:tmpMoney
+          })
           console.log("获得hold===>");
           console.log(res);
           wx.hideLoading();

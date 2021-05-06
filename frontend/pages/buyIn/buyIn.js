@@ -83,7 +83,7 @@ Page({
                 wx.navigateBack({
                   delta: 1,
                 })
-              },3000)
+              },1000)
             } else {
               wx.showModal({
                 title:"余额不足！",
@@ -98,6 +98,32 @@ Page({
           }
         }
       })
+      // wx.request({
+      //   url: config.service+'/user/calculate',
+      //   method:"GET",
+      //   success:res=>{
+      //     wx.request({
+      //       url: config.service+'/fundOperation/update',
+      //       method:"GET",
+      //       success:(res)=>{
+      //           console.log("calculate,update成功")
+      //       }
+      //     })
+      //   }
+      // })
+      // wx.request({
+      //   url: config.service+'/user/calculate',
+      //   method:"GET",
+      //   success:res=>{
+      //     wx.request({
+      //       url: config.service+'/fundOperation/update',
+      //       method:"GET",
+      //       success:(res)=>{
+      //           console.log("calculate,update成功")
+      //       }
+      //     })
+      //   }
+      // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

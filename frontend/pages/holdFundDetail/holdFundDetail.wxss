@@ -156,7 +156,7 @@
   height: 450rpx;
 }
 .linePic{
-  height: 450rpx;
+  height: rpx;
   margin-top: 0;
 }
 /* 底部按钮 */

@@ -6,7 +6,7 @@
   <view class="blueWave"></view>
   <view class="fundCard">
     <view class="holdTotalTitle">总金额(元)</view>
-    <view class="holdTotal">{{filters.toFix2(user.buyMoney)}}</view>
+    <view class="holdTotal">{{filters.toFix2(totalMoney)}}</view>
     <view class="profits">
       <!-- 成立以来涨跌幅 -->
       <view class="item">

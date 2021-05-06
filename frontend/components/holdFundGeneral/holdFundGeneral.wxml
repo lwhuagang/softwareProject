@@ -11,7 +11,7 @@
     </view>
     <!-- 基金金额与昨日收益 -->
     <view class="fundMoneyAndLastProfit">
-      <view class="netWorth">{{filters.toFix2(fundInfo.hold)}}</view>
+      <view class="netWorth">{{filters.toFix2(fundInfo.holdCost+fundInfo.holdProfit+fundInfo.toVerifyMoney)}}</view>
       <view class="netDate">{{filters.toFix2(fundInfo.yesProfit)}}</view>
     </view>
     <view class="fundProfitAndRate">
@@ -22,10 +22,10 @@
           <view class="redProfit">+{{filters.toFix2(fundInfo.holdProfit)}}</view>
         </block>
         <block wx:if="{{fundInfo.holdProfitRate < 0}}">
-          <view class="greenRate">{{filters.toFix2(fundInfo.rate)}}%</view>
+          <view class="greenRate">{{filters.toFix2(fundInfo.holdProfitRate)}}%</view>
         </block>
         <block wx:else>
-          <view class="redRate">+{{filters.toFix2(fundInfo.rate)}}%</view>
+          <view class="redRate">+{{filters.toFix2(fundInfo.holdProfitRate)}}%</view>
         </block>
     </view>
   </navigator>

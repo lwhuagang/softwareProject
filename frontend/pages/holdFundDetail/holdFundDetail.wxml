@@ -13,23 +13,23 @@
     </view>
   </view>
   <!-- 收益详情 -->
-  <view class="incomePart">
+  <view class="incomePart" wx:if="{{holdDetail!=null}}">
     <view class="moneyPart">
       <view class="moneyNote">金额(元)</view>
-      <view class="moneyValue">{{tool.toFix2(moneyValue)}}</view>
+      <view class="moneyValue">{{tool.toFix2(holdDetail.holdCost+holdDetail.holdProfit+holdDetail.toVerifyMoney)}}</view>
     </view>
     <view class="incomeDetail">
       <view class="detailSon yesIncomePart">
         <view class="yesIncomeNote">昨日收益(元)</view>
-        <view class="yesIncomeValue">{{tool.toFix2(yesIncomeValue)}}</view>
+        <view class="yesIncomeValue">{{tool.toFix2(holdDetail.yesProfit)}}</view>
       </view>
       <view class="detailSon holdIncomePart">
         <view class="holdIncomeNote">持有收益(元)</view>
-        <view class="holdIncomeValue">{{tool.toFix2(holdIncomeValue)}}</view>
+        <view class="holdIncomeValue">{{tool.toFix2(holdDetail.holdProfit)}}</view>
       </view>
       <view class="detailSon holdIncomeRatioPart">
         <view class="holdIncomeRatioNote">持有收益率</view>
-        <view class="holdIncomeRatioValue">{{tool.toFix2(holdIncomeRationValue)}}%</view>
+        <view class="holdIncomeRatioValue">{{tool.toFix2(holdDetail.holdProfitRate)}}%</view>
       </view>
     </view>
     <block wx:if="{{foldded}}">
@@ -43,18 +43,18 @@
         <view class="moreInfo">
           <view class="subMoreInfo">
             <view class="subInfoSon holdMoney">
-              持有金额 {{tool.toFix2(holdMoney)}}
+              持有金额 {{tool.toFix2(holdDetail.holdCost+holdDetail.holdProfit)}}
             </view>
             <view class="subInfoSon unAckMoney">
-              待确认金额 {{tool.toFix2(unAckMoney)}}
+              待确认金额 {{tool.toFix2(holdDetail.toVerifyMoney)}}
             </view>
           </view>
           <view class="subMoreInfo">
             <view class="subInfoSon posCost">
-              持仓成本价 {{tool.toFix2(posCost)}}
+              持仓成本价 {{tool.toFix2(holdDetail.perHoldCost)}}
             </view>
             <view class="subInfoSon holdPart">
-              持有份额 {{tool.toFix2(holdPart)}}
+              持有份额 {{tool.toFix2(holdDetail.share)}}
             </view>
           </view>
           <view class="subMoreInfo">
@@ -118,17 +118,17 @@
       <!-- 注意，如果要用真机调试，请仿照基金详情页强制使用旧版。但是此时如果打开折叠部分会使字迹有重影！ -->
       <block wx:if="{{lineChoice=='累计盈亏'}}">
         <view class="sublinePart">
-          <ec-canvas wx:if="{{loadLine_worth_OK}}" class="linePic" canvas-id="mychart-line" ec="{{ ec_line_worth }}" ></ec-canvas>
+          <ec-canvas wx:if="{{loadLine_worth_OK}}" class="linePic" canvas-id="mychart-line" ec="{{ ec_line_worth }}" force-use-old-canvas="true" ></ec-canvas>
         </view>
       </block>
       <block wx:elif="{{lineChoice=='业绩走势'}}">
         <view class="sublinePart">
-          <ec-canvas wx:if="{{loadLine_worth_OK}}"class="linePic" canvas-id="mychart-line" ec="{{ ec_line_worth }}" ></ec-canvas>
+          <ec-canvas wx:if="{{loadLine_worth_OK}}"class="linePic" canvas-id="mychart-line" ec="{{ ec_line_worth }}"force-use-old-canvas="true" ></ec-canvas>
         </view>
       </block>
       <block wx:else>
         <view class="sublinePart">
-          <ec-canvas wx:if="{{loadLine_worth_OK}}"class="linePic" canvas-id="mychart-line" ec="{{ ec_line_worth }}" ></ec-canvas>
+          <ec-canvas wx:if="{{loadLine_worth_OK}}"class="linePic" canvas-id="mychart-line" ec="{{ ec_line_worth }}"force-use-old-canvas="true" ></ec-canvas>
         </view>
       </block>
     </view>
@@ -139,7 +139,7 @@
 </view>
 <view class="bottomBar">
   <navigator class="bottomButton"
-   url="/pages/sellOut/sellOut?fundCode={{fundCode}}&fundName={{fundInfo.name}}">
+   url="/pages/sellOut/sellOut?fundCode={{fundCode}}&fundName={{fundInfo.name}}&share={{holdDetail.share}}">
     <view class="sellOut">卖出</view>
   </navigator>
   <navigator class="bottomButton" url="/pages/buyIn/buyIn?fundCode={{fundCode}}&fundName={{fundInfo.name}}">

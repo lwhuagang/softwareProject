@@ -24,16 +24,17 @@ Page({
     loadLine_worth_OK:false,//取到数据，才能绘制折线图
     loadLine_acc_OK:false,
     loadLine_exp_OK:false,
-    moneyValue:20,//金额
-    yesIncomeValue:0,//昨日收益
-    holdIncomeValue:0,//持有收益
-    holdIncomeRationValue:0,//持有收益率
+    // moneyValue:20,//金额
+    // yesIncomeValue:0,//昨日收益
+    // holdIncomeValue:0,//持有收益
+    // holdIncomeRationValue:0,//持有收益率
     foldded:true,//是否折叠
-    holdMoney:0,//持有金额
-    unAckMoney:20,//待确认金额
-    posCost:0,//持仓成本价
-    holdPart:0,//持有份额
-    lineChoice:"业绩走势"
+    // holdMoney:0,//持有金额
+    // unAckMoney:20,//待确认金额
+    // posCost:0,//持仓成本价
+    // holdPart:0,//持有份额
+    lineChoice:"业绩走势",
+    holdDetail:null
   },
   /**
    * 生命周期函数--监听页面加载
@@ -46,7 +47,20 @@ Page({
       fundCode:code, //全局变量
     });
     wx.request({
-      url: 'url',
+      url: config.service+'/fund/selfMsg',
+      method:"POST",
+      data:{
+        userEmail:app.globalData.userInfo.email,
+        fundCode:options.fundCode
+      },
+      success:(res)=>{
+        if(res.data.code==200 && res.data.message=="获取用户单个基金的资产详情") {
+          console.log("holdFundDetail===>",res);
+          this.setData({
+            holdDetail:res.data.obj
+          })
+        }
+      }
     })
     this.loadFundDetail(function(){
       that.loadEcLine_acc();//累计盈亏

@@ -169,6 +169,7 @@ register:function() {
             icon:"success",
             duration:2000
           });
+          console.log("thatdata:",that.data)
           app.globalData.isLogin = true;
           app.globalData.userInfo.email=that.data.email
           app.globalData.userInfo.password=that.data.password

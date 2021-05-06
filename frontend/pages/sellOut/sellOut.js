@@ -24,7 +24,7 @@ Page({
     btn2Color:"",
     btn3Color:"",
     btn3Color:"",
-    chooseUnit:null
+    chooseUnit:null,
   },
 
   /**
@@ -41,6 +41,7 @@ Page({
       btn2Color:this.data.grey,
       btn3Color:this.data.grey,
       btn4Color:this.data.grey,
+      maxUnit:options.share
     })
     this.loadFundDetail(function(){
     })
@@ -134,7 +135,11 @@ Page({
   },
   deleteUnit:function(){
     this.setData({
-      chooseUnit:null
+      chooseUnit:null,
+      btn1Color:this.data.grey,
+      btn2Color:this.data.grey,
+      btn3Color:this.data.grey,
+      btn4Color:this.data.grey
     })
   },
   sellSubmit:function(){
@@ -154,7 +159,12 @@ Page({
             wx.showModal({
               title:"卖出成功!",
               cancelColor: 'cancelColor',
-            })
+            });
+            setTimeout(function(){
+              wx.navigateBack({
+                delta: 1,
+              })
+            },1000)
           } else {
             wx.showModal({
               title:"份额不足！",
