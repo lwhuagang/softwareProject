@@ -4,15 +4,20 @@ import com.alibaba.fastjson.JSONObject;
 import com.software_project.pojo.Attention;
 import com.software_project.pojo.Fund;
 import com.software_project.pojo.Hold;
+import com.software_project.pojo.Record;
+import com.software_project.pojo.User;
 import com.software_project.service.AttentionService;
 import com.software_project.service.FundService;
 import com.software_project.service.HoldService;
+import com.software_project.service.RecordService;
 import com.software_project.vo.HoldVO;
 import com.software_project.vo.Param_queryByParams;
 import com.software_project.vo.Param_searchFund;
 import com.software_project.vo.Param_userAndFund;
 import com.software_project.vo.Result;
+import org.apache.naming.factory.SendMailFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -32,6 +37,12 @@ public class FundController {
 
     @Autowired
     private HoldService holdService;
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
+
+    @Autowired
+    private RecordService recordService;
 
     /**
      * 调用外部接口获取基金的详细信息
@@ -119,13 +130,32 @@ public class FundController {
         }
     }
 
-//    @PostMapping("selfMsg")
-//    public Result getSelfMsg(@RequestBody Param_userAndFund params) {
-//        Fund fund = fundService.searchFundByCode(Integer.parseInt(params.fundCode));
-//        Hold hold = holdService.getHoldByUserEmailAndFundCode(params.userEmail, params.fundCode);
-//        HoldVO holdVO = new HoldVO(params.userEmail, fund, hold);
-//        holdVO.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1));
-//        holdVO.setToVerifyMoney(getVerifyMoney(user.getEmail(), fund.getFundCode()));     // 设置待确认金额
-//    }
+    @PostMapping("selfMsg")
+    public Result getSelfMsg(@RequestBody Param_userAndFund params) {
+        Fund fund = fundService.searchFundByCode(Integer.parseInt(params.fundCode));
+        Hold hold = holdService.getHoldByUserEmailAndFundCode(params.userEmail, params.fundCode);
+        HoldVO holdVO = new HoldVO(params.userEmail, fund, hold);
+        holdVO.setTotalProfit(redisTemplate.opsForList().range(params.userEmail.substring(0,8)+":"+fund.getFundCode(), 0, -1));
+        holdVO.setToVerifyMoney(getVerifyMoney(params.userEmail,  fund.getFundCode()));     // 设置待确认金额
+        // 计算持有收益率
+        return new Result(200, holdVO, "获取用户单个基金的资产详情");
+    }
+
+    /**
+     * 获取用户某个基金的待确认金额：未完成的交易记录中的金额
+     * @param userEmail 用户邮箱
+     * @param fundCode  基金代码
+     * @return  用户在该基金上的待确认金额
+     */
+    private double getVerifyMoney(String userEmail, String fundCode) {
+        List<Record> records = recordService.getRecords(userEmail, fundCode);
+        double toVerifyMoney = 0;
+        for (Record record : records) {
+            if (!record.isFlag() && !record.isType()) {     // 买入并且没有被处理
+                toVerifyMoney = toVerifyMoney + record.getCount();
+            }
+        }
+        return toVerifyMoney;
+    }
 
 }

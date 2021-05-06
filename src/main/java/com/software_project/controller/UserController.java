@@ -231,7 +231,7 @@ public class UserController {
             List<Fund> funds = fundService.getHoldFund(email);
             Ret_HavingList ret = new Ret_HavingList(user, funds);
             double totalProfit = 0;             // 总持有收益
-            double totalHold = 0;               // 总持有金额
+            // double totalHold = 0;               // 总持有金额
 
             RestTemplate restTemplate = new RestTemplate();
             for (Fund fund : ret.funds) {
@@ -262,7 +262,11 @@ public class UserController {
                 fund.setRate(fund.getHoldProfit() / fund.getHold() * 100); //持有收益率 单位百分比
 
                 // 计算该用户总的持有金额
-                totalHold += fund.getShare() * netWorth; //累加用户总持有金额
+                // 这里
+                // totalHold += fund.getShare() * netWorth; //累加用户总持有金额
+
+
+
 //            // 计算每支基金的昨日收益和昨日收益率, 并更新该用户该基金持有收益和持有收益率
 //            double growth = Double.parseDouble(data.getString("dayGrowth"));// 每日增长比例，返回的结果是一个double类型的小于100的数
 //            // 计算昨日收益和昨日收益率
@@ -303,7 +307,10 @@ public class UserController {
             // 更新user类中的持有收益和总收益(昨日收益总和)
             ret.user.setHoldProfit(user.getHoldProfit() + totalProfit); // 总的持有收益
             ret.user.setTotalProfit(user.getTotalProfit() + totalProfit);   // 用户的总收益
-            ret.user.setBuyMoney(totalHold);
+
+            // 在update中更新
+            //ret.user.setBuyMoney(totalHold);
+
             ret.user.setDayProfit(totalProfit); // 该用户昨日的总收益
 
 
@@ -333,8 +340,10 @@ public class UserController {
         for (Fund fund : funds) {
             Hold hold = holdService.getHoldByUserEmailAndFundCode(email, fund.getFundCode());
             HoldVO holdVO = new HoldVO(email, fund, hold);
-            holdVO.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getFundCode(), 0, -1));
+            holdVO.setTotalProfit(redisTemplate.opsForList().range(user.getEmail().substring(0,8)+":"+fund.getFundCode(), 0, -1));
             holdVO.setToVerifyMoney(getVerifyMoney(user.getEmail(), fund.getFundCode()));     // 设置待确认金额
+            // holdVO.setShare(fund.getShare() * netWorth);
+
             // 计算
             //holdVOS.s
             holdVOS.add(holdVO);

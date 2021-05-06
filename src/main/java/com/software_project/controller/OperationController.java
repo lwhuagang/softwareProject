@@ -166,10 +166,15 @@ public class OperationController {
                 double buyIn_share = net_buyMoney/netWorth;
                 // 更新hold表          TODO 更新的信息是否完整
                 //HoldVO hold_ret = new HoldVO();
+                System.out.println(hold.getShare()+buyIn_share);
                 hold.setShare(hold.getShare()+buyIn_share);
+
+                System.out.println(hold.getHoldCost());
+                System.out.println("net buyMoney:" + net_buyMoney);
                 hold.setHoldCost(hold.getHoldCost()+net_buyMoney);
+                hold.setHold(hold.getShare() * netWorth);
                 // 更新基金累计收益
-                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail().substring(0,8) + ":" + fund.getFundCode())));
+                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail().substring(0,8) + ":" + fund.getCode())));
                 total -= buyIn_fee;
                 redisTemplate.opsForList().rightPush(user.getEmail().substring(0,8) + ":" + fund.getFundCode(), String.valueOf(total));  // TODO 什么意思
                 holdService.updateHold(hold);
@@ -189,6 +194,7 @@ public class OperationController {
                 user.setHoldCost(user.getHoldCost()+net_buyMoney);
                 user.setTotalProfit(user.getTotalProfit() - buyIn_fee);
                 userService.updateUser(user);           // TODO 这里是不是会不断的重复更新，应该可以在所有的信息都处理完毕之后一次性对用户的信息进行更新
+
                 // 设置user返回数据
 //                UserVO user_ret = new UserVO(user);
 //                user_ret.setPropertyProfitRate(user.getTotalProfit()/user.getInitMoney());
@@ -232,11 +238,37 @@ public class OperationController {
                 user.setMoney(user.getMoney() + net_sellMoney);
                 userService.updateUser(user);
            }
-            // 将record的flag设置为true代表已经处理
+            // 将record的flag设置为true代表已经处理, 更新record
             record.setFlag(true);
             operationService.insertDeal(record);
         }
-        return null;
+
+        // 更新用户的总持有金额，在update中更新而不是在calculate中更新
+        List<User> users = userService.getAllUsers();
+        for (User user1 : users) {
+            String email = user1.getEmail();
+            User user = userService.findUserByEmail(email); //待返回user
+            List<Fund> funds = fundService.getHoldFund(email);
+            Ret_HavingList ret = new Ret_HavingList(user, funds);
+            double totalHold = 0;               // 总持有金额
+            RestTemplate restTemplate = new RestTemplate();
+            for (Fund fund : ret.funds) {
+                String code = fund.getCode();
+                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=2021-04-01", String.class);
+                JSONObject jsonObject = JSON.parseObject(s);
+                JSONObject data =(JSONObject) jsonObject.get("data");
+
+                // 先更新基金的单位净值：这个之后不会使用，我们是直接通过比例和持有金额计算之后的持有金额
+                double netWorth = Double.parseDouble(data.getString("netWorth"));   // 基金的单位净值
+                fund.setNetWorth(netWorth);
+                totalHold += fund.getShare() * netWorth; //累加用户总持有金额
+            }
+            System.out.println(totalHold);
+            ret.user.setBuyMoney(totalHold);
+            userService.updateUserBHT(ret.user.getEmail(), ret.user.getBuyMoney(), ret.user.getHoldProfit(), ret.user.getTotalProfit(), ret.user.getDayProfit());
+        }
+
+        return new Result(200, "", "update");
     }
 
     public static String addDateMinut(){
@@ -249,6 +281,9 @@ public class OperationController {
         System.out.println("after:" + sdf.format(date));  //显示更新后的日期
         return sdf.format(date);
     }
+
+
+
 
 //    public static void main(String[] args) {
 //        // 获取当日净值

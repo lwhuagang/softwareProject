@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/vo/Param_userAndFund.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/FundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/FundController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/OperationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/vo/HoldVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/vo/HoldVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/FundController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/FundController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/OperationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/OperationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController$Param_register.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController$Param_register.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/vo/HoldVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/vo/HoldVO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619661200227</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="merge usercontroller和operationcontroller">
+      <created>1620290640756</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1620290640756</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +232,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加details注释" />
     <MESSAGE value="watchlist添加基金净值等信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="watchlist添加基金净值等信息" />
+    <MESSAGE value="merge usercontroller和operationcontroller" />
+    <option name="LAST_COMMIT_MESSAGE" value="merge usercontroller和operationcontroller" />
   </component>
   <component name="WindowStateProjectService">
     <state x="677" y="64" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620096345189">
@@ -245,10 +252,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="271" width="439" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1619571712822" />
-    <state x="311" y="6" key="CommitChangelistDialog2" timestamp="1619661197719">
+    <state x="311" y="6" key="CommitChangelistDialog2" timestamp="1620290637455">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="311" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1619661197719" />
+    <state x="311" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1620290637455" />
     <state x="0" y="88" width="1350" height="607" key="DiffContextDialog" timestamp="1620289119848">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -257,42 +264,50 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1619658258577" />
-    <state width="1493" height="459" key="GridCell.Tab.0.bottom" timestamp="1620289144542">
+    <state width="1493" height="86" key="GridCell.Tab.0.bottom" timestamp="1620299504812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="459" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620289144542" />
-    <state width="1493" height="459" key="GridCell.Tab.0.center" timestamp="1620289144542">
+    <state width="1493" height="86" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620299504812" />
+    <state width="1493" height="86" key="GridCell.Tab.0.center" timestamp="1620299504811">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="459" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620289144542" />
-    <state width="1493" height="459" key="GridCell.Tab.0.left" timestamp="1620289144542">
+    <state width="1493" height="86" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620299504811" />
+    <state width="1493" height="86" key="GridCell.Tab.0.left" timestamp="1620299504811">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="459" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620289144542" />
-    <state width="1493" height="459" key="GridCell.Tab.0.right" timestamp="1620289144542">
+    <state width="1493" height="86" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620299504811" />
+    <state width="1493" height="86" key="GridCell.Tab.0.right" timestamp="1620299504812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="459" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620289144542" />
-    <state width="1493" height="459" key="GridCell.Tab.1.bottom" timestamp="1620289144542">
+    <state width="1493" height="86" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620299504812" />
+    <state width="1493" height="86" key="GridCell.Tab.1.bottom" timestamp="1620299504812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="459" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620289144542" />
-    <state width="1493" height="459" key="GridCell.Tab.1.center" timestamp="1620289144542">
+    <state width="1493" height="86" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620299504812" />
+    <state width="1493" height="86" key="GridCell.Tab.1.center" timestamp="1620299504812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="459" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1620289144542" />
-    <state width="1493" height="459" key="GridCell.Tab.1.left" timestamp="1620289144542">
+    <state width="1493" height="86" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1620299504812" />
+    <state width="1493" height="86" key="GridCell.Tab.1.left" timestamp="1620299504812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="459" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1620289144542" />
-    <state width="1493" height="459" key="GridCell.Tab.1.right" timestamp="1620289144542">
+    <state width="1493" height="86" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1620299504812" />
+    <state width="1493" height="86" key="GridCell.Tab.1.right" timestamp="1620299504812">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="459" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1620289144542" />
+    <state width="1493" height="86" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1620299504812" />
     <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1620096269605">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1620096269605" />
+    <state x="147" y="71" key="MergeDialog" timestamp="1620290854270">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="147" y="71" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1620290854270" />
+    <state x="477" y="128" key="MultipleFileMergeDialog" timestamp="1620290889215">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="477" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1620290889215" />
     <state x="455" y="135" key="RollbackChangesDialog" timestamp="1620285530153">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -301,10 +316,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="490" y="154" width="540" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1620095978788" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1620285570217">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1620290936015">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620285570217" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620290936015" />
     <state x="430" y="57" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1619658556341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
