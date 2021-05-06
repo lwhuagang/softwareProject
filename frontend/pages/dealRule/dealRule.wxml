@@ -1,5 +1,4 @@
 <!--pages/dealRule/dealRule.wxml-->
-<naviBar title="交易规则"></naviBar>
 <view class="container">
   <view class="header">
     <view class="subHeader buyIn">
@@ -67,4 +66,7 @@
 
     </block>
   </view>
+</view>
+<view class="head">
+  <naviBar title="交易规则"></naviBar>
 </view>

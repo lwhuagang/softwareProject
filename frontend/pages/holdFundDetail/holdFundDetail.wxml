@@ -1,6 +1,5 @@
 <wxs src="../../utils/addmul.wxs" module="tool"/>
 <wxs src="../../utils/util.wxs" module="tool2"/>
-<naviBar title="资产详情"></naviBar>
 <view class="container">
   <!-- 基金卡片 -->
   <view class="fundCard">
@@ -134,6 +133,9 @@
       </block>
     </view>
   </view>
+</view>
+<view class="head">
+  <naviBar title="资产详情"></naviBar>
 </view>
 <view class="bottomBar">
   <navigator class="bottomButton"

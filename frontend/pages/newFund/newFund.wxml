@@ -1,2 +1,8 @@
 <!--pages/newFund/newFund.wxml-->
-<naviBar title="新发基金"></naviBar>
+<view class="container">
+
+</view>
+<view class="head">
+  <naviBar title="新发基金"></naviBar>
+</view>
+

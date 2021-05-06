@@ -1,5 +1,4 @@
 <!--pages/positionDetail/positionDetail.wxml-->
-<naviBar title="持仓详情"></naviBar>
 <view class="container">
   <!-- 持仓详情 -->
   <view class="positionPart">
@@ -30,6 +29,9 @@
       </view>
     </view>
   </view>
+</view>
+<view class="head">
+  <naviBar title="持仓详情"></naviBar>
 </view>
 
 

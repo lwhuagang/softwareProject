@@ -28,7 +28,7 @@ Page({
         img:'/image/search_b.jpg'
     },{
         name:'新品',
-        url:'/pages/personalCenter/personalCenter',
+        url:'/pages/newFund/newFund',
         img:'/image/new.jpg'
       },{
         name:'AI推荐',

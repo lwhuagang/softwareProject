@@ -268,11 +268,4 @@ Page({
       lineChoice:"净值估算"
     })
   },
-  sellOut:function() {
-    wx.showModal({
-      title:"卖出",
-      content:"这里填写卖出的逻辑，见sellOut",
-      cancelColor: 'cancelColor',
-    })
-  }
 })

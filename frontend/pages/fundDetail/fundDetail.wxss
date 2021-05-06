@@ -1,9 +1,18 @@
 /* pages/fundDetail/fundDetail.wxss */
+.head{
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  margin-top:0;
+}
 .container {
   height: 3000rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width:100%;
+  position: absolute;
+  margin-top:130rpx;
 }
 .bluePad {
   margin-top: 0rpx;

@@ -1,2 +1,8 @@
 <!--pages/incomeDetail/incomeDetail.wxml-->
-<naviBar title="收益明细"></naviBar>
+<view class="container">
+
+</view>
+<view class="head">
+  <naviBar title="收益明细"></naviBar>
+</view>
+

@@ -1,4 +1,12 @@
+<!--pages/hot/hot.wxml-->
 <view class="container">
-    <naviBar title="AI预测"></naviBar>
-    <text>这里是AI预测详情页</text>
+  <view>
+    <block wx:for="{{funds.length}}">
+      <fundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}"></fundGeneral>
+      <view class="divLine"></view>
+    </block>
+  </view>
+</view>
+<view class="head">
+  <naviBar title="AI预测"></naviBar>
 </view>

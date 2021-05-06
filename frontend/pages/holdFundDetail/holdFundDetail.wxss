@@ -1,4 +1,15 @@
 /* pages/holdFundDetail/holdFundDetail.wxss */
+.head{
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  margin-top:0;
+}
+.container{
+  position: absolute;
+  width: 100%;
+  margin-top:130rpx;
+}
 .fundCard{
   height: 100rpx;
   display: flex;

@@ -1,6 +1,4 @@
-<view>
-
-  <naviBar title="搜索"></naviBar>
+<view class="container">
   <!-- 搜索框 -->
   <view class="search-bar">
     <view class="search-bar__form">
@@ -29,5 +27,7 @@
       <view class="divLine"></view>
     </block>
   </view>
-  
+</view>
+<view class="head">
+  <naviBar title="搜索"></naviBar>
 </view>
