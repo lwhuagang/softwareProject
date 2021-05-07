@@ -45,6 +45,12 @@
         {
           "name": "pages/rank/rank",
           "pathName": "pages/rank/rank",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/holdFundDetail/holdFundDetail",
+          "pathName": "pages/holdFundDetail/holdFundDetail",
           "scene": null
         }
       ]
