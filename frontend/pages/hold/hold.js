@@ -40,7 +40,8 @@ Page({
     //     "manager": "张强"
     //   }
     // ],
-    isLogin:false,
+    isLogin:null,
+    totalMoney:0,
   },
 
   /**
@@ -51,6 +52,7 @@ Page({
       isLogin:app.globalData.isLogin
     })
     if(app.globalData.isLogin==false) {
+      console.log("isFalse!!!!");
       wx.showModal({
         cancelColor: 'cancelColor',
         title:'请先登录',
@@ -69,15 +71,28 @@ Page({
       })
     } else {
           //console.log(app.globalData.userInfo.email)
+    wx.showLoading({
+      title: '加载中',
+    })
     getHold(
       app.globalData.userInfo.email,
       res => {
         this.setData({
           user: res.data.obj.user,
-          funds: res.data.obj.funds
+          funds: res.data.obj.holdVOS
         });
+        var tmpMoney = 0;
+        console.log("atHold:",res);
+        res.data.obj.holdVOS.forEach(element => {
+          tmpMoney+=element.holdCost+element.holdProfit+element.toVerifyMoney
+        });
+        console.log("tmpMoney==>",tmpMoney)
+        this.setData({
+          totalMoney:tmpMoney
+        })
         console.log("获得hold===>");
         console.log(res);
+        wx.hideLoading();
       }
     )
     }
@@ -104,15 +119,27 @@ Page({
         }
       })
     } else {
-      console.log("获得hold===>");
+      wx.showLoading({
+        title: '加载中', 
+      })
       getHold(
         app.globalData.userInfo.email,
         res => {
           this.setData({
             user: res.data.obj.user,
-            funds: res.data.obj.funds
+            funds: res.data.obj.holdVOS
           });
+          var tmpMoney = 0;
+          res.data.obj.holdVOS.forEach(element => {
+            tmpMoney+=element.holdProfit+element.holdCost+element.toVerifyMoney
+          });
+          console.log("tmpMoney==>",tmpMoney)
+          this.setData({
+            totalMoney:tmpMoney
+          })
+          console.log("获得hold===>");
           console.log(res);
+          wx.hideLoading();
         }
       )
     }

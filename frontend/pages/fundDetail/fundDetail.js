@@ -61,15 +61,22 @@ Page({
       getSelfSelect(
         app.globalData.userInfo.email,
         res => {
-          var funds = res.data.obj.funds.data;
-          var i = 0;
-          for (i = 0; i < funds.length; i++) {
-            if (funds[i].code == this.data.fundCode) {
-              this.setData({
-                isSelfSelect: true,
-              });
+          if(res.data.obj.funds!="") {
+            var funds = res.data.obj.funds.data;
+            var i = 0;
+            for (i = 0; i < funds.length; i++) {
+              if (funds[i].code == this.data.fundCode) {
+                this.setData({
+                  isSelfSelect: true,
+                });
+              }
             }
+          } else {
+            this.setData({
+              isSelfSelect:false
+            })
           }
+
         }
       )
     }
@@ -342,14 +349,20 @@ Page({
       getSelfSelect(
         app.globalData.userInfo.email,
         res => {
-          var funds = res.data.obj.funds.data;
-          var i = 0;
-          for (i = 0; i < funds.length; i++) {
-            if (funds[i].code == this.data.fundCode) {
-              this.setData({
-                isSelfSelect: true,
-              });
+          if(res.data.obj.funds!="") {
+            var funds = res.data.obj.funds.data;
+            var i = 0;
+            for (i = 0; i < funds.length; i++) {
+              if (funds[i].code == this.data.fundCode) {
+                this.setData({
+                  isSelfSelect: true,
+                });
+              }
             }
+          } else {
+            this.setData({
+              isSelfSelect:false
+            })
           }
         }
       )
