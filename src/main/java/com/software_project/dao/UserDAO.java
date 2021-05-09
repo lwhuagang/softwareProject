@@ -46,4 +46,6 @@ public interface UserDAO {
      * @return 返回所有用户列表
      */
     List<User> getAllUsers();
+
+    void deleteUser(String email);
 }

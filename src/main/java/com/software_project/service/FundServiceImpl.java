@@ -32,4 +32,9 @@ public class FundServiceImpl implements FundService{
         fundDAO.insertFund(fund);
         return fund;
     }
+
+    @Override
+    public void deleteFund(int fundCode) {
+
+    }
 }
