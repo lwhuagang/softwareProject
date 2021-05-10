@@ -5,6 +5,9 @@
     <insert id="insertFund" >
         insert into soft.fund values (#{code},#{name},#{type},#{buyMin},#{buySourceRate},#{buyRate},#{manager}, #{netWorth})
     </insert>
+    <delete id="deleteFund">
+        delete from fund where code = #{fundCode}
+    </delete>
 
     <select id="searchByCode" resultType="com.software_project.pojo.Fund">
         select * from soft.fund where code = #{code}

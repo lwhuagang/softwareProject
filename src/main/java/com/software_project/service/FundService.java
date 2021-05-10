@@ -34,5 +34,9 @@ public interface FundService {
      */
     Fund insertFund(Fund fund);
 
-
+    /**
+     * 删除基金
+     * @param fundCode 基金代码
+     */
+    void deleteFund(int fundCode);
 }

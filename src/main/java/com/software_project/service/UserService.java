@@ -59,4 +59,5 @@ public interface UserService {
      */
     List<User> getAllUsers();
 
+    void deleteUser(String email);
 }

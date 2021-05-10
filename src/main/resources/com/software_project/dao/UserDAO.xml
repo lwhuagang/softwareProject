@@ -11,6 +11,9 @@
         ,buyMoney = #{buyMoney},initMoney = #{initMoney},dayProfit = #{dayProfit},holdCost = #{holdCost}
         where email = #{email}
     </update>
+    <delete id="deleteUser">
+        delete from user where email=#{email}
+    </delete>
     <!--根据邮箱找到user-->
     <select id="findUserByEmail" parameterType="string" resultType="com.software_project.pojo.User">
         select * from soft.user where email = #{email}
