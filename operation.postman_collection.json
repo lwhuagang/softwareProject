@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "5935463a-1bd1-4208-b90a-de14c0c130ac",
+		"name": "operation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "buy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"18231096@buaa.edu.cn\",\r\n    \"fundCode\":\"000001\",\r\n    \"money\":1000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/fundOperation/buy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fundOperation",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sell",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"18231096@buaa.edu.cn\",\r\n    \"fundCode\":\"000001\",\r\n    \"sellShare\":10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/fundOperation/sell",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fundOperation",
+						"sell"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/fundOperation/update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fundOperation",
+						"update"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

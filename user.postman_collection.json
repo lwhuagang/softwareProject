@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "42a30f3c-6b92-49c3-a2e1-7b033aa3a67c",
+		"name": "user",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "captcha",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/captcha?email=18231096@buaa.edu.cn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"captcha"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "18231096@buaa.edu.cn",
+							"description": "尝试向北航邮箱发送邮件"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"user\":{\n    \"email\":\"18231096@buaa.edu.cn\",\n    \"password\":\"123456\",\n    \"nickname\":\"liwei\",\n    \"money\":\"100000000\"\n},\n\"captcha\":\"EBHWDA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"18231096@buaa.edu.cn\",\n    \"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "message",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/message?email=18231096@buaa.edu.cn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"message"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "18231096@buaa.edu.cn"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateDatBase",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/updateDatBase",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"updateDatBase"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "calculate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/calculate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "havingList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/havingList?email=18231096@buaa.edu.cn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"havingList"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "18231096@buaa.edu.cn"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "watchList",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/watchList?email=18231096@buaa.edu.cn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"watchList"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "18231096@buaa.edu.cn"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addFD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userEmail\":\"18231096@buaa.edu.cn\",\r\n    \"message\":\"这是一条反馈信息，需要处理一下\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/addFD",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"addFD"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addSearch",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userEmail\":\"18231096@buaa.edu.cn\",\r\n    \"searchString\":\"易方达\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/addSearch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"addSearch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getSearch",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/getSearch?email=18231096@buaa.edu.cn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"getSearch"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "18231096@buaa.edu.cn"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addBrowse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userEmail\":\"18231096@buaa.edu.cn\",\r\n    \"fundCode\":\"000001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/addBrowse",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"addBrowse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getBrowse",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/getBrowse?email=18231096@buaa.edu.cn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"getBrowse"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "18231096@buaa.edu.cn"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRecordsOfFund",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/getRecordsOfFund?userEmail=18231096@buaa.edu.cn&fundCode=000001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"getRecordsOfFund"
+					],
+					"query": [
+						{
+							"key": "userEmail",
+							"value": "18231096@buaa.edu.cn"
+						},
+						{
+							"key": "fundCode",
+							"value": "000001"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRecordsOfUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user/getRecordsOfUser?email=18231096@buaa.edu.cn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"getRecordsOfUser"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "18231096@buaa.edu.cn"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

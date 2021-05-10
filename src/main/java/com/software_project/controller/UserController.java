@@ -4,14 +4,20 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.api.R;
+import com.software_project.pojo.Browse;
+import com.software_project.pojo.FeedBack;
 import com.software_project.pojo.Fund;
 import com.software_project.pojo.Hold;
 import com.software_project.pojo.Record;
+import com.software_project.pojo.Search;
 import com.software_project.pojo.User;
 import com.software_project.service.AttentionService;
+import com.software_project.service.BrowseService;
+import com.software_project.service.FeedBackService;
 import com.software_project.service.FundService;
 import com.software_project.service.HoldService;
 import com.software_project.service.RecordService;
+import com.software_project.service.SearchService;
 import com.software_project.service.UserService;
 import com.software_project.utils.MD5Utils;
 import com.software_project.vo.HoldVO;
@@ -19,6 +25,7 @@ import com.software_project.vo.Result;
 import com.software_project.vo.Ret_HavingList;
 import com.software_project.vo.Ret_HoldVOList;
 import com.software_project.vo.Ret_WatchList;
+import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -52,6 +59,16 @@ public class UserController {
 
     @Autowired
     private RecordService recordService;
+
+    @Autowired
+    private FeedBackService feedBackService;
+
+    @Autowired
+    private BrowseService browseService;
+
+    @Autowired
+    private SearchService searchService;
+
 
     /**
      * 发送验证码
@@ -397,9 +414,48 @@ public class UserController {
         return new Result(200, ret, "根据用户邮箱获取用户和该用户关注的所有基金");
     }
 
+    @PostMapping("addFD")
+    public Result insertFeedBack(@RequestBody FeedBack feedBack) {
+        feedBackService.insertFeedBack(feedBack);
+        return new Result(200, feedBack, "添加一条反馈记录");
+    }
 
-    @PostMapping("")
+    @PostMapping("addSearch")
+    public Result insertSearch(@RequestBody Search search) {
+        searchService.insertSearch(search);
+        return new Result(200, search, "添加一条搜索记录");
+    }
 
+    @GetMapping("getSearch")
+    public Result findSearchByEmail(String email) {
+        List<Search> searches = searchService.findSearchByEmail(email);
+        return new Result(200, searches, "查询该用户的所有搜索记录");
+    }
+
+
+    @PostMapping("addBrowse")
+    public Result insertSearch(@RequestBody Browse browse) {
+        browseService.insertBrowse(browse);
+        return new Result(200, browse, "添加一条浏览记录");
+    }
+
+    @GetMapping("getBrowse")
+    public Result findBrowseByEmail(String email) {
+        List<Browse> browses = browseService.findBrowseByEmail(email);
+        return new Result(200, browses, "查询该用户的所有浏览记录");
+    }
+
+    @GetMapping("getRecordsOfFund")
+    public Result getRecordsOfFund(String userEmail, String fundCode) {
+        List<Record> records = recordService.getRecords(userEmail, fundCode);
+        return new Result(200, records, "获取用户某个基金的所有交易记录");
+    }
+
+    @GetMapping("getRecordsOfUser")
+    public Result getRecordsOfUser(String email) {
+        List<Record> records = recordService.getRecordsByUserEmail(email);
+        return new Result(200, records, "获取用户的所有交易记录");
+    }
 
     /**
      * 测试拦截器功能是否正常

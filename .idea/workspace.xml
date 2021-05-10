@@ -2,9 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/0a652cc1-d22c-44b7-950b-0b7d3e7ba5c9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin.postman_collection.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fund.postman_collection.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/operation.postman_collection.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/BrowseDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/FeedBackDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/SearchDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/pojo/Browse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/pojo/FeedBack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/pojo/Search.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/BrowseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/BrowseServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/FeedBackService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/FeedBackServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/SearchService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/SearchServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/BrowseDAO.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/FeedBackDAO.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/SearchDAO.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/AdminController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/BrowseDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/BrowseDAO.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/FeedBackDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/FeedBackDAO.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/SearchDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/SearchDAO.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/pojo/Browse.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/pojo/FeedBack.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/pojo/Search.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/BrowseService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/BrowseServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/FeedBackService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/FeedBackServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/SearchService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/SearchServiceImpl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user.postman_collection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2764d0e1-557e-42ec-8370-e4cd30be8361.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2764d0e1-557e-42ec-8370-e4cd30be8361/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0a652cc1-d22c-44b7-950b-0b7d3e7ba5c9/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/vo/HoldVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/vo/HoldVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/vo/HoldVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/vo/HoldVO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/RecordDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/RecordDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/AttentionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/AttentionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/RecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/RecordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/RecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/RecordServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/RecordDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/RecordDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController$Param_register.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController$Param_register.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/RecordDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/RecordDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/RecordDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/RecordDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/AttentionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/AttentionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/RecordService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/RecordService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/RecordServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/RecordServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/前后端数据接口定义.md" beforeDir="false" afterPath="$PROJECT_DIR$/前后端数据接口定义.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,21 +96,7 @@
         <item name="soft@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="soft: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="fund: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="soft@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="soft: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="record: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="soft@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="soft: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="user: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="feedback: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -84,11 +123,15 @@
     </option>
   </component>
   <component name="ProjectId" id="1r9tPfXR35pXU6aSYfoRmpEUqjx" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -145,6 +188,8 @@
       <workItem from="1618734925610" duration="15909000" />
       <workItem from="1619140111578" duration="10104000" />
       <workItem from="1619589563565" duration="3087000" />
+      <workItem from="1620540315833" duration="19549000" />
+      <workItem from="1620628005338" duration="4689000" />
     </task>
     <task id="LOCAL-00001" summary="添加details注释">
       <created>1618400399863</created>
@@ -181,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620301591153</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="alpha 1.0">
+      <created>1620306553617</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1620306553618</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,21 +283,31 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="添加details注释" />
     <MESSAGE value="watchlist添加基金净值等信息" />
     <MESSAGE value="merge usercontroller和operationcontroller" />
     <MESSAGE value="update阶段更新hold和share，增加selfMsg接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="update阶段更新hold和share，增加selfMsg接口" />
+    <MESSAGE value="alpha 1.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="alpha 1.0" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="677" y="64" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620096345189">
+    <state x="361" y="71" key="#SQL_Dialects" timestamp="1620545454005">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="677" y="64" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1620096345189" />
-    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1620112866058">
+    <state x="361" y="71" key="#SQL_Dialects/0.0.1536.824@0.0.1536.824" timestamp="1620545454005" />
+    <state x="677" y="64" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1620544731265">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1620112866058" />
+    <state x="677" y="64" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1620544731265" />
+    <state x="492" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1620573430717">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="492" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1620573430717" />
+    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser" timestamp="1620614148185">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="129" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1620614148185" />
     <state x="614" y="302" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1618400157298">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -254,10 +316,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="548" y="271" width="439" height="291" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1619571712822" />
-    <state x="311" y="6" key="CommitChangelistDialog2" timestamp="1620301587337">
+    <state x="311" y="6" key="CommitChangelistDialog2" timestamp="1620306550512">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="311" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1620301587337" />
+    <state x="311" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1620306550512" />
     <state x="0" y="88" width="1350" height="607" key="DiffContextDialog" timestamp="1620289119848">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -266,42 +328,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1619658258577" />
-    <state width="1493" height="540" key="GridCell.Tab.0.bottom" timestamp="1620302136826">
+    <state width="1493" height="250" key="GridCell.Tab.0.bottom" timestamp="1620631020677">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="540" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620302136826" />
-    <state width="1493" height="540" key="GridCell.Tab.0.center" timestamp="1620302136826">
+    <state width="1493" height="250" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620631020677" />
+    <state width="1493" height="250" key="GridCell.Tab.0.center" timestamp="1620631020677">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="540" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620302136826" />
-    <state width="1493" height="540" key="GridCell.Tab.0.left" timestamp="1620302136825">
+    <state width="1493" height="250" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620631020677" />
+    <state width="1493" height="250" key="GridCell.Tab.0.left" timestamp="1620631020677">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="540" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620302136825" />
-    <state width="1493" height="540" key="GridCell.Tab.0.right" timestamp="1620302136826">
+    <state width="1493" height="250" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620631020677" />
+    <state width="1493" height="250" key="GridCell.Tab.0.right" timestamp="1620631020677">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="540" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620302136826" />
-    <state width="1493" height="540" key="GridCell.Tab.1.bottom" timestamp="1620302136826">
+    <state width="1493" height="250" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620631020677" />
+    <state width="1493" height="250" key="GridCell.Tab.1.bottom" timestamp="1620631020678">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="540" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620302136826" />
-    <state width="1493" height="540" key="GridCell.Tab.1.center" timestamp="1620302136826">
+    <state width="1493" height="250" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620631020678" />
+    <state width="1493" height="250" key="GridCell.Tab.1.center" timestamp="1620631020678">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="540" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1620302136826" />
-    <state width="1493" height="540" key="GridCell.Tab.1.left" timestamp="1620302136826">
+    <state width="1493" height="250" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1620631020678" />
+    <state width="1493" height="250" key="GridCell.Tab.1.left" timestamp="1620631020678">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="540" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1620302136826" />
-    <state width="1493" height="540" key="GridCell.Tab.1.right" timestamp="1620302136826">
+    <state width="1493" height="250" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1620631020678" />
+    <state width="1493" height="250" key="GridCell.Tab.1.right" timestamp="1620631020678">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="540" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1620302136826" />
-    <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1620096269605">
+    <state width="1493" height="250" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1620631020678" />
+    <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1620544148055">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1620096269605" />
+    <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1620544148055" />
     <state x="147" y="71" key="MergeDialog" timestamp="1620290854270">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -318,18 +380,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="490" y="154" width="540" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1620095978788" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1620301597675">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1620306561010">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620301597675" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620306561010" />
     <state x="430" y="57" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1619658556341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="430" y="57" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1619658556341" />
-    <state x="449" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1619592098761">
+    <state x="449" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1620628525651">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1619592098761" />
+    <state x="449" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1620628525651" />
     <state x="459" y="204" key="git4idea.merge.GitPullDialog" timestamp="1620287020411">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
