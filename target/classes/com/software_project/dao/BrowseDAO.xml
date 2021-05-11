@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.software_project.dao.BrowseDAO">
+
+    <insert id="insertBrowse" parameterType="com.software_project.pojo.Browse">
+        insert into soft.browse values (#{userEmail}, #{fundCode})
+    </insert>
+    <select id="findBrowseByEmail" resultType="com.software_project.pojo.Browse"
+            parameterType="java.lang.String">
+        select * from soft.browse where userEmail = #{userEmail};
+    </select>
+
+</mapper>

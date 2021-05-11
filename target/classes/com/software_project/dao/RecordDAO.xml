@@ -4,4 +4,8 @@
     <select id="getRecords" resultType="com.software_project.pojo.Record">
         select * from soft.record where userEmail = #{userEmail} and fundCode = #{fundCode};
     </select>
+    <select id="getRecordsByUserEmail" resultType="com.software_project.pojo.Record"
+            parameterType="java.lang.String">
+        select * from soft.record where userEmail = #{userEmail}
+    </select>
 </mapper>
