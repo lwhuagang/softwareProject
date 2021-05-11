@@ -16,4 +16,13 @@ public class RecordServiceImpl implements RecordService{
     public List<Record> getRecords(String userEmail, String fundCode) {
         return recordDAO.getRecords(userEmail, fundCode);
     }
+
+    @Override
+    public List<Record> getRecordsByUserEmail(String userEmail) {
+        return recordDAO.getRecordsByUserEmail(userEmail);
+    }
+
+
+
+
 }

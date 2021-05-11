@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.software_project.dao.FeedBackDAO">
+
+    <insert id="insertFeedBack" parameterType="com.software_project.pojo.FeedBack">
+        insert into soft.feedback values (#{userEmail}, #{message}, NULL, FALSE , NOW())
+    </insert>
+    <update id="updateFD" parameterType="com.software_project.pojo.FeedBack">
+        update soft.feedback set result = #{result}, flag = #{flag} where userEmail = #{userEmail} and time =#{time}
+    </update>
+    <select id="findAllFeedBack" resultType="com.software_project.pojo.FeedBack">
+        select * from soft.feedback;
+    </select>
+    <select id="getAllFDNo" resultType="com.software_project.pojo.FeedBack">
+        select * from soft.feedback where flag = FALSE
+    </select>
+    <select id="getAllFDyes" resultType="com.software_project.pojo.FeedBack">
+        select * from soft.feedback where flag = TRUE
+    </select>
+
+
+</mapper>
