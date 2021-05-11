@@ -52,9 +52,37 @@ function getSearch(fundCode, name, callback) {
   }
 }
 
+function getDealRecord(email, callback) {
+  wx.request({
+    url: config.service+'/user/getRecordsOfUser',
+    method: "GET",
+    data: {
+      email: email
+    },
+    success: res => {
+      callback(res);
+    }
+  })
+}
+
+function getFundRecord(email, code, callback) {
+  wx.request({
+    url: config.service+'/user/getRecordsOfFund',
+    method: "GET",
+    data: {
+      userEmail: email,
+      fundCode: code,
+    },
+    success: res => {
+      callback(res);
+    }
+  })
+}
 
 module.exports = {
   getHold: getHold,
   getSelfSelect: getSelfSelect,
-  getSearch: getSearch
+  getSearch: getSearch,
+  getDealRecord: getDealRecord,
+  getFundRecord: getFundRecord
 }
