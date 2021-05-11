@@ -5,16 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/vo/ModifyVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/vo/resetAllVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/vo/resetPasswordVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/vo/updateVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/FundDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/FundDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/FundService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/FundService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/FundServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/FundServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/AttentionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/AttentionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/HoldDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/HoldDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/OperationDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/OperationDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/AttentionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/AttentionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/AttentionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/AttentionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/HoldService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/HoldService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/HoldServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/HoldServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/OperationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/OperationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/OperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/OperationServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/FundDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/FundDAO.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/UserDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/UserDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/AttentionDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/AttentionDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/HoldDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/HoldDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/OperationDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/OperationDAO.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +92,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
@@ -100,7 +113,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/software_project/controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/software_project/vo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -111,17 +124,20 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/software_project/vo" />
       <recent name="D:\桌面\2021年秋季学期课程资料\软件工程\软工基金项目\后端\src\main\java\com\software_project\controller" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

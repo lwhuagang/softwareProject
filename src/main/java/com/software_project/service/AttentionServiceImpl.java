@@ -30,5 +30,10 @@ public class AttentionServiceImpl implements AttentionService {
         return attentionDAO.watchList(email);
     }
 
+    @Override
+    public void deleteAtt(String email) {
+        attentionDAO.deleteUserAttention(email);
+    }
+
 
 }

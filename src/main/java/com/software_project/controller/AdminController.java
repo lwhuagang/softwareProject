@@ -5,9 +5,7 @@ import com.software_project.service.FundService;
 import com.software_project.service.UserService;
 import com.software_project.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("admin")
@@ -24,8 +22,8 @@ public class AdminController {
         return new Result(200,true,"下架成功");
     }
 
-    @GetMapping("fundOn")
-    public Result FundOn(Fund fund){
+    @PostMapping("fundOn")
+    public Result FundOn(@RequestBody Fund fund){
         fundService.insertFund(fund);
         return new Result(200,true,"上架成功");
     }

@@ -33,4 +33,6 @@ public interface HoldDAO {
     void updateHold(Hold hold);
 
     void insertHold(Hold hold);
+
+    void deleteHold(String email);
 }

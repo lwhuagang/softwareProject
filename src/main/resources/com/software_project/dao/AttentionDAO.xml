@@ -9,6 +9,9 @@
     <delete id="deleteAttention" parameterType="com.software_project.pojo.Attention">
         delete from soft.attention where email = #{email} and fundCode = #{fundCode}
     </delete>
+    <delete id="deleteUserAttention">
+        delete from soft.attention where email = #{email}
+    </delete>
     <select id="watchList" resultType="com.software_project.pojo.Fund" parameterType="java.lang.String">
         select * from soft.fund f left join soft.attention a on f.code = a.fundCode
         where a.email = #{email}

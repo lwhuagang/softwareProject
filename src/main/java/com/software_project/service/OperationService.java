@@ -17,4 +17,6 @@ public interface OperationService {
      * @return 交易记录列表
      */
     List<Record> getAllUndoRecord();
+
+    void deleteOperation(String email);
 }

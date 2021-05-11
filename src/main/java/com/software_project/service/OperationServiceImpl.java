@@ -28,4 +28,9 @@ public class OperationServiceImpl implements OperationService{
         return operationDAO.getAllUndoRecord();
     }
 
+    @Override
+    public void deleteOperation(String email) {
+        operationDAO.deleteOp(email);
+    }
+
 }
