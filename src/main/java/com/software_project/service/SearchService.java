@@ -17,4 +17,10 @@ public interface SearchService {
      * @return  搜索记录
      */
     List<Search> findSearchByEmail(String userEmail);
+
+    /**
+     * 删除用户搜索历史
+     * @param userEmail 用户邮箱
+     */
+    void deleteSearch(String userEmail);
 }

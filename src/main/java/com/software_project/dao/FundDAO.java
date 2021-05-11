@@ -2,6 +2,7 @@ package com.software_project.dao;
 
 import com.software_project.pojo.Fund;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -39,4 +40,24 @@ public interface FundDAO {
      * @param fundCode 基金代码
      */
     void deleteFund(int fundCode);
+
+    /**
+     * 查询数据库中基金的数目
+     * @return 数据库中基金的数目
+     */
+    int getFundsNum();
+
+    /**
+     * 查询数据库里面所有得基金信息
+     * @return 数据库中所有的基金信息
+     */
+    List<Fund> getAllFunds();
+
+    /**
+     * 根据页面索引和页面大小查询数据库中对应的基金信息（实现分页操作）
+     * @param pageIndex 页面索引
+     * @param pageSize 页面大小
+     * @return 部分的基金信息
+     */
+    List<Fund> getFundsByPage(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);
 }

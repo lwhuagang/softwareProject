@@ -24,4 +24,10 @@ public interface BrowseDAO {
      */
     List<Browse> findBrowseByEmail(String userEmail);
 
+    /**
+     * 删除浏览记录
+     * @param userEmail 用户邮箱
+     */
+    void deleteBrowse(String userEmail);
+
 }

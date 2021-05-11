@@ -5,7 +5,6 @@ import com.software_project.pojo.Attention;
 import com.software_project.pojo.Fund;
 import com.software_project.pojo.Hold;
 import com.software_project.pojo.Record;
-import com.software_project.pojo.User;
 import com.software_project.service.AttentionService;
 import com.software_project.service.FundService;
 import com.software_project.service.HoldService;
@@ -15,7 +14,6 @@ import com.software_project.vo.Param_queryByParams;
 import com.software_project.vo.Param_searchFund;
 import com.software_project.vo.Param_userAndFund;
 import com.software_project.vo.Result;
-import org.apache.naming.factory.SendMailFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpEntity;
@@ -141,6 +139,25 @@ public class FundController {
         return new Result(200, holdVO, "获取用户单个基金的资产详情");
     }
 
+    @GetMapping("getFundsNum")
+    public Result getFundsNum(){
+        int num = fundService.getFundsNum();
+        return new Result(200, num, "获取数据库中基金的个数");
+    }
+
+
+    @GetMapping("getAllFunds")
+    public Result getAllFunds(){
+        List<Fund> funds = fundService.getAllFunds();
+        return new Result(200, funds, "获取数据库中所有的基金信息");
+    }
+
+    @GetMapping("getFundsByPage")
+    public Result getFundsByPage(int pageIndex, int pageSize) {
+        List<Fund> funds = fundService.getFundsByPage(pageIndex, pageSize);
+        return new Result(200, funds, "按照页面获取数据库中基金信息");
+    }
+
     /**
      * 获取用户某个基金的待确认金额：未完成的交易记录中的金额
      * @param userEmail 用户邮箱
@@ -157,5 +174,8 @@ public class FundController {
         }
         return toVerifyMoney;
     }
+
+
+
 
 }

@@ -17,4 +17,10 @@ public interface BrowseService {
      * @return 该用户的所有的浏览记录
      */
     List<Browse> findBrowseByEmail(String userEmail);
+
+    /**
+     * 删除浏览记录
+     * @param userEmail 用户邮箱
+     */
+    void deleteBrowse(String userEmail);
 }

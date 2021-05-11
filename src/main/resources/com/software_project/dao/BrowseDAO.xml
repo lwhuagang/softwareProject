@@ -5,6 +5,9 @@
     <insert id="insertBrowse" parameterType="com.software_project.pojo.Browse">
         insert into soft.browse values (#{userEmail}, #{fundCode})
     </insert>
+    <delete id="deleteBrowse" parameterType="java.lang.String">
+        delete from soft.browse where userEmail = #{userEmail}
+    </delete>
     <select id="findBrowseByEmail" resultType="com.software_project.pojo.Browse"
             parameterType="java.lang.String">
         select * from soft.browse where userEmail = #{userEmail};

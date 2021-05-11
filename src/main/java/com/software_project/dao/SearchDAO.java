@@ -22,5 +22,11 @@ public interface SearchDAO {
      */
     List<Search> findSearchByEmail(String userEmail);
 
+    /**
+     * 删除用户搜索历史
+     * @param userEmail 用户邮箱
+     */
+    void deleteSearch(String userEmail);
+
 
 }

@@ -37,4 +37,9 @@ public class FeedBackServiceImpl implements FeedBackService{
     public void updateFD(FeedBack feedBack) {
         feedBackDAO.updateFD(feedBack);
     }
+
+    @Override
+    public void deleteFeedBack(String userEmail) {
+        feedBackDAO.deleteFeedBack(userEmail);
+    }
 }

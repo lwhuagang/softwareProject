@@ -2,11 +2,18 @@ package com.software_project.controller;
 
 import com.software_project.pojo.FeedBack;
 import com.software_project.pojo.Fund;
+import com.software_project.service.AttentionService;
+import com.software_project.service.BrowseService;
 import com.software_project.service.FeedBackService;
 import com.software_project.service.FundService;
+import com.software_project.service.HoldService;
+import com.software_project.service.OperationService;
+import com.software_project.service.RecordService;
+import com.software_project.service.SearchService;
 import com.software_project.service.UserService;
 import com.software_project.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +30,24 @@ public class AdminController {
     @Autowired
     private FeedBackService feedBackService;
 
+    @Autowired
+    private OperationService operationService;
+
+    @Autowired
+    private HoldService holdService;
+
+    @Autowired
+    private AttentionService attentionService;
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
+
+    @Autowired
+    private BrowseService browseService;
+
+    @Autowired
+    private SearchService searchService;
+
     @GetMapping("fundOff")
     public Result FundOff(int fundCode){
         fundService.deleteFund(fundCode);
@@ -37,6 +62,14 @@ public class AdminController {
 
     @GetMapping("userDelete")
     public Result UserDelete(String email){
+        // 先删除该用户的其他的外键的信息
+        attentionService.deleteAtt(email);
+        holdService.deleteHold(email);
+        operationService.deleteOperation(email);// record
+        browseService.deleteBrowse(email);
+        feedBackService.deleteFeedBack(email);
+        searchService.deleteSearch(email);
+        // 删除用户
         userService.deleteUser(email);
         return new Result(200,true,"用户删除成功");
     }

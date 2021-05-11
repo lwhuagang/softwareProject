@@ -36,4 +36,10 @@ public interface FeedBackService {
      */
     void updateFD(FeedBack feedBack);
 
+    /**
+     * 删除用户的反馈记录
+     * @param userEmail 用户邮箱
+     */
+    void deleteFeedBack(String userEmail);
+
 }

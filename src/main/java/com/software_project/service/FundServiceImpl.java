@@ -37,4 +37,19 @@ public class FundServiceImpl implements FundService{
     public void deleteFund(int fundCode) {
 
     }
+
+    @Override
+    public int getFundsNum() {
+        return fundDAO.getFundsNum();
+    }
+
+    @Override
+    public List<Fund> getAllFunds() {
+        return fundDAO.getAllFunds();
+    }
+
+    @Override
+    public List<Fund> getFundsByPage(int pageIndex, int pageSize) {
+        return fundDAO.getFundsByPage(pageIndex, pageSize);
+    }
 }

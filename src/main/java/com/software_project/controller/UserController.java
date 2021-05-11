@@ -488,6 +488,9 @@ public class UserController {
         attentionService.deleteAtt(user1.getEmail());
         holdService.deleteHold(user1.getEmail());
         operationService.deleteOperation(user1.getEmail());
+        browseService.deleteBrowse(user1.getEmail());
+        feedBackService.deleteFeedBack(user1.getEmail());
+        searchService.deleteSearch(user1.getEmail());
 
         return new Result(200,user,"修改密码成功");
     }

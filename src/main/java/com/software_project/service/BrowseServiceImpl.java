@@ -22,4 +22,9 @@ public class BrowseServiceImpl implements BrowseService{
     public List<Browse> findBrowseByEmail(String userEmail) {
         return browseDAO.findBrowseByEmail(userEmail);
     }
+
+    @Override
+    public void deleteBrowse(String userEmail) {
+        browseDAO.deleteBrowse(userEmail);
+    }
 }

@@ -22,4 +22,9 @@ public class SearchServiceImpl implements SearchService{
     public List<Search> findSearchByEmail(String userEmail) {
         return searchDAO.findSearchByEmail(userEmail);
     }
+
+    @Override
+    public void deleteSearch(String userEmail) {
+        searchDAO.deleteSearch(userEmail);
+    }
 }
