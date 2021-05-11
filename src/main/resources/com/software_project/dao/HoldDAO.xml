@@ -10,6 +10,9 @@
     <update id="updateHold">
         update soft.hold set hold = #{hold}, holdProfit = #{holdProfit}, yesProfit=#{yesProfit},holdCost = #{holdCost},share = #{share} where fundCode = #{fundCode} and userEmail = #{userEmail}
     </update>
+    <delete id="deleteHold">
+        delete from soft.hold where userEmail = #{email}
+    </delete>
     <select id="getHoldByUserEmailAndFundCode" resultType="com.software_project.pojo.Hold">
         select * from soft.hold where userEmail = #{email} and fundCode = #{fundCode}
     </select>

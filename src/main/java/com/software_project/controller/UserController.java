@@ -11,20 +11,10 @@ import com.software_project.pojo.Hold;
 import com.software_project.pojo.Record;
 import com.software_project.pojo.Search;
 import com.software_project.pojo.User;
-import com.software_project.service.AttentionService;
-import com.software_project.service.BrowseService;
-import com.software_project.service.FeedBackService;
-import com.software_project.service.FundService;
-import com.software_project.service.HoldService;
-import com.software_project.service.RecordService;
-import com.software_project.service.SearchService;
-import com.software_project.service.UserService;
+import com.software_project.service.*;
 import com.software_project.utils.MD5Utils;
-import com.software_project.vo.HoldVO;
-import com.software_project.vo.Result;
-import com.software_project.vo.Ret_HavingList;
-import com.software_project.vo.Ret_HoldVOList;
-import com.software_project.vo.Ret_WatchList;
+import com.software_project.vo.*;
+import lombok.AllArgsConstructor;
 import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -68,6 +58,9 @@ public class UserController {
 
     @Autowired
     private SearchService searchService;
+
+    @Autowired
+    private OperationService operationService;
 
 
     /**
@@ -120,6 +113,7 @@ public class UserController {
     /**
      * register的参 数包装类
      */
+    @AllArgsConstructor
     static class Param_register{
         public User user;
         public String captcha;
@@ -456,6 +450,48 @@ public class UserController {
         List<Record> records = recordService.getRecordsByUserEmail(email);
         return new Result(200, records, "获取用户的所有交易记录");
     }
+
+    @PostMapping("update")
+    public Result update(@RequestBody updateVO param){
+        User user = userService.findUserByEmail(param.getEmail());
+        user.setNickname(param.getName());
+        user.setMoney(param.getMoney());
+        user.setPicUrl(param.getAvatarLink());
+        userService.updateUser(user);
+        return new Result(200,true,"用户信息修改成功!");
+    }
+
+    @PostMapping("modify")
+    public Result modify(@RequestBody ModifyVO param){
+        User user = userService.findUserByEmail(param.getEmail());
+        user.setPassword(param.getPassword());
+        userService.updateUser(user);
+        return new Result(200,user,"用户密码修改成功!");
+    }
+
+    @PostMapping("resetPassword")
+    public Result resetPassword(@RequestBody resetPasswordVO param){
+        User user = userService.findUserByEmail(param.getEmail());
+        user.setPassword(param.getPassword());
+        Param_register regis_param = new Param_register(user, param.getCaptcha());
+        register(regis_param);
+        return new Result(200,user,"修改密码成功");
+    }
+
+    @PostMapping("resetAll")
+    public Result resetAll(@RequestBody resetAllVO param){
+        User user = userService.findUserByEmail(param.getEmail());
+        User user1 = new User(user.getEmail(), user.getPassword(), user.getNickname(),
+                param.getMoney(), user.getPicUrl(), user.isAdmin(),
+                0, 0, 0, param.getMoney(), 0, 0);
+        userService.updateUser(user1);
+        attentionService.deleteAtt(user1.getEmail());
+        holdService.deleteHold(user1.getEmail());
+        operationService.deleteOperation(user1.getEmail());
+
+        return new Result(200,user,"修改密码成功");
+    }
+
 
     /**
      * 测试拦截器功能是否正常

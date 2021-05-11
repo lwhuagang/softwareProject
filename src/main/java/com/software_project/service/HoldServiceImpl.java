@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class HoldServiceImpl  implements HoldService{
+public class HoldServiceImpl implements HoldService{
     @Autowired
     private HoldDAO holdDAO;
 
@@ -28,6 +28,11 @@ public class HoldServiceImpl  implements HoldService{
     @Override
     public void insertHold(Hold hold) {
         holdDAO.insertHold(hold);
+    }
+
+    @Override
+    public void deleteHold(String email) {
+        holdDAO.deleteHold(email);
     }
 
 

@@ -25,4 +25,6 @@ public interface AttentionService {
      */
     List<Fund> getWatchList(String email);
 
+    void deleteAtt(String email);
+
 }

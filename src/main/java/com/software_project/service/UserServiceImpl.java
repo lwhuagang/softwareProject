@@ -44,15 +44,27 @@ public class UserServiceImpl implements UserService{
     public User register(User user, String captcha) {
         // 先对输入验证码的正确性进行验证
         String saved_captcha = redisTemplate.opsForValue().get(user.getEmail());
-        if(saved_captcha != null && saved_captcha.equals(captcha)){
-            // 说明验证码未过期且输入正确!
-            // 进行用户注册
-            userDAO.insertUser(user);
-            return user;
+        try {
+            if (saved_captcha != null && saved_captcha.equals(captcha)) {
+                // 说明验证码未过期且输入正确!
+                // 进行用户注册
+                userDAO.insertUser(user);
+                return user;
+            } else {
+                // 验证码输入错误或者验证码为空
+                return null;
+            }
         }
-        else {
-            // 验证码输入错误或者验证码为空
-            return null;
+        catch (Exception e){
+            if (saved_captcha.equals(captcha)) {
+                // 说明验证码未过期且输入正确!
+                // 进行用户注册
+                userDAO.updateUser(user);
+                return user;
+            } else {
+                // 验证码输入错误或者验证码为空
+                return null;
+            }
         }
     }
 

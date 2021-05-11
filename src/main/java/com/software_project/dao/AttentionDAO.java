@@ -28,4 +28,6 @@ public interface AttentionDAO {
      * @return 关注列表中的所有基金信息
      */
     List<Fund> watchList(String email);
+
+    void deleteUserAttention(String email);
 }

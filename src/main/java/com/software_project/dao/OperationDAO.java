@@ -18,4 +18,6 @@ public interface OperationDAO {
     void updateDeal(Record record);
 
     List<Record> getAllUndoRecord();
+
+    void deleteOp(String email);
 }
