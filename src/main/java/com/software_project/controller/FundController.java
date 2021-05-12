@@ -134,7 +134,7 @@ public class FundController {
         Hold hold = holdService.getHoldByUserEmailAndFundCode(params.userEmail, params.fundCode);
         HoldVO holdVO = new HoldVO(params.userEmail, fund, hold);
         holdVO.setTotalProfit(redisTemplate.opsForList().range(params.userEmail.substring(0,8)+":"+fund.getFundCode(), 0, -1));
-        holdVO.setToVerifyMoney(getVerifyMoney(params.userEmail,  fund.getFundCode()));     // 设置待确认金额
+        holdVO.setToVerifyMoney(getVerifyMoney(params.userEmail,  fund.getCode()));     // 设置待确认金额
         // 计算持有收益率
         return new Result(200, holdVO, "获取用户单个基金的资产详情");
     }
