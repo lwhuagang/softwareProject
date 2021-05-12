@@ -2,6 +2,7 @@ package com.software_project.controller;
 
 import com.software_project.pojo.FeedBack;
 import com.software_project.pojo.Fund;
+import com.software_project.pojo.User;
 import com.software_project.service.AttentionService;
 import com.software_project.service.BrowseService;
 import com.software_project.service.FeedBackService;
@@ -58,6 +59,11 @@ public class AdminController {
     public Result FundOn(@RequestBody Fund fund){
         fundService.insertFund(fund);
         return new Result(200,true,"上架成功");
+    }
+    @GetMapping("getAllUsers")
+    public Result getAllUsers() {
+        List<User> users = userService.getAllUsers();
+        return new Result(200, users, "获取所有的用户");
     }
 
     @GetMapping("userDelete")

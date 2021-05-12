@@ -8,6 +8,9 @@
     <update id="updateFD" parameterType="com.software_project.pojo.FeedBack">
         update soft.feedback set result = #{result}, flag = #{flag} where userEmail = #{userEmail} and time =#{time}
     </update>
+    <delete id="deleteFeedBack" parameterType="java.lang.String">
+        delete from soft.feedback where userEmail = #{userEmail}
+    </delete>
     <select id="findAllFeedBack" resultType="com.software_project.pojo.FeedBack">
         select * from soft.feedback;
     </select>

@@ -154,7 +154,8 @@ public class FundController {
 
     @GetMapping("getFundsByPage")
     public Result getFundsByPage(int pageIndex, int pageSize) {
-        List<Fund> funds = fundService.getFundsByPage(pageIndex, pageSize);
+        int startIndex = (pageIndex-1)*pageSize;
+        List<Fund> funds = fundService.getFundsByPage(startIndex, pageSize);
         return new Result(200, funds, "按照页面获取数据库中基金信息");
     }
 

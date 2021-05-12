@@ -59,5 +59,5 @@ public interface FundDAO {
      * @param pageSize 页面大小
      * @return 部分的基金信息
      */
-    List<Fund> getFundsByPage(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);
+    List<Fund> getFundsByPage(@Param("startIndex") int startIndex, @Param("pageSize") int pageSize);
 }

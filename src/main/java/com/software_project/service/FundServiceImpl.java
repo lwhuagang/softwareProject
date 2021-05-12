@@ -49,7 +49,7 @@ public class FundServiceImpl implements FundService{
     }
 
     @Override
-    public List<Fund> getFundsByPage(int pageIndex, int pageSize) {
-        return fundDAO.getFundsByPage(pageIndex, pageSize);
+    public List<Fund> getFundsByPage(int startIndex, int pageSize) {
+        return fundDAO.getFundsByPage(startIndex, pageSize);
     }
 }

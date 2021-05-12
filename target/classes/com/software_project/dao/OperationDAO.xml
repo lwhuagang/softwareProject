@@ -7,6 +7,9 @@
     <update id="updateDeal">
         update soft.record set flagTime = #{flagTime},flag = #{flag} where userEmail = #{userEmail} and fundCode=#{fundCode} and time = #{time}
     </update>
+    <delete id="deleteOp">
+        delete from soft.record where userEmail = #{email}
+    </delete>
     <select id="getAllUndoRecord" resultType="com.software_project.pojo.Record">
         /*较为耗时*/
         select * from soft.record where flag = 0

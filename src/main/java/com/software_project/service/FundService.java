@@ -55,9 +55,9 @@ public interface FundService {
 
     /**
      * 根据页面索引和页面大小查询数据库中对应的基金信息（实现分页操作）
-     * @param pageIndex 页面索引
+     * @param startIndex 页面索引
      * @param pageSize 页面大小
      * @return 部分的基金信息
      */
-    List<Fund> getFundsByPage(@Param("pageIndex") int pageIndex, @Param("pageSize") int pageSize);
+    List<Fund> getFundsByPage(int startIndex, int pageSize);
 }

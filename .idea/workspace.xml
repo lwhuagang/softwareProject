@@ -5,28 +5,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/0a652cc1-d22c-44b7-950b-0b7d3e7ba5c9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/feedback.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/vo/ModifyVO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/vo/resetAllVO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/vo/resetPasswordVO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/software_project/vo/updateVO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soft.sql" beforeDir="false" afterPath="$PROJECT_DIR$/soft.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/FundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/FundController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/BrowseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/BrowseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/FeedBackDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/FeedBackDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/FundDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/FundDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/SearchDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/SearchDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/BrowseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/BrowseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/BrowseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/BrowseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/FeedBackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/FeedBackService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/FeedBackServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/FeedBackServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/FundService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/FundService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/FundServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/FundServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/SearchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/SearchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/SearchServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/BrowseDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/BrowseDAO.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/FeedBackDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/FeedBackDAO.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/FundDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/FundDAO.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/SearchDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/SearchDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/FundController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/FundController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController$Param_register.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController$Param_register.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/AttentionDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/AttentionDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/AttentionDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/AttentionDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/BrowseDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/BrowseDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/BrowseDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/BrowseDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/FeedBackDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/FeedBackDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/FeedBackDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/FeedBackDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/FundDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/FundDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/FundDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/FundDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/HoldDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/HoldDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/HoldDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/HoldDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/OperationDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/OperationDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/OperationDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/OperationDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/SearchDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/SearchDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/SearchDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/SearchDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/AttentionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/AttentionService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/AttentionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/AttentionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/BrowseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/BrowseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/BrowseServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/BrowseServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/FeedBackService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/FeedBackService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/FeedBackServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/FeedBackServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/FundService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/FundService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/FundServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/FundServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/HoldService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/HoldService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/HoldServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/HoldServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/OperationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/OperationService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/OperationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/OperationServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/SearchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/SearchService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/SearchServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/SearchServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/UserServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +147,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -225,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620301591153</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="管理端：删除用户，基金上下架，反馈管理&#10;FundController：查询基金个数、基金分页查询&#10;UserController：个人信息修改更新，重置密码，重置个人数据">
+      <created>1620725249995</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1620725249995</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,17 +302,63 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="添加details注释" />
     <MESSAGE value="watchlist添加基金净值等信息" />
     <MESSAGE value="merge usercontroller和operationcontroller" />
     <MESSAGE value="update阶段更新hold和share，增加selfMsg接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="update阶段更新hold和share，增加selfMsg接口" />
+    <MESSAGE value="管理端：删除用户，基金上下架，反馈管理&#10;FundController：查询基金个数、基金分页查询&#10;UserController：个人信息修改更新，重置密码，重置个人数据" />
+    <option name="LAST_COMMIT_MESSAGE" value="管理端：删除用户，基金上下架，反馈管理&#10;FundController：查询基金个数、基金分页查询&#10;UserController：个人信息修改更新，重置密码，重置个人数据" />
   </component>
   <component name="WindowStateProjectService">
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1620723853007">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1620723853007" />
+    <state x="489" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1620781895436">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="489" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1620781895436" />
+    <state x="304" y="6" key="CommitChangelistDialog2" timestamp="1620725246661">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="304" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1620725246661" />
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom" timestamp="1620782076218">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620782076218" />
+    <state width="1493" height="183" key="GridCell.Tab.0.center" timestamp="1620782076218">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1620782076218" />
+    <state width="1493" height="183" key="GridCell.Tab.0.left" timestamp="1620782076218">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1620782076218" />
+    <state width="1493" height="183" key="GridCell.Tab.0.right" timestamp="1620782076218">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1620782076218" />
+    <state width="1493" height="183" key="GridCell.Tab.1.bottom" timestamp="1620782076219">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="183" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1620782076219" />
+    <state width="1493" height="183" key="GridCell.Tab.1.center" timestamp="1620782076218">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="183" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1620782076218" />
+    <state width="1493" height="183" key="GridCell.Tab.1.left" timestamp="1620782076218">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="183" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1620782076218" />
+    <state width="1493" height="183" key="GridCell.Tab.1.right" timestamp="1620782076219">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="183" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1620782076219" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1620725255361">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1620725255361" />
     <state x="485" y="52" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1620721481179">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -289,19 +367,5 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="31" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1620724554303" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/com/software_project/controller/AdminController.java</url>
-          <line>95</line>
-          <properties class="com.software_project.controller.AdminController" method="ProFeedBack">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

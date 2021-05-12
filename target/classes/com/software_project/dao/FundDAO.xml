@@ -21,5 +21,14 @@
         select * from soft.fund f left join soft.hold h on f.code = h.fundCode
         where h.userEmail = #{email}
     </select>
+    <select id="getAllFunds" resultType="com.software_project.pojo.Fund">
+        select * from soft.fund
+    </select>
+    <select id="getFundsByPage" resultType="com.software_project.pojo.Fund">
+        select * from soft.fund limit #{startIndex},#{pageSize}
+    </select>
+    <select id="getFundsNum" resultType="java.lang.Integer">
+        select count(*) from soft.fund;
+    </select>
 
 </mapper>
