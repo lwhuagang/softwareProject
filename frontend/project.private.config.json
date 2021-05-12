@@ -39,7 +39,7 @@
         {
           "name": "pages/fundTradeRec/fundTradeRec",
           "pathName": "pages/fundTradeRec/fundTradeRec",
-          "query": "",
+          "query": "fundCode=000033&fundName=易方达信用债债券C",
           "scene": null
         },
         {
@@ -49,8 +49,20 @@
           "scene": null
         },
         {
+<<<<<<< HEAD
           "name": "pages/holdFundDetail/holdFundDetail",
           "pathName": "pages/holdFundDetail/holdFundDetail",
+=======
+          "name": "pages/totalTradeRec/totalTradeRec",
+          "pathName": "pages/totalTradeRec/totalTradeRec",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/holdFundDetail/holdFundDetail",
+          "pathName": "pages/holdFundDetail/holdFundDetail",
+          "query": "fundCode=000248",
+>>>>>>> 7a5ce616e3c97a1ef5e4c3165c01474338c5af17
           "scene": null
         }
       ]

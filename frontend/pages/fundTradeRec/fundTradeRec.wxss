@@ -1,48 +1,109 @@
-.head{
+.head {
   position: fixed;
   width: 100%;
   height: 100rpx;
-  margin-top:0;
+  margin-top: 0;
 }
-.container{
+
+.container {
   position: absolute;
   width: 100%;
-  margin-top:130rpx;
+  margin-top: 130rpx;
+
 }
-.record{
+
+.record {
   display: flex;
   /* border: 1px solid red; */
   flex-wrap: nowrap;
-
+  background-color: white;
+  height: 155rpx;
 }
 
-.typeName{
+.state {
+  border-radius: 10rpx;
+  background-color: #eaf0ff;
+  width: 68px;
+}
+
+.typeName {
   /* border: 1px solid green; */
+  color: #3567b3;
+  background-color: #eaf0ff;
+  border-radius: 15rpx;
+  font-size: 40rpx;
   margin-left: 1px;
-  padding-left: 8px;
-  padding-top: 2px;
-  width: 40px;
+  padding-left: 12px;
+  padding-top: 15px;
+  width: 50px;
 }
 
-.fundNameAndTime{
-  padding-top: 2px;
-  /* border: 1px solid purple; */
+.ing {
+  /* border: 1px solid green; */
+  color: #3567b3;
+  background-color: #eaf0ff;
+  border-radius: 15rpx;
+  font-size: 24rpx;
+  margin-left: 1px;
+  padding-left: 14px;
+  padding-top: 3px;
 }
-.fundNameAndTime .tradeTime{
+
+.finish {
+  /* border: 1px solid green; */
+  color: #53575e;
+  background-color: #eaf0ff;
+  border-radius: 15rpx;
+  font-size: 24rpx;
+  margin-left: 1px;
+  padding-left: 10px;
+  padding-top: 3px;
+}
+
+.fundNameAndTime {
+  width: 400rpx;
+  padding-left: 20px;
+  padding-top: 20px;
+  /* border: 1px solid purple; */
+  font-size: 30rpx;
+  color: #555454;
+}
+
+.fundNameAndTime .tradeTime {
   font-size: 13px;
   color: #777777;
 }
 
-.tradeNum{
-  /* border: 1px solid blue; */
-  padding-top: 2px;
-  font-size: small;
-  overflow-wrap: break-word;
-  position: absolute;
-  right: 10rpx;
+.MoneyAndDelete {
+  padding-left: 10px;
+  float: right;
 }
-.divLine{
+
+.tradeNum {
+  /* border: 1px solid blue; */
+  padding-top: 17px;
+  padding-bottom: 10rpx;
+  color: #555454;
+  overflow-wrap: break-word;
+  font-size: 30rpx;
+}
+
+.delete {
+  width: 70px;
+  padding-top: 4rpx;
+  padding-bottom: 4rpx;
+  border: solid #11244b;
+  border-width: 1rpx;
+  background-color: #eaf0ff;
+  color: #252b33;
+  text-align: center;
+  border-radius: 20px;
+  float: right;
+  font-size: 14px;
+}
+
+.divLine {
   width: 100%;
-  background: #f5f5f5;
+  background: #9e9d9d;
   height: 3rpx;
 }
