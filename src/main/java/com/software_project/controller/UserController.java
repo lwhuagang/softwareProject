@@ -15,6 +15,8 @@ import com.software_project.service.*;
 import com.software_project.utils.MD5Utils;
 import com.software_project.vo.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -113,7 +115,9 @@ public class UserController {
     /**
      * register的参 数包装类
      */
+    @Data
     @AllArgsConstructor
+    @NoArgsConstructor
     static class Param_register{
         public User user;
         public String captcha;
