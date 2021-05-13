@@ -10,34 +10,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogin:true,
-    email:"18231096@buaa.edu.cn",
     fundCode: "161005",
     fundInfo: {},
-    comments:[{
-      username: "木槿",
-      userEmail:"18231096@buaa.edu.cn",
-      commentText:"基金，英文是fund，广义是指为了某种目的而设立的具有一定数量的资金。主要包括信托投资基金、公积金、保险基金、退休基金，各种基金会的基金。从会计角度透析，基金是一个狭义的概念，意指具有特定目的和用途的资金。我们提到的基金主要是指证券投资基金。"
-    },{
-      username: "皮卡",
-      userEmail:"18231041@buaa.edu.cn",
-      commentText:"基金，英文是fund，广义是指为了某种目的而设立的具有一定数量的资金。主要包括信托投资基金、公积金、保险基金、退休基金，各种基金会的基金。从会计角度透析，基金是一个狭义的概念，意指具有特定目的和用途的资金。我们提到的基金主要是指证券投资基金。"
-    }
-  ]
+    min: 5,
+    max: 400,
+    currentWordNumber: 0,
+    texts:"",
+    inputValue:"",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      isLogin:app.globalData.isLogin
-    })
-    if(app.globalData.isLogin==true) {
-      this.setData({
-        email:app.globalData.email
-      })
-    }
     var code = options.fundCode;
     this.setData({
       fundCode: code, //全局变量
@@ -104,9 +89,34 @@ Page({
   onShareAppMessage: function () {
 
   },
-  deleteComment: function (e) {
+
+  inputs: function (e) {
+    // 获取输入框的内容
+    var value = e.detail.value;
+    // 获取输入框内容的长度
+    var len = parseInt(value.length);
+    //最少字数限制
+    if (len <this.data.min){
+      this.setData({
+        texts: "加油，至少要输入5个字哦"
+      })
+    }else if (len >= this.data.min){
+      this.setData({
+        texts: " ",
+        inputValue: value
+      })
+    }
+    //最多字数限制
+    if (len > this.data.max) return;
+    // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
+    this.setData({
+      currentWordNumber: len //当前字数  
+    });
+  },
+
+  addComment: function (e) {
     wx.showModal({
-      title:"删除评论成功!",
+      title:"评论成功!",
       content:'此处尚未调用后端接口函数',
       cancelColor: 'cancelColor',
     });

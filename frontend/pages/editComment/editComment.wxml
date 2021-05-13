@@ -1,0 +1,37 @@
+<wxs src="../../utils/util.wxs" module="tool" />
+
+<view class="container">
+  <view class="fundCard">
+    <block wx:if="{{fundInfo.dayGrowth>=0}}">
+      <view class="upGrowth">
+        <view class="growth">+{{fundInfo.dayGrowth}}%</view>
+        <view class="netWorthDate">{{fundInfo.netWorthDate}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="downGrowth">
+        <view class="growth">{{fundInfo.dayGrowth}}%</view>
+        <view class="netWorthDate">{{fundInfo.netWorthDate}}</view>
+      </view>
+    </block>
+    <view class="baseInfo">
+      <view class="fundName">{{fundInfo.name}}讨论区</view>
+      <navigator class="fundCode" url="/pages/fundDetail/fundDetail?fundCode={{fundInfo.code}}">{{fundInfo.code}} 基金详情 >
+      </navigator>
+    </view>
+  </view>
+
+  <view class="conts">
+    <textarea class="areas" placeholder='在此输入您的评论' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs"></textarea>
+    <text class="hint">{{texts}}</text>
+    <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
+  </view>
+</view>
+
+<view class="head">
+  <naviBar title="添加评论"></naviBar>
+</view>
+
+<view class="tail">
+  <view class="buttonText" bindtap="addComment">评 论</view>
+</view>

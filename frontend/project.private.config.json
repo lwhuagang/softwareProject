@@ -70,6 +70,12 @@
           "pathName": "pages/fundDiscuss/fundDiscuss",
           "query": "fundCode=161005",
           "scene": null
+        },
+        {
+          "name": "editComment",
+          "pathName": "pages/editComment/editComment",
+          "query": "fundCode=161005",
+          "scene": null
         }
       ]
     }

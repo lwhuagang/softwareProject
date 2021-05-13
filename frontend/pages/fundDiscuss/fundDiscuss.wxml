@@ -25,6 +25,11 @@
       <view class="userName">
         <view class="dot"> </view>
         <view class="nameText">{{comments[index].username}}</view>
+        <block wx:if="{{isLogin && (comments[index].userEmail==email)}}">
+          <view class="delete">
+            <view class="deleteText" bindtap="deleteComment">删除</view>
+          </view>
+        </block>
       </view>
       <view class="commentPart">
         <view class="commentText">{{comments[index].commentText}}</view>
@@ -36,4 +41,13 @@
 
 <view class="head">
   <naviBar title="讨论区"></naviBar>
+</view>
+
+<view class="tail">
+  <navigator class="inputBox" url="/pages/editComment/editComment?fundCode={{fundInfo.code}}">
+    <view class="inputText">有什么想吐槽的吗？</view>
+  </navigator>
+  <navigator class="commentButton" url="/pages/editComment/editComment?fundCode={{fundInfo.code}}">
+    <view class="buttonText">评论</view>
+  </navigator>
 </view>

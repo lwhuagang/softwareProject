@@ -136,6 +136,24 @@
   margin-right: 7px;
 }
 
+.delete {
+  display: flex;
+  position: relative;
+  border: 1rpx solid #f1eeee;
+  border-radius: 30px;
+  width: 100rpx;
+  height: 50rpx;
+  background: rgb(218, 82, 58);
+  margin-top: 7px;
+  margin-left: 190px;
+}
+
+.deleteText {
+  color: white;
+  padding-top: 5rpx;
+  padding-left: 20rpx;
+}
+
 .nameText {
   padding-top: 18rpx;
   font-size: 17px;
@@ -159,4 +177,53 @@
   padding-top: 5rpx;
   padding-bottom: 20rpx;
   color:rgb(57, 57, 58);
+}
+
+.tail{
+  border-top: 1rpx solid #d1cfcf;
+  background:#fefeff;
+  display:flex;
+  position:fixed; 
+  width:100%;
+  bottom:0px;
+  margin-bottom: 0px;
+  height: 100rpx;
+}
+
+.inputBox{
+  display: flex;
+  position: relative;
+  border: 1rpx solid #bebebe;
+  border-radius: 300rpx;
+  width: 75%;
+  height: 65rpx;
+  background: rgb(236, 236, 236);
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  margin-left: 20rpx
+}
+
+.commentButton{
+  display: flex;
+  position: relative;
+  border: 1rpx solid #949596;
+  background: rgb(231, 238, 252);
+  border-radius:300rpx;
+  width: 15%;
+  height: 65rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  margin-left: 15rpx;
+}
+
+.inputText{
+  padding-left: 25rpx;
+  padding-top: 10rpx;
+  color: #777879;
+}
+
+.buttonText{
+  padding-left: 25rpx;
+  padding-top: 10rpx;
+  color: #41464b;
 }

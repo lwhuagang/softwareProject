@@ -1,0 +1,154 @@
+/* pages/editComment/editComment.wxss *//* pages/fundDiscuss/fundDiscuss.wxss */
+
+/* pages/fundDetail/fundDetail.wxss */
+.head{
+  position: fixed;
+  width: 100%;
+  height: 100rpx;
+  margin-top:0;
+}
+.container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+  position: absolute;
+  margin-top: 130rpx;
+}
+
+.fundCard {
+  display: flex;
+  position: relative;
+  border: 1rpx solid #f1eeee;
+  border-radius: 15rpx;
+  width: 85%;
+  height: 220rpx;
+  margin-top: 30rpx;
+  background: white;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  margin-bottom: 5rpx;
+}
+
+.upGrowth {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border: 1rpx solid #f1eeee;
+  border-radius: 15rpx;
+  width: 23%;
+  height: 175rpx;
+  margin-top: 20rpx;
+  background: linear-gradient(60deg, red, rgb(255, 136, 0)); 
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+}
+
+.downGrowth {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  border: 1rpx solid #f1eeee;
+  border-radius: 15rpx;
+  width: 140rpx;
+  height: 175rpx;
+  margin-top: 20rpx;
+  background: linear-gradient(60deg, green, rgb(8, 223, 8)); 
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+}
+
+.growth {
+  margin-top: 45rpx;
+  font-size: 22px;
+  font-weight: 550;
+  color: white;
+}
+
+.netWorthDate {
+  text-align: center;
+  margin-top: 5rpx;
+  font-size: 23rpx;
+  color: white;
+}
+
+.baseInfo {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  /*border: 1rpx solid #f1eeee;*/
+  border-radius: 15rpx;
+  width: 70%;
+  height: 180rpx;
+  margin-top: 20rpx;
+  margin-left: 10px;
+  background: white;
+}
+
+.fundName {
+  margin: 10rpx 10rpx 10rpx 10rpx;
+  font-size: 19px;
+  color: rgb(31, 31, 31);
+}
+
+.fundCode {
+  margin: 10rpx 10rpx 10rpx 10rpx;
+  font-size: 15px;
+  color: dimgrey;
+}
+
+/* 评论 */
+.conts{
+  width:90%;
+  height: auto;
+  position:relative;
+  padding-top: 10px;
+  padding-bottom:50rpx;
+  margin:0 auto;
+}
+.areas{
+  border-radius: 15rpx;
+  width:100%;
+  height:55vh;
+  font-size: 30rpx;
+  text-indent: 28rpx;
+  border: 1rpx solid gainsboro;
+  padding-top: 30rpx;
+  margin: 0 auto;
+  overflow: hidden;   
+  position: relative; 
+  background: white;
+}
+.currentWordNumber{
+  font-size: 28rpx;
+  color: gray;
+  position: absolute;
+  right:10rpx;
+  bottom:10rpx;
+}
+.hint{
+   font-size: 28rpx;
+   position: absolute;
+   left:20rpx;
+   bottom:10rpx;
+   color: #FF6600;
+}
+.tail{
+  border-top: 1rpx solid #d1cfcf;
+  background:#0081ff;
+  display:flex;
+  position:fixed; 
+  width:100%;
+  bottom:0px;
+  margin-bottom: 0px;
+  height: 90rpx;
+}
+
+.buttonText{
+  padding-top: 13rpx;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-size: 23px;
+}

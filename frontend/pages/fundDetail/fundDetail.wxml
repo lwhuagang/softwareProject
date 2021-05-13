@@ -168,6 +168,9 @@
   底部功能栏区
 -->
 <view class="bottomBar">
+  <navigator class="discussButton" url="/pages/fundDiscuss/fundDiscuss?fundCode={{fundInfo.code}}">
+    <view class="selfSelect">讨论区</view>
+  </navigator>
   <block wx:if="{{isSelfSelect == false}}">
     <view class="bottomButton" bindtap="selfSelect">
       <view class="selfSelect">自选</view>

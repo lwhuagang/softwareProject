@@ -19,7 +19,8 @@
     "pages/buyIn/buyIn",
     "pages/sellOut/sellOut",
     "pages/dealRule/dealRule",
-    "pages/fundDiscuss/fundDiscuss"
+    "pages/fundDiscuss/fundDiscuss",
+    "pages/editComment/editComment"
   ],
   "window": {
     "backgroundTextStyle": "light",
