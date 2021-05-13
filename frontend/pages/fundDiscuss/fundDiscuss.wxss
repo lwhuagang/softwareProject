@@ -129,7 +129,7 @@
   position: relative;
   border: 1rpx solid #f1eeee;
   border-radius: 30px;
-  width: 50rpx;
+  width: 9%;
   height: 50rpx;
   background: rgb(12, 71, 128);
   margin-top: 7px;
@@ -141,11 +141,11 @@
   position: relative;
   border: 1rpx solid #f1eeee;
   border-radius: 30px;
-  width: 100rpx;
+  width: 20%;
   height: 50rpx;
   background: rgb(218, 82, 58);
   margin-top: 7px;
-  margin-left: 190px;
+  margin-left: 10px;
 }
 
 .deleteText {
@@ -155,6 +155,7 @@
 }
 
 .nameText {
+  width: 70%;
   padding-top: 18rpx;
   font-size: 17px;
   color: rgb(72, 72, 73);
