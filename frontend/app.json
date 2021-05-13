@@ -18,7 +18,8 @@
     "pages/fundTradeRec/fundTradeRec",
     "pages/buyIn/buyIn",
     "pages/sellOut/sellOut",
-    "pages/dealRule/dealRule"
+    "pages/dealRule/dealRule",
+    "pages/fundDiscuss/fundDiscuss"
   ],
   "window": {
     "backgroundTextStyle": "light",

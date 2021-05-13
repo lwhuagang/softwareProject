@@ -1,0 +1,39 @@
+<wxs src="../../utils/util.wxs" module="tool" />
+
+<view class="container">
+  <view class="fundCard">
+    <block wx:if="{{fundInfo.dayGrowth>=0}}">
+      <view class="upGrowth">
+        <view class="growth">+{{fundInfo.dayGrowth}}%</view>
+        <view class="netWorthDate">{{fundInfo.netWorthDate}}</view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="downGrowth">
+        <view class="growth">{{fundInfo.dayGrowth}}%</view>
+        <view class="netWorthDate">{{fundInfo.netWorthDate}}</view>
+      </view>
+    </block>
+    <view class="baseInfo">
+      <view class="fundName">{{fundInfo.name}}讨论区</view>
+      <navigator class="fundCode" url="/pages/fundDetail/fundDetail?fundCode={{fundInfo.code}}">{{fundInfo.code}} 基金详情 >
+      </navigator>
+    </view>
+  </view>
+  <block wx:for="{{comments.length}}">
+    <view class="commentCard">
+      <view class="userName">
+        <view class="dot"> </view>
+        <view class="nameText">{{comments[index].username}}</view>
+      </view>
+      <view class="commentPart">
+        <view class="commentText">{{comments[index].commentText}}</view>
+      </view>
+    </view>
+  </block>
+
+</view>
+
+<view class="head">
+  <naviBar title="讨论区"></naviBar>
+</view>

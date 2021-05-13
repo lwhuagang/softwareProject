@@ -49,20 +49,26 @@
           "scene": null
         },
         {
-<<<<<<< HEAD
           "name": "pages/holdFundDetail/holdFundDetail",
           "pathName": "pages/holdFundDetail/holdFundDetail",
-=======
-          "name": "pages/totalTradeRec/totalTradeRec",
-          "pathName": "pages/totalTradeRec/totalTradeRec",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/totalTradeRec/totalTradeRec",
+          "pathName": "pages/totalTradeRec/totalTradeRec",
+          "query": ""
         },
         {
           "name": "pages/holdFundDetail/holdFundDetail",
           "pathName": "pages/holdFundDetail/holdFundDetail",
           "query": "fundCode=000248",
->>>>>>> 7a5ce616e3c97a1ef5e4c3165c01474338c5af17
+          "scene": null
+        },
+        {
+          "name": "fundDiscuss",
+          "pathName": "pages/fundDiscuss/fundDiscuss",
+          "query": "fundCode=161005",
           "scene": null
         }
       ]
