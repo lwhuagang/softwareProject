@@ -138,6 +138,9 @@
   <naviBar title="资产详情"></naviBar>
 </view>
 <view class="bottomBar">
+  <navigator class="discussButton" url="/pages/fundDiscuss/fundDiscuss?fundCode={{fundInfo.code}}">
+    <view class="sellOut">讨论区</view>
+  </navigator>
   <navigator class="bottomButton"
    url="/pages/sellOut/sellOut?fundCode={{fundCode}}&fundName={{fundInfo.name}}&share={{holdDetail.share}}">
     <view class="sellOut">卖出</view>

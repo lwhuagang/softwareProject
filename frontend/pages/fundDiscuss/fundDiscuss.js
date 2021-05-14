@@ -33,6 +33,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  //TODO: onLoad和onShow调用接口得到comments
   onLoad: function (options) {
     this.setData({
       isLogin:app.globalData.isLogin
@@ -71,7 +72,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

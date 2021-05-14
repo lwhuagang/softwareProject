@@ -15,7 +15,7 @@
         {
           "name": "pages/fundDetail/fundDetail",
           "pathName": "pages/fundDetail/fundDetail",
-          "query": "",
+          "query": "000935",
           "scene": null
         },
         {
@@ -75,6 +75,12 @@
           "name": "editComment",
           "pathName": "pages/editComment/editComment",
           "query": "fundCode=161005",
+          "scene": null
+        },
+        {
+          "name": "pages/search/search",
+          "pathName": "pages/search/search",
+          "query": "",
           "scene": null
         }
       ]

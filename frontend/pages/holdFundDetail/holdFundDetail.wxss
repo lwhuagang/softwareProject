@@ -175,6 +175,12 @@
   border-top: 2rpx solid #dcdcdc;
   color:white;
 }
+.discussButton{
+  width:60%;
+  height: 100rpx;
+  border-top: 2rpx solid #dcdcdc;
+  border-right: 2rpx solid #dcdcdc;
+}
 .sellOut{
   font-size:35rpx;
   color:black;
