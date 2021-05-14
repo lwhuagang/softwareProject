@@ -40,6 +40,10 @@
                     <el-button type="primary" @click="subSolve">确 定</el-button>
                 </div>
             </el-dialog>
+
+            <el-pagination align="left" @size-change="SizeChange" @current-change="CurrentChange" :current-page="pageIndex"
+                           :page-sizes="[1,2,5,10]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total">
+            </el-pagination>
         </el-card>
 
     </div>
@@ -49,8 +53,11 @@
     export default {
         data(){
             return {
-                //商品列表
+                pageSize:10,
+                pageIndex:1,
+                //消息列表
                 msgList:[],
+                tmpList:[],
                 //总的数据条数
                 total:0,
                 dialogVisible:false,
@@ -65,6 +72,24 @@
             }
         },
         methods:{
+            SizeChange(newSize){
+                this.pageSize = newSize;
+                let sz = this.pageSize;
+                let idx = this.pageIndex;
+                this.msgList=[]
+                for(let i=sz*(idx-1);i<sz*idx && i<this.total;++i) {
+                    this.msgList.push(this.tmpList[i]);
+                }
+            },
+            CurrentChange(newPage){
+                this.pageIndex = newPage;
+                let sz = this.pageSize;
+                let idx = this.pageIndex;
+                this.msgList=[]
+                for(let i=sz*(idx-1);i<sz*idx && i<this.total;++i) {
+                    this.msgList.push(this.tmpList[i]);
+                }
+            },
             cancelSolve(){
                 this.dialogVisible = false;
             },
@@ -89,8 +114,14 @@
             getUnsolvedMsg(){
                 this.$http.get('/admin/getAllFDNo').then(res=>{
                     console.log(res);
-                    this.msgList = res.data.obj;
-                    this.total = this.msgList.length;
+                    this.tmpList = res.data.obj;
+                    this.total = this.tmpList.length;
+                    this.msgList = [];
+                    let sz = this.pageSize;
+                    let idx = this.pageIndex;
+                    for(let i=sz*(idx-1);i<sz*idx && i<this.total;++i) {
+                        this.msgList.push(this.tmpList[i]);
+                    }
                 })
             },
 

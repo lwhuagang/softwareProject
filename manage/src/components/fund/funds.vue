@@ -10,7 +10,7 @@
             <!-- 搜索区域 -->
             <el-row>
                 <el-col :span="6">
-                    <el-input placeholder="请输入内容" v-model="searchTxt" class="input-with-select" clearable @clear="getGoodsList">
+                    <el-input placeholder="请输入内容" v-model="searchTxt" class="input-with-select" clearable @clear="cancelSearch">
                         <el-button slot="append" icon="el-icon-search" @click="searchList"></el-button>
                     </el-input>
                 </el-col>
@@ -27,7 +27,7 @@
                 </el-table-column>
                 <el-table-column prop="name" label="基金名称">
                 </el-table-column>
-                <el-table-column prop="fundType" label="基金类型" >
+                <el-table-column prop="type" label="基金类型" >
                 </el-table-column>
 <!--                <el-table-column prop="add_time" label="创建时间" >-->
 <!--                </el-table-column>-->
@@ -66,46 +66,51 @@
                 GoodsList:[{}],
                 //总的数据条数
                 total:0,
-                totalPages:0,
-                searchTxt:''
+                searchTxt:'',
+                searchRes:[],
+                isSearch:false,
             }
         },
         methods:{
-            getGoodsList(){
-                //首先要获得总共有多少条
-                //这里应该改为从数据库中获取所有的基金
-                this.$http.post('https://api.doctorxiong.club/v1/fund/rank',this.queryInfo).then(res=>{
-                    console.log(res);
-                    this.fundList = res.data.data.rank;
-                })
-                // this.$http.get('goods',{params:this.queryInfo})
-                //     .then(res=>{
-                //         //console.log(res);
-                //         this.GoodsList = res.data.data.goods;
-                //         this.total = res.data.data.total;
-                //     })
+            cancelSearch() {
+              this.isSearch = false;
+              this.queryInfo.pageIndex = 1;
+              this.getGoodsList();
             },
-            // //添加商品
-            // addGoods(){
-            //     this.$router.push('/goods/add');
-            // },
-            // //点击编辑按钮
-            // editUserlist(){
-            //
-            // },
-            //点击删除按钮
+            getGoodsList(){
+                if(this.isSearch) {
+                    this.searchList();
+                } else {
+                    this.$http.get('/fund/getFundsNum').then(res=>{
+                        console.log(res);
+                        this.total = res.data.obj;
+                        this.$http.get('/fund/getFundsByPage'+'?pageIndex='+this.queryInfo.pageIndex+'&pageSize='+this.queryInfo.pageSize).then(res=>{
+                            console.log(res);
+                            this.fundList = res.data.obj;
+                        })
+                    })
+                }
+
+            },
             removeFund(e){
-                console.log(e);
+                console.log("fundList",this.fundList);
+                console.log("remove",e);
                 this.$confirm('是否删除基金'+e.name+'?', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
                 }).then(() => {
                     //这里填写删除逻辑，并更新列表
-                    this.$message({
-                        type: 'success',
-                        message: '删除成功!'
-                    });
+                    console.log("here");
+                    this.$http.get('/admin/fundOff?fundCode='+e.code).then(res=>{
+                        console.log(res);
+                        if(res.data.code===200 && res.data.message==="下架成功") {
+                            this.$message.success("下架成功！");
+                        } else {
+                            this.$message.error("下架失败!");
+                        }
+                        this.getGoodsList();
+                    })
                 }).catch(() => {
                     this.$message({
                         type: 'info',
@@ -124,21 +129,39 @@
                 this.getGoodsList();
             },
             searchList() {
+                if(this.isSearch===false) {
+                    this.isSearch = true;
+                    this.queryInfo.pageIndex = 1;
+                }
                 const ifCode = /^[0-9][0-9][0-9][0-9][0-9][0-9]$/;
-                if(this.searchTxt.length===6 && ifCode.test(this.searchTxt)) {
+                if(this.searchTxt.length===0) {
+                    this.isSearch = false;
+                    this.queryInfo.pageIndex=1;
+                    this.getGoodsList();
+                }else if(this.searchTxt.length===6 && ifCode.test(this.searchTxt)) {
                     console.log("根据基金代码查询");
                     this.$http.post('/fund/searchFund',{code:this.searchTxt,name:""}).then(res=>{
                         console.log("查询结果:",res);
                         this.fundList = [res.data.obj];
+                        this.total = this.fundList.length;
+                        console.log("total",this.total);
                     })
                 } else {
                     console.log("根据名称查询");
                     this.$http.post('/fund/searchFund',{name:this.searchTxt}).then(res=>{
                         console.log("查询结果",res);
-                        this.fundList = res.data.obj;
-                        for(let i=0; i<this.fundList.length; ++i) { //一个是type一个是fundType
-                            this.fundList[i].fundType = this.fundList[i].type;
+                        this.searchRes = res.data.obj;
+                        this.total = this.searchRes.length;
+                        this.fundList = [];
+                        let sz = this.queryInfo.pageSize;
+                        let idx = this.queryInfo.pageIndex;
+                        for(let i=sz*(idx-1);i<sz*idx && i<this.total;++i) {
+                            this.fundList.push(this.searchRes[i]);
                         }
+                        // this.fundList = res.data.obj;
+                        // this.total = this.fundList.length;
+                        // console.log("total",this.total);
+                        // this.queryInfo.pageSize = this.total;
                     })
                 }
             }
@@ -146,22 +169,7 @@
 
         },
         created() {
-            // this.$http.get('/fund/getFundsNum').then(res=>{
-            //     console.log("数量",res.data.obj);
-            //     this.total = res.data.obj;
-            //     this.$http.get('/fund/getFundsByPage',this.queryInfo).then(res=>{
-            //         console.log(res);
-            //     })
-            // })
-            this.$http.post('https://api.doctorxiong.club/v1/fund/rank',this.queryInfo).then(res=>{
-                console.log(res);
-                this.fundList = res.data.data.rank;
-                this.totalPages = res.data.data.allPages;
-                this.$http.post('https://api.doctorxiong.club/v1/fund/rank',{pageIndex:this.totalPages,token:"atTPd9c8sA"}).then(res=>{
-                    this.total = (this.totalPages-1)*10+res.data.data.rank.length;
-                    console.log(res)
-                })
-            })
+            this.getGoodsList();
         }
     }
 </script>

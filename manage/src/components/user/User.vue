@@ -74,8 +74,10 @@
 	 		<el-button type="primary" @click="editRollist">确 定</el-button>
 	 	</span>
 	 </el-dialog>
-	   
-	  
+
+		<el-pagination align="left" @size-change="SizeChange" @current-change="CurrentChange" :current-page="pageIndex"
+					   :page-sizes="[1,2,5,10]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total">
+		</el-pagination>
 
 	</div>
 </template>
@@ -84,6 +86,10 @@
 	export default {
 		data() {
 			return {
+				pageSize:10,
+				pageIndex:1,
+				tmpList:[],
+				total:0,
 				//用户列表
 				userList: [
 				],
@@ -112,37 +118,58 @@
 			this.getUserList();
 		},
 		methods: {
+			SizeChange(newSize){
+				this.pageSize = newSize;
+				let sz = this.pageSize;
+				let idx = this.pageIndex;
+				this.userList=[]
+				for(let i=sz*(idx-1);i<sz*idx && i<this.total;++i) {
+					this.userList.push(this.tmpList[i]);
+				}
+			},
+			CurrentChange(newPage){
+				this.pageIndex = newPage;
+				let sz = this.pageSize;
+				let idx = this.pageIndex;
+				this.userList=[]
+				for(let i=sz*(idx-1);i<sz*idx && i<this.total;++i) {
+					this.userList.push(this.tmpList[i]);
+				}
+			},
 			//请求用户列表
 			getUserList() {
 				this.$http.get('/admin/getAllUsers').then(res=>{
 					console.log(res);
-					this.userList = res.data.obj;
-					for(let i=0;i<this.userList.length;++i) {
-						this.userList[i].tmpAdmin = (this.userList[i].admin===false)?("普通用户"):("管理员");
+					this.tmpList = res.data.obj;
+					for(let i=0;i<this.tmpList.length;++i) {
+						this.tmpList[i].tmpAdmin = (this.tmpList[i].admin===false)?("普通用户"):("管理员");
+					}
+					this.total = this.tmpList.length;
+					this.userList=[];
+					let sz = this.pageSize;
+					let idx = this.pageIndex;
+					for(let i=sz*(idx-1);i<sz*idx && i<this.total;++i) {
+						this.userList.push(this.tmpList[i]);
 					}
 				})
 			},
 			//删除用户
 			removeUser(e) {
+				console.log("E:",e)
 				this.$confirm('是否删除用户'+e.nickname+'?', '提示', {
 					confirmButtonText: '确定',
 					cancelButtonText: '取消',
 					type: 'warning'
 				}).then(() => {
 					//这里填写删除逻辑，并更新列表
-					this.$http.get('/admin/userDelete',e).then(res=>{
+					console.log(e);
+					this.$http.get('/admin/userDelete?email='+e.email).then(res=>{
 						console.log(res);
 						if(res.data.code===200 && res.data.message==="用户删除成功") {
-							this.$message({
-								type: 'success',
-								message: '删除成功!'
-							});
+							this.$message.success("用户删除成功!");
 							this.getUserList();
 						} else {
-							this.$message({
-								type: 'info',
-								message: '用户删除失败！'
-							});
+							this.$message.error("用户删除失败!");
 							this.getUserList();
 						}
 					})
@@ -199,7 +226,7 @@
 						this.$message.success("权限修改成功!");
 						this.getUserList();
 					} else {
-						this.$message.error("权限修改修改失败!");
+						this.$message.error("权限修改失败!");
 					}
 					this.editRoleVisible = !this.editRoleVisible;
 				});
