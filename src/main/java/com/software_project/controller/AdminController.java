@@ -13,6 +13,8 @@ import com.software_project.service.RecordService;
 import com.software_project.service.SearchService;
 import com.software_project.service.UserService;
 import com.software_project.vo.Result;
+import com.software_project.vo.updateUserByAdmin;
+import com.software_project.vo.updateVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -78,6 +80,14 @@ public class AdminController {
         // 删除用户
         userService.deleteUser(email);
         return new Result(200,true,"用户删除成功");
+    }
+
+    @PostMapping("setAdmin")
+    public Result updateUser(@RequestBody updateUserByAdmin param){
+        User user = userService.findUserByEmail(param.getEmail());
+        user.setAdmin(param.isAdmin());     // 设置admin权限
+        userService.updateUser(user);
+        return new Result(200,true,"修改管理员权限成功");
     }
 
     @GetMapping("getAllFD")

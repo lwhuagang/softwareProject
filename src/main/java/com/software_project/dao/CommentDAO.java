@@ -1,0 +1,41 @@
+package com.software_project.dao;
+
+import com.software_project.pojo.Browse;
+import com.software_project.pojo.Comment;
+import com.software_project.pojo.Fund;
+import com.software_project.pojo.Search;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
+import javax.management.openmbean.CompositeType;
+import java.util.List;
+
+@Repository
+@Mapper
+public interface CommentDAO {
+    /**
+     * 插入一条评论
+     * @param comment 待插入的评论
+     */
+    void insertComment(Comment comment);        // 这个其实是可以实现回复的
+
+    /**
+     * 删除一条评论
+     * @param id  待删除的评论的ID，在删除的时前端可以检查一下是否为对应的用户，或者是否有管理员的权限
+     */
+    void deleteComment(int id);
+
+    /**
+     * 获取一个基金下的所有的评论
+     * @param fundCode  基金代码
+     * @return  该基金下的所有的评论
+     */
+    List<Comment> getCommentsByFundCode(String fundCode);
+
+    /**
+     * 获取某个评论下的所有的恢复
+     * @param id 评论id
+     * @return  该评论下所有的回复
+     */
+    List<Comment> getRespondCommentsByID(int id);
+}

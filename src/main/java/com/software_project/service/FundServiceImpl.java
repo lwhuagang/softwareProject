@@ -35,7 +35,7 @@ public class FundServiceImpl implements FundService{
 
     @Override
     public void deleteFund(int fundCode) {
-
+        fundDAO.deleteFund(fundCode);
     }
 
     @Override

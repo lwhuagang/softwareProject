@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.software_project.dao.CommentDAO">
+    <insert id="insertComment" parameterType="com.software_project.pojo.Comment">
+        insert into soft.comment (userEmail, nickname, fundCode, comment, time)
+        values (#{userEmail}, #{nickname}, #{fundCode}, #{comment}, NOW())
+    </insert>
+
+    <delete id="deleteComment" parameterType="int">
+        delete from soft.comment where id = #{id}
+    </delete>
+    <select id="getCommentsByFundCode" resultType="com.software_project.pojo.Comment"
+            parameterType="java.lang.String">
+        select * from soft.comment where fundCode = #{fundCode};
+    </select>
+    <select id="getRespondCommentsByID" resultType="com.software_project.pojo.Comment" parameterType="int">
+        select * from soft.comment where toCommentID = #{id};
+    </select>
+</mapper>
