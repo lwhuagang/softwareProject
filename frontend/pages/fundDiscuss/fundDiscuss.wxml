@@ -24,15 +24,15 @@
     <view class="commentCard">
       <view class="userName">
         <view class="dot"> </view>
-        <view class="nameText">{{comments[index].username}}</view>
+        <view class="nameText">{{comments[index].nickname}}</view>
         <block wx:if="{{isLogin && (comments[index].userEmail==email)}}">
           <view class="delete">
-            <view class="deleteText" bindtap="deleteComment">删除</view>
+            <view class="deleteText" bindtap="deleteComment" data-id="{{comments[index].id}}">删除</view>
           </view>
         </block>
       </view>
       <view class="commentPart">
-        <view class="commentText">{{comments[index].commentText}}</view>
+        <view class="commentText">{{comments[index].comment}}</view>
       </view>
     </view>
   </block>

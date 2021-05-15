@@ -3,6 +3,7 @@ const app = getApp();
 let {
   getFundDetail,
 } = require("../../api/getFoundation.js")
+let config = require("../../config.js");
 
 Page({
 
@@ -10,24 +11,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogin:true,
-    email:"18231096@buaa.edu.cn",
+    isLogin: true,
+    email: "18231096@buaa.edu.cn",
     fundCode: "161005",
     fundInfo: {},
-    comments:[{
-      username: "木槿",
-      userEmail:"18231096@buaa.edu.cn",
-      commentText:"基金，英文是fund，广义是指为了某种目的而设立的具有一定数量的资金。主要包括信托投资基金、公积金、保险基金、退休基金，各种基金会的基金。从会计角度透析，基金是一个狭义的概念，意指具有特定目的和用途的资金。我们提到的基金主要是指证券投资基金。"
-    },{
-      username: "皮卡",
-      userEmail:"18231041@buaa.edu.cn",
-      commentText:"困了困了困了耶 困了困了困了耶 困了困了困了耶 困了困了困了耶"
-    },{
-      username: "pikachu",
-      userEmail:"18231041@buaa.edu.cn",
-      commentText:"乌鱼子，能不能别跌了"
-    }
-  ]
+    comments: []
   },
 
   /**
@@ -36,11 +24,11 @@ Page({
   //TODO: onLoad和onShow调用接口得到comments
   onLoad: function (options) {
     this.setData({
-      isLogin:app.globalData.isLogin
+      isLogin: app.globalData.isLogin
     })
-    if(app.globalData.isLogin==true) {
+    if (app.globalData.isLogin == true) {
       this.setData({
-        email:app.globalData.email
+        email: app.globalData.email
       })
     }
     var code = options.fundCode;
@@ -59,6 +47,20 @@ Page({
         console.log(this.data.fundInfo)
       }
     );
+    wx.request({
+      url: config.service + '/comment/getCommentsByFundCode',
+      method: "GET",
+      data: {
+        fundCode: this.data.fundCode,
+      },
+      success: res => {
+        console.log("评论：", res);
+        this.setData({
+          comments: res.data.obj,
+        })
+      }
+    })
+
   },
 
   /**
@@ -72,7 +74,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.setData({
+      isLogin: app.globalData.isLogin
+    })
+    if (app.globalData.isLogin == true) {
+      this.setData({
+        email: app.globalData.email
+      })
+    }
+    wx.request({
+      url: config.service + '/comment/getCommentsByFundCode',
+      method: "GET",
+      data: {
+        fundCode: this.data.fundCode,
+      },
+      success: res => {
+        console.log("评论：", res);
+        this.setData({
+          comments: res.data.obj,
+        })
+      }
+    })
+
   },
 
   /**
@@ -93,7 +116,19 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.request({
+      url: config.service + '/comment/getCommentsByFundCode',
+      method: "GET",
+      data: {
+        fundCode: this.data.fundCode,
+      },
+      success: res => {
+        console.log("评论：", res);
+        this.setData({
+          comments: res.data.obj,
+        })
+      }
+    })
   },
 
   /**
@@ -110,10 +145,41 @@ Page({
 
   },
   deleteComment: function (e) {
-    wx.showModal({
-      title:"删除评论成功!",
-      content:'此处尚未调用后端接口函数',
-      cancelColor: 'cancelColor',
-    });
+    var id = e.currentTarget.dataset.id;
+    console.log(id);
+    wx.request({
+      url: config.service + '/comment/deleteComment',
+      method: "GET",
+      data: {
+        id: id,
+      },
+      success: res => {
+        if (res.statusCode == "200") {
+          wx.showModal({
+            title: "删除评论成功!",
+            cancelColor: 'cancelColor',
+          });
+          wx.request({
+            url: config.service + '/comment/getCommentsByFundCode',
+            method: "GET",
+            data: {
+              fundCode: this.data.fundCode,
+            },
+            success: res => {
+              console.log("评论：", res);
+              this.setData({
+                comments: res.data.obj,
+              })
+            }
+          })
+        } else {
+          wx.showModal({
+            title: "删除失败!",
+            cancelColor: 'cancelColor',
+          });
+        }
+      }
+    })
+
   },
 })

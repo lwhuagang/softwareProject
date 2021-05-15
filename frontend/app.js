@@ -21,6 +21,6 @@ App({
       money:0,
       pic_url:""
     },
-    isLogin: false
+    isLogin: true
   }
 })
