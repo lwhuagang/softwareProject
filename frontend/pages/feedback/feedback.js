@@ -28,6 +28,7 @@ Page({
     const {textVal, }=this.data;
     console.log("反馈===========>")
     console.log(textVal)
+    console.log(app.globalData)
     // 2 合法性的验证
     if(!textVal.trim()){
       // 不合法
@@ -45,11 +46,11 @@ Page({
     });
     //此处调用接口
     wx.request({
-      url: config.service + '/user/feedback',
-      method: "GET",
+      url: config.service + '/user/addFD',
+      method: "POST",
       data: {
-        email: app.globalData.userInfo.email,
-        feedbackMsg:textVal
+        userEmail: app.globalData.userInfo.email,
+        message:textVal
       },
       success: res => {
         console.log(res);
@@ -61,6 +62,7 @@ Page({
         wx.navigateBack({
           delta: 1
         });
+        console.log("向后端发送成功")
       },
       fail:res=>{
         console.log("向后端发送失败")

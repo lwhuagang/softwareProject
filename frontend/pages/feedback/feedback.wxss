@@ -34,31 +34,10 @@ page {
    }
    .fb_content textarea {
         padding: 10rpx;
+        color: black;
       }
     
-    .fb_tool {
-      display: flex;
-      flex-wrap: wrap;
-      padding-bottom: 30rpx;
-     }
-     .fb_tool  button{
-        margin: 0;
-        width: 90rpx;
-        height: 90rpx;
-        font-size: 60rpx;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 20rpx;
-        margin-top: 20rpx;
-        color: #ccc;
-      }
-      .up_img_item{
-        margin-left: 20rpx;
-        margin-top: 20rpx;
-      }
-    
+  
  
   .form_btn_wrap {
     margin-top: 20rpx;
