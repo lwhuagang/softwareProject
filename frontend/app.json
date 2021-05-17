@@ -20,7 +20,8 @@
     "pages/sellOut/sellOut",
     "pages/dealRule/dealRule",
     "pages/fundDiscuss/fundDiscuss",
-    "pages/editComment/editComment"
+    "pages/editComment/editComment",
+    "pages/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "light",

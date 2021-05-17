@@ -193,3 +193,9 @@ Page {
 .logOutBtn{
   margin-top:500rpx;
 }
+.feedback{
+  text-align: center;
+  background: white;
+  font-size: large;
+  color: black;
+}

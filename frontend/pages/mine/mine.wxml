@@ -63,9 +63,11 @@
     </view>
     <image class="unLoggedImg" src="/image/login.jpg" mode="widthFix"/> -->
   </view>
+  <navigator class="feedback" url="/pages/feedback/feedback">反馈</navigator>
   <button class="logOutBtn" bindtap="logOut" type="primary">
     <view class="logOutInfo">退出登录</view>
   </button>
+  
 </view>
 <view class="head">
   <naviBar title="我的" showBack="{{false}}"></naviBar>

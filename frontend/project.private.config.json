@@ -82,6 +82,35 @@
           "pathName": "pages/search/search",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/totalTradeRec/totalTradeRec",
+          "pathName": "pages/totalTradeRec/totalTradeRec",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/feedback/feedback",
+          "pathName": "pages/feedback/feedback",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/dealRule/dealRule",
+          "pathName": "pages/dealRule/dealRule",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/fundDiscuss/fundDiscuss",
+          "pathName": "pages/fundDiscuss/fundDiscuss",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mine/mine",
+          "pathName": "pages/mine/mine",
+          "scene": null
         }
       ]
     }
