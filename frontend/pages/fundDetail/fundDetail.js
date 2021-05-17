@@ -431,7 +431,7 @@ Page({
           console.log("==>",res);
           if (res.statusCode == "200") {
             wx.showModal({
-              title: "添加成功",
+              title: "关注成功",
               content: "您已成功关注该基金!",
               cancelColor: 'cancelColor',
             })
@@ -440,8 +440,8 @@ Page({
             })
           } else {
             wx.showModal({
-              title: "添加失败",
-              content: "您已经关注该基金或该基金不在数据库中，请检查您的操作！",
+              title: "关注失败",
+              content: "该基金尚未上架，请耐心等待！",
               cancelColor: 'cancelColor',
             })
           }

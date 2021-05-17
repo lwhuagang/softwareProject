@@ -17,7 +17,7 @@ App({
     userInfo: {
       email:"18231096@buaa.edu.cn",
       password:"",
-      nickname:"",
+      nickname:"liwei",
       money:0,
       pic_url:""
     },

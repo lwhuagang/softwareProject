@@ -2,16 +2,23 @@
 <!-- container的样式是全局样式，定义在app.wxss中 -->
 
 <view class="container">
-  <swiper indicator-dots indicator-color="gray" indicator-active-color="black" class="swpBlock">
-    <swiper-item class="swpItem" wx:for="{{sectionList.length/5}}" wx:for-index="i">
-      <view class="secUnit" wx:for="{{5}}" wx:for-index="j">
-        <navigator class="sectionItem" url="{{sectionList[i*5+j].url}}">
-          <image class="sectionImg" src="{{sectionList[i*5+j].img}}"></image>
-          <view class="sectionName">{{sectionList[i*5+j].name}}</view>
-        </navigator>
-      </view>
-    </swiper-item>
-  </swiper>
+  <view>
+    <view class="top">
+      <swiper indicator-dots indicator-color="gray" indicator-active-color="black" class="swpBlock">
+        <swiper-item class="swpItem" wx:for="{{sectionList.length/5}}" wx:for-index="i">
+          <view class="secUnit" wx:for="{{5}}" wx:for-index="j">
+            <navigator class="sectionItem" url="{{sectionList[i*5+j].url}}">
+              <image class="sectionImg" src="{{sectionList[i*5+j].img}}"></image>
+              <view class="sectionName">{{sectionList[i*5+j].name}}</view>
+            </navigator>
+          </view>
+        </swiper-item>
+      </swiper>
+      <image src='http://docfile.funkingka.cn/FqzmiFqvXbHg-cfbquNRlawHUgHt' mode='scaleToFill' class='gif-wave'>
+      </image>
+    </view>
+  </view>
+
   <!-- <swiper indicator-dots indicator-color="rgba(255,255,255,0.5）">
     <swiper-item wx:for="{{sectionList.length/5}}" wx:for-index="i" class="swpItem">
         <view class="sec5" wx:for="{{5}}" wx:for-index="j">
@@ -22,17 +29,16 @@
   </swiper> -->
   <!-- 热门基金推荐 -->
   <view class="hotPart">
-    <sectionHead sectionName="热门基金" sectionUrl="/pages/hot/hot"></sectionHead>
+    <sectionHead sectionName="热门基金" sectionUrl="/pages/hot/hot" class="adjustWidth"></sectionHead>
     <view class="divLine"></view>
     <block wx:for="{{hotFunds.length>hotFundNum?hotFundNum:hotFunds.length}}">
-      <fundGeneral showType="netWorth"  periodType="r" fundInfo="{{hotFunds[index]}}"></fundGeneral>
+      <fundGeneral showType="netWorth" periodType="r" fundInfo="{{hotFunds[index]}}"></fundGeneral>
       <view class="divLine"></view>
     </block>
   </view>
-  
+
   <!-- <sectionHead sectionName="AI预测" sectionUrl="/pages/aiForecast/aiForecast"></sectionHead> -->
 </view>
 <view class="head">
-    <naviBar ifSearch="{{true}}"></naviBar>
+  <naviBar ifSearch="{{true}}"></naviBar>
 </view>
-

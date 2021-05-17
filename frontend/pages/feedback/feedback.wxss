@@ -1,58 +1,168 @@
-page {
-  background-color: #eeeeee;
-}
+/* pages/editComment/editComment.wxss *//* pages/fundDiscuss/fundDiscuss.wxss */
+
+/* pages/fundDetail/fundDetail.wxss */
 .head{
   position: fixed;
   width: 100%;
   height: 100rpx;
   margin-top:0;
 }
-.container{
+
+.container {
+  height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
   position: absolute;
-  width: 100%;
-  margin-top:130rpx;
+  margin-top: 130rpx;
 }
+
+.fundCard {
+  display: flex;
+  position: relative;
+  border: 1rpx solid #f1eeee;
+  border-radius: 15rpx;
+  width: 85%;
+  height: 220rpx;
+  margin-top: 30rpx;
+  background: white;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  margin-bottom: 5rpx;
+  box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
+}
+
+
+.middleBlockImg{
+  width: 110px;
+  height: 110px;
+  overflow: hidden;
+}
+
+.middleBlockImg image {
+  width: 100%;
+  height: 100%;
+}
+
+.baseInfo {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  /*border: 1rpx solid #f1eeee;*/
+  border-radius: 15rpx;
+  width: 70%;
+  height: 180rpx;
+  margin-top: 20rpx;
+  margin-left: 10px;
+  background: white;
+}
+
+.fundName {
+  margin: 10rpx 10rpx 10rpx 10rpx;
+  font-size: 19px;
+  color: rgb(31, 31, 31);
+}
+
+.fundCode {
+  margin: 10rpx 10rpx 10rpx 10rpx;
+  font-size: 15px;
+  color: dimgrey;
+}
+
+/* 评论 */
+.conts{
+  width:90%;
+  height: auto;
+  position:relative;
+  padding-top: 10px;
+  padding-bottom:50rpx;
+  margin:0 auto;
+}
+.areas{
+  border-radius: 15rpx;
+  width:100%;
+  height:40vh;
+  font-size: 30rpx;
+  text-indent: 28rpx;
+  border: 1rpx solid rgb(243, 243, 243);
+  padding-top: 30rpx;
+  margin: 0 auto;
+  overflow: hidden;   
+  position: relative; 
+  background: white;
+  box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
+}
+.currentWordNumber{
+  font-size: 28rpx;
+  color: gray;
+  position: absolute;
+  right:10rpx;
+  bottom:10rpx;
+}
+.hint{
+   font-size: 28rpx;
+   position: absolute;
+   left:20rpx;
+   bottom:10rpx;
+   color: #FF6600;
+}
+.tail{
+  border-top: 1rpx solid #d1cfcf;
+  background:#0081ff;
+  display:flex;
+  position:fixed; 
+  width:100%;
+  bottom:0px;
+  margin-bottom: 0px;
+  height: 90rpx;
+}
+
+.buttonText{
+  padding-top: 13rpx;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  font-size: 23px;
+}
+
 .fb_main {
   padding: 20rpx;
   color: #666;
 }
-  .fb_tips {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .fb_tips text {
-      width: 30%;
-      padding: 10rpx;
-      text-align: center;
-      background-color: #fff;
-      margin: 20rpx 10rpx;
-    }
-  
-  .fb_content {
-    background-color: #fff;
-    margin-top: 20rpx;
-   }
-   .fb_content textarea {
-        padding: 10rpx;
-        color: black;
-      }
-    
-  
- 
-  .form_btn_wrap {
-    margin-top: 20rpx;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .form_btn_wrap button{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      width: 30%;
-      color: white;
-      background-color: #e64340;
-    }
-  
 
+.fb_title{
+  padding-bottom: 10rpx;
+}
+
+.fb_tips {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fb_tips text {
+  width: 30%;
+  padding: 10rpx;
+  text-align: center;
+  background-color: #fff;
+  box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
+  margin: 20rpx 10rpx;
+}
+
+
+.form_btn_wrap {
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form_btn_wrap button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 30%;
+  color: white;
+  background-color: #40e680;
+}

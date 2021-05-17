@@ -60,8 +60,9 @@
 }
 
 .growth {
+  text-align:center;
   margin-top: 45rpx;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 550;
   color: white;
 }

@@ -1,36 +1,38 @@
+<wxs src="../../utils/util.wxs" module="tool" />
+
 <view class="container">
+  <view class="fundCard">
+    <view class="upGrowth">
+      <view class="middleBlockImg">
+        <image src="../../image/coin.png"></image>
+      </view>
+    </view>
+    <view class="baseInfo">
+      <view class="fundName">Fund-We-1</view>
+      <view class="fundName">螺旋直升基</view>
+    </view>
+  </view>
   <view class="fb_main">
     <view class="fb_title">问题的种类</view>
-      <view class="fb_tips">
-        <text>功能建议</text>
-        <text>使用遇到问题</text>
-        <text>性能问题</text>
-        <text>其他</text>
-      </view>
-      <view class="fb_content">
-        <textarea
-        value="{{textVal}}"
-        bindinput="handleTextInput"
-        placeholder="请描述一下您的问题或建议"
-        > </textarea>
-      
+    <view class="fb_tips">
+      <text>功能建议</text>
+      <text>使用遇到问题</text>
+      <text>性能问题</text>
+      <text>其他</text>
     </view>
-    <view class="form_btn_wrap">
+  </view>
+  <view class="conts">
+    <textarea class="areas" placeholder='请在此描述您的问题或建议' minlength="{{min}}" maxlength="{{max}}" bindinput="handleTextInput"></textarea>
+  </view>
+  <view class="form_btn_wrap">
       <button bindtap="handleFormSubmit" type="red">
-        <icon
-         type="success_no_circle"
-         size="23"
-         color="white"
-        >
+        <icon type="success_no_circle" size="23" color="white">
         </icon>
         提交
       </button>
-    </view>
-    
+  </view>
 </view>
-</view>
-
 
 <view class="head">
-  <naviBar title="反馈"></naviBar>
+  <naviBar title="反馈建议"></naviBar>
 </view>
