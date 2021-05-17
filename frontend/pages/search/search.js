@@ -1,5 +1,4 @@
 // pages/search/search.js
-
 const app = getApp()
 let {
   getHotFund,
@@ -10,7 +9,7 @@ let {
 let {
   formatTime
 } = require("../../utils/util.js")
-
+let config = require("../../config.js")
 Page({
 
   /**
@@ -18,9 +17,10 @@ Page({
    */
   data: {
     inputValue: "",
-    history: false, //显示历史记录
-    historyArray: ["中证","广发"], //历史记录数组,
-    newArray: ["中证","广发"], //添加历史记录数组
+    isLogin: app.globalData.isLogin,
+    history: true, //显示历史记录
+    historyArray: [], //历史记录数组,
+    newArray: [], //添加历史记录数组
     funds: []
   },
 
@@ -31,6 +31,14 @@ Page({
       historyArray: [], //清空历史记录数组
       newArray: [],
     })
+  },
+
+  showLog: function (e) {
+    if (app.globalData.isLogin) {
+      this.setData({
+        history: true, //隐藏历史记录
+      })
+    }
   },
 
   bindKeyInput: function (e) {
@@ -45,11 +53,30 @@ Page({
     if (searchtext != "") {
       //将搜索框的值赋给历史数组
       if (this.data.historyArray.indexOf(searchtext) == -1) {
-        this.data.historyArray.push(searchtext);
+        if (app.globalData.isLogin) {
+          this.data.historyArray.push(searchtext);
+          wx.request({
+            url: config.service + '/user/addSearch',
+            method: "POST",
+            data: {
+              userEmail: app.globalData.userInfo.email,
+              searchString: searchtext
+            },
+            success: res => {
+              if (res.statusCode == "200") {
+                console.log("历史记录添加成功")
+              } else {
+                console.log("历史记录添加失败")
+              }
+            },
+            fail: res => {
+              console.log("历史记录添加失败")
+            }
+          })
+        }
       }
       this.setData({
         history: false, //隐藏历史记录
-        shoppinglist: true, //显示商品列表
         newArray: this.data.historyArray //给新历史记录数组赋值
       })
       if (searchtext.search(/[0-9][0-9][0-9][0-9][0-9][0-9]/) != -1) {
@@ -89,7 +116,6 @@ Page({
     if (searchtext != "") {
       this.setData({
         history: false, //隐藏历史记录
-        shoppinglist: true, //显示商品列表
         newArray: this.data.historyArray //给新历史记录数组赋值
       })
       if (searchtext.search(/[0-9][0-9][0-9][0-9][0-9][0-9]/) != -1) {
@@ -124,7 +150,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if (app.globalData.isLogin) {
+      wx.request({
+        url: config.service + '/user/getSearch',
+        method: "GET",
+        data: {
+          email: app.globalData.userInfo.email
+        },
+        success: res => {
+          console.log(res);
+          var tempRes = res.data.obj;
+          var length = tempRes.length;
+          var i;
+          var tempHistory = [];
+          for (i = 0; i < length; i++) {
+            tempHistory.push(tempRes[i].searchString);
+          }
+          console.log(tempHistory);
+          this.setData({
+            historyArray: tempHistory,
+            newArray: tempHistory,
+          })
+        }
+      })
+    }
   },
 
   /**
@@ -138,7 +187,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      isLogin: app.globalData.isLogin
+    })
+    if (app.globalData.isLogin) {
+      wx.request({
+        url: config.service + '/user/getSearch',
+        method: "GET",
+        data: {
+          email: app.globalData.userInfo.email
+        },
+        success: res => {
+          console.log(res);
+          var tempRes = res.data.obj;
+          var length = tempRes.length;
+          var i;
+          var tempHistory = [];
+          for (i = 0; i < length; i++) {
+            tempHistory.push(tempRes[i].searchString);
+          }
+          console.log(tempHistory);
+          this.setData({
+            historyArray: tempHistory,
+            newArray: tempHistory,
+          })
+        }
+      })
+    }
   },
 
   /**

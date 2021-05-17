@@ -56,7 +56,7 @@
 }
 
 .hotPart{
-  border: 1rpx solid #dcdcdc;
+  
   border-radius: 10rpx;
   margin: 5rpx 5rpx;
   display: flex;

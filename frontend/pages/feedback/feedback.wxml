@@ -34,5 +34,5 @@
 </view>
 
 <view class="head">
-  <naviBar title="反馈建议"></naviBar>
+  <naviBar title="反馈建议" showBack="true"></naviBar>
 </view>
