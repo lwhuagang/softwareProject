@@ -55,13 +55,19 @@ Page({
       success: res => {
         console.log(res);
         wx.hideLoading();
+        wx.showToast({
+          title: '反馈成功！',
+        })
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          });
+        }, 1000);
         this.setData({
           textVal:"",
         })
         // 返回上一个页面
-        wx.navigateBack({
-          delta: 1
-        });
+        
         console.log("向后端发送成功")
       },
       fail:res=>{

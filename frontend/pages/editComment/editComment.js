@@ -147,10 +147,9 @@ Page({
       comment: this.data.inputValue
     })
     if (this.data.inputValue.length < this.data.min) {
-      wx.showModal({
-        title: "您的输入过短!",
-        cancelColor: 'cancelColor',
-      });
+      wx.showToast({
+        title: '您的输入过短!',
+      })
     } else {
       wx.request({
         url: config.service + '/comment/addComment',
@@ -164,10 +163,10 @@ Page({
         success: res => {
           console.log(res);
           if (res.statusCode == "200") {
-            wx.showModal({
-              title: "评论成功!",
-              cancelColor: 'cancelColor',
-            });
+            wx.showToast({
+              title: '评论成功!',
+            })
+            
             setTimeout(function () {
               wx.navigateBack({
                 delta: 1,
