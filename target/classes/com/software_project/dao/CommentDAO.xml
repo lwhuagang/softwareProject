@@ -5,6 +5,7 @@
         insert into soft.comment (userEmail, nickname, fundCode, comment, time)
         values (#{userEmail}, #{nickname}, #{fundCode}, #{comment}, NOW())
     </insert>
+
     <delete id="deleteComment" parameterType="int">
         delete from soft.comment where id = #{id}
     </delete>

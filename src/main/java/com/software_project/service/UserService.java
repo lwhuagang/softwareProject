@@ -1,6 +1,7 @@
 package com.software_project.service;
 
 import com.software_project.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import javax.mail.MessagingException;
 import java.util.List;
@@ -59,5 +60,16 @@ public interface UserService {
      */
     List<User> getAllUsers();
 
+    /**
+     * 删除用户
+     * @param email 用户邮箱
+     */
     void deleteUser(String email);
+
+    /**
+     * 添加用户的金额
+     * @param email 用户邮箱
+     * @param money 待添加的金额
+     */
+    void updateUserMoney(@Param("email") String email, @Param("money") double money);
 }

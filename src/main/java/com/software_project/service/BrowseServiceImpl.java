@@ -27,4 +27,9 @@ public class BrowseServiceImpl implements BrowseService{
     public void deleteBrowse(String userEmail) {
         browseDAO.deleteBrowse(userEmail);
     }
+
+    @Override
+    public void deleteOneBrowse(Browse browse) {
+        browseDAO.deleteOneBrowse(browse);
+    }
 }

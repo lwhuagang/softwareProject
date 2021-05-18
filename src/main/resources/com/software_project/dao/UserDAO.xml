@@ -11,6 +11,9 @@
         ,buyMoney = #{buyMoney},initMoney = #{initMoney},dayProfit = #{dayProfit},holdCost = #{holdCost}
         where email = #{email}
     </update>
+    <update id="updateUserMoney">
+        update soft.user set money = money + #{money} where email = #{email}
+    </update>
     <delete id="deleteUser">
         delete from user where email=#{email}
     </delete>

@@ -27,4 +27,9 @@ public class SearchServiceImpl implements SearchService{
     public void deleteSearch(String userEmail) {
         searchDAO.deleteSearch(userEmail);
     }
+
+    @Override
+    public void deleteOneSearch(Search search) {
+        searchDAO.deleteOneSearch(search);
+    }
 }

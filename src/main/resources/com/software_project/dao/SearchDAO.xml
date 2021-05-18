@@ -7,6 +7,9 @@
     <delete id="deleteSearch" parameterType="java.lang.String">
         delete from soft.searchhistory where userEmail = #{userEmail}
     </delete>
+    <delete id="deleteOneSearch" parameterType="com.software_project.pojo.Search">
+        delete from soft.searchhistory where userEmail = #{userEmail} and searchString = #{searchString}
+    </delete>
     <select id="findSearchByEmail" resultType="com.software_project.pojo.Search"
             parameterType="java.lang.String">
         select * from soft.searchhistory where userEmail = #{userEmail};

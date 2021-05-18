@@ -100,4 +100,9 @@ public class UserServiceImpl implements UserService{
         userDAO.deleteUser(email);
     }
 
+    @Override
+    public void updateUserMoney(String email, double money) {
+        userDAO.updateUserMoney(email, money);
+    }
+
 }

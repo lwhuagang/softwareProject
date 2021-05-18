@@ -2,6 +2,7 @@ package com.software_project.dao;
 
 import com.software_project.pojo.Search;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,6 +28,13 @@ public interface SearchDAO {
      * @param userEmail 用户邮箱
      */
     void deleteSearch(String userEmail);
+
+
+    /**
+     * 删除用户的一条搜索历史
+     * @param search 待删除的搜索历史
+     */
+    void deleteOneSearch(Search search);
 
 
 }

@@ -23,4 +23,10 @@ public interface SearchService {
      * @param userEmail 用户邮箱
      */
     void deleteSearch(String userEmail);
+
+    /**
+     * 删除用户的一条搜索历史
+     * @param search 待删除的搜索历史
+     */
+    void deleteOneSearch(Search search);
 }

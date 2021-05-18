@@ -30,4 +30,10 @@ public interface BrowseDAO {
      */
     void deleteBrowse(String userEmail);
 
+    /**
+     * 删除用户的一条浏览记录
+     * @param browse 待删除的浏览记录
+     */
+    void deleteOneBrowse(Browse browse);
+
 }

@@ -24,4 +24,6 @@ public interface RecordDAO {
      * @return  符合条件的交易记录
      */
     List<Record> getRecordsByUserEmail(String userEmail);
+
+
 }

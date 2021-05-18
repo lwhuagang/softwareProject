@@ -430,6 +430,18 @@ public class UserController {
         return new Result(200, searches, "查询该用户的所有搜索记录");
     }
 
+    @PostMapping("deleteOneSearch")
+    public Result deleteOneSearch(@RequestBody Search search) {
+        searchService.deleteOneSearch(search);
+        return new Result(200, true, "删除用户的某条搜索记录");
+    }
+
+    @GetMapping("deleteAllSearch")
+    public Result deleteAllSearch(String userEmail) {
+        searchService.deleteSearch(userEmail);
+        return new Result(200, true, "删除用户的所有搜索历史");
+    }
+
 
     @PostMapping("addBrowse")
     public Result insertSearch(@RequestBody Browse browse) {
@@ -447,6 +459,18 @@ public class UserController {
     public Result getRecordsOfFund(String userEmail, String fundCode) {
         List<Record> records = recordService.getRecords(userEmail, fundCode);
         return new Result(200, records, "获取用户某个基金的所有交易记录");
+    }
+
+    @PostMapping("deleteOneBrowse")
+    public Result deleteOneBrowse(@RequestBody Browse browse){
+        browseService.deleteOneBrowse(browse);
+        return new Result(200, true, "删除用户的某条浏览记录");
+    }
+
+    @GetMapping("deleteAllBrowse")
+    public Result deleteAllBrowse(String userEmail){
+        browseService.deleteBrowse(userEmail);
+        return new Result(200, true, "删除用户的所有浏览记录");
     }
 
     @GetMapping("getRecordsOfUser")
@@ -478,8 +502,7 @@ public class UserController {
         User user = userService.findUserByEmail(param.getEmail());
         user.setPassword(param.getPassword());
         Param_register regis_param = new Param_register(user, param.getCaptcha());
-        register(regis_param);
-        return new Result(200,user,"修改密码成功");
+        return register(regis_param);
     }
 
     @PostMapping("resetAll")
@@ -498,6 +521,14 @@ public class UserController {
 
         return new Result(200,user,"修改密码成功");
     }
+
+    @PostMapping("addMoney")
+    public Result addMoney(@RequestBody UserVO userVO) {
+        userService.updateUserMoney(userVO.getEmail(), userVO.getMoney());
+        User user = userService.findUserByEmail(userVO.getEmail());
+        return new Result(200, user, "添加用户的剩余金额(返回的是现在用户的信息)");
+    }
+
 
 
     /**

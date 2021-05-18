@@ -8,6 +8,9 @@
     <delete id="deleteBrowse" parameterType="java.lang.String">
         delete from soft.browse where userEmail = #{userEmail}
     </delete>
+    <delete id="deleteOneBrowse" parameterType="com.software_project.pojo.Browse">
+        delete from soft.browse where userEmail = #{userEmail} and fundCode = #{fundCode}
+    </delete>
     <select id="findBrowseByEmail" resultType="com.software_project.pojo.Browse"
             parameterType="java.lang.String">
         select * from soft.browse where userEmail = #{userEmail};
