@@ -1,0 +1,48 @@
+<wxs src="../../utils/util.wxs" module="tool" />
+<wxs module="filters" src="../../utils/addmul.wxs"></wxs>
+
+<view class="container">
+  <view class="readAndClear">
+    <!--
+    <view class = "allRead">
+      <view class="readText">一键已读</view>
+    </view>
+    -->
+    <view class = "allClear">
+      <view class="clearText" bindtap="clearAll">清空消息</view>
+    </view>
+  </view>
+  <block wx:for="{{news.length}}">
+    <view class="newsItem">
+      <view class="sendTime">{{news[index].showTime}}</view>
+      <view class="news">
+        <view class="senderImg">
+          <image src="../../image/userInfo.jpg"></image>
+        </view>
+        <view class="newsBlock">
+          <view class="newsTitle">
+            <view class="titleText">基金{{news[index].addWarehouse?"加仓":"清仓"}}提醒</view>
+          </view>
+          <view class="newsContent">
+            <view class="contentText">{{news[index].fundCode}}  {{news[index].fundName}}</view>
+            <view class="contentText">预计基金净值将由：</view>
+            <view class="contentText">【{{news[index].netWorthDate}}】 {{news[index].netWorth}}</view>
+            <view class="contentText">{{(news[index].expectWorth-news[index].netWorth)>0?"上涨至":"下跌至"}}： </view>
+            <view class="contentText">【{{news[index].expectWorthDate}}】 {{news[index].expectWorth}}</view>
+            <view class="contentText">预计{{(news[index].expectWorth-news[index].netWorth)>0?"涨幅":"跌幅"}}较大，请参考考虑是否{{news[index].addWarehouse?"加仓":"清仓"}}。</view>
+          </view>
+          <view class="more">
+            <view class="moreText">查看持有基金详情</view>
+            <view class="moreImg">
+              <image src="../../image/right.png"></image>
+            </view>
+          </view>
+        </view>
+        <view class="dot" wx:if="{{!news[index].read}}"> </view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="head">
+  <naviBar title="消息中心"></naviBar>
+</view>
