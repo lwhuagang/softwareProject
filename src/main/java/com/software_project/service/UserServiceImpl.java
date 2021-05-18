@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService{
         catch (Exception e){
             if (saved_captcha.equals(captcha)) {
                 // 说明验证码未过期且输入正确!
-                // 进行用户注册
+                // 进行用户密码更新
                 userDAO.updateUser(user);
                 return user;
             } else {
