@@ -14,13 +14,27 @@ App({
     })
   },
   globalData: {
-    userInfo: {
-      email:"18231096@buaa.edu.cn",
-      password:"",
-      nickname:"liwei",
-      money:0,
-      pic_url:""
+    userInfo:{
+        admin:false,
+        buyMoney:0,
+        dayProfit:0,
+        email:"2428541469@qq.com",
+        holdCost:0,
+        holdProfit:0,
+        initMoney:0,
+        money:0,
+        nickname:"PY",
+        password:"202cb962ac59075b964b07152d234b70",
+        picUrl:'',
+        totalProfit:0
     },
+    // userInfo: {
+    //   email:"18231096@buaa.edu.cn",
+    //   password:"",
+    //   nickname:"liwei",
+    //   money:0,
+    //   pic_url:""
+    // },
     isLogin: false
   }
 })

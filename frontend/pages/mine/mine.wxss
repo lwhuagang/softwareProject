@@ -13,7 +13,7 @@ Page {
   margin-top:130rpx;
 }
 .loginContainer {
-  border: 1rpx solid green;
+  /* border: 1rpx solid green; */
   display: flex;
   flex-direction: column;
   position: relative;
@@ -32,12 +32,21 @@ Page {
   display: flex;
   justify-content: center;
   position: absolute;
-  height: 500rpx;
+  height: 550rpx;
   width: 450rpx;
   border: 10rpx solid #1296db;
   border-radius: 20rpx;
   margin-top: 160rpx;
   background: white;
+}
+.forgotPswd{
+  margin-top:490rpx;
+  margin-left: 300rpx;
+  color:#1296db;
+  font-weight: 500;
+  /* border: 1rpx solid red; */
+  width: 100%;
+  height:50rpx;
 }
 .inputUsrName {
   border: 1rpx solid gray;

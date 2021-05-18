@@ -26,10 +26,10 @@
             </view>
           </view>
           <view class="center_down">
-            <view class="center_rank">
+            <navigator class="center_rank" url="/pages/myInfo/myInfo">
               <image class="rank_icon" src="../../image/me.png"></image>
               <text class="rank_text">我的信息</text>
-            </view>
+            </navigator>
             <view class="center_score">
               <image class="rank_icon" src="../../image/news.png"></image>
               <text class="rank_text">我的消息</text>
@@ -79,6 +79,7 @@
         <view class="loginInfo">
           <input class="inputUsrName" name="email" placeholder="邮箱" focus />
           <input class="inputUsrPassword" name="password" password placeholder="密码" focus />
+          <navigator class="forgotPswd" url="/pages/forgotPswd/forgotPswd">忘记密码</navigator>
         </view>
         <image class="loginImg" src="/image/login.jpg" mode="widthFix" />
         <button form-type="submit" class="loginBtn">
