@@ -1,0 +1,28 @@
+<!--pages/forgotPswd/forgotPswd.wxml-->
+<view class="container">
+    <view class="item">
+      <view class="itemInfo">用户邮箱</view>
+      <input class="itemContent" model:value="{{email}}"/>
+    </view>
+    <view class="item">
+      <view class="itemInfo">新密码</view>
+      <input class="itemContent" model:value="{{newPswd}}" password/>
+    </view>
+    <view class="item">
+      <view class="itemInfo">确认密码</view>
+      <input class="itemContent" model:value="{{confirmPswd}}" password/>
+    </view>
+    <view class="item">
+      <view class="itemInfo">验证码</view>
+      <input class="itemContent" model:value="{{captcha}}"/>
+      <view class="captchaBtn1" wx:if="{{smsFlag==false}}" bindtap="sendCaptcha">发送验证码</view>
+      <view class="captchaBtn2" wx:else>
+        {{sendTime}}
+      </view>
+    </view>
+    <view class="confirmBtn1" wx:if="{{email!='' && newPswd!='' && confirmPswd!='' && captcha!=''}}" bindtap="submit"><view class="btnInfo1">重置密码</view></view>
+    <view class="confirmBtn2" wx:else><view class="btnInfo2">重置密码</view></view>
+</view>
+<view class="head">
+  <naviBar title="找回密码"></naviBar>
+</view>

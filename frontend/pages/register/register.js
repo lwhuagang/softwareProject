@@ -76,37 +76,46 @@ Page({
 
   },
   getCaptcha:function(data) {
-      console.log("发送验证码=====>")
-      var that = this;
-      var inter = setInterval(function(){
-        that.setData({
-          smsFlag:true,
-          capBGColor:'#f5f5f5',
-          capTxtColor:'black',
-          sendTime:that.data.snsMsgWait+'s后重发',
-          snsMsgWait:that.data.snsMsgWait-1
-        });
-        if(that.data.snsMsgWait<0) {
-          clearInterval(inter);
+      if(this.data.email=='') {
+        wx.showToast({
+          title: '邮箱不能为空',
+          duration:2000,
+          icon:"error",
+        })
+      } else {
+        console.log("发送验证码=====>")
+        var that = this;
+        var inter = setInterval(function(){
           that.setData({
-            smsFlag:false,
-            capBGColor:'#4285f4',
-            capTxtColor:'white',
-            sendTime:'获取验证码',
-            snsMsgWait:60
+            smsFlag:true,
+            capBGColor:'#f5f5f5',
+            capTxtColor:'black',
+            sendTime:that.data.snsMsgWait+'s后重发',
+            snsMsgWait:that.data.snsMsgWait-1
           });
-        }
-      }.bind(that),1000);
-      wx.request({
-        url: config.service+'/user/captcha',
-        method:"GET",
-        data:{
-          email:this.data.email
-        },
-        success:res=>{
-          console.log(res)
-        }
-      })
+          if(that.data.snsMsgWait<0) {
+            clearInterval(inter);
+            that.setData({
+              smsFlag:false,
+              capBGColor:'#4285f4',
+              capTxtColor:'white',
+              sendTime:'获取验证码',
+              snsMsgWait:60
+            });
+          }
+        }.bind(that),1000);
+        wx.request({
+          url: config.service+'/user/captcha',
+          method:"GET",
+          data:{
+            email:this.data.email
+          },
+          success:res=>{
+            console.log(res)
+          }
+        })
+      }
+
   },
 checkPswd:function() {
     console.log('检查密码是否一致===>')

@@ -22,6 +22,8 @@
     "pages/fundDiscuss/fundDiscuss",
     "pages/editComment/editComment",
     "pages/feedback/feedback",
+    "pages/myInfo/myInfo",
+    "pages/forgotPswd/forgotPswd",
     "pages/myNews/myNews"
   ],
   "window": {
