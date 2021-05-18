@@ -498,7 +498,7 @@ public class UserController {
     @PostMapping("modify")
     public Result modify(@RequestBody ModifyVO param){
         User user = userService.findUserByEmail(param.getEmail());
-        user.setPassword(param.getPassword());
+        user.setPassword(MD5Utils.code(param.getPassword()));
         userService.updateUser(user);
         return new Result(200,user,"用户密码修改成功!");
     }
@@ -506,9 +506,9 @@ public class UserController {
     @PostMapping("resetPassword")
     public Result resetPassword(@RequestBody resetPasswordVO param){
         User user = userService.findUserByEmail(param.getEmail());
-        user.setPassword(param.getPassword());
-        Param_register regis_param = new Param_register(user, param.getCaptcha());
-        return register(regis_param);
+        user.setPassword(MD5Utils.code(param.getPassword()));
+        User register = userService.register(user, param.getCaptcha());
+        return new Result(200,register,"重置密码成功!");
     }
 
     @PostMapping("resetAll")
