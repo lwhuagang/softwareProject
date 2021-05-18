@@ -22,8 +22,7 @@
     "pages/fundDiscuss/fundDiscuss",
     "pages/editComment/editComment",
     "pages/feedback/feedback",
-    "pages/myNews/myNews",
-    "pages/newsDetail/newsDetail"
+    "pages/myNews/myNews"
   ],
   "window": {
     "backgroundTextStyle": "light",
