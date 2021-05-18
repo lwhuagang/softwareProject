@@ -30,10 +30,10 @@
               <image class="rank_icon" src="../../image/me.png"></image>
               <text class="rank_text">我的信息</text>
             </view>
-            <view class="center_score">
+            <navigator class="center_score" url="/pages/myNews/myNews">
               <image class="rank_icon" src="../../image/news.png"></image>
               <text class="rank_text">我的消息</text>
-            </view>
+            </navigator>
           </view>
         </view>
         <image src='http://docfile.funkingka.cn/FqzmiFqvXbHg-cfbquNRlawHUgHt' mode='scaleToFill' class='gif-wave'>

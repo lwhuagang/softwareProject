@@ -92,6 +92,13 @@
         {
           "name": "feedback",
           "pathName": "pages/feedBack/feedBack",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myNews/myNews",
+          "pathName": "pages/myNews/myNews",
+          "query": "",
           "scene": null
         }
       ]
