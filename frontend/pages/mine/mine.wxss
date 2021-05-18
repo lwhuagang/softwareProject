@@ -6,6 +6,7 @@ Page {
   width: 100%;
   height: 100rpx;
   margin-top:0;
+  z-index: 99;
 }
 .container{
   position: absolute;
@@ -186,7 +187,7 @@ Page {
   width: 100%;
   bottom: 0;
   left: 0;
-  z-index: 99;
+  z-index: 4;
   mix-blend-mode: screen;
   height: 100rpx;
 }

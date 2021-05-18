@@ -26,11 +26,30 @@ Page({
 
   //清除历史记录
   cleanhistory: function (e) {
-    this.setData({
-      history: false, //隐藏历史记录
-      historyArray: [], //清空历史记录数组
-      newArray: [],
-    })
+    if (app.globalData.isLogin) {
+      wx.request({
+        url: config.service + '/user/deleteAllSearch',
+        method: "GET",
+        data: {
+          userEmail: app.globalData.userInfo.email,
+        },
+        success: res => {
+          if (res.statusCode == "200") {
+            console.log("历史记录删除成功")
+            this.setData({
+              historyArray: [], //清空历史记录数组
+              newArray: [],
+            })
+          } else {
+            console.log("历史记录删除失败")
+          }
+        },
+        fail: res => {
+          console.log("历史记录添加失败")
+        }
+      })
+    }
+    
   },
 
   showLog: function (e) {
