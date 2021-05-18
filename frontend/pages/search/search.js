@@ -36,7 +36,7 @@ Page({
   showLog: function (e) {
     if (app.globalData.isLogin) {
       this.setData({
-        history: true, //隐藏历史记录
+        history: true, 
       })
     }
   },
