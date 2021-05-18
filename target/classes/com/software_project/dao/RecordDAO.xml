@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.software_project.dao.RecordDAO">
     <select id="getRecords" resultType="com.software_project.pojo.Record">
-        select * from soft.record where userEmail = #{userEmail} and fundCode = #{fundCode};
+        select * from soft.re where userEmail = #{userEmail} and fundCode = #{fundCode};
     </select>
     <select id="getRecordsByUserEmail" resultType="com.software_project.pojo.Record"
             parameterType="java.lang.String">

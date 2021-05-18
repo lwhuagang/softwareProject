@@ -482,9 +482,15 @@ public class UserController {
     @PostMapping("update")
     public Result update(@RequestBody updateVO param){
         User user = userService.findUserByEmail(param.getEmail());
-        user.setNickname(param.getName());
-        user.setMoney(param.getMoney());
-        user.setPicUrl(param.getAvatarLink());
+        if (!param.getName().equals("")) {
+            user.setNickname(param.getName());
+        }
+        if (param.getMoney()!=0) {
+            user.setMoney(param.getMoney());
+        }
+        if (!param.getAvatarLink().equals("")){
+            user.setPicUrl(param.getAvatarLink());
+        }
         userService.updateUser(user);
         return new Result(200,true,"用户信息修改成功!");
     }
