@@ -25,7 +25,7 @@
           <text>买入费率</text>
           <text style="text-decoration-line: line-through;">{{fundInfo.buySourceRate}}%</text>
           <text style="color:#f46443;margin-left:10rpx;">{{fundInfo.buyRate}}%</text>
-          <text>,预计xx月xx日(星期x)以xx月xx日(星期x)净值确认份额(卖出手续费详见交易规则)</text>
+          <!-- <text>,预计xx月xx日(星期x)以xx月xx日(星期x)净值确认份额(卖出手续费详见交易规则)</text> -->
         </view>
       </block>
       <block wx:elif="{{buyMin!=null && money<buyMin}}">
@@ -33,7 +33,7 @@
       </block>
       <block wx:else>
         <view class="bottomNote">
-          <text>估算买入费用{{tool.toFix2(money*fundInfo.buyRate/100)}}元,预计xx月xx日(星期x)以xx月xx日(星期x)净值确认份额(卖出手续费详见交易规则)</text>
+          <text>估算买入费用{{tool.toFix2(money*fundInfo.buyRate/100)}}元</text>
         </view>
       </block>
     </view>

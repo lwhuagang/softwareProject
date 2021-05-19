@@ -198,7 +198,8 @@ Page({
       },
       tooltip: {
         show: true,
-        trigger: 'axis'
+        trigger: 'axis',
+        extraCssText:"z-index:-1;"
       },
       xAxis: {
         type: 'category',
@@ -263,6 +264,10 @@ Page({
         title: {
           text: '暂无持仓数据',
           left: 'center',
+        },
+        tooltip: {
+          show: true,
+          extraCssText:"z-index:-1;"
         },
         series: [{
           label: {

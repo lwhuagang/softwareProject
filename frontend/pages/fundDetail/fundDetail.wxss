@@ -311,9 +311,14 @@
   align-items: flex-start;
 }
 .stockName{
+  width: 100%;
   margin-left: 10rpx;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
 }
 .stockCode{
+  width:100%;
   font-size: small;
   color: #c6c6c6;
   margin-left: 10rpx;
