@@ -11,9 +11,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isLogin: true,
-    email: "18231096@buaa.edu.cn",
-    fundCode: "161005",
+    isLogin: false,
+    email: "",
+    fundCode: "",
     fundInfo: {},
     comments: []
   },
@@ -26,9 +26,9 @@ Page({
     this.setData({
       isLogin: app.globalData.isLogin
     })
-    if (app.globalData.isLogin == true) {
+    if (app.globalData.isLogin) {
       this.setData({
-        email: app.globalData.email
+        email: app.globalData.userInfo.email
       })
     }
     var code = options.fundCode;
@@ -60,7 +60,6 @@ Page({
         })
       }
     })
-
   },
 
   /**
@@ -79,7 +78,7 @@ Page({
     })
     if (app.globalData.isLogin == true) {
       this.setData({
-        email: app.globalData.email
+        email: app.globalData.userInfo.email
       })
     }
     wx.request({
@@ -95,7 +94,6 @@ Page({
         })
       }
     })
-
   },
 
   /**
@@ -116,6 +114,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.setData({
+      isLogin: app.globalData.isLogin
+    })
+    if (app.globalData.isLogin == true) {
+      this.setData({
+        email: app.globalData.userInfo.email
+      })
+    }
     wx.request({
       url: config.service + '/comment/getCommentsByFundCode',
       method: "GET",
@@ -144,6 +150,7 @@ Page({
   onShareAppMessage: function () {
 
   },
+
   deleteComment: function (e) {
     var id = e.currentTarget.dataset.id;
     console.log(id);
@@ -180,6 +187,5 @@ Page({
         }
       }
     })
-
   },
 })

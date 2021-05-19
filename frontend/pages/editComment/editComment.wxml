@@ -26,12 +26,12 @@
     <text class="hint">{{texts}}</text>
     <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
   </view>
+
+  <view class="btn" bindtap="addComment">
+        <view class="commentInfo">发表评论</view>
+  </view>
 </view>
 
 <view class="head">
   <naviBar title="添加评论"></naviBar>
-</view>
-
-<view class="tail">
-  <view class="buttonText" bindtap="addComment">评 论</view>
 </view>

@@ -18,7 +18,7 @@
           <view class="redRate">+{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
         </block>
     </view>
-    <view class="fundProfitAndRate">
+    <view class="fundProfitAndRate" wx:if="{{fundInfo.expectWorth}}">
         <view class="netWorth">{{filters.toFix2(fundInfo.expectWorth)}}</view>
         <block wx:if="{{fundInfo.expectGrowth[0] == '-'}}">
           <view class="greenRate">{{filters.toFix2(fundInfo.expectGrowth)}}%</view>

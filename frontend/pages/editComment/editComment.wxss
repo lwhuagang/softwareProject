@@ -21,6 +21,7 @@
   display: flex;
   position: relative;
   border: 1rpx solid #f1eeee;
+  box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
   border-radius: 15rpx;
   width: 85%;
   height: 220rpx;
@@ -60,9 +61,10 @@
 }
 
 .growth {
+  text-align:center;
   margin-top: 45rpx;
-  font-size: 22px;
-  font-weight: 550;
+  font-size: 20px;
+  font-weight: 700;
   color: white;
 }
 
@@ -113,7 +115,8 @@
   height:55vh;
   font-size: 30rpx;
   text-indent: 28rpx;
-  border: 1rpx solid gainsboro;
+  border: 1rpx solid rgb(241, 241, 241);
+  box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
   padding-top: 30rpx;
   margin: 0 auto;
   overflow: hidden;   
@@ -145,10 +148,25 @@
   height: 90rpx;
 }
 
-.buttonText{
-  padding-top: 13rpx;
-  width: 100%;
+.btn{
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 70rpx;
+  border-radius: 40rpx;
+  margin-left: 30rpx;
+  margin-right: 25rpx;
+  background: #5484dd;
+  box-shadow:0px 2px 5px 5px rgb(228, 228, 228);
+  position: relative;
+  padding-top: 15rpx;
+}
+
+.commentInfo{
+  width:100%;
   text-align: center;
-  color: #ffffff;
-  font-size: 23px;
+  font-size: large;
+  color: rgb(245, 245, 245);
+  padding-top: 5rpx;
 }
