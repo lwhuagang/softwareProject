@@ -4,7 +4,15 @@ function my_slice(str,a,b) {
 function my_toFix(num,n) {
   return num.toFixed(n)
 }
+function isNaN(num) {
+  return num.isNaN || ((typeof num) === 'number' &&  window.isNaN(num))
+}
+function my_typeof(num) {
+  return (typeof num);//使用typeof后发现是string,因此用==="NaN"了
+}
 module.exports = {
   my_slice: my_slice,
-  my_toFix:my_toFix
+  my_toFix:my_toFix,
+  isNaN:isNaN,
+  my_typeof:my_typeof
 }

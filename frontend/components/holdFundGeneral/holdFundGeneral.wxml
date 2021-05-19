@@ -7,7 +7,7 @@
   <navigator class="fundInfoBlock" url="/pages/holdFundDetail/holdFundDetail?fundCode={{fundInfo.fundCode}}">
     <view class="fundNameAndCode">
       <view class="fundName">{{fundInfo.name}}</view>
-      <view class="fundCode">{{fundInfo.code}}</view>
+      <view class="fundCode">{{fundInfo.fundCode}}</view>
     </view>
     <!-- 基金金额与昨日收益 -->
     <view class="fundMoneyAndLastProfit">
@@ -25,7 +25,7 @@
           <view class="greenRate">{{filters.toFix2(fundInfo.holdProfitRate)}}%</view>
         </block>
         <block wx:else>
-          <view class="redRate">+{{filters.toFix2(fundInfo.holdProfitRate)}}%</view>
+          <view class="redRate">+{{filters.toFix2(fundInfo.holdProfitRate==="NaN"?0:fundInfo.holdProfitRate)}}%</view>
         </block>
     </view>
   </navigator>
