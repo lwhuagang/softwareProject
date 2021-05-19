@@ -37,6 +37,7 @@ Page({
           if (res.statusCode == "200") {
             console.log("历史记录删除成功")
             this.setData({
+              history: false,
               historyArray: [], //清空历史记录数组
               newArray: [],
             })

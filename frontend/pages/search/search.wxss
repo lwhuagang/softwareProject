@@ -18,9 +18,7 @@
   display: -webkit-flex;
   display: flex;
   box-sizing: border-box;
-  background-color: #EFEFF4;
-  border-top: 1rpx solid #D7D6DC;
-  border-bottom: 1rpx solid #D7D6DC;
+  padding-bottom: 10rpx;
 }
 .search-bar_icon {
   position: absolute;
@@ -42,7 +40,6 @@
   padding-right: 30px;
   width: 100%;
   box-sizing: border-box;
-  z-index: 1;
 }
 .search-bar__input {
   height: 28px;
@@ -57,20 +54,25 @@
 }
 
 .hotPart{
-  
-  border-radius: 10rpx;
+  width: 95%;
   margin: 5rpx 5rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items:stretch;
   background: white;
-  border-radius: 5rpx;
+  border-radius: 40rpx;
+  margin-left: 2.5%;
+  box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
+  margin-bottom: 30rpx;
+  margin-top:20rpx;
 }
+
 .divLine{
   height: 1rpx;
-  width: 100%;
+  width: 90%;
   background: #dcdcdc;
+  margin-left: 20rpx;
   margin-top: 3rpx;
   /* margin-bottom: 3rpx; */
 }

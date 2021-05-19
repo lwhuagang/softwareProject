@@ -5,7 +5,7 @@
       <!-- 搜索框 -->
       <view class="search-bar__box">
         <icon class="search-bar_icon" type="search" size="22"></icon>
-        <input type="text" class="search-bar__input" bindtap = "showLog" bindinput="bindKeyInput" value="{{inputValue}}" />
+        <input type="text" class="search-bar__input" bindtap = "showLog" bindinput="bindKeyInput" placeholder="请在此输入基金代码或基金名称" value="{{inputValue}}" />
       </view>
     </view>
     <!-- 搜索按钮,调用搜索查询方法 -->
@@ -21,7 +21,7 @@
     </view>
   </view>
   
-  <view class="hotPart">
+  <view class="hotPart" wx:if="{{funds.length!=0}}">
     <block wx:for="{{funds.length}}">
       <blankFundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}"></blankFundGeneral>
       <view class="divLine"></view>

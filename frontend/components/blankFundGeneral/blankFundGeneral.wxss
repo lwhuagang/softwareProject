@@ -1,65 +1,57 @@
-/* components/blankFundGeneral/blankFundGeneral.wxss *//* components/fundGeneral/fundGeneral.wxss */
-.container{
+/* components/blankFundGeneral/blankFundGeneral.wxss */
+/* components/fundGeneral/fundGeneral.wxss */
+.container {
   /* border: 1rpx solid green; */
   margin: 10rpx 10rpx;
+  height: 150rpx;
 }
-.fundInfoBlock{
+
+.fundInfoBlock {
   display: flex;
   width: 100%;
 }
+
+.fundInfoContent {
+  margin-top: 30rpx;
+  width: 100%;
+  padding-left: 20rpx;
+}
+
 .fundNameAndCode {
+  width: 100%;
   display: flex;
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  padding-left: 5rpx;
-  /* border: 1rpx solid red; */
-  /* width: 58%; */
 }
+
 .fundName {
-  overflow:hidden; 
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  font-size: 30rpx;
+  height: 60rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 35rpx;
+  padding-right:30rpx;
   /* 强制不换行，多的用省略号 */
 }
+
+.fundCodeAndType{
+  display: flex;
+}
+
 .fundCode {
-  color: #c6c6c6;
+  color: #adadad;
 }
-.fundNet {
-  /* border: 1rpx solid red; */
-  width: 25%;
-  border-left: 1rpx solid #dcdcdc;
-  padding-left: 3rpx;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+.fundType {
+  color:rgb(48, 89, 151);
+  background-color: rgb(220, 236, 255);
+  border-radius: 10rpx;
+  margin-left:20rpx;
+  padding-top: 3rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+  padding-bottom: 5rpx;
 }
-.netWorth {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 20rpx;
-}
-.netDate {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 20rpx;
-  align-items: center;
-  color: #c6c6c6;
-  font-size: 30rpx;
-}
-.fundGrowth{
-  /* border: 1rpx solid red; */
-  width: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.greenRate {
-  color: green;
-}
-.redRate {
-  color: red;
-}
+
+
