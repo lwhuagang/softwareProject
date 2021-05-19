@@ -20,6 +20,9 @@
     <select id="getAllFDyes" resultType="com.software_project.pojo.FeedBack">
         select * from soft.feedback where flag = TRUE
     </select>
+    <select id="getFeedBack" resultType="com.software_project.pojo.FeedBack">
+        select * from soft.feedback where userEmail = #{userEmail} and time = #{time};
+    </select>
 
 
 </mapper>

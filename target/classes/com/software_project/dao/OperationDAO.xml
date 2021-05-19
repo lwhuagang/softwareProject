@@ -5,7 +5,7 @@
         insert into soft.record values (#{userEmail},#{fundCode},#{type},#{time},#{flag},#{count},#{flagTime})
     </insert>
     <update id="updateDeal">
-        update soft.record set flagTime = #{flagTime},flag = #{flag} where userEmail = #{userEmail} and fundCode=#{fundCode} and time = #{time}
+        update soft.record set flagTime = #{flagTime}, flag = #{flag} where userEmail = #{userEmail} and fundCode=#{fundCode} and time = #{time}
     </update>
     <delete id="deleteOp">
         delete from soft.record where userEmail = #{email}
