@@ -300,6 +300,7 @@ public class UserController {
                 try {
                     s1 = redisTemplate.opsForList().rightPop(user.getEmail().substring(0,8) + ":" + fund.getFundCode());
                     total = Double.parseDouble(s1);
+                    redisTemplate.opsForList().rightPush(user.getEmail().substring(0,8) + ":" + fund.getFundCode(), s1);
                     total += fund.getYesProfit();
                 }
                 catch (Exception e){
@@ -310,12 +311,10 @@ public class UserController {
                     // 只存储三十天的累计收益
                     redisTemplate.opsForList().leftPop(key);
                     redisTemplate.opsForList().rightPush(key, String.valueOf(total));
-                    redisTemplate.opsForList().rightPush(key, String.valueOf(0));
                     System.out.println(redisTemplate.opsForList().range(key,0,-1));
                 }
                 else{
                     redisTemplate.opsForList().rightPush(key, String.valueOf(total));
-                    redisTemplate.opsForList().rightPush(key, String.valueOf(0));
                     System.out.println(redisTemplate.opsForList().range(key,0,-1));
                 }
             }
