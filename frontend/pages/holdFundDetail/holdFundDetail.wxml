@@ -29,7 +29,7 @@
       </view>
       <view class="detailSon holdIncomeRatioPart">
         <view class="holdIncomeRatioNote">持有收益率</view>
-        <view class="holdIncomeRatioValue">{{tool.toFix2(holdDetail.holdProfitRate)}}%</view>
+        <view class="holdIncomeRatioValue">{{tool.toFix2(holdDetail.holdProfitRate==="NaN"?0:holdDetail.holdProfitRate)}}%</view>
       </view>
     </view>
     <block wx:if="{{foldded}}">
@@ -51,7 +51,7 @@
           </view>
           <view class="subMoreInfo">
             <view class="subInfoSon posCost">
-              持仓成本价 {{tool.toFix2(holdDetail.perHoldCost)}}
+              持仓成本价 {{tool.toFix2(holdDetail.perHoldCost==="NaN"?0:holdDetail.perHoldCost)}}
             </view>
             <view class="subInfoSon holdPart">
               持有份额 {{tool.toFix2(holdDetail.share)}}

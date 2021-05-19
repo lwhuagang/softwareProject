@@ -1,18 +1,6 @@
 <!--pages/mine/mine.wxml-->
 <view class="container">
-
   <view class="hasLoggedContainer" wx:if="{{isLogin}}">
-    <!--
-    <view class="nicknamePart">
-      <view class="nicknameNote">昵称</view>
-      <input class="nicknameValue" model:value="{{tmpNickname}}" placeholder="{{userInfo.nickname}}"
-        disabled="{{!try2Edit}}" />
-    </view>
-    <view class="emailPart">
-      <view class="emailNote">邮箱</view>
-      <input class="emailValue" model:value="{{tmpEmail}}" placeholder="{{userInfo.email}}" disabled="{{try2Edit}}" />
-    </view>
-    -->
     <view>
       <view class="top">
         <view class="center">
@@ -42,19 +30,19 @@
       <view class="middle">
         <view class="middleBlock">
           <view class="middleBlockImg">
-              <image src="../../image/setting.png"></image>
+            <image src="../../image/setting.png"></image>
           </view>
           <view class="middleBlockText">重置数据</view>
         </view>
         <view class="middleBlock">
           <view class="middleBlockImg">
-              <image src="../../image/money.png"></image>
+            <image src="../../image/money.png"></image>
           </view>
           <view class="middleBlockText">增加余额</view>
         </view>
         <view class="middleBlock">
           <view class="middleBlockImg">
-              <image src="../../image/psw.png"></image>
+            <image src="../../image/psw.png"></image>
           </view>
           <view class="middleBlockText">我的评论</view>
         </view>
@@ -75,26 +63,29 @@
   </view>
   <view wx:else>
     <form bindsubmit="login">
+      <image class="loginImg" src="/image/background.png" mode="widthFix" />
       <view class="loginContainer">
         <view class="loginInfo">
-          <input class="inputUsrName" name="email" placeholder="邮箱" focus />
-          <input class="inputUsrPassword" name="password" password placeholder="密码" focus />
+          <view class="hint">邮箱</view>
+          <view class="emailPart">
+            <input class="inputUsrName" name="email" placeholder="请输入邮箱" focus />
+          </view>
+          <view class="hint">密码</view>
+          <view class="pswPart">
+            <input class="inputUsrPassword" name="password" password placeholder="请输入密码" focus />
+          </view>
           <navigator class="forgotPswd" url="/pages/forgotPswd/forgotPswd">忘记密码</navigator>
         </view>
-        <image class="loginImg" src="/image/login.jpg" mode="widthFix" />
-        <button form-type="submit" class="loginBtn">
-          <view class="submitInfo">登录</view>
-        </button>
-        <button bindtap="register" class="registerBtn">
-          <view class="registerInfo">注册</view>
-        </button>
+        <view class="btnGroup">
+          <button form-type="submit" class="loginBtn" style="width:80%">
+            <view class="submitInfo">登录</view>
+          </button>
+          <button bindtap="register" class="registerBtn" style="width:80%">
+            <view class="registerInfo">没有账号，立即注册</view>
+          </button>
+        </view>
       </view>
     </form>
-    <!-- <view class="loginInfo">
-      <input class="inputUserName" placeholder="用户名" focus model:value="{{userName}}"/>
-      <input class="inputUserPassword" password placeholder="密码" model:value="{{userPassword}}"/>
-    </view>
-    <image class="unLoggedImg" src="/image/login.jpg" mode="widthFix"/> -->
   </view>
 </view>
 <view class="head">

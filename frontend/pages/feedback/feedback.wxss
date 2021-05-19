@@ -109,7 +109,7 @@
 }
 .tail{
   border-top: 1rpx solid #d1cfcf;
-  background:#0081ff;
+  background:#5484dd;
   display:flex;
   position:fixed; 
   width:100%;

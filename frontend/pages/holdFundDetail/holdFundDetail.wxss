@@ -195,7 +195,7 @@
   font-size:35rpx;
   color:#ffffff;
   width:100%;
-  background: #0081ff;
+  background: #5484dd;
   text-align: center;
   line-height:95rpx;
 }

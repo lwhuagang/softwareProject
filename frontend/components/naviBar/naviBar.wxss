@@ -5,7 +5,7 @@
   height: 100rpx;
   display: flex;
   padding-top: 35rpx;
-  background: #0081ff;
+  background: #5484dd;
   /* border: 1rpx solid red; */
 }
 .back {

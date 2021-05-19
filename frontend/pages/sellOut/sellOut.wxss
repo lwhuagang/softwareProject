@@ -48,7 +48,7 @@
   font-size: 40rpx;
 }
 .redeem .rule{
-  color: #0081FF;
+  color: #5484dd;
   font-size: small;
   height: 40rpx;
   width: 130rpx;

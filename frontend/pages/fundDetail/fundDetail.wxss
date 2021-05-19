@@ -16,16 +16,16 @@
 }
 .bluePad {
   margin-top: 0rpx;
-  background: #0081ff;
-  color: #0081ff;
+  background: #5484dd;
+  color: #5484dd;
   width: 100%;
   height: 100rpx;
   position: absolute;
 }
 .blueWave {
   margin-top: 0rpx;
-  background: #0081ff;
-  color: #0081ff;
+  background: #5484dd;
+  color: #5484dd;
   position: absolute;
   width: 200%;
   height: 150rpx;
@@ -430,7 +430,7 @@
   font-size:35rpx;
   color:#ffffff;
   width:100%;
-  background: #0081ff;
+  background: #5484dd;
   text-align: center;
   line-height:95rpx;
 }
