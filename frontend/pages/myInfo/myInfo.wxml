@@ -1,66 +1,75 @@
 <!--pages/myInfo/myInfo.wxml-->
 <view class="container">
-    <!-- 内容{{userInfo}} -->
-    <view class="userInfoPart">
-      <view class="infoItem">
+  <!-- 内容{{userInfo}} -->
+  <view class="userInfoPart">
+    <view class="idInfo">
+      <view class="hint">账号信息</view>
+      <view class="infoItem" style="border-top:1rpx solid #dcdcdc;">
         <view class="infoHead">用户邮箱</view>
         <view class="infoContent">{{userInfo.email}}</view>
       </view>
       <view class="infoItem">
         <view class="infoHead">用户昵称</view>
-        <input wx:if="{{edit}}" class="infoContent" model:value="{{nickname}}"/>
+        <input wx:if="{{edit}}" class="infoContent" model:value="{{nickname}}" />
         <view wx:else class="infoContent">{{userInfo.nickname}}</view>
       </view>
-      <view class="infoItem">
-        <view class="infoHead">用户金额</view>
-        <view class="infoContent">{{userInfo.money}}</view>
-      </view>
-      <view class="infoItem">
-        <view class="infoHead">总收益</view>
-        <view class="infoContent">{{userInfo.totalProfit}}</view>
-      </view>
-      <view class="infoItem" wx:if="{{changePswd}}">
-        <view class="infoHead">原始密码</view>
-        <input class="infoContent" model:value="{{oldPswd}}" password/>
-      </view>
-      <view class="infoItem" wx:if="{{changePswd}}">
-        <view class="infoHead">新密码</view>
-        <input class="infoContent" model:value="{{newPswd}}" password/>
-      </view>
-      <view class="infoItem" wx:if="{{changePswd}}">
-        <view class="infoHead">确认密码</view>
-        <input class="infoContent" model:value="{{confirmPswd}}" password/>
-      </view>
     </view>
-    <block wx:if="{{ edit==false && changePswd==false}}">
-      <view class="Btn" bindtap="editUserInfo" 
-      style="margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 80rpx;border-radius: 40rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 15rpx;">
-        <view class="btnInfo">编辑信息</view>
-      </view>
-      <view class="Btn" bindtap="changePswd" 
-      style="margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 80rpx;border-radius: 40rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 15rpx;">
-        <view class="btnInfo">修改密码</view>
-      </view>
-    </block>
-    <block wx:elif="{{ edit==true && changePswd==false}}">
-      <view class="Btn" bindtap="subMitEdit" style="  margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 80rpx;border-radius: 40rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 15rpx;">
-        <view class="btnInfo">确认修改昵称</view>
-      </view>
-      <view class="Btn" bindtap="cancel" style="  margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 80rpx;border-radius: 40rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 15rpx;">
-        <view class="btnInfo">取消</view>
-      </view>
-      <!-- <view class="Btn" bindtap="changePswd" style="  margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 80rpx;border-radius: 40rpx;margin-left: 30rpx;margin-right: 25rpx;background: #dcdcdc;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 15rpx;">
+    <view class="hint" wx:if="{{changePswd}}">修改密码</view>
+    <view class="infoItem" wx:if="{{changePswd}}" style="border-top:1rpx solid #dcdcdc;">
+      <view class="infoHead">原始密码</view>
+      <input class="infoContent" model:value="{{oldPswd}}" password />
+    </view>
+    <view class="infoItem" wx:if="{{changePswd}}">
+      <view class="infoHead">新密码</view>
+      <input class="infoContent" model:value="{{newPswd}}" password />
+    </view>
+    <view class="infoItem" wx:if="{{changePswd}}">
+      <view class="infoHead">确认密码</view>
+      <input class="infoContent" model:value="{{confirmPswd}}" password />
+    </view>
+    <view class="hint">收益信息</view>
+    <view class="infoItem" style="border-top:1rpx solid #dcdcdc;">
+      <view class="infoHead">用户金额</view>
+      <view class="infoContent">{{userInfo.money}}</view>
+    </view>
+    <view class="infoItem">
+      <view class="infoHead">总收益</view>
+      <view class="infoContent">{{userInfo.totalProfit}}</view>
+    </view>
+  </view>
+  <block wx:if="{{ edit==false && changePswd==false}}">
+    <view class="Btn" bindtap="editUserInfo"
+      style="margin-top: 60rpx;display: flex;flex-direction: column;width: 80%;height: 70rpx;border-radius: 50rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 10rpx;">
+      <view class="btnInfo">编辑信息</view>
+    </view>
+    <view class="Btn" bindtap="changePswd"
+      style="margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 70rpx;border-radius: 50rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 10rpx;">
+      <view class="btnInfo">修改密码</view>
+    </view>
+  </block>
+  <block wx:elif="{{ edit==true && changePswd==false}}">
+    <view class="Btn" bindtap="subMitEdit"
+      style="  margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 70rpx;border-radius: 50rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 10rpx;">
+      <view class="btnInfo">确认修改昵称</view>
+    </view>
+    <view class="Btn" bindtap="cancel"
+      style="  margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 70rpx;border-radius: 50rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 10rpx;">
+      <view class="btnInfo">取消</view>
+    </view>
+    <!-- <view class="Btn" bindtap="changePswd" style="  margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 80rpx;border-radius: 40rpx;margin-left: 30rpx;margin-right: 25rpx;background: #dcdcdc;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 10rpx;">
         <view class="btnInfo">修改密码</view>
       </view> -->
-    </block>
-    <block wx:elif="{{ edit==false && changePswd==true}}">
-      <view class="Btn" bindtap="subMitChangePswd" style="  margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 80rpx;border-radius: 40rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 15rpx;">
-        <view class="btnInfo">确认修改密码</view>
-      </view>
-      <view class="Btn" bindtap="cancel" style="  margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 80rpx;border-radius: 40rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 15rpx;">
-        <view class="btnInfo">取消</view>
-      </view>
-    </block>
+  </block>
+  <block wx:elif="{{ edit==false && changePswd==true}}">
+    <view class="Btn" bindtap="subMitChangePswd"
+      style="  margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 70rpx;border-radius: 50rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 10rpx;">
+      <view class="btnInfo">确认修改密码</view>
+    </view>
+    <view class="Btn" bindtap="cancel"
+      style="  margin-top: 50rpx;display: flex;flex-direction: column;width: 80%;height: 70rpx;border-radius: 50rpx;margin-left: 30rpx;margin-right: 25rpx;background: #5484dd;box-shadow:0px 2px 5px 5px rgb(228, 228, 228);position: relative;padding-top: 10rpx;">
+      <view class="btnInfo">取消</view>
+    </view>
+  </block>
 </view>
 <view class="head">
   <naviBar title="我的信息"></naviBar>

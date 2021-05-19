@@ -245,18 +245,18 @@ Page {
 }
 
 .logOutBtn {
-  margin-top: 50rpx;
+  margin-top: 80rpx;
   display: flex;
   flex-direction: column;
   width: 91%;
-  height: 80rpx;
-  border-radius: 40rpx;
+  height: 70rpx;
+  border-radius: 50rpx;
   margin-left: 30rpx;
   margin-right: 25rpx;
   background: #5484dd;
   box-shadow: 0px 2px 5px 5px rgb(228, 228, 228);
   position: relative;
-  padding-top: 15rpx;
+  padding-top: 10rpx;
 }
 
 .logOutInfo {

@@ -1,4 +1,8 @@
 /* pages/myInfo/myInfo.wxss */
+Page {
+  color:#313131;
+}
+
 .head{
   position: fixed;
   width: 100%;
@@ -16,13 +20,22 @@
 .userInfoPart{
   width:100%;
 }
+.idInfo{
+  width:100%;
+}
+.hint{
+  margin-bottom: 30rpx;
+  margin-top: 30rpx;
+  margin-left: 25rpx;
+}
 .infoItem{
-  border: 1rpx solid #dcdcdc;
+  border-bottom: 1rpx solid #dcdcdc;
   display: flex;
   width:100%;
-  height: 80rpx;
+  height: 100rpx;
   align-items: center;
   padding-left: 20rpx;
+  background:white;
 }
 .infoHead{
   width: 20%;

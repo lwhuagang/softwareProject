@@ -153,7 +153,7 @@ Page({
             console.log(res);
             if(res.data.code==200 && res.data.message=="用户信息修改成功!") {
               wx.showToast({
-                title: '用户信息修改成功!',
+                title: '信息修改成功!',
                 duration:2000,
                 icon:"success"
               });
