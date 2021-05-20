@@ -534,6 +534,12 @@ public class UserController {
         return new Result(200, user, "添加用户的剩余金额(返回的是现在用户的信息)");
     }
 
+    @PostMapping("deleteOneRecord")
+    public Result deleteOneRecord(@RequestBody Record record) {
+        recordService.deleteOneRecord(record);
+        return new Result(200, record, "删除一条未完成的处理记录");
+    }
+
 
 
     /**

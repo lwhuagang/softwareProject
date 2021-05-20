@@ -25,5 +25,12 @@ public interface RecordDAO {
      */
     List<Record> getRecordsByUserEmail(String userEmail);
 
+    /**
+     * 删除一条未完成的记录
+     * @param record 交易记录
+     */
+    void deleteOneRecord(Record record);
+
+
 
 }
