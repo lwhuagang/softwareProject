@@ -136,24 +136,41 @@ Page({
   },
   //清空用户消息
   clearAll: function (e) {
-
+      console.log("清空所有未读消息==>");
+      var that = this;
+      wx.request({
+        url: config.service+'/message/clearAllNotReadMsg?userEmail='+app.globalData.userInfo.email,
+        method:"GET",
+        success:res=>{
+          console.log(res);
+          that.getMessage();
+        }
+      })
   },
   getMessage:function() {
-    console.log("HHHHHH");
     var that = this;
     wx.request({
       url: config.service+'/message/getAllNotReadMsg?userEmail='+app.globalData.userInfo.email,
       method:"GET",
       success:res=>{
         console.log("用户未读信息",res);
-        that.setData({
-          news:res.data.obj,
-          isEmpty:(res.data.obj.length==0)
-        });
-        var i;
-        for (i = 0; i < that.data.news.length; i++) {
-          that.data.news[i]["showTime"] = that.UTCformat(that.data.news[i].time);
+        if(res.data.code==200 && res.data.message=="获取所有未读的消息") {
+          that.setData({
+            news:res.data.obj,
+            isEmpty:(res.data.obj.length==0)
+          });
+          var i;
+          var tmpList = that.data.news;
+          for(i=0;i<tmpList.length;i++) {
+            tmpList[i].showTime = that.UTCformat(tmpList[i].time);
+          }
+          that.setData({
+            news:tmpList,
+          })
+        } else {
+          console.log("消息加载失败");
         }
+
       }
     })
   }
