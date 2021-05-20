@@ -207,7 +207,7 @@ Page({
     var that = this;
     if(this.data.isLogin) {
       wx.request({
-        url: config.service+'/message/getAllNotReadMsg?'+this.data.userInfo.email,
+        url: config.service+'/message/getAllNotReadMsg?userEmail='+this.data.userInfo.email,
         method:"GET",
         success:res=>{
           console.log("用户未读信息",res);

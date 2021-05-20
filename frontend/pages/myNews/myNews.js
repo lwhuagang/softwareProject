@@ -142,7 +142,7 @@ Page({
     console.log("HHHHHH");
     var that = this;
     wx.request({
-      url: config.service+'/message/getAllNotReadMsg?'+app.globalData.userInfo.email,
+      url: config.service+'/message/getAllNotReadMsg?userEmail='+app.globalData.userInfo.email,
       method:"GET",
       success:res=>{
         console.log("用户未读信息",res);

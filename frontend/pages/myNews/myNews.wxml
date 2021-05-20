@@ -52,6 +52,7 @@
             <view class="contentText">处理记录:</view>
             <view class="contentText">{{news[index].result}}</view>
           </view>
+          <view class="more"></view>
         </view>
         <view class="dot" wx:if="{{!news[index].read}}"> </view>
       </view>
