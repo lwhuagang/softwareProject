@@ -14,23 +14,28 @@ let {
 } = require("../../utils/util.js")
 Page({
   data: {
-      sectionList:[{
+      sectionList:[
+      {
         name:'排行',
           url:'/pages/rank/rank',
           img:'/image/rank_b.png'
-      },{
+      },
+      {
         name:'热门',
           url:'/pages/hot/hot',
           img:'/image/hot_b.jpg'
-      },{
-        name:'搜索',
-        url:'/pages/search/search',
-        img:'/image/search_b.jpg'
-    },{
-        name:'新品',
-        url:'/pages/newFund/newFund',
-        img:'/image/new.jpg'
-      },{
+      },
+      // {
+      //   name:'搜索',
+      //   url:'/pages/search/search',
+      //   img:'/image/search_b.jpg'
+      // },
+      // {
+      //   name:'新品',
+      //   url:'/pages/newFund/newFund',
+      //   img:'/image/new.jpg'
+      // },
+      {
         name:'AI推荐',
         url:'/pages/aiForecast/aiForecast',
         img:'/image/AI.jpg'
