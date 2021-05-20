@@ -12,7 +12,18 @@
     <update id="clearNotReadMessage">
         update soft.message set `read` = 1 where `read` = 0 and userEmail = #{userEmail};
     </update>
+    <delete id="deleteAllMessage" parameterType="java.lang.String">
+        delete from soft.message where userEmail = #{userEmail}
+    </delete>
     <select id="getNotReadMessage" resultType="com.software_project.pojo.Message">
         select * from soft.message where `read` = 0 and userEmail = #{userEmail};
+    </select>
+    <select id="getAllReadMessage" resultType="com.software_project.pojo.Message"
+            parameterType="java.lang.String">
+        select * from soft.message where userEmail = #{userEmail} and `read` = 1;
+    </select>
+    <select id="getAllMessage" resultType="com.software_project.pojo.Message"
+            parameterType="java.lang.String">
+        select * from soft.message where userEmail = #{userEmail};
     </select>
 </mapper>

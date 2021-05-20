@@ -42,5 +42,23 @@ public class MessageController {
         return new Result(200, true, "清除所有未读消息");
     }
 
+    @GetMapping("getAllReadMessage")
+    public Result getAllReadMessage(String userEmail) {
+        List<Message> allReadMessage = messageService.getAllReadMessage(userEmail);
+        return new Result(200, allReadMessage, "获取该用户的所有已读信息");
+    }
+
+    @GetMapping("getAllMessage")
+    public Result getAllMessage(String userEmail) {
+        List<Message> allReadMessage = messageService.getAllMessage(userEmail);
+        return new Result(200, allReadMessage, "获取该用户的所有信息");
+    }
+
+    @GetMapping("deleteAllMessage")
+    public Result deleteAllMessage(String userEmail) {
+        messageService.deleteAllMessage(userEmail);
+        return new Result(200, true, "删除该用户的所有信息");
+    }
+
 
 }

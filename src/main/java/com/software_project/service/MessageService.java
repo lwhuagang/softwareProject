@@ -28,4 +28,25 @@ public interface MessageService {
      * 清空所有的未读消息， 改变read字段未true
      */
     void clearNotReadMessage(String userEmail);
+
+    /**
+     * 获取某个用户的所有已读消息
+     * @param userEmail 用户邮箱
+     * @return 该用户的所有已读消息
+     */
+    List<Message> getAllReadMessage(String userEmail);
+
+    /**
+     * 获取一个用户的所有消息
+     * @param userEmail 用户邮箱
+     * @return 该用户的所有消息
+     */
+    List<Message> getAllMessage(String userEmail);
+
+
+    /**
+     * 删除某个用户的所有消息
+     * @param userEmail 用户邮箱
+     */
+    void deleteAllMessage(String userEmail);
 }
