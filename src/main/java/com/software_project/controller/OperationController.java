@@ -155,7 +155,7 @@ public class OperationController {
             if (!record.isType()){
                 // 买入操作更新数据定义
                 double buyMoney = record.getCount(); // 用户买入金额
-                double buyIn_fee = buyMoney * fund.getBuyRate(); // 以当前买入费率为准,买入手续费
+                double buyIn_fee = buyMoney * fund.getBuyRate() / 100; // 以当前买入费率为准,买入手续费
                 double net_buyMoney = buyMoney - buyIn_fee; // 净买入金额
                 // 获取当日净值
                 RestTemplate restTemplate = new RestTemplate();
