@@ -2,4 +2,5 @@
   "usingComponents": {
     "naviBar":"../../components/naviBar/naviBar"
   }
+
 }

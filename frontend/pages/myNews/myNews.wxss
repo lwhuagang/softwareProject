@@ -5,6 +5,7 @@
   height: 100rpx;
   margin-top:0;
   z-index: 99;
+  top:0;
 }
 
 .container {
@@ -127,7 +128,7 @@
 
 .newsContent{
   width: 90%;
-  height: 450rpx;
+  /* height: 450rpx; */
   padding-left: 20rpx;
   padding-right: 25rpx;
   margin-bottom: 5rpx;
@@ -139,6 +140,7 @@
   margin-top:20rpx;
   color:rgb(44, 44, 44);
   overflow:hidden;
+  text-overflow: ellipsis;
 }
 
 .more{
@@ -181,4 +183,8 @@
   background-color: rgb(184, 93, 93);
   box-shadow:0px 1px 2px 2px rgb(238, 238, 238);
   z-index: 3;
+}
+.noMsg{
+  color:darkgray;
+  margin-top:40rpx;
 }

@@ -21,6 +21,7 @@
             <navigator class="center_score" url="/pages/myNews/myNews">
               <image class="rank_icon" src="../../image/news.png"></image>
               <text class="rank_text">我的消息</text>
+              <view class="dot" wx:if="{{hasMessage}}"> </view>
             </navigator>
           </view>
         </view>

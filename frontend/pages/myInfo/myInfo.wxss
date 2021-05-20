@@ -8,6 +8,7 @@ Page {
   width: 100%;
   height: 100rpx;
   margin-top:0;
+  top:0;
 }
 .container{
   position: absolute;
