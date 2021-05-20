@@ -4,8 +4,10 @@ import com.software_project.pojo.Browse;
 import com.software_project.pojo.FeedBack;
 import com.software_project.pojo.Search;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -46,5 +48,7 @@ public interface FeedBackDAO {
      * @param userEmail 用户邮箱
      */
     void deleteFeedBack(String userEmail);
+
+    FeedBack getFeedBack(@Param("userEmail") String userEmail, @Param("time") Date time);
 
 }

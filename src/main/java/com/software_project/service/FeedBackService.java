@@ -1,7 +1,9 @@
 package com.software_project.service;
 
 import com.software_project.pojo.FeedBack;
+import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface FeedBackService {
@@ -41,5 +43,7 @@ public interface FeedBackService {
      * @param userEmail 用户邮箱
      */
     void deleteFeedBack(String userEmail);
+
+    FeedBack getFeedBack(String userEmail, Date time);
 
 }

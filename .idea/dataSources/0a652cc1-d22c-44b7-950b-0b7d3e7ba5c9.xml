@@ -1136,473 +1136,591 @@
       <Collation>utf8_general_ci</Collation>
     </table>
     <table id="289" parent="8" name="hold"/>
-    <table id="290" parent="8" name="record"/>
-    <table id="291" parent="8" name="searchhistory"/>
-    <table id="292" parent="8" name="user">
+    <table id="290" parent="8" name="message"/>
+    <table id="291" parent="8" name="record"/>
+    <table id="292" parent="8" name="searchhistory"/>
+    <table id="293" parent="8" name="user">
       <Collation>utf8_general_ci</Collation>
     </table>
-    <column id="293" parent="284" name="email">
+    <column id="294" parent="284" name="email">
       <Position>1</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="294" parent="284" name="fundCode">
+    <column id="295" parent="284" name="fundCode">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="295" parent="284" name="likeDate">
+    <column id="296" parent="284" name="likeDate">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
       <OnUpdate>CURRENT_TIMESTAMP</OnUpdate>
     </column>
-    <index id="296" parent="284" name="fundCode">
+    <index id="297" parent="284" name="fundCode">
       <ColNames>fundCode</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="297" parent="284" name="PRIMARY">
+    <key id="298" parent="284" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email
 fundCode</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="298" parent="284" name="attention_ibfk_1">
+    <foreign-key id="299" parent="284" name="attention_ibfk_1">
       <ColNames>email</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>email</RefColNames>
     </foreign-key>
-    <foreign-key id="299" parent="284" name="attention_ibfk_2">
+    <foreign-key id="300" parent="284" name="attention_ibfk_2">
       <ColNames>fundCode</ColNames>
       <RefTableName>fund</RefTableName>
       <RefColNames>code</RefColNames>
     </foreign-key>
-    <column id="300" parent="285" name="userEmail">
+    <column id="301" parent="285" name="userEmail">
       <Position>1</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="301" parent="285" name="fundCode">
+    <column id="302" parent="285" name="fundCode">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <index id="302" parent="285" name="fundCode">
+    <index id="303" parent="285" name="fundCode">
       <ColNames>fundCode</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="303" parent="285" name="PRIMARY">
+    <key id="304" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userEmail
 fundCode</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="304" parent="285" name="browse_user_email_fk">
+    <foreign-key id="305" parent="285" name="browse_user_email_fk">
       <ColNames>userEmail</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>email</RefColNames>
     </foreign-key>
-    <foreign-key id="305" parent="285" name="browse_ibfk_1">
+    <foreign-key id="306" parent="285" name="browse_ibfk_1">
       <ColNames>fundCode</ColNames>
       <RefTableName>fund</RefTableName>
       <RefColNames>code</RefColNames>
     </foreign-key>
-    <column id="306" parent="286" name="id">
+    <column id="307" parent="286" name="id">
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="307" parent="286" name="userEmail">
+    <column id="308" parent="286" name="userEmail">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="308" parent="286" name="nickname">
+    <column id="309" parent="286" name="nickname">
       <Position>3</Position>
       <DataType>varchar(128)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="309" parent="286" name="fundCode">
+    <column id="310" parent="286" name="fundCode">
       <Position>4</Position>
       <DataType>varchar(32)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="310" parent="286" name="comment">
+    <column id="311" parent="286" name="comment">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="311" parent="286" name="time">
+    <column id="312" parent="286" name="time">
       <Position>6</Position>
       <DataType>datetime|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="286" name="toCommentID">
+    <column id="313" parent="286" name="toCommentID">
       <Position>7</Position>
-      <DataType>varchar(128)|0s</DataType>
+      <DataType>bigint|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="313" parent="286" name="userEmail">
+    <index id="314" parent="286" name="userEmail">
       <ColNames>userEmail</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="314" parent="286" name="fundCode">
+    <index id="315" parent="286" name="fundCode">
       <ColNames>fundCode</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="315" parent="286" name="PRIMARY">
+    <index id="316" parent="286" name="toCommentID">
+      <ColNames>toCommentID</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="317" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="316" parent="286" name="comment_ibfk_1">
+    <foreign-key id="318" parent="286" name="comment_ibfk_1">
       <ColNames>userEmail</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>email</RefColNames>
     </foreign-key>
-    <foreign-key id="317" parent="286" name="comment_ibfk_2">
+    <foreign-key id="319" parent="286" name="comment_ibfk_2">
       <ColNames>fundCode</ColNames>
       <RefTableName>fund</RefTableName>
       <RefColNames>code</RefColNames>
     </foreign-key>
-    <column id="318" parent="287" name="userEmail">
+    <foreign-key id="320" parent="286" name="comment_ibfk_3">
+      <ColNames>toCommentID</ColNames>
+      <RefTableName>comment</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="321" parent="287" name="userEmail">
       <Position>1</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="319" parent="287" name="message">
+    <column id="322" parent="287" name="message">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="320" parent="287" name="result">
+    <column id="323" parent="287" name="result">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="321" parent="287" name="flag">
+    <column id="324" parent="287" name="flag">
       <Position>4</Position>
       <DataType>tinyint|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="322" parent="287" name="time">
+    <column id="325" parent="287" name="time">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="323" parent="287" name="PRIMARY">
+    <key id="326" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userEmail
 time</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="324" parent="288" name="code">
+    <column id="327" parent="288" name="code">
       <Position>1</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="325" parent="288" name="name">
+    <column id="328" parent="288" name="name">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="326" parent="288" name="type">
+    <column id="329" parent="288" name="type">
       <Position>3</Position>
       <DataType>varchar(128)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="327" parent="288" name="buyMin">
+    <column id="330" parent="288" name="buyMin">
       <Position>4</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="328" parent="288" name="buySourceRate">
+    <column id="331" parent="288" name="buySourceRate">
       <Position>5</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="288" name="buyRate">
+    <column id="332" parent="288" name="buyRate">
       <Position>6</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="330" parent="288" name="manager">
+    <column id="333" parent="288" name="manager">
       <Position>7</Position>
       <DataType>varchar(128)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="331" parent="288" name="netWorth">
+    <column id="334" parent="288" name="netWorth">
       <Position>8</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="332" parent="288" name="funds_code_uindex">
+    <index id="335" parent="288" name="funds_code_uindex">
       <ColNames>code</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="333" parent="288" name="PRIMARY">
+    <key id="336" parent="288" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>code</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="334" parent="288" name="funds_code_uindex">
+    <key id="337" parent="288" name="funds_code_uindex">
       <ColNames>code</ColNames>
       <UnderlyingIndexName>funds_code_uindex</UnderlyingIndexName>
     </key>
-    <column id="335" parent="289" name="hold">
+    <column id="338" parent="289" name="hold">
       <Position>1</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="289" name="userEmail">
+    <column id="339" parent="289" name="userEmail">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="337" parent="289" name="fundCode">
+    <column id="340" parent="289" name="fundCode">
       <Position>3</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="338" parent="289" name="holdProfit">
+    <column id="341" parent="289" name="holdProfit">
       <Position>4</Position>
       <DataType>double|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="339" parent="289" name="yesProfit">
+    <column id="342" parent="289" name="yesProfit">
       <Position>5</Position>
       <DataType>double|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="340" parent="289" name="holdCost">
+    <column id="343" parent="289" name="holdCost">
       <Position>6</Position>
       <DataType>double|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="341" parent="289" name="share">
+    <column id="344" parent="289" name="share">
       <Position>7</Position>
       <DataType>double|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="342" parent="289" name="fundCode">
+    <index id="345" parent="289" name="fundCode">
       <ColNames>fundCode</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="343" parent="289" name="PRIMARY">
+    <key id="346" parent="289" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userEmail
 fundCode</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="344" parent="289" name="hold_ibfk_1">
+    <foreign-key id="347" parent="289" name="hold_ibfk_1">
       <ColNames>userEmail</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>email</RefColNames>
     </foreign-key>
-    <foreign-key id="345" parent="289" name="hold_ibfk_2">
+    <foreign-key id="348" parent="289" name="hold_ibfk_2">
       <ColNames>fundCode</ColNames>
       <RefTableName>fund</RefTableName>
       <RefColNames>code</RefColNames>
     </foreign-key>
-    <column id="346" parent="290" name="userEmail">
+    <column id="349" parent="290" name="id">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="350" parent="290" name="userEmail">
+      <Position>2</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+      <Collation>utf8_general_ci</Collation>
+    </column>
+    <column id="351" parent="290" name="fundCode">
+      <Position>3</Position>
+      <DataType>varchar(32)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+      <Collation>utf8_general_ci</Collation>
+    </column>
+    <column id="352" parent="290" name="fundname">
+      <Position>4</Position>
+      <DataType>varchar(128)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+      <Collation>utf8_general_ci</Collation>
+    </column>
+    <column id="353" parent="290" name="addWarehouse">
+      <Position>5</Position>
+      <DataType>tinyint|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="354" parent="290" name="netWorthDate">
+      <Position>6</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="355" parent="290" name="netWorth">
+      <Position>7</Position>
+      <DataType>double(10,6 digit)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="356" parent="290" name="expectWorthDate">
+      <Position>8</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="357" parent="290" name="expectWorth">
+      <Position>9</Position>
+      <DataType>double(10,6 digit)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="358" parent="290" name="message">
+      <Position>10</Position>
+      <Comment>反馈的内容</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+      <Collation>utf8_general_ci</Collation>
+    </column>
+    <column id="359" parent="290" name="result">
+      <Position>11</Position>
+      <Comment>反馈处理结果</Comment>
+      <DataType>varchar(255)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+      <Collation>utf8_general_ci</Collation>
+    </column>
+    <column id="360" parent="290" name="messageType">
+      <Position>12</Position>
+      <Comment>消息的种类，0表示基金推送消息，1表示管理员处理反馈的消息</Comment>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="361" parent="290" name="time">
+      <Position>13</Position>
+      <DataType>datetime|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="362" parent="290" name="read">
+      <Position>14</Position>
+      <DataType>tinyint|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="363" parent="290" name="userEmail">
+      <ColNames>userEmail</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="364" parent="290" name="fundCode">
+      <ColNames>fundCode</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="365" parent="290" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="366" parent="290" name="message_ibfk_1">
+      <ColNames>userEmail</ColNames>
+      <RefTableName>user</RefTableName>
+      <RefColNames>email</RefColNames>
+    </foreign-key>
+    <foreign-key id="367" parent="290" name="message_ibfk_2">
+      <ColNames>fundCode</ColNames>
+      <RefTableName>fund</RefTableName>
+      <RefColNames>code</RefColNames>
+    </foreign-key>
+    <column id="368" parent="291" name="userEmail">
       <Position>1</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="347" parent="290" name="fundCode">
+    <column id="369" parent="291" name="fundCode">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
       <Collation>utf8_general_ci</Collation>
     </column>
-    <column id="348" parent="290" name="type">
+    <column id="370" parent="291" name="type">
       <Position>3</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="349" parent="290" name="time">
+    <column id="371" parent="291" name="time">
       <Position>4</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="350" parent="290" name="flag">
+    <column id="372" parent="291" name="flag">
       <Position>5</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="351" parent="290" name="count">
+    <column id="373" parent="291" name="count">
       <Position>6</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="352" parent="290" name="flagTime">
+    <column id="374" parent="291" name="flagTime">
       <Position>7</Position>
       <DataType>tinyint(1)|0s</DataType>
       <DefaultExpression>1</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="353" parent="290" name="record_ibfk_2">
+    <index id="375" parent="291" name="record_ibfk_2">
       <ColNames>fundCode</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="354" parent="290" name="PRIMARY">
+    <key id="376" parent="291" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>userEmail
 fundCode
 time</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="355" parent="290" name="record_ibfk_1">
+    <foreign-key id="377" parent="291" name="record_ibfk_1">
       <ColNames>userEmail</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>email</RefColNames>
     </foreign-key>
-    <foreign-key id="356" parent="290" name="record_ibfk_2">
+    <foreign-key id="378" parent="291" name="record_ibfk_2">
       <ColNames>fundCode</ColNames>
       <RefTableName>fund</RefTableName>
       <RefColNames>code</RefColNames>
     </foreign-key>
-    <column id="357" parent="291" name="userEmail">
+    <column id="379" parent="292" name="userEmail">
       <Position>1</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="358" parent="291" name="searchString">
+    <column id="380" parent="292" name="searchString">
       <Position>2</Position>
       <DataType>varchar(32)|0s</DataType>
+      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="359" parent="291" name="PRIMARY">
+    <key id="381" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>userEmail</ColNames>
+      <ColNames>userEmail
+searchString</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="360" parent="292" name="email">
+    <column id="382" parent="293" name="email">
       <Position>1</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="361" parent="292" name="password">
+    <column id="383" parent="293" name="password">
       <Position>2</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="362" parent="292" name="nickname">
+    <column id="384" parent="293" name="nickname">
       <Position>3</Position>
       <DataType>varchar(128)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="363" parent="292" name="money">
+    <column id="385" parent="293" name="money">
       <Position>4</Position>
       <DataType>double|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="364" parent="292" name="picUrl">
+    <column id="386" parent="293" name="picUrl">
       <Position>5</Position>
       <DataType>varchar(128)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="365" parent="292" name="admin">
+    <column id="387" parent="293" name="admin">
       <Position>6</Position>
       <DataType>tinyint(1)|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="366" parent="292" name="holdProfit">
+    <column id="388" parent="293" name="holdProfit">
       <Position>7</Position>
       <DataType>double|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="367" parent="292" name="totalProfit">
+    <column id="389" parent="293" name="totalProfit">
       <Position>8</Position>
       <Comment>累计收益</Comment>
       <DataType>double|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="368" parent="292" name="buyMoney">
+    <column id="390" parent="293" name="buyMoney">
       <Position>9</Position>
       <Comment>总持有金额</Comment>
       <DataType>double|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="369" parent="292" name="initmoney">
+    <column id="391" parent="293" name="initmoney">
       <Position>10</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="370" parent="292" name="dayprofit">
+    <column id="392" parent="293" name="dayprofit">
       <Position>11</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="371" parent="292" name="holdcost">
+    <column id="393" parent="293" name="holdcost">
       <Position>12</Position>
       <DataType>double|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="372" parent="292" name="user_email_uindex">
+    <index id="394" parent="293" name="user_email_uindex">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="373" parent="292" name="password">
+    <index id="395" parent="293" name="password">
       <ColNames>password</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="374" parent="292" name="PRIMARY">
+    <key id="396" parent="293" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="375" parent="292" name="user_email_uindex">
+    <key id="397" parent="293" name="user_email_uindex">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>user_email_uindex</UnderlyingIndexName>
     </key>

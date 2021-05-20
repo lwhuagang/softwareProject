@@ -8,6 +8,7 @@ import com.software_project.service.BrowseService;
 import com.software_project.service.FeedBackService;
 import com.software_project.service.FundService;
 import com.software_project.service.HoldService;
+import com.software_project.service.MessageService;
 import com.software_project.service.OperationService;
 import com.software_project.service.RecordService;
 import com.software_project.service.SearchService;
@@ -50,6 +51,9 @@ public class AdminController {
 
     @Autowired
     private SearchService searchService;
+
+    @Autowired
+    private MessageService messageService;
 
     @GetMapping("fundOff")
     public Result FundOff(int fundCode){
@@ -110,9 +114,10 @@ public class AdminController {
 
     @PostMapping("updateFD")
     public Result ProFeedBack(@RequestBody FeedBack feedBack) {
-        // 处理用户的反馈
-
+        // 处理用户的反
         feedBackService.updateFD(feedBack);
+        FeedBack feedBack1 = feedBackService.getFeedBack(feedBack.getUserEmail(), feedBack.getTime());
+        messageService.insertMessageTwo(feedBack1);
         return new Result(200, feedBack, "处理用户的某个反馈记录");
     }
 }
