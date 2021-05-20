@@ -144,6 +144,11 @@ Page({
         success:res=>{
           console.log(res);
           that.getMessage();
+          wx.showToast({
+            title: '已清空所有消息!',
+            icon:"success",
+            duration:2000
+          })
         }
       })
   },
