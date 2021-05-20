@@ -16,7 +16,8 @@ Page({
       password:'',
       money:0,
       pic_url:''
-    }
+    },
+    hasMessage:false,
   },
 
   /**
@@ -41,10 +42,11 @@ Page({
               that.setData({
                 userInfo:res.data.obj,
                 tmpInfo:res.data.obj
-              })
+              });
+              that.getMessage();
             }
           }
-        })
+        });
       } else {
         this.setData({
           isLogin:app.globalData.isLogin,
@@ -82,10 +84,11 @@ Page({
             that.setData({
               userInfo:res.data.obj,
               tmpInfo:res.data.obj
-            })
+            });
+            that.getMessage();
           }
         }
-      })
+      });
     } else {
       this.setData({
         isLogin:app.globalData.isLogin,
@@ -111,7 +114,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.showLoading() //在标题栏中显示加载
+    //模拟加载
+    this.getMessage();
+    setTimeout(function()
+    {
+      // complete
+      wx.hideLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    },1500);
   },
 
   /**
@@ -172,7 +183,8 @@ Page({
               icon: 'error',
               duration:1500
             });
-          }         
+          };
+          that.getMessage();     
         },
         fail:res=>{
           console.log(res);
@@ -190,5 +202,20 @@ Page({
       isLogin:false,
       userInfo:null
     })
+  },
+  getMessage:function() {
+    var that = this;
+    if(this.data.isLogin) {
+      wx.request({
+        url: config.service+'/message/getAllNotReadMsg?'+this.data.userInfo.email,
+        method:"GET",
+        success:res=>{
+          console.log("用户未读信息",res);
+          that.setData({
+            hasMessage:(res.data.obj.length>0),
+          })
+        }
+      })
+    }
   }
 })

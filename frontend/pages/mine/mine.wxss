@@ -8,6 +8,7 @@ Page {
   height: 100rpx;
   margin-top: 0;
   z-index: 99;
+  top:0;
 }
 
 .container {
@@ -339,4 +340,17 @@ Page {
   margin-bottom: 30rpx;
   margin-top: 30rpx;
   margin-left: 30rpx;
+}
+
+.dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 5rpx;
+  margin-left: -140rpx;
+  margin-right: 10rpx;
+  background-color: rgb(231, 52, 52);
+  box-shadow:0px 1px 2px 2px rgb(238, 238, 238);
+  z-index: 3;
 }

@@ -2,16 +2,20 @@
 <wxs module="filters" src="../../utils/addmul.wxs"></wxs>
 
 <view class="container">
-  <view class="readAndClear">
+  <view class="readAndClear" wx:if="{{isEmpty==false}}">
     <!--
     <view class = "allRead">
       <view class="readText">一键已读</view>
     </view>
     -->
-    <view class = "allClear">
+    <view class = "allClear" >
       <view class="clearText" bindtap="clearAll">清空消息</view>
     </view>
   </view>
+  <view class="noMsg" wx:else>
+    <text>空空如也~</text>
+  </view>
+
   <block wx:for="{{news.length}}">
     <view class="newsItem">
       <view class="sendTime">{{news[index].showTime}}</view>
@@ -19,7 +23,7 @@
         <view class="senderImg">
           <image src="../../image/userInfo.jpg"></image>
         </view>
-        <view class="newsBlock">
+        <view class="newsBlock" wx:if="{{news[index].messageType==0}}">
           <view class="newsTitle">
             <view class="titleText">基金{{news[index].addWarehouse?"加仓":"清仓"}}提醒</view>
           </view>
@@ -31,11 +35,22 @@
             <view class="contentText">【{{news[index].expectWorthDate}}】 {{news[index].expectWorth}}</view>
             <view class="contentText">预计{{(news[index].expectWorth-news[index].netWorth)>0?"涨幅":"跌幅"}}较大，请参考考虑是否{{news[index].addWarehouse?"加仓":"清仓"}}。</view>
           </view>
-          <view class="more">
+          <navigator class="more" url="/pages/holdFundDetail/holdFundDetail?fundCode={{news[index].fundCode}}">
             <view class="moreText">查看持有基金详情</view>
             <view class="moreImg">
               <image src="../../image/right.png"></image>
             </view>
+          </navigator>
+        </view>
+        <view class="newsBlock" wx:else>
+          <view class="newsTitle">
+            <view class="titleText">用户反馈处理</view>
+          </view>
+          <view class="newsContent">
+            <view class="contentText">您的反馈:</view>
+            <view class="contentText">{{news[index].message}}</view>
+            <view class="contentText">处理记录:</view>
+            <view class="contentText">{{news[index].result}}</view>
           </view>
         </view>
         <view class="dot" wx:if="{{!news[index].read}}"> </view>

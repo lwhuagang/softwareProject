@@ -5,6 +5,7 @@
   height: 100rpx;
   margin-top:0;
   z-index: 99;
+  top:0;
 }
 .container{
   width:100%;
