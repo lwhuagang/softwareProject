@@ -6,7 +6,7 @@
   margin-top:0;
 }
 .container {
-  height: 1500px;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,17 +26,24 @@
   justify-content: center;
   box-sizing: border-box;
   background:white;
-  border-radius: 15rpx;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
   margin-top: 30rpx;
   padding-left: 25rpx;
   padding-right: 25rpx;
+}
+
+.backImg{
+  position: absolute;
+  width: 100%;
+  z-index: -999;
 }
 
 .itemTitle {
   width: 100%;
   justify-content: center;
   text-align: center;
-  color: #a4a4a4;
+  color: #747474;
   font-size: 29rpx;
 }
 .holdHeadItems{

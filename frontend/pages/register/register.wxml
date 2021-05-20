@@ -1,60 +1,68 @@
 <!--pages/register/register.wxml-->
 <view class="container">
   <view class="regBlock">
-        <!-- 昵称 -->
-      <view class="part nickPart">
-        <view class="instr nickIntr">昵称:</view>
-        <input class="input inputNick" model:value="{{nickname}}" focus/>
+    <!-- 昵称 -->
+    <view class="part nickPart">
+      <view class="instr nickIntr">昵称</view>
+      <view class="inputBlock">
+        <input class="input inputNick" model:value="{{nickname}}" focus />
       </view>
-      <view class="divLine"></view>
-        <!-- 邮箱 -->
-      <view class="part mailPart">
-        <view class="instr mailInstr">邮箱:</view>
-        <input class="input inputEmail" model:value="{{email}}" focus/>
+    </view>
+    <!--<view class="divLine"></view> -->
+    <!-- 邮箱 -->
+    <view class="part mailPart">
+      <view class="instr mailInstr">邮箱</view>
+      <view class="inputBlock">
+        <input class="input inputEmail" model:value="{{email}}" focus />
       </view>
-      <view class="divLine"></view>
-        <!-- 密码 -->
-      <view class="part pswdPart">
-        <view class="instr pswdIntr">密码:</view>
-        <input class="input inputPswd" model:value="{{password}}" focus password/>
+    </view>
+    <!-- <view class="divLine"></view> -->
+    <!-- 密码 -->
+    <view class="part pswdPart">
+      <view class="instr pswdIntr">密码</view>
+      <view class="inputBlock">
+        <input class="input inputPswd" model:value="{{password}}" focus password />
       </view>
-      <view class="divLine"></view>
-        <!-- 确认密码 -->
-      <view class="part cfmPart">
-        <view class="instr cfmInstr">确认密码:</view>
-        <input class="input inputConfirm" model:value="{{confirmPswd}}" focus password bindblur="checkPswd"/>
+    </view>
+    <!-- <view class="divLine"></view> -->
+    <!-- 确认密码 -->
+    <view class="part cfmPart">
+      <view class="instr cfmInstr">确认密码</view>
+      <view class="inputBlock">
+        <input class="input inputConfirm" model:value="{{confirmPswd}}" focus password bindblur="checkPswd" />
       </view>
-      <view class="divLine"></view>
-      <!-- 初始金额 -->
-      <view class="part moneyPart">
-        <view class="moneyNote">初始金额(千元):</view>
-        <view class="moneyBtn">
-          <stepper min="1" max="{{maxMoney}}" integer value="{{defaultMoney}}" bind:change="setMoney"></stepper>
-        </view>
+    </view>
+    <!-- <view class="divLine"></view> -->
+    <!-- 初始金额 -->
+    <view class="part moneyPart">
+      <view class="instr" style="margin-bottom:25rpx">初始金额(千元)</view>
+      <view class="moneyBtn">
+        <stepper min="1" max="{{maxMoney}}" integer value="{{defaultMoney}}" bind:change="setMoney" ></stepper>
       </view>
-      <view class="divLine"></view>
-        <!-- 验证码 -->
-      <view class="captchaPart">
-        <input class="inputCaptcha" model:value="{{captcha}}" focus/>
-        <block wx:if="{{smsFlag==false}}">
-          <button class="captchaBtn1" bindtap="getCaptcha" plain>
-            发送验证码
-          </button>
-        </block>
-        <block wx:else>
-          <button class="captchaBtn2" disabled>
-            {{sendTime}}
-          </button>
-        </block>
-      </view>
-      <view class="divLine"></view>
-      <!-- 注册 -->
-      <view class="registerPart">
-        <button bindtap="register" class="regBtn">注册</button>
-      </view>
+    </view>
+    <!-- <view class="divLine"></view> -->
+    <!-- 验证码 -->
+    <view class="instr" style="width:90%;margin-top:25rpx">验证码</view>
+    <view class="captchaPart">
+      <input class="inputCaptcha" model:value="{{captcha}}" focus />
+      <block wx:if="{{smsFlag==false}}">
+        <button class="captchaBtn1" bindtap="getCaptcha" style="width:35%;height: 80rpx;border-radius: 50rpx;background: #5484dd;margin-left:20rpx;margin-right:0;padding-left:20rpx;padding-right:20rpx;box-shadow: 0px 2px 5px 5px rgb(228, 228, 228);padding-top:17rpx;color:white;">
+          发送验证码
+        </button>
+      </block>
+      <block wx:else>
+        <button class="captchaBtn2" disabled style="width:35%;height: 80rpx;border-radius: 50rpx;background: white;margin-left:20rpx;margin-right:0;padding-left:20rpx;padding-right:20rpx;box-shadow: 0px 2px 5px 5px rgb(228, 228, 228);padding-top:17rpx;color:#5484dd;">
+          {{sendTime}}
+        </button>
+      </block>
+    </view>
+    <!-- <view class="divLine"></view> -->
+    <!-- 注册 -->
+    <view class="registerPart">
+      <button bindtap="register" class="regBtn" style="width:83%;margin-top: 50rpx;height:80rpx;border-radius: 50rpx;background:white;box-shadow: 0px 2px 5px 5px rgb(228, 228, 228);padding-top: 15rpx;color:#5484dd;">注册</button>
+    </view>
   </view>
 </view>
 <view class="head">
   <naviBar title="注册"></naviBar>
 </view>
-

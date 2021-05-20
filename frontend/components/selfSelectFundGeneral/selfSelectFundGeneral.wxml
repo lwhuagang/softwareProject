@@ -9,13 +9,13 @@
       <view class="fundCode">{{fundInfo.code}}</view>
     </view>
     <!-- 净值 与 估值-->
-    <view class="fundMoneyAndLastProfit">
-      <view class="netWorth">{{filters.toFix2(fundInfo.netWorth)}}</view>
+    <view class="fundMoneyAndLastProfit" >
+      <view class="netWorth" wx:if="{{fundInfo.netWorth}}">{{filters.toFix2(fundInfo.netWorth)}}</view>
         <block wx:if="{{fundInfo.dayGrowth[0] == '-'}}">
-          <view class="greenRate">{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
+          <view class="greenRate" wx:if="{{fundInfo.dayGrowth}}">{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
         </block>
         <block wx:else>
-          <view class="redRate">+{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
+          <view class="redRate" wx:if="{{fundInfo.dayGrowth}}">+{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
         </block>
     </view>
     <view class="fundProfitAndRate" wx:if="{{fundInfo.expectWorth}}">

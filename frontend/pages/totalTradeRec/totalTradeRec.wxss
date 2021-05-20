@@ -90,17 +90,23 @@
 
 .delete {
   width: 90%;
-  padding-top: 4rpx;
-  padding-bottom: 4rpx;
-  border: solid #acacac;
-  border-width: 1rpx;
-  background-color: #eaf0ff;
-  color: #252b33;
+  color: #ff4242;
   text-align: center;
-  border-radius: 20px;
   float: right;
-  font-size: 40%;
+  font-size: medium;
   margin-right: 5%;
+}
+
+.btn1{
+  background: #5484dd;
+  color:white;
+  border-radius: 5rpx;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  font-size: smaller;
 }
 
 .divLine {
