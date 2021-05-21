@@ -231,25 +231,27 @@ Page({
             editable:true,
             title:"请输入初始用户总资产",
             success:(res)=>{
-              console.log(res)
-              wx.request({
-                url: config.service + '/user/resetAll',
-                data:{
-                  email: app.globalData.userInfo.email,
-                  money: parseFloat(res.content) 
-                },
-                method:"POST",
-                success:(res)=>{
-                  console.log(res)
-                  wx.showToast({
-                    title: '重置成功',
-                    icon:"success"
-                  })
-                },
-                fail:(res)=>{
-                  console.log(res)
-                }
-              })
+              if (res.confirm){
+                console.log(res)
+                wx.request({
+                  url: config.service + '/user/resetAll',
+                  data:{
+                    email: app.globalData.userInfo.email,
+                    money: parseFloat(res.content) 
+                  },
+                  method:"POST",
+                  success:(res)=>{
+                    console.log(res)
+                    wx.showToast({
+                      title: '重置成功',
+                      icon:"success"
+                    })
+                  },
+                  fail:(res)=>{
+                    console.log(res)
+                  }
+                })
+              }
             }
           })
         } else if (res.cancel) {
