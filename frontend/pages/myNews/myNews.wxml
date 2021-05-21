@@ -3,11 +3,9 @@
 
 <view class="container">
   <view class="readAndClear" wx:if="{{isEmpty==false}}">
-    <!--
     <view class = "allRead">
-      <view class="readText">一键已读</view>
+      <view class="readText" bindtap="readAll">一键已读</view>
     </view>
-    -->
     <view class = "allClear" >
       <view class="clearText" bindtap="clearAll">清空消息</view>
     </view>
