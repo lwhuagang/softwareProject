@@ -97,13 +97,14 @@ Page({
         console.log("获取到的基金详情===>");
         console.log(this.data.fundInfo)
         console.log(this.data.fundInfo.netWorthDate)
+        callback()
       }
     );
-    setTimeout(
-      function () {
-        callback()
-      }, 1000
-    ); //同步不知道怎么搞，只好人为设置定时器了
+    // setTimeout(
+    //   function () {
+    //     callback()
+    //   }, 1000
+    // ); //同步不知道怎么搞，只好人为设置定时器了
   },
 
   //加载基金持仓详情
@@ -181,7 +182,7 @@ Page({
       // title: {
       //   text: '业绩走势',
       //   left:'center',
-      //   top:20
+      //   top:0
       // },
       color: ["#37A2DA"],
       // legend: {
