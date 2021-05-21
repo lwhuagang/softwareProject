@@ -29,7 +29,7 @@
         </image>
       </view>
       <view class="middle">
-        <view class="middleBlock">
+        <view class="middleBlock" bindtap="reset">
           <view class="middleBlockImg">
             <image src="../../image/setting.png"></image>
           </view>

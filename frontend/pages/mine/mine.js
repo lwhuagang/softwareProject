@@ -217,5 +217,45 @@ Page({
         }
       })
     }
+  },
+
+  reset(){
+    wx.showModal({
+      title: '确定要重置所有用户数据吗',
+      content: '会重置所有的历史数据，并重新设置一个初始总资产',
+      success: (res)=> {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.showModal({
+            cancelColor: 'cancelColor',
+            editable:true,
+            title:"请输入初始用户总资产",
+            success:(res)=>{
+              console.log(res)
+              wx.request({
+                url: config.service + '/user/resetAll',
+                data:{
+                  email: app.globalData.userInfo.email,
+                  money: parseFloat(res.content) 
+                },
+                method:"POST",
+                success:(res)=>{
+                  console.log(res)
+                  wx.showToast({
+                    title: '重置成功',
+                    icon:"success"
+                  })
+                },
+                fail:(res)=>{
+                  console.log(res)
+                }
+              })
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   }
 })

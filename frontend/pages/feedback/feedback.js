@@ -57,6 +57,7 @@ Page({
         wx.hideLoading();
         wx.showToast({
           title: '反馈成功！',
+          icon:"success"
         })
         setTimeout(() => {
           wx.navigateBack({
