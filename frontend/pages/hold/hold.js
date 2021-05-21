@@ -74,9 +74,13 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+    console.log("用户邮箱------>")
+    console.log(app.globalData.userInfo.email)
     getHold(
       app.globalData.userInfo.email,
       res => {
+        console.log("----------------->")
+        console.log(res)
         this.setData({
           user: res.data.obj.user,
           funds: res.data.obj.holdVOS

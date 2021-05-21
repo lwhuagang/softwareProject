@@ -24,7 +24,8 @@
     "pages/feedback/feedback",
     "pages/myInfo/myInfo",
     "pages/forgotPswd/forgotPswd",
-    "pages/myNews/myNews"
+    "pages/myNews/myNews",
+    "pages/myComments/myComments"
   ],
   "window": {
     "backgroundTextStyle": "light",

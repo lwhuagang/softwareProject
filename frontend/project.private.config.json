@@ -104,6 +104,12 @@
         {
           "name": "pages/feedback/feedback",
           "pathName": "pages/feedback/feedback",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myComments/myComments",
+          "pathName": "pages/myComments/myComments",
           "scene": null
         }
       ]

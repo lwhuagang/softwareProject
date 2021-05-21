@@ -1,0 +1,25 @@
+
+<view class="container">
+  <view class="space"></view>
+  <block wx:for="{{comments}}">
+    <view class="comment">
+      <view class="commentHead">
+        <view class="headPic">
+          <image src="../../image/userInfo.jpg" ></image>
+        </view>
+        <view class="nickNameAndTime">
+          <view class="nickName">{{item.nickname}}</view>
+          <view class="time">{{item.time}}</view>
+        </view>
+      </view>
+      <view class="txt">
+        {{item.comment}}
+      </view>
+      <view class="fundName">---------发自 {{item.fundName}} 讨论区</view>
+    </view>
+  </block>
+</view>
+
+<view class="head">
+  <naviBar title="我的评论" showBack="{{true}}"></naviBar>
+</view>

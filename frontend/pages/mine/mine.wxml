@@ -41,12 +41,12 @@
           </view>
           <view class="middleBlockText">增加余额</view>
         </view>
-        <view class="middleBlock">
+        <navigator url="/pages/myComments/myComments" class="middleBlock" >
           <view class="middleBlockImg">
             <image src="../../image/psw.png"></image>
           </view>
           <view class="middleBlockText">我的评论</view>
-        </view>
+        </navigator>
       </view>
       <view class="bottom">
         <navigator class="bottomBlock" url="/pages/feedback/feedback">

@@ -17,7 +17,7 @@ App({
     userInfo: {
       //email:"18231096@buaa.edu.cn",
       //email:"906410752@qq.com",
-      email:"",
+      email:"taozhuo2000@163.com",
       password:"",
       nickname:"",
       money:0,
