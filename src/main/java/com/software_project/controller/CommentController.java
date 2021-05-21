@@ -42,4 +42,10 @@ public class CommentController {
         List<Comment> comments = commentService.getRespondCommentsByID(id);
         return new Result(200, comments, "通过评论ID获取所有回复");
     }
+
+    @GetMapping("getCommentByUserEmail")
+    public Result getCommentByUserEmail(String userEmail) {
+        List<Comment> comments = commentService.getCommentByUserEmail(userEmail);
+        return new Result(200, comments, "获取一个用户的所有评论");
+    }
 }
