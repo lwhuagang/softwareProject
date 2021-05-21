@@ -257,5 +257,35 @@ Page({
         }
       }
     })
+  },
+
+  addMoney(res){
+    // console.log(res)
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title:"请输入您想要增加的余额",
+      editable:true,
+      success(res){
+        if (res.confirm){
+          wx.request({
+            url: config.service + '/user/addMoney',
+            method:"POST",
+            data:{
+              email:app.globalData.userInfo.email,
+              money:parseFloat(res.content)
+            },
+            success:(res)=>{
+              console.log(res)
+              wx.showToast({
+                title: '增加成功',
+                icon:"success"
+              })
+            }    
+          })
+        }
+        // console.log(res.content)
+       
+      }
+    })
   }
 })

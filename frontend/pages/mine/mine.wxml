@@ -35,7 +35,7 @@
           </view>
           <view class="middleBlockText">重置数据</view>
         </view>
-        <view class="middleBlock">
+        <view class="middleBlock" bindtap="addMoney">
           <view class="middleBlockImg">
             <image src="../../image/money.png"></image>
           </view>
