@@ -36,7 +36,7 @@
           T日申请，将按T日基金净值确认份额。份额确认当日，基金净值更新后即可查看首笔盈亏。开放赎回的基金在买入确认后下一T日可卖出。
         </view>
       </view>
-      <view class="ratioPart">
+      <!-- <view class="ratioPart">
         <view class="ratioTitle">买入费率(前端申购)</view>
         <view class="ratioFormHead">
           <view class="headItem">金额</view>
@@ -52,14 +52,14 @@
             <view class="divLine"></view>
           </view>
         </view>
-      </view>
+      </view> -->
       <!-- 申购计算 -->
-      <view class="calcRule">
+      <!-- <view class="calcRule">
         <view class="calcRuleTitle">申购计算:</view>
         <view class="calcRuleItem">净申购金额=申购金额/(1+申购费率)</view>
         <view class="calcRuleItem">申购费用=申购金额-净申购金额</view>
         <view class="calcRuleItem">申购份额=净申购金额/T日基金份额净值</view>
-      </view>
+      </view> -->
     </block>
     <!-- 卖出规则界面 -->
     <block wx:else>

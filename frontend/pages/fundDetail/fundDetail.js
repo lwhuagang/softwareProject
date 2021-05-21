@@ -40,7 +40,7 @@ Page({
   onLoad: function (options) {
     wx.showToast({
       title: '加载中',
-      icon:'loading'
+      icon:'loading',
     })
     var code = options.fundCode;
     var that = this;
