@@ -4,31 +4,23 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="添加删除单个交易记录的功能">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/PredictionDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/pojo/Prediction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/PredictionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/PredictionServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/PredictionDAO.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0a652cc1-d22c-44b7-950b-0b7d3e7ba5c9.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0a652cc1-d22c-44b7-950b-0b7d3e7ba5c9/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+    <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="添加基金加仓、清仓的功能；添加获取所有基金预测的排序结果的接口；">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/soft.sql" beforeDir="false" afterPath="$PROJECT_DIR$/soft.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/FundController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/FundController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/FundDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/FundDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/PredictionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/PredictionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/pojo/Prediction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/pojo/Prediction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/PredictionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/PredictionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/PredictionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/PredictionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/MessageDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/MessageDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/PredictionDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/PredictionDAO.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/CommentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/CommentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/FundController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/FundController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/MessageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/CommentDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/CommentDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/CommentDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/CommentDAO.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/CommentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/CommentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/MessageDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/MessageDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/timer/TimingTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/timer/TimingTask.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +181,7 @@
       <workItem from="1620717324502" duration="52000" />
       <workItem from="1621608924529" duration="461000" />
       <workItem from="1621645253029" duration="586000" />
-      <workItem from="1621651816298" duration="5433000" />
+      <workItem from="1621651816298" duration="11882000" />
     </task>
     <task id="LOCAL-00001" summary="添加details注释">
       <created>1618400399863</created>
@@ -275,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621526962277</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="添加基金加仓、清仓的功能；添加获取所有基金预测的排序结果的接口；">
+      <created>1621657449277</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1621657449277</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,6 +330,7 @@
     <MESSAGE value="修改用户信息param的兼容性" />
     <MESSAGE value="获取未读消息、删除消息" />
     <MESSAGE value="添加删除单个交易记录的功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加删除单个交易记录的功能" />
+    <MESSAGE value="添加基金加仓、清仓的功能；添加获取所有基金预测的排序结果的接口；" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加基金加仓、清仓的功能；添加获取所有基金预测的排序结果的接口；" />
   </component>
 </project>

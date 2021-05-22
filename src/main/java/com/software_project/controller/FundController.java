@@ -161,13 +161,31 @@ public class FundController {
     }
 
     @GetMapping("getAllPre")
-    public Result getAllPre() {     // 获取所有的ai推荐基金，涨幅排序之后的结果
-        List<Prediction> allPrediction = predictionService.getAllPrediction();
+    public Result getAllPre(int pageIndex, int pageSize) {     // 获取所有的ai推荐基金，涨幅排序之后的结果
+        int startIndex = (pageIndex-1)*pageSize;
+        List<Prediction> allPrediction = predictionService.getAllPrediction(startIndex, pageSize);
+        List<Prediction> ret_prediction = new ArrayList<>();
         for (Prediction prediction : allPrediction) {
-            prediction.setLastRate(lastWorthRate(prediction));
+            if (getFundName(prediction.getFundCode()) != null) {
+                prediction.setLastRate(lastWorthRate(prediction));
+                prediction.setFundName(getFundName(prediction.getFundCode()));  //设置fundName
+                ret_prediction.add(prediction);
+            }
         }
         Collections.sort(allPrediction);
-        return new Result(200, allPrediction, "获取所有基金的AI预测排序结果，包括十五天的涨幅和最后一天的涨幅");
+        return new Result(200, ret_prediction, "获取所有基金的AI预测排序结果，包括十五天的涨幅和最后一天的涨幅");
+    }
+
+    private String getFundName(String fundCode) {
+//        System.out.println(fundCode);
+        Fund fund = fundService.searchFundByCode(Integer.parseInt(fundCode));
+//        System.out.println(fund);
+        if (fund == null) {
+            return null;
+        }
+        else {
+            return fund.getName();
+        }
     }
 
     private double lastWorthRate(Prediction prediction){       // 用于判断是否需要进行加仓，true表示需要进行加仓，false表示需要清仓

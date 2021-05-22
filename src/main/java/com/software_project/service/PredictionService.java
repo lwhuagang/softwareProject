@@ -7,6 +7,6 @@ import java.util.List;
 public interface PredictionService {
     Prediction getPreByFundCode(String fundCode);
 
-    List<Prediction> getAllPrediction();
+    List<Prediction> getAllPrediction(int startIndex, int pageSize);
 
 }
