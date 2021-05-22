@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.software_project.dao.PredictionDAO">
+
+    <select id="getPreByFundCode" resultType="com.software_project.pojo.Prediction"
+            parameterType="java.lang.String">
+        select * from soft.prediction where fundCode = #{fundCode};
+    </select>
+    <select id="getAllPrediction" resultType="com.software_project.pojo.Prediction">
+        select * from soft.prediction;
+    </select>
+</mapper>
