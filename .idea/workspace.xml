@@ -4,9 +4,19 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="pull codes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/soft.sql" beforeDir="false" afterPath="$PROJECT_DIR$/soft.sql" afterDir="false" />
+=======
+    <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/CommentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/CommentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/CommentDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/CommentDAO.xml" afterDir="false" />
+>>>>>>> origin/master
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +55,7 @@
         <item name="soft@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="soft: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="comment: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="record: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -105,6 +115,7 @@
     </key>
   </component>
   <component name="RunManager">
+<<<<<<< HEAD
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -116,6 +127,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+=======
+>>>>>>> origin/master
     <configuration name="RuangongApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="software_project" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.software_project.RuangongApplication" />
@@ -129,19 +142,18 @@
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:soft@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+=======
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+>>>>>>> origin/master
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -230,6 +242,7 @@
       <option name="project" value="LOCAL" />
       <updated>1621321186184</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00011" summary="pull codes">
       <created>1621645321427</created>
       <option name="number" value="00011" />
@@ -238,6 +251,23 @@
       <updated>1621645321427</updated>
     </task>
     <option name="localTasksCounter" value="12" />
+=======
+    <task id="LOCAL-00011" summary="获取未读消息、删除消息">
+      <created>1621524105877</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1621524105877</updated>
+    </task>
+    <task id="LOCAL-00012" summary="添加删除单个交易记录的功能">
+      <created>1621526962277</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1621526962277</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
+>>>>>>> origin/master
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,12 +303,13 @@
         </entry>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -291,7 +322,67 @@
     <MESSAGE value="修改selfMsg中的getFundCode的bug" />
     <MESSAGE value="修改param_register注解上的问题" />
     <MESSAGE value="修改用户信息param的兼容性" />
+<<<<<<< HEAD
     <MESSAGE value="pull codes" />
     <option name="LAST_COMMIT_MESSAGE" value="pull codes" />
+=======
+    <MESSAGE value="获取未读消息、删除消息" />
+    <MESSAGE value="添加删除单个交易记录的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加删除单个交易记录的功能" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1621563737495">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1621563737495" />
+    <state x="304" y="6" key="CommitChangelistDialog2" timestamp="1621526958986">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="304" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1621526958986" />
+    <state width="1493" height="163" key="GridCell.Tab.0.bottom" timestamp="1621526810484">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621526810484" />
+    <state width="1493" height="163" key="GridCell.Tab.0.center" timestamp="1621526810484">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1621526810484" />
+    <state width="1493" height="163" key="GridCell.Tab.0.left" timestamp="1621526810483">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1621526810483" />
+    <state width="1493" height="163" key="GridCell.Tab.0.right" timestamp="1621526810484">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1621526810484" />
+    <state width="1493" height="163" key="GridCell.Tab.1.bottom" timestamp="1621526810484">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1621526810484" />
+    <state width="1493" height="163" key="GridCell.Tab.1.center" timestamp="1621526810484">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1621526810484" />
+    <state width="1493" height="163" key="GridCell.Tab.1.left" timestamp="1621526810484">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1621526810484" />
+    <state width="1493" height="163" key="GridCell.Tab.1.right" timestamp="1621526810484">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="163" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1621526810484" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1621526966277">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1621526966277" />
+    <state x="459" y="204" key="git4idea.merge.GitPullDialog" timestamp="1621524159360">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="459" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1621524159360" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1621525651690">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1621525651690" />
+>>>>>>> origin/master
   </component>
 </project>

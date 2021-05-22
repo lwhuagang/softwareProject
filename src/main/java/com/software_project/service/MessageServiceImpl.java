@@ -34,4 +34,19 @@ public class MessageServiceImpl implements MessageService{
     public void clearNotReadMessage(String userEmail) {
         messageDAO.clearNotReadMessage(userEmail);
     }
+
+    @Override
+    public List<Message> getAllReadMessage(String userEmail) {
+        return messageDAO.getAllReadMessage(userEmail);
+    }
+
+    @Override
+    public List<Message> getAllMessage(String userEmail) {
+        return messageDAO.getAllMessage(userEmail);
+    }
+
+    @Override
+    public void deleteAllMessage(String userEmail) {
+        messageDAO.deleteAllMessage(userEmail);
+    }
 }

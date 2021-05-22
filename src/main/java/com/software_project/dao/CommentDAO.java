@@ -38,4 +38,11 @@ public interface CommentDAO {
      * @return  该评论下所有的回复
      */
     List<Comment> getRespondCommentsByID(int id);
+
+    /**
+     * 获取一个用户的所有评论
+     * @param userEmail 用户邮箱
+     * @return 该用户的所有评论
+     */
+    List<Comment> getCommentByUserEmail(String userEmail);
 }

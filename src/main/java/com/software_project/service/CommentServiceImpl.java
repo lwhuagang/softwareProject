@@ -31,4 +31,9 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> getRespondCommentsByID(int id) {
         return commentDAO.getRespondCommentsByID(id);
     }
+
+    @Override
+    public List<Comment> getCommentByUserEmail(String userEmail) {
+        return commentDAO.getCommentByUserEmail(userEmail);
+    }
 }

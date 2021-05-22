@@ -22,7 +22,10 @@ public class RecordServiceImpl implements RecordService{
         return recordDAO.getRecordsByUserEmail(userEmail);
     }
 
-
+    @Override
+    public void deleteOneRecord(Record record) {
+        recordDAO.deleteOneRecord(record);
+    }
 
 
 }

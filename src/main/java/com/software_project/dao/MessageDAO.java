@@ -6,6 +6,7 @@ import com.software_project.pojo.Message;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+import sun.nio.cs.MS1250;
 
 import java.util.List;
 
@@ -37,5 +38,26 @@ public interface MessageDAO {
      * @param userEmail 用户邮箱
      */
     void clearNotReadMessage(String userEmail);
+
+    /**
+     * 获取某个用户的所有已读消息
+     * @param userEmail 用户邮箱
+     * @return 该用户的所有已读消息
+     */
+    List<Message> getAllReadMessage(String userEmail);
+
+    /**
+     * 获取一个用户的所有消息
+     * @param userEmail 用户邮箱
+     * @return 该用户的所有消息
+     */
+    List<Message> getAllMessage(String userEmail);
+
+
+    /**
+     * 删除某个用户的所有消息
+     * @param userEmail 用户邮箱
+     */
+    void deleteAllMessage(String userEmail);
 
 }
