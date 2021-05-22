@@ -4,58 +4,56 @@
 <view class="container" wx:if="{{isLogin}}">
   <view class="bluePad"></view>
   <view class="blueWave"></view>
-  <view class="fundCard">
-    <view class="holdTotalTitle">总金额(元)</view>
-    <view class="holdTotal">{{filters.toFix2(totalMoney)}}</view>
-    <view class="profits">
-      <!-- 成立以来涨跌幅 -->
-      <view class="item">
-        <view class="itemTitle">剩余金额(元)</view>
-        <view class="itemValue">{{filters.toFix2(user.money)}}</view>
+  <view class="content">
+    <view class="fundCard">
+      <view class="holdTotalTitle">总金额(元)</view>
+      <view class="recPart">
+        <navigator class="subRec tradeRec" url="/pages/totalTradeRec/totalTradeRec">
+          <image src="../../image/tradeRec.png" style="height:40rpx;" mode="heightFix"></image>
+          <view class="recNote">交易记录</view>
+        </navigator>
       </view>
-      <!-- 日涨跌幅 -->
-      <view class="middleItem">
-        <view class="itemTitle">持有收益(元)</view>
-        <view class="itemValue">{{filters.toFix2(user.holdProfit)}}</view>
-      </view>
-      <!-- 净值 -->
-      <view class="item">
-        <view class="itemTitle">累计收益(元)</view>
-        <view class="itemValue">{{filters.toFix2(user.totalProfit)}}</view>
-      </view>
-    </view>
-  </view>
-  <view class="recPart">
-    <navigator class="subRec incomeDetail" url="/pages/incomeDetail/incomeDetail">
-      <image src="../../image/incomeDetail.png" style="height: 40rpx" mode="heightFix"></image>
-      <view class="recNote">收益明细</view>
-    </navigator>
-    <navigator class="subRec tradeRec" url="/pages/totalTradeRec/totalTradeRec">
-      <image src="../../image/tradeRec.png" style="height:40rpx" mode="heightFix"></image>
-      <view class="recNote">交易记录</view>
-    </navigator>
-  </view>
-  <view class="headPart">
-    <view class="holdHeadItems">
-      <!-- 成立以来涨跌幅 -->
-      <view class="holdHeadLeftItem">
-        <view class="itemTitle">基金名称</view>
-      </view>
-      <!-- 日涨跌幅 -->
-      <view class="holdHeadMiddleItem">
-        <view class="itemTitle">金额/昨日收益</view>
-      </view>
-      <!-- 净值 -->
-      <view class="holdHeadRightItem">
-        <view class="itemTitle">持有收益/率</view>
+      <view class="holdTotal">{{filters.toFix2(totalMoney)}}</view>
+      <view class="profits">
+        <!-- 成立以来涨跌幅 -->
+        <view class="item">
+          <view class="itemTitle">剩余金额(元)</view>
+          <view class="itemValue">{{filters.toFix2(user.money)}}</view>
+        </view>
+        <!-- 日涨跌幅 -->
+        <view class="middleItem">
+          <view class="itemTitle">持有收益(元)</view>
+          <view class="itemValue">{{filters.toFix2(user.holdProfit)}}</view>
+        </view>
+        <!-- 净值 -->
+        <view class="item">
+          <view class="itemTitle">累计收益(元)</view>
+          <view class="itemValue">{{filters.toFix2(user.totalProfit)}}</view>
+        </view>
       </view>
     </view>
-  </view>
-  <view class="listPart">
-    <block wx:for="{{funds.length}}">
-      <holdFundGeneral fundInfo="{{funds[index]}}"></holdFundGeneral>
-      <view class="divLine"></view>
-    </block>
+    <view class="headPart">
+      <view class="holdHeadItems">
+        <!-- 成立以来涨跌幅 -->
+        <view class="holdHeadLeftItem">
+          <view class="itemTitle">基金名称</view>
+        </view>
+        <!-- 日涨跌幅 -->
+        <view class="holdHeadMiddleItem">
+          <view class="itemTitle">金额/昨日收益</view>
+        </view>
+        <!-- 净值 -->
+        <view class="holdHeadRightItem">
+          <view class="itemTitle">持有收益/率</view>
+        </view>
+      </view>
+    </view>
+    <view class="listPart">
+      <block wx:for="{{funds.length}}">
+        <holdFundGeneral fundInfo="{{funds[index]}}"></holdFundGeneral>
+        <view class="divLine"></view>
+      </block>
+    </view>
   </view>
 </view>
 <view class="head">

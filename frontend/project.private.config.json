@@ -62,7 +62,7 @@
         {
           "name": "pages/holdFundDetail/holdFundDetail",
           "pathName": "pages/holdFundDetail/holdFundDetail",
-          "query": "fundCode=000248",
+          "query": "fundCode=161005",
           "scene": null
         },
         {
@@ -110,6 +110,7 @@
         {
           "name": "pages/myComments/myComments",
           "pathName": "pages/myComments/myComments",
+          "query": "",
           "scene": null
         }
       ]

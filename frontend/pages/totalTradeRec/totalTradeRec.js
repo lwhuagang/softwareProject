@@ -1,4 +1,5 @@
 import common from "../../utils/public.js";
+let config = require("../../config.js");
 const app = getApp();
 let {
   getDealRecord
@@ -47,8 +48,35 @@ Page({
               res => {
                 tempNames[res.data.data.code] = res.data.data.name;
                 for (i = 0; i < length; i++) {
-                  tempRecords[i].time = this.UTCformat(tempRecords[i].time);
+                  tempRecords[i]["showTime"] = this.UTCformat(tempRecords[i].time);
                   tempRecords[i]["fundName"] = tempNames[tempRecords[i].fundCode];
+                  if (tempRecords[i].flag == 0) {
+                    var buytime = new Date(tempRecords[i].time); //买入基金的时间
+                    var nowtime = new Date();
+                    if (buytime.getDate() == nowtime.getDate()) {
+                      console.log("date:", buytime.getDate(), ' ', nowtime.getDate());
+                      if (nowtime.getHours() < 15) {
+                        tempRecords[i]["delete"] = true;
+                      } else {
+                        if (buytime.getHours() >= 15) {
+                          tempRecords[i]["delete"] = true;
+                        } else {
+                          tempRecords[i]["delete"] = false;
+                        }
+                      }
+                    } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours > 15) {
+                      if (nowtime.getHours() < 15) {
+                        tempRecords[i]["delete"] = true;
+                      } else {
+                        tempRecords[i]["delete"] = false;
+                      }
+                    } else {
+                      tempRecords[i]["delete"] = false;
+                    }
+
+                  } else {
+                    tempRecords[i]["delete"] = false;
+                  }
                 }
                 console.log("Records:", tempRecords);
                 this.setData({
@@ -101,6 +129,33 @@ Page({
                 for (i = 0; i < length; i++) {
                   tempRecords[i]["showTime"] = this.UTCformat(tempRecords[i].time);
                   tempRecords[i]["fundName"] = tempNames[tempRecords[i].fundCode];
+                  if (tempRecords[i].flag == 0) {
+                    var buytime = new Date(tempRecords[i].time); //买入基金的时间
+                    var nowtime = new Date();
+                    if (buytime.getDate() == nowtime.getDate()) { //当天买入
+                      console.log("date:", buytime.getDate(), ' ', nowtime.getDate());
+                      if (nowtime.getHours() < 15) { //现在时间：当天收盘前，当天收盘前买入，可取消
+                        tempRecords[i]["delete"] = true;
+                      } else { //当天收盘后
+                        if (buytime.getHours() >= 15) { //当天收盘后买入，仍可取消 
+                          tempRecords[i]["delete"] = true;
+                        } else { // 当天收盘前买入，不可取消
+                          tempRecords[i]["delete"] = false;
+                        }
+                      }
+                    } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours > 15) { //昨天收盘后买入
+                      if (nowtime.getHours() < 15) {
+                        tempRecords[i]["delete"] = true;
+                      } else {
+                        tempRecords[i]["delete"] = false;
+                      }
+                    } else {
+                      tempRecords[i]["delete"] = false;
+                    }
+
+                  } else {
+                    tempRecords[i]["delete"] = false;
+                  }
                 }
                 console.log("Records:", tempRecords);
                 this.setData({
@@ -161,11 +216,104 @@ Page({
     return res;
   },
 
-  deleteRecord: function () {
-    wx.showModal({
-      title: "撤销交易记录",
-      content: "此处应链接撤销交易记录的后端接口",
-      cancelColor: 'cancelColor',
+  deleteRecord: function (e) {
+    var code = e.currentTarget.dataset.code;
+    var time = e.currentTarget.dataset.time;
+    console.log("email & fundcode & time: ", app.globalData.userInfo.email," ", code, " ", time)
+    wx.request({
+      url: config.service + '/user/deleteOneRecord',
+      method: "POST",
+      data: {
+        userEmail: app.globalData.userInfo.email,
+        fundCode: code,
+        time: time
+      },
+      success: res => {
+        if (res.statusCode == "200") {
+          if (res.data.message == "删除一条未完成的处理记录") {
+            wx.showModal({
+              title: "删除成功!",
+              cancelColor: 'cancelColor',
+            });
+            var tempRecords;
+            getDealRecord(
+              app.globalData.userInfo.email,
+              res => {
+                tempRecords = res.data.obj;
+                var length = tempRecords.length;
+                var i;
+                var tempNames = new Array(); //
+                for (i = 0; i < length; i++) {
+                  if (i != length - 1) {
+                    getFundDetail({
+                        code: tempRecords[i].fundCode,
+                        token: "atTPd9c8sA"
+                      },
+                      res => {
+                        tempNames[res.data.data.code] = res.data.data.name;
+                      }
+                    );
+                  } else {
+                    getFundDetail({
+                        code: tempRecords[i].fundCode,
+                        token: "atTPd9c8sA"
+                      },
+                      res => {
+                        tempNames[res.data.data.code] = res.data.data.name;
+                        for (i = 0; i < length; i++) {
+                          tempRecords[i]["showTime"] = this.UTCformat(tempRecords[i].time);
+                          tempRecords[i]["fundName"] = tempNames[tempRecords[i].fundCode];
+                          if (tempRecords[i].flag == 0) {
+                            var buytime = new Date(tempRecords[i].time); //买入基金的时间
+                            var nowtime = new Date();
+                            if (buytime.getDate() == nowtime.getDate()) { //当天买入
+                              console.log("date:", buytime.getDate(), ' ', nowtime.getDate());
+                              if (nowtime.getHours() < 15) { //现在时间：当天收盘前，当天收盘前买入，可取消
+                                tempRecords[i]["delete"] = true;
+                              } else { //当天收盘后
+                                if (buytime.getHours() >= 15) { //当天收盘后买入，仍可取消 
+                                  tempRecords[i]["delete"] = true;
+                                } else { // 当天收盘前买入，不可取消
+                                  tempRecords[i]["delete"] = false;
+                                }
+                              }
+                            } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours > 15) { //昨天收盘后买入
+                              if (nowtime.getHours() < 15) {
+                                tempRecords[i]["delete"] = true;
+                              } else {
+                                tempRecords[i]["delete"] = false;
+                              }
+                            } else {
+                              tempRecords[i]["delete"] = false;
+                            }
+
+                          } else {
+                            tempRecords[i]["delete"] = false;
+                          }
+                        }
+                        console.log("Records:", tempRecords);
+                        this.setData({
+                          records: tempRecords
+                        })
+                      }
+                    );
+                  }
+                }
+              }
+            )
+          } else {
+            wx.showModal({
+              title: "删除失败！",
+              cancelColor: 'cancelColor',
+            })
+          }
+        } else {
+          wx.showModal({
+            title: "删除失败！",
+            cancelColor: 'cancelColor',
+          })
+        }
+      }
     })
   },
 })

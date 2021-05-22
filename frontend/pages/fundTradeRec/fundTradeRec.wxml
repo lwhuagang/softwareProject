@@ -26,8 +26,8 @@
       </navigator>
         <view class="MoneyAndDelete">
           <view class="tradeNum"> {{tool.toFix2(records[index].count)}}元</view>
-          <block wx:if="{{!records[index].flag}}">
-            <view class="delete" bindtap="deleteRecord">取 消</view>
+          <block wx:if="{{records[index].delete}}">
+            <view class="delete" bindtap="deleteRecord" data-code="{{records[index].fundCode}}" data-time="{{records[index].time}}">取 消</view>
           </block>
         </view>
       </view>

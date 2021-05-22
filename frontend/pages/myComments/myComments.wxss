@@ -1,5 +1,7 @@
 /* pages/myComments/myComments.wxss */
-
+Page{
+  background-color: #f8f8f8;
+}
 .head {
   position: fixed;
   width: 100%;
@@ -12,28 +14,38 @@
   height:10px
 }
 .container {
+  
+  display: flex;
+  flex-direction: column;
+  
   position: absolute;
   width: 100%;
-  margin-top: 130rpx;
+  margin-top:130rpx;
 }
 .comment{
   display: flex;
   flex-direction: column;
   background: white;
-  border-radius: 10%;
+  
+  border-radius: 30rpx;
   margin-bottom: 10px;
 }
 .commentHead{
   width: 100%;
   display: flex;
+  height: 130rpx;
+  margin-top: 30rpx;
+  margin-left: 20rpx;
 }
 .txt{
   word-break: break-all;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 35rpx;
+  text-indent: 2em;
 }
 .headPic{
-  height:40px
+  height:40px;
+  margin-right:20rpx;
 }
 .headPic image{
   height: 40px;
@@ -58,6 +70,24 @@
   background-color: #4053a3;
 }
 .fundName{
+  width: 90%;
   font-size: small;
   color: #666666;
+  margin-bottom: 30rpx;
+  margin-right: 30rpx;
+  text-align: right;
+}
+.delete {
+  width: 35%;
+  background-color: rgb(255, 255, 255);
+  height: 50rpx;
+  margin-left: 10px;
+  text-align: right;
+}
+
+.deleteText {
+  color: rgb(38, 80, 136);
+  padding-top: 5rpx;
+  padding-left: 20rpx;
+  text-align: right;
 }

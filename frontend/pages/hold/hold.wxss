@@ -1,5 +1,8 @@
 /* pages/hold/hold.wxss */
 /* pages/fundDetail/fundDetail.wxss */
+Page{
+  background-color: #f8f8f8;
+}
 .head{
   position: fixed;
   width: 100%;
@@ -8,9 +11,6 @@
   top:0;
 }
 .container {
-  height: 1500px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   position: absolute;
   width: 100%;
@@ -33,6 +33,10 @@
   height: 150rpx;
   border-radius: 200%;
 }
+.content{
+  margin-left: 5%;
+  margin-bottom: 100rpx;
+}
 .fundCard {
   display: flex;
   position: relative;
@@ -42,6 +46,7 @@
   width: 86%;
   height: 390rpx;
   margin-top: 30rpx;
+  margin-bottom: 40rpx;
   background: white;
   padding-left: 25rpx;
   padding-right: 25rpx;
@@ -52,7 +57,8 @@
   align-items: center;
   text-align: center;
   justify-content: center;
-  margin-top: 20rpx;
+  margin-top: 30rpx;
+  margin-bottom: 25rpx;
   font-size: 70rpx;
   color: #1769db;
 }
@@ -159,7 +165,8 @@
   border-top: 1rpx solid #dcdcdc;
   border-left: 1rpx solid #dcdcdc;
   border-right: 1rpx solid #dcdcdc;
-  border-radius: 10rpx;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -296,23 +303,22 @@
 
 .recPart{
   display: flex;
-  border: 1rpx solid #dcdcdc;
   border-radius: 15rpx;
   background: white;
-  margin-top: 17rpx;
+  margin-top: -90rpx;
   margin-bottom: 17rpx;
-  padding:5rpx 0;
-  width: 93%;
+  width: 30%;
+  justify-content: center;
 }
 .subRec{
   display: flex;
   padding-bottom: 0;
-  flex-direction: column;
-  width: 50%;
+  width: 100%;
   align-items: center;
 }
 .recNote{
-  font-size: small;
+  font-size: smaller;
+  color: #343e52;
 }
 .incomeDetail{
   height: 80rpx;

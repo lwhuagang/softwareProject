@@ -8,14 +8,17 @@
           <image src="../../image/userInfo.jpg" ></image>
         </view>
         <view class="nickNameAndTime">
-          <view class="nickName">{{item.nickname}}</view>
-          <view class="time">{{item.time}}</view>
+          <view class="nickName">{{comments[index].nickname}}</view>
+          <view class="time">{{comments[index].time}}</view>
         </view>
+        <view class="delete">
+            <view class="deleteText" bindtap="deleteComment" data-id="{{comments[index].id}}">删除</view>
+          </view>
       </view>
       <view class="txt">
-        {{item.comment}}
+        {{comments[index].comment}}
       </view>
-      <view class="fundName">---------发自 {{item.fundName}} 讨论区</view>
+      <view class="fundName">---------发自 {{comments[index].fundName}} 讨论区</view>
     </view>
   </block>
 </view>

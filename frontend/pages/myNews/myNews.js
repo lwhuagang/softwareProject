@@ -223,8 +223,8 @@ Page({
                   if (allNews[i].read == 1) {
                     allNews[i].showTime = that.BeijingTime(allNews[i].time);
                     if (allNews[i].messageType == 0) {
-                      allNews[i].expectWorthDate = that.BeijingTime(allNews[i].expectWorthDate).substring(0, 10);
-                      allNews[i].netWorthDate = that.BeijingTime(allNews[i].netWorthDate).substring(0, 10);
+                      allNews[i].expectWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
+                      allNews[i].netWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
                     }
                     tmpList.push(allNews[i]);
                   }
