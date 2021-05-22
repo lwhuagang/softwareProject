@@ -3,7 +3,7 @@
 <mapper namespace="com.software_project.dao.MessageDAO">
 
     <insert id="insertMessageOne" parameterType="com.software_project.pojo.Message">
-        insert into message (userEmail, fundCode, fundname, addWarehouse, netWorthDate, netWorth, expectWorthDate, expectWorth, time,messageType, `read`)
+        insert into message (userEmail, fundCode, fundName, addWarehouse, netWorthDate, netWorth, expectWorthDate, expectWorth, time,messageType, `read`)
         values (#{userEmail}, #{fundCode}, #{fundName}, #{addWarehouse}, #{netWorthDate}, #{netWorth}, #{expectWorthDate}, #{expectWorth}, NOW(), 0, 0);
     </insert>
     <insert id="insertMessageTwo" parameterType="com.software_project.pojo.FeedBack">

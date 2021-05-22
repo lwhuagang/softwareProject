@@ -13,6 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Prediction implements Comparable<Prediction>{
     private String fundCode;
+    private String fundName;
     private double day1;
     private double day2;
     private double day3;
