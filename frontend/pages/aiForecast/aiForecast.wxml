@@ -1,10 +1,18 @@
 <!--pages/hot/hot.wxml-->
 <view class="container">
-  <view>
+  <!-- <view>
     <block wx:for="{{funds.length}}">
-      <fundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}"></fundGeneral>
+      <fundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}" onlyCode="yes"></fundGeneral>
       <view class="divLine"></view>
     </block>
+  </view> -->
+  <view class="searchResContainer">
+    <scroll-view scroll-y style="height:100%;" bindscrolltolower="onReachBottom">
+      <block wx:for="{{funds.length}}">
+        <fundGeneral showType="netWorth" periodType="r" fundInfo="{{funds[index]}}"></fundGeneral>
+        <view class="divLine"></view>
+      </block>
+    </scroll-view>
   </view>
 </view>
 <view class="head">
