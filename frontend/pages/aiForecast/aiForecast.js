@@ -1,5 +1,6 @@
 // pages/hot/hot.js
-const app = getApp()
+const app = getApp();
+let config = require("../../config.js");
 let {
   getFund,
   getFundPosition,
@@ -16,23 +17,62 @@ Page({
    */
   data: {
     funds:[],
+    fundCodes:[],
+    tmpList:[],
+    searchParam:{
+      pageIndex:1,
+      pageSize:11,
+      token:"atTPd9c8sA"//修改时删去
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    getHotFund(
-      res=>{
-        this.setData({
-          funds:res.data.data.rank
-        });
-        console.log("获得热门基金===>");
-        console.log(this.data.funds);
+    var that = this;
+    wx.request({
+      //待后端分页功能实现之后，使用注释里面的url与method
+      // url: config.service+'/fund/getAllPre',
+      // method:"GET",
+      url:"https://api.doctorxiong.club/v1/fund/rank",
+      method:"POST",
+      data:this.data.searchParam,
+      success:res=>{
+          console.log(res);
+          that.setData({
+            funds:res.data.data.rank,
+          })
       }
-    )
+    })
   },
-
+  loadMore:function(){
+    console.log("加载更多");
+    let tmpSearchParam={
+      pageIndex:this.data.searchParam.pageIndex+1,
+      pageSize:this.data.searchParam.pageSize,
+      token:"atTPd9c8sA",
+    };
+    this.setData({
+      searchParam:tmpSearchParam
+    });
+    let tmpList = this.data.funds;
+    getFundRank(this.data.searchParam, res => {
+      console.log(res);
+      wx.showToast({
+        title: '数据加载中',
+        icon: 'loading',
+        duration: 3000,
+      });
+      res.data.data.rank.forEach(i=>{
+        tmpList.push(i);
+      })
+      this.setData({
+        funds:tmpList
+      });
+      wx.hideToast();
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -72,7 +112,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+      this.loadMore();
   },
 
   /**
