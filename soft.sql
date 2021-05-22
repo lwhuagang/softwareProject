@@ -14,7 +14,7 @@
  Date: 11/05/2021 15:21:15
 */
 
-SET NAMES utf8mb4;
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -29,7 +29,7 @@ CREATE TABLE `attention`  (
   INDEX `fundCode`(`fundCode`) USING BTREE,
   CONSTRAINT `attention_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `attention_ibfk_2` FOREIGN KEY (`fundCode`) REFERENCES `fund` (`code`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '自选列表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '自选列表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of attention
@@ -41,10 +41,10 @@ INSERT INTO `attention` VALUES ('taozhuo2000@163.com', '008099', '2021-05-10 15:
 -- ----------------------------
 DROP TABLE IF EXISTS `browse`;
 CREATE TABLE `browse`  (
-  `userEmail` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `fundCode` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `userEmail` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `fundCode` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`userEmail`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of browse
@@ -62,7 +62,7 @@ CREATE TABLE `feedback`  (
   `flag` tinyint NULL DEFAULT 0,
   `time` datetime(0) NOT NULL,
   PRIMARY KEY (`userEmail`, `time`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of feedback
@@ -12501,7 +12501,7 @@ CREATE TABLE `hold`  (
   INDEX `fundCode`(`fundCode`) USING BTREE,
   CONSTRAINT `hold_ibfk_1` FOREIGN KEY (`userEmail`) REFERENCES `user` (`email`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `hold_ibfk_2` FOREIGN KEY (`fundCode`) REFERENCES `fund` (`code`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of hold
@@ -12526,7 +12526,7 @@ CREATE TABLE `record`  (
   INDEX `record_ibfk_2`(`fundCode`) USING BTREE,
   CONSTRAINT `record_ibfk_1` FOREIGN KEY (`userEmail`) REFERENCES `user` (`email`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `record_ibfk_2` FOREIGN KEY (`fundCode`) REFERENCES `fund` (`code`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of record
@@ -12541,10 +12541,10 @@ INSERT INTO `record` VALUES ('taozhuo2000@163.com', '008099', 0, '2021-05-07 03:
 -- ----------------------------
 DROP TABLE IF EXISTS `searchhistory`;
 CREATE TABLE `searchhistory`  (
-  `userEmail` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `searchString` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `userEmail` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `searchString` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`userEmail`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of searchhistory
