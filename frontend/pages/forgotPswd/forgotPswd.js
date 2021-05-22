@@ -127,9 +127,9 @@ Page({
         },
         success:res=>{
           console.log(res);
-          if(res.data.code==200 && res.data.message=="修改密码成功") {
+          if(res.data.code==200 && res.data.message=="重置密码成功!") {
             wx.showToast({
-              title: '修改密码成功',
+              title: '重置密码成功',
               duration:2000,
               icon:"success",
             });
@@ -140,7 +140,7 @@ Page({
             },1000)
           } else {
             wx.showToast({
-              title: '修改密码失败',
+              title: '重置密码失败',
               duration:2000,
               icon:"error",
             })

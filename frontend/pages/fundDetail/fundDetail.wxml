@@ -48,6 +48,7 @@
   </view>
   <!-- 走势图 -->
   <view class="linePart">
+    <view class="lineTitle">业绩走势</view>
     <ec-canvas wx:if="{{loadLineOK}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line }}"
       force-use-old-canvas="true"></ec-canvas>
   </view>

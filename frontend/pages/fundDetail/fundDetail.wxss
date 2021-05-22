@@ -50,7 +50,7 @@
   height: 80rpx;
   display: flex;
   align-items: center;
-  font-size: 35rpx;
+  font-size: 40rpx;
   margin-top: 20rpx;
 }
 .fundCodeAndType {
@@ -136,14 +136,17 @@
   margin-top: 16rpx;
   margin-left: 20rpx;
 }
+.lineTitle{
+  margin-top: 0rpx;
+  font-size: large;
 
+}
 .detailLine {
   width: 100%;
   height: 500rpx;
 }
 .linePart{
   width: 94%;
-  height: 500rpx;
   border: 1rpx solid #dcdcdc;
   display: flex;
   flex-direction: column;
@@ -172,7 +175,7 @@
   justify-content: center;
   align-items: center;
   border-bottom: 3rpx solid #9a9ba2;
-  font-size: medium;
+  font-size: large;
 }
 .growthLegend{
   width: 98%;

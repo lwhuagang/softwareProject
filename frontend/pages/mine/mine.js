@@ -217,5 +217,77 @@ Page({
         }
       })
     }
+  },
+
+  reset(){
+    wx.showModal({
+      title: '确定要重置所有用户数据吗',
+      content: '会重置所有的历史数据，并重新设置一个初始总资产',
+      success: (res)=> {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.showModal({
+            cancelColor: 'cancelColor',
+            editable:true,
+            title:"请输入初始用户总资产",
+            success:(res)=>{
+              if (res.confirm){
+                console.log(res)
+                wx.request({
+                  url: config.service + '/user/resetAll',
+                  data:{
+                    email: app.globalData.userInfo.email,
+                    money: parseFloat(res.content) 
+                  },
+                  method:"POST",
+                  success:(res)=>{
+                    console.log(res)
+                    wx.showToast({
+                      title: '重置成功',
+                      icon:"success"
+                    })
+                  },
+                  fail:(res)=>{
+                    console.log(res)
+                  }
+                })
+              }
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
+  addMoney(res){
+    // console.log(res)
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title:"请输入您想要增加的余额",
+      editable:true,
+      success(res){
+        if (res.confirm){
+          wx.request({
+            url: config.service + '/user/addMoney',
+            method:"POST",
+            data:{
+              email:app.globalData.userInfo.email,
+              money:parseFloat(res.content)
+            },
+            success:(res)=>{
+              console.log(res)
+              wx.showToast({
+                title: '增加成功',
+                icon:"success"
+              })
+            }    
+          })
+        }
+        // console.log(res.content)
+       
+      }
+    })
   }
 })

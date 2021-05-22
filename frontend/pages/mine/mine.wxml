@@ -29,24 +29,24 @@
         </image>
       </view>
       <view class="middle">
-        <view class="middleBlock">
+        <view class="middleBlock" bindtap="reset">
           <view class="middleBlockImg">
             <image src="../../image/setting.png"></image>
           </view>
           <view class="middleBlockText">重置数据</view>
         </view>
-        <view class="middleBlock">
+        <view class="middleBlock" bindtap="addMoney">
           <view class="middleBlockImg">
             <image src="../../image/money.png"></image>
           </view>
           <view class="middleBlockText">增加余额</view>
         </view>
-        <view class="middleBlock">
+        <navigator url="/pages/myComments/myComments" class="middleBlock" >
           <view class="middleBlockImg">
             <image src="../../image/psw.png"></image>
           </view>
           <view class="middleBlockText">我的评论</view>
-        </view>
+        </navigator>
       </view>
       <view class="bottom">
         <navigator class="bottomBlock" url="/pages/feedback/feedback">

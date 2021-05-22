@@ -16,6 +16,7 @@
   width:100%;
   position: absolute;
   margin-top: 130rpx;
+  background:white;
 }
 
 .readAndClear{

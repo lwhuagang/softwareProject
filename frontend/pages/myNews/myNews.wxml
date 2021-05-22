@@ -23,7 +23,7 @@
         </view>
         <view class="newsBlock" wx:if="{{news[index].messageType==0}}">
           <view class="newsTitle">
-            <view class="titleText">基金{{news[index].addWarehouse?"加仓":"清仓"}}提醒</view>
+            <view class="titleText">基金{{(news[index].expectWorth-news[index].netWorth)>0?"加仓":"清仓"}}提醒</view>
           </view>
           <view class="newsContent">
             <view class="contentText">{{news[index].fundCode}}  {{news[index].fundName}}</view>
@@ -31,7 +31,7 @@
             <view class="contentText">【{{news[index].netWorthDate}}】 {{news[index].netWorth}}</view>
             <view class="contentText">{{(news[index].expectWorth-news[index].netWorth)>0?"上涨至":"下跌至"}}： </view>
             <view class="contentText">【{{news[index].expectWorthDate}}】 {{news[index].expectWorth}}</view>
-            <view class="contentText">预计{{(news[index].expectWorth-news[index].netWorth)>0?"涨幅":"跌幅"}}较大，请参考考虑是否{{news[index].addWarehouse?"加仓":"清仓"}}。</view>
+            <view class="contentText">预计{{(news[index].expectWorth-news[index].netWorth)>0?"涨幅":"跌幅"}}({{filters.toFix2((news[index].expectWorth-news[index].netWorth)/news[index].netWorth*100)}}%)较大，请参考考虑是否{{(news[index].expectWorth-news[index].netWorth)>0?"加仓":"清仓"}}。</view>
           </view>
           <navigator class="more" url="/pages/holdFundDetail/holdFundDetail?fundCode={{news[index].fundCode}}">
             <view class="moreText">查看持有基金详情</view>
