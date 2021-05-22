@@ -16,4 +16,8 @@
     <select id="getRespondCommentsByID" resultType="com.software_project.pojo.Comment" parameterType="int">
         select * from soft.comment where toCommentID = #{id};
     </select>
+    <select id="getCommentByUserEmail" resultType="com.software_project.pojo.Comment"
+            parameterType="java.lang.String">
+        select * from soft.comment where  userEmail = #{userEmail};
+    </select>
 </mapper>

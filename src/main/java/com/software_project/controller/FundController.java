@@ -1,19 +1,14 @@
 package com.software_project.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.software_project.pojo.Attention;
-import com.software_project.pojo.Fund;
-import com.software_project.pojo.Hold;
-import com.software_project.pojo.Record;
-import com.software_project.service.AttentionService;
-import com.software_project.service.FundService;
-import com.software_project.service.HoldService;
-import com.software_project.service.RecordService;
+import com.software_project.pojo.*;
+import com.software_project.service.*;
 import com.software_project.vo.HoldVO;
 import com.software_project.vo.Param_queryByParams;
 import com.software_project.vo.Param_searchFund;
 import com.software_project.vo.Param_userAndFund;
 import com.software_project.vo.Result;
+import com.sun.tools.classfile.ConstantPool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpEntity;
@@ -22,6 +17,9 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @RequestMapping("fund")
@@ -41,6 +39,9 @@ public class FundController {
 
     @Autowired
     private RecordService recordService;
+
+    @Autowired
+    private PredictionService predictionService;
 
     /**
      * 调用外部接口获取基金的详细信息
@@ -159,6 +160,37 @@ public class FundController {
         return new Result(200, funds, "按照页面获取数据库中基金信息");
     }
 
+    @GetMapping("getAllPre")
+    public Result getAllPre() {     // 获取所有的ai推荐基金，涨幅排序之后的结果
+        List<Prediction> allPrediction = predictionService.getAllPrediction();
+        for (Prediction prediction : allPrediction) {
+            prediction.setLastRate(lastWorthRate(prediction));
+        }
+        Collections.sort(allPrediction);
+        return new Result(200, allPrediction, "获取所有基金的AI预测排序结果，包括十五天的涨幅和最后一天的涨幅");
+    }
+
+    private double lastWorthRate(Prediction prediction){       // 用于判断是否需要进行加仓，true表示需要进行加仓，false表示需要清仓
+        Prediction preByFundCode = prediction;
+        return (1+preByFundCode.getDay1()*0.01)
+                *(1+preByFundCode.getDay2()*0.01)
+                *(1+preByFundCode.getDay3()*0.01)
+                *(1+preByFundCode.getDay4()*0.01)
+                *(1+preByFundCode.getDay5()*0.01)
+                *(1+preByFundCode.getDay6()*0.01)
+                *(1+preByFundCode.getDay7()*0.01)
+                *(1+preByFundCode.getDay8()*0.01)
+                *(1+preByFundCode.getDay9()*0.01)
+                *(1+preByFundCode.getDay10()*0.01)
+                *(1+preByFundCode.getDay11()*0.01)
+                *(1+preByFundCode.getDay12()*0.01)
+                *(1+preByFundCode.getDay13()*0.01)
+                *(1+preByFundCode.getDay14()*0.01)
+                *(1+preByFundCode.getDay15()*0.01);
+    }
+
+
+
     /**
      * 获取用户某个基金的待确认金额：未完成的交易记录中的金额
      * @param userEmail 用户邮箱
@@ -175,6 +207,9 @@ public class FundController {
         }
         return toVerifyMoney;
     }
+
+
+
 
 
 
