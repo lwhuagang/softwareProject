@@ -6,8 +6,8 @@
           <view class="fundName">{{fundInfo.fundName}}</view>
           <view class="fundCode">{{fundInfo.fundCode}}</view>
         </view>
-        <view class="expGrowthRed" wx:if="{{(fundInfo.lastRate-1)>=0}}">+{{filters.toFix2((fundInfo.lastRate-1)*100)}}%</view>
-        <view class="expGrowthGreen" wx:else>{{filters.toFix2((fundInfo.lastRate-1)*100)}}%</view>
+        <view class="expGrowthRed" style="margin-top:20rpx" wx:if="{{(fundInfo.lastRate-1)>=0}}">+{{filters.toFix2((fundInfo.lastRate-1)*100)}}%</view>
+        <view class="expGrowthGreen" style="margin-top:20rpx" wx:else>{{filters.toFix2((fundInfo.lastRate-1)*100)}}%</view>
         <!-- <view class="fundNet">
           <view class="netWorth">{{fundInfo.netWorth}}</view>
           <view class="netDate">{{tool.my_slice(fundInfo.netWorthDate,5,10)}}</view>

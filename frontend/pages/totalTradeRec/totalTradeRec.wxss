@@ -107,7 +107,7 @@
   align-items: center;
   padding-left: 10rpx;
   padding-right: 10rpx;
-  font-size: smaller;
+  font-size: small;
 }
 
 .divLine {

@@ -3,6 +3,7 @@
   position: absolute;
   margin-top:130rpx;
   width:100%;
+  background:white;
 }
 .divLine{
   height: 1rpx;
@@ -24,11 +25,15 @@
   background:#e6e6e6;
   z-index: 99;
   display: flex;
+  padding-top: 15rpx;
 }
 .fundContainer{
-  margin-top:60rpx;
+  margin-top:70rpx;
 }
 .nameHeader{
-  width: 58%;
+  width: 65%;
   padding-left: 20rpx;
+}
+.growthHeader{
+  width: 35%;
 }

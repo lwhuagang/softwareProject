@@ -31,6 +31,7 @@ Page{
   position: absolute;
   width: 200%;
   height: 150rpx;
+  margin-left: -50%;
   border-radius: 200%;
 }
 .content{
@@ -305,7 +306,7 @@ Page{
   display: flex;
   border-radius: 15rpx;
   background: white;
-  margin-top: -90rpx;
+  margin-top: -84rpx;
   margin-bottom: 17rpx;
   width: 30%;
   justify-content: center;

@@ -13,6 +13,7 @@ Page({
     "user": {
     },
     funds:[
+      /*
       {
           "name": "华夏成长混合",
           "type": "混合型",
@@ -39,35 +40,8 @@ Page({
               "-1902.3436830835112"
           ],
           "toVerifyMoney": 0.0
-      }
+      }*/
   ],
-    // funds: [{
-    //     "code": "111444",
-    //     "name": "银河创新成长混合",
-    //     "type": "股票型",
-    //     "buyMin": 200.0,
-    //     "buyMoney": 10000.89,
-    //     "yesProfit": 7.89,
-    //     "holdProfit": 102.79,
-    //     "holdProfitRate": 3.23,
-    //     "buySourceRate": 0.2,
-    //     "buyRate": 0.2,
-    //     "manager": "张强"
-    //   },
-    //   {
-    //     "code": "111444",
-    //     "name": "银河创新成长混合",
-    //     "type": "股票型",
-    //     "buyMin": 200.0,
-    //     "buyMoney": 10000.89,
-    //     "yesProfit": 7.89,
-    //     "holdProfit": 102.79,
-    //     "holdProfitRate": 3.23,
-    //     "buySourceRate": 0.2,
-    //     "buyRate": 0.2,
-    //     "manager": "张强"
-    //   }
-    // ],
     isLogin:null,
     totalMoney:0,
   },
@@ -76,6 +50,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onReady: function (options) {
+    /*
     this.setData({
       isLogin:app.globalData.isLogin
     })
@@ -128,6 +103,7 @@ Page({
       }
     )
     }
+    */
   },
   onShow: function () {
     this.setData({

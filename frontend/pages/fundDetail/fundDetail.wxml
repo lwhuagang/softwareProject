@@ -12,7 +12,7 @@
     </view>
     <view class="ratios">
       <!-- 成立以来涨跌幅 -->
-      <view class="totalGrowthRatio">
+      <view class="totalGrowthRatio" wx:if="{{fundInfo.netWorthData}}">
         <view class="totalGrowth">
           <block wx:if="{{fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]>=fundInfo.netWorthData[0][1]}}">
             <view class="redTotalGrowth">
@@ -28,7 +28,7 @@
         <view class="note1">成立以来涨跌幅</view>
       </view>
       <!-- 日涨跌幅 -->
-      <view class="dayGrowthRatio">
+      <view class="dayGrowthRatio" wx:if="{{fundInfo.dayGrowth}}">
         <view class="dayGrowth">
           <block wx:if="{{fundInfo.dayGrowth[0]=='-'}}">
             <view class="greenDayGrowth">{{fundInfo.dayGrowth}}%</view>
@@ -40,27 +40,27 @@
         <view class="note2">日涨跌幅</view>
       </view>
       <!-- 净值 -->
-      <view class="netWorthPart">
+      <view class="netWorthPart" wx:if="{{fundInfo.netWorth}}">
         <view class="netWorth">{{fundInfo.netWorth}}</view>
         <view class="netWorthDate">净值{{tool.my_slice(fundInfo.netWorthDate,5,10)}}</view>
       </view>
     </view>
   </view>
   <!-- 走势图 -->
-  <view class="linePart">
-    <view class="lineTitle">业绩走势</view>
-    <ec-canvas wx:if="{{loadLineOK}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line }}"
+  <view class="linePart" >
+    <view class="lineTitle">{{fundInfo.totalNetWorthData?"业绩走势":"对不起，我们还没有该基金走势数据"}}</view>
+    <ec-canvas wx:if="{{loadLineOK && fundInfo.totalNetWorthData}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line }}"
       force-use-old-canvas="true"></ec-canvas>
+    <image src="../../image/nodata.jpg" wx:if="{{!(loadLineOK && fundInfo.totalNetWorthData)}}" mode="widthFix"></image>
   </view>
   <!-- 涨幅数据 -->
   <view class="growthData">
     <view class="growthTitle">阶段涨幅</view>
-    <view class="divLine"></view>
     <view class="growthLegend">
       <view class="growthTimeNote">周期</view>
       <view class="growthNote">涨跌幅</view>
     </view>
-    <view class="growthItem lastWeek">
+    <view class="growthItem lastWeek" wx:if="{{fundInfo.lastWeekGrowth}}">
       <view class="growthTime">近1周</view>
       <view class="growthValue" wx:if="{{fundInfo.lastWeekGrowth==''}}"
         style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
@@ -70,7 +70,7 @@
         {{fundInfo.lastWeekGrowth}}%</view>
     </view>
     <view class="divLine"></view>
-    <view class="growthItem lastMonth">
+    <view class="growthItem lastMonth" wx:if="{{fundInfo.lastMonthGrowth}}">
       <view class="growthTime">近1月</view>
       <view class="growthValue" wx:if="{{fundInfo.lastMonthGrowth==''}}"
         style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
@@ -80,7 +80,7 @@
         {{fundInfo.lastMonthGrowth}}%</view>
     </view>
     <view class="divLine"></view>
-    <view class="growthItem lastThreeMonths">
+    <view class="growthItem lastThreeMonths" wx:if="{{fundInfo.lastThreeMonthsGrowth}}">
       <view class="growthTime">近3月</view>
       <view class="growthValue" wx:if="{{fundInfo.lastThreeMonthsGrowth==''}}"
         style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
@@ -90,7 +90,7 @@
         {{fundInfo.lastThreeMonthsGrowth}}%</view>
     </view>
     <view class="divLine"></view>
-    <view class="growthItem lastSixMonths">
+    <view class="growthItem lastSixMonths" wx:if="{{fundInfo.lastSixMonthsGrowth}}">
       <view class="growthTime">近6月</view>
       <view class="growthValue" wx:if="{{fundInfo.lastSixMonthsGrowth==''}}"
         style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>
@@ -100,7 +100,7 @@
         {{fundInfo.lastSixMonthsGrowth}}%</view>
     </view>
     <view class="divLine"></view>
-    <view class="growthItem lastYear">
+    <view class="growthItem lastYear" wx:if="{{fundInfo.lastYearGrowth}}">
       <view class="growthTime">近1年</view>
       <view class="growthValue" wx:if="{{fundInfo.lastYearGrowth==''}}"
         style="width:50%;box-sizing:border-box;text-align:center;color:#b3abb3;font-size:small">暂无数据</view>

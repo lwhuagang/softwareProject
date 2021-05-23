@@ -3,6 +3,7 @@
   position: absolute;
   margin-top:130rpx;
   width:100%;
+  background: white;
 }
 .divLine{
   height: 1rpx;

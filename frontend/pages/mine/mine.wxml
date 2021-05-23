@@ -63,8 +63,8 @@
     </view>
   </view>
   <view wx:else>
+    <image class="loginImg" src="/image/background.png" mode="widthFix" />
     <form bindsubmit="login">
-      <image class="loginImg" src="/image/background.png" mode="widthFix" />
       <view class="loginContainer">
         <view class="loginInfo">
           <view class="hint">邮箱</view>

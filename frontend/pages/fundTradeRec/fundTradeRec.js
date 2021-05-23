@@ -40,6 +40,7 @@ Page({
           if (tempRecords[i].flag == 0) {
             var buytime = new Date(tempRecords[i].time); //买入基金的时间
             var nowtime = new Date();
+            //console.log(tempRecords[i].fundName," ",buytime.getDate()," ",buytime.getHours()," ",nowtime.getDate()," ")
             if (buytime.getDate() == nowtime.getDate()) {
               console.log("date:", buytime.getDate(), ' ', nowtime.getDate());
               if (nowtime.getHours() < 15) {
@@ -51,7 +52,7 @@ Page({
                   tempRecords[i]["delete"] = false;
                 }
               }
-            } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours > 15) {
+            } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours() >= 15) {
               if (nowtime.getHours() < 15) {
                 tempRecords[i]["delete"] = true;
               } else {
@@ -134,14 +135,16 @@ Page({
   deleteRecord: function (e) {
     var code = e.currentTarget.dataset.code;
     var time = e.currentTarget.dataset.time;
-    console.log("email & fundcode & time: ", app.globalData.userInfo.email, " ", code, " ", time)
+    var count = e.currentTarget.dataset.count;
+    //console.log("email & fundcode & time: ", app.globalData.userInfo.email," ", code, " ", time)
     wx.request({
       url: config.service + '/user/deleteOneRecord',
       method: "POST",
       data: {
         userEmail: app.globalData.userInfo.email,
         fundCode: code,
-        time: time
+        time: time,
+        count: count,
       },
       success: res => {
         if (res.statusCode == "200") {
@@ -163,6 +166,7 @@ Page({
                   if (tempRecords[i].flag == 0) {
                     var buytime = new Date(tempRecords[i].time); //买入基金的时间
                     var nowtime = new Date();
+                    //console.log(tempRecords[i].fundName," ",buytime.getDate()," ",buytime.getHours()," ",nowtime.getDate()," ")
                     if (buytime.getDate() == nowtime.getDate()) {
                       console.log("date:", buytime.getDate(), ' ', nowtime.getDate());
                       if (nowtime.getHours() < 15) {
@@ -174,7 +178,7 @@ Page({
                           tempRecords[i]["delete"] = false;
                         }
                       }
-                    } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours > 15) {
+                    } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours() >= 15) {
                       if (nowtime.getHours() < 15) {
                         tempRecords[i]["delete"] = true;
                       } else {
@@ -183,7 +187,7 @@ Page({
                     } else {
                       tempRecords[i]["delete"] = false;
                     }
-
+        
                   } else {
                     tempRecords[i]["delete"] = false;
                   }

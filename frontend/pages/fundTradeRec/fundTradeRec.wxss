@@ -109,3 +109,16 @@
   background: #9e9d9d;
   height: 3rpx;
 }
+
+
+.btn1{
+  background: #5484dd;
+  color:white;
+  border-radius: 5rpx;
+  height: 30%;
+  display: flex;
+  align-items: center;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  font-size: small;
+}

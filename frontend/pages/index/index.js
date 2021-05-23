@@ -18,12 +18,12 @@ Page({
       {
         name:'排行',
           url:'/pages/rank/rank',
-          img:'/image/rank_b.png'
+          img:'/image/rank.png'
       },
       {
         name:'热门',
           url:'/pages/hot/hot',
-          img:'/image/hot_b.jpg'
+          img:'/image/hot1.png'
       },
       // {
       //   name:'搜索',
@@ -38,7 +38,7 @@ Page({
       {
         name:'AI推荐',
         url:'/pages/aiForecast/aiForecast',
-        img:'/image/AI.jpg'
+        img:'/image/ai1.png'
       }],
       hotFunds:[],
       hotFundNum:4,

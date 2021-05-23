@@ -7,13 +7,13 @@
   top:0;
 }
 .container {
-  height: 3000rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   width:100%;
   position: absolute;
   margin-top:130rpx;
+  padding-bottom: 200rpx;
 }
 .bluePad {
   margin-top: 0rpx;
@@ -37,7 +37,7 @@
   position: absolute;
   flex-direction: column;
   border: 1rpx solid #dcdcdc;
-  border-radius: 15rpx;
+  border-radius: 20rpx;
   width: 86%;
   height: 330rpx;
   margin-top: 30rpx;
@@ -137,9 +137,8 @@
   margin-left: 20rpx;
 }
 .lineTitle{
-  margin-top: 0rpx;
+  margin-top: 30rpx;
   font-size: large;
-
 }
 .detailLine {
   width: 100%;
@@ -147,7 +146,9 @@
 }
 .linePart{
   width: 94%;
-  border: 1rpx solid #dcdcdc;
+  border: 1rpx solid #ebebeb;
+  border-radius: 15rpx;
+  box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
   display: flex;
   flex-direction: column;
   margin-top: 400rpx;
@@ -158,17 +159,17 @@
 }
 .growthData{
   width: 94%;
-  height: 420rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1rpx solid #dcdcdc;
+  border: 1rpx solid #ebebeb;
+  box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
   border-radius: 10rpx;
   margin-top: 50rpx;
   background: white;
 }
 .growthTitle {
-  width: 98%;
+  width: 100%;
   height: 60rpx;
   /* border: 1rpx solid green; */
   display: flex;
@@ -176,14 +177,21 @@
   align-items: center;
   border-bottom: 3rpx solid #9a9ba2;
   font-size: large;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
 }
 .growthLegend{
-  width: 98%;
+  width: 90%;
   height: 50rpx;
   display: flex;
   justify-content: space-around;
   border-bottom: 1rpx solid #dcdcdc;
   /* border: 1rpx solid blue; */
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  margin-bottom: 10rpx;
 }
 .growthTimeNote{
   color: #ababab;
@@ -197,13 +205,14 @@
 }
 .growthItem {
   width: 100%;
-  height: 60rpx;
+  height: 70rpx;
   /* border: 1rpx solid red; */
   display: flex;
   justify-content: space-around;
+  padding-top: 10rpx;
 }
 .divLine{
-  width: 100%;
+  width: 90%;
   background: #f5f5f5;
   height: 3rpx;
 }
@@ -214,32 +223,39 @@
   text-align: center;
 }
 .positionPie {
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
   width: 100%;
   height: 100%;
 }
 .positionPart{
   background: white;
   width: 94%;
-  height: 400rpx;
-  border: 1rpx solid #dcdcdc;
-  border-radius: 10rpx;
+  height: 550rpx;
+  border: 1rpx solid #ebebeb;
+  border-radius: 15rpx;
+  box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
   display: flex;
   flex-direction: column;
   margin-top: 50rpx;
 }
 .positionNote{
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
   width: 98%;
-  height: 80rpx;
+  height: 100rpx;
   border-bottom: 1rpx solid #dcdcdc;
   font-size: large;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 20rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
 }
 .total{
   position: absolute;
-  margin-top: 180rpx;
+  margin-top: 260rpx;
   margin-left:280rpx;
   /* 如果本模块前面样式修改了，这里很有可能对不到中心去 */
   display: flex;
@@ -271,10 +287,11 @@
 }
 .stockNote{
   width: 100%;
-  height: 60rpx;
+  height: 70rpx;
+  padding-top:8rpx;
   display: flex;
   justify-content: space-evenly;
-  border: 2rpx solid #f5f5f5;
+  border-bottom: 2rpx solid #f5f5f5;
   box-sizing: border-box;
   color: #6b6b6b;
 }
@@ -301,7 +318,7 @@
 .stockItem{
   display: flex;
   width: 100%;
-  height: 90rpx;
+  height: 100rpx;
   justify-content: space-evenly;
   border: 1rpx solid #f5f5f5;
   box-sizing: border-box;
@@ -357,9 +374,10 @@
 .docPart{
   width: 94%;
   background: white;
-  border: 1rpx solid #dcdcdc;
+  border: 1rpx solid #ebebeb;
+  border-radius: 15rpx;
+  box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
   margin-top: 50rpx;
-  border-radius: 10rpx;
 }
 .docNote{
   width: 98%;
@@ -370,6 +388,10 @@
   flex-direction: column;
   justify-content: center;
   padding-left: 20rpx;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+  background-color: #5484dd;
+  color: white;
 }
 .docItem{
   display: flex;

@@ -108,7 +108,38 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var code = options.fundCode;
+    var that = this;
+    console.log("code===>",code)
+    this.setData({
+      fundCode:code, //全局变量
+      totalProfit:options.totalProfit.split(",").map(Number) //这块真的太难受了，传的是个字符串，数字以逗号间隔
+    });
+    console.log("30天净值数据------------>")
+    console.log(this.data.totalProfit)
+    // console.log(this.data.totalProfit[2])
+    console.log([1,2,3,4])
+    wx.request({
+      url: config.service+'/fund/selfMsg',
+      method:"POST",
+      data:{
+        userEmail:app.globalData.userInfo.email,
+        fundCode:options.fundCode
+      },
+      success:(res)=>{
+        if(res.data.code==200 && res.data.message=="获取用户单个基金的资产详情") {
+          console.log("holdFundDetail===>",res);
+          this.setData({
+            holdDetail:res.data.obj
+          })
+        }
+      }
+    })
+    this.loadFundDetail(function(){
+      that.loadEcLine_acc();//累计盈亏
+      that.loadEcLine_worth();//业绩走势
+      that.loadEcLine_exp();//净值估算
+    });
   },
 
   /**

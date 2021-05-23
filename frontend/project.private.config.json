@@ -15,7 +15,7 @@
         {
           "name": "pages/fundDetail/fundDetail",
           "pathName": "pages/fundDetail/fundDetail",
-          "query": "000935",
+          "query": "fundCode=161005",
           "scene": null
         },
         {
@@ -37,12 +37,6 @@
           "scene": null
         },
         {
-          "name": "pages/fundTradeRec/fundTradeRec",
-          "pathName": "pages/fundTradeRec/fundTradeRec",
-          "query": "fundCode=000033&fundName=易方达信用债债券C",
-          "scene": null
-        },
-        {
           "name": "pages/rank/rank",
           "pathName": "pages/rank/rank",
           "query": "",
@@ -51,7 +45,7 @@
         {
           "name": "pages/holdFundDetail/holdFundDetail",
           "pathName": "pages/holdFundDetail/holdFundDetail",
-          "query": "",
+          "query": "fundCode=161005",
           "scene": null
         },
         {
