@@ -5,11 +5,11 @@
       <!-- 搜索框 -->
       <view class="search-bar__box">
         <icon class="search-bar_icon" type="search" size="22"></icon>
-        <input type="text" class="search-bar__input" bindtap = "showLog" bindinput="bindKeyInput" placeholder="请在此输入基金代码或基金名称" value="{{inputValue}}" />
+        <input type="text" class="search-bar__input" bindinput="bindKeyInput" placeholder="请在此输入基金代码或基金名称" value="{{inputValue}}" />
       </view>
     </view>
     <!-- 搜索按钮,调用搜索查询方法 -->
-    <text class="search-bar_cancel" bindtap="search">搜索</text>
+    <text class="search-bar_cancel" bindtap="jumpToIndex">取消</text>
   </view>
   <view class="history" wx:if="{{isLogin && history}}">
     <view class="history_title">
@@ -20,10 +20,10 @@
       <text wx:for="{{newArray}}" wx:key="key" data-text="{{item}}" bindtap="textfz">{{item}}</text>
     </view>
   </view>
-  
-  <view class="hotPart" wx:if="{{funds.length!=0}}">
+    <!-- inputValue长度判断：文本框中内容删除太快的情况下，渲染和清空缓存出现时差，导致文本框中无内容，但是仍存在搜索结果 -->
+  <view class="hotPart" wx:if="{{funds.length!=0 && inputValue.length!=0}}">
     <block wx:for="{{funds.length}}">
-      <blankFundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}"></blankFundGeneral>
+      <blankFundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}" bindtap="addHistory"></blankFundGeneral>
       <view class="divLine"></view>
     </block>
   </view>

@@ -61,9 +61,54 @@ Page({
     }
   },
 
+  addHistory: function (e) {
+    var searchtext = this.data.inputValue; //搜索框的值
+    //将搜索框的值赋给历史数组
+    if (this.data.historyArray.indexOf(searchtext) == -1) {
+      if (app.globalData.isLogin) {
+        this.data.historyArray.push(searchtext);
+        wx.request({
+          url: config.service + '/user/addSearch',
+          method: "POST",
+          data: {
+            userEmail: app.globalData.userInfo.email,
+            searchString: searchtext
+          },
+          success: res => {
+            if (res.statusCode == "200") {
+              console.log("历史记录添加成功")
+            } else {
+              console.log("历史记录添加失败")
+            }
+          },
+          fail: res => {
+            console.log("历史记录添加失败")
+          }
+        })
+      }
+    }
+  },
+
   bindKeyInput: function (e) {
     this.setData({
       inputValue: e.detail.value
+    })
+    if (this.data.inputValue.length != 0) {
+      this.search();
+    }
+    else {
+      this.showLog();
+      // 清空缓存
+      this.setData({
+        funds: []
+      })
+    }
+  },
+
+  jumpToIndex: function()
+  {
+    wx.switchTab({
+      url: '/pages/index/index'
     })
   },
 
@@ -71,30 +116,7 @@ Page({
   search: function (e) {
     var searchtext = this.data.inputValue; //搜索框的值
     if (searchtext != "") {
-      //将搜索框的值赋给历史数组
-      if (this.data.historyArray.indexOf(searchtext) == -1) {
-        if (app.globalData.isLogin) {
-          this.data.historyArray.push(searchtext);
-          wx.request({
-            url: config.service + '/user/addSearch',
-            method: "POST",
-            data: {
-              userEmail: app.globalData.userInfo.email,
-              searchString: searchtext
-            },
-            success: res => {
-              if (res.statusCode == "200") {
-                console.log("历史记录添加成功")
-              } else {
-                console.log("历史记录添加失败")
-              }
-            },
-            fail: res => {
-              console.log("历史记录添加失败")
-            }
-          })
-        }
-      }
+      // this.addHistory();
       this.setData({
         history: false, //隐藏历史记录
         newArray: this.data.historyArray //给新历史记录数组赋值
