@@ -4,7 +4,7 @@
 <wxs src="../../utils/util.wxs" module="tool" />
 <wxs module="filters" src="../../utils/addmul.wxs"></wxs>
 <view class="container">
-  <navigator class="fundInfoBlock" url="/pages/holdFundDetail/holdFundDetail?fundCode={{fundInfo.fundCode}}">
+  <navigator class="fundInfoBlock" url="/pages/holdFundDetail/holdFundDetail?fundCode={{fundInfo.fundCode}}&totalProfit={{[fundInfo.totalProfit]}}">
     <view class="fundNameAndCode">
       <view class="fundName">{{fundInfo.name}}</view>
       <view class="fundCode">{{fundInfo.fundCode}}</view>

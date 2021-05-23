@@ -1,5 +1,6 @@
 // pages/holdFundDetail/holdFundDetail.js
 import * as echarts from '../../ec-canvas/echarts';
+import common from "../../utils/public.js";
 const app = getApp();
 let {
   getFund,
@@ -34,7 +35,8 @@ Page({
     // posCost:0,//持仓成本价
     // holdPart:0,//持有份额
     lineChoice:"业绩走势",
-    holdDetail:null
+    holdDetail:null,
+    totalProfit:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -45,7 +47,12 @@ Page({
     console.log("code===>",code)
     this.setData({
       fundCode:code, //全局变量
+      totalProfit:options.totalProfit.split(",").map(Number) //这块真的太难受了，传的是个字符串，数字以逗号间隔
     });
+    console.log("30天净值数据------------>")
+    console.log(this.data.totalProfit)
+    // console.log(this.data.totalProfit[2])
+    console.log([1,2,3,4])
     wx.request({
       url: config.service+'/fund/selfMsg',
       method:"POST",
@@ -152,7 +159,7 @@ Page({
     if (this.data.fundInfo!=null){ 
       this.setData({
         ec_line_acc:{
-          onInit:this.drawLineChart_worth
+          onInit:this.drawLineChart_acc
         },
         loadLine_acc_OK:true
       })
@@ -185,13 +192,103 @@ Page({
     }
     return arr;
   },
+  drawLineChart_acc:function(canvas, width, height, dpr){
+   var date = new Date();
+   var timestamp = date.getTime()/1000
+
+   console.log(common.getMyData(timestamp,"Y-m-d"))
+   console.log()
+    var x = []
+    var totalProfit = this.data.totalProfit
+    var length = totalProfit.length
+    for (var index in totalProfit){
+      if (index == 0){
+        x.push(common.getMyData(timestamp - 3600*24*(length-1),"Y-m-d"))
+      }else if (index == length-1){
+        x.push(common.getMyData(timestamp,"Y-m-d"))
+      }
+      else{
+        x.push("")
+      }
+    }
+    console.log(x)
+    var y = this.data.totalProfit
+    // console.log("netWorth===>",netWorth)
+    
+    const chart = echarts.init(canvas, null, {
+      width: width,
+      height: height,
+      devicePixelRatio: dpr // new
+    });
+    canvas.setChart(chart);
   
+    var option = {
+      color: ["#37A2DA"],
+      // legend: {
+      //   data: ['本基金'],
+      //   top: 20,
+      //   left: 'center',
+      //   z: 100
+      // },
+      grid: {
+        containLabel: true,
+        bottom:20,
+        left:10,
+        y:20
+      },
+      tooltip: {
+        show: true,
+        trigger: 'axis'
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: x,
+        axisLabel:{
+          showMaxLabel:true,
+          showMinLable:true
+        },
+        axisTick :{
+          show : false
+        },
+        axisLine:{
+            lineStyle:{
+              type:'dashed',
+              opacity:0
+            },          
+        }
+         //show: false
+      },
+      yAxis: {
+        x: 'center',
+        type: 'value',
+        splitLine: {
+          lineStyle: {
+            type: 'dashed'
+          }
+        },
+        
+         //show: false
+      },
+      series: [{
+        symbol:'none',
+        name: '本基金',
+        type: 'line',
+        smooth: false,
+        data: y
+      }]
+    };
+  
+    chart.setOption(option);
+    return chart;
+  },
   drawLineChart_worth:function(canvas, width, height, dpr){
     var fundInfo = this.data.fundInfo;
     var netWorthData = fundInfo.totalNetWorthData;
     var netWorth = this.getCertainDimension(netWorthData,1);
     var netDate = this.getCertainDimension(netWorthData,0);
     console.log("netDate===>",netDate)
+    // console.log("netWorth===>",netWorth)
     
     const chart = echarts.init(canvas, null, {
       width: width,
