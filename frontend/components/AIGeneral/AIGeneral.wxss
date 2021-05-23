@@ -1,0 +1,38 @@
+/* components/fundGeneral/fundGeneral.wxss */
+.container{
+  /* border: 1rpx solid green; */
+  margin: 20rpx 20rpx;
+}
+.fundInfoBlock{
+  display: flex;
+  width: 100%;
+}
+.fundNameAndCode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5rpx;
+  /* border: 1rpx solid red; */
+  width: 60%;
+  border-right: 1rpx solid #dcdcdc;
+}
+.fundName {
+  overflow:hidden; 
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  /* 强制不换行，多的用省略号 */
+}
+.fundCode {
+  color: #c6c6c6;
+}
+.expGrowthRed{
+  text-align: center;
+  color:red;
+  margin-left: 70rpx;
+}
+.expGrowthGreen{
+  text-align: center;
+  color: green;
+  margin-left: 70rpx;
+}
+

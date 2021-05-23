@@ -17,3 +17,18 @@
   height: 100rpx;
   margin-top:0;
 }
+.selectHead{
+  width:100%;
+  height: 60rpx;
+  position: fixed;
+  background:#e6e6e6;
+  z-index: 99;
+  display: flex;
+}
+.fundContainer{
+  margin-top:60rpx;
+}
+.nameHeader{
+  width: 58%;
+  padding-left: 20rpx;
+}

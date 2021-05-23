@@ -17,12 +17,9 @@ Page({
    */
   data: {
     funds:[],
-    fundCodes:[],
-    tmpList:[],
     searchParam:{
       pageIndex:1,
       pageSize:11,
-      token:"atTPd9c8sA"//修改时删去
     }
   },
 
@@ -31,47 +28,60 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
-      //待后端分页功能实现之后，使用注释里面的url与method
-      // url: config.service+'/fund/getAllPre',
-      // method:"GET",
-      url:"https://api.doctorxiong.club/v1/fund/rank",
-      method:"POST",
+      url: config.service+'/fund/getAllPre',
+      method:"GET",
       data:this.data.searchParam,
       success:res=>{
           console.log(res);
-          that.setData({
-            funds:res.data.data.rank,
-          })
+          if(res.data.code==200 && res.data.message=="获取所有基金的AI预测排序结果，包括十五天的涨幅和最后一天的涨幅") {
+            that.setData({
+              funds:res.data.obj,
+            });
+            wx.hideLoading({
+              success: (res) => {},
+            })
+          }
       }
     })
   },
   loadMore:function(){
-    console.log("加载更多");
+    var that = this;
+    console.log("加载更多===>");
+    wx.showLoading({
+      title: '加载中',
+    })
     let tmpSearchParam={
       pageIndex:this.data.searchParam.pageIndex+1,
       pageSize:this.data.searchParam.pageSize,
-      token:"atTPd9c8sA",
     };
     this.setData({
       searchParam:tmpSearchParam
     });
     let tmpList = this.data.funds;
-    getFundRank(this.data.searchParam, res => {
-      console.log(res);
-      wx.showToast({
-        title: '数据加载中',
-        icon: 'loading',
-        duration: 3000,
-      });
-      res.data.data.rank.forEach(i=>{
-        tmpList.push(i);
-      })
-      this.setData({
-        funds:tmpList
-      });
-      wx.hideToast();
-    });
+    wx.request({
+      url: config.service+'/fund/getAllPre',
+      method:"GET",
+      data:tmpSearchParam,
+      success:res=>{
+          console.log(res);
+          if(res.data.code==200 && res.data.message=="获取所有基金的AI预测排序结果，包括十五天的涨幅和最后一天的涨幅") {
+              res.data.obj.forEach(function(e){
+                  tmpList.push(e);
+              });
+              this.setData({
+                funds:tmpList,
+              });
+              wx.hideLoading({
+                success: (res) => {},
+              })
+          }
+
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

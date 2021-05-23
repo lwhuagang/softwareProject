@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "naviBar":"../../components/naviBar/naviBar",
-    "fundGeneral":"../../components/fundGeneral/fundGeneral"
+    "AIGeneral":"../../components/AIGeneral/AIGeneral"
   }
 }

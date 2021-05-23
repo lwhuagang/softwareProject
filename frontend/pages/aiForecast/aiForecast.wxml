@@ -1,15 +1,13 @@
 <!--pages/hot/hot.wxml-->
 <view class="container">
-  <!-- <view>
-    <block wx:for="{{funds.length}}">
-      <fundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}" onlyCode="yes"></fundGeneral>
-      <view class="divLine"></view>
-    </block>
-  </view> -->
-  <view class="searchResContainer">
+  <view class="selectHead">
+      <view class="nameHeader">基金名称</view>
+      <view class="growthHeader">预计15天涨幅</view>
+  </view>
+  <view class="fundContainer">
     <scroll-view scroll-y style="height:100%;" bindscrolltolower="onReachBottom">
       <block wx:for="{{funds.length}}">
-        <fundGeneral showType="netWorth" periodType="r" fundInfo="{{funds[index]}}"></fundGeneral>
+        <AIGeneral showType="AI" periodType="r" fundInfo="{{funds[index]}}"></AIGeneral>
         <view class="divLine"></view>
       </block>
     </scroll-view>

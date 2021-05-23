@@ -1,15 +1,18 @@
 <wxs src="../../utils/util.wxs" module="tool"/>
+<wxs module="filters" src="../../utils/addmul.wxs"></wxs>
 <view class="container">
-      <navigator class="fundInfoBlock" url="/pages/fundDetail/fundDetail?fundCode={{fundInfo.code}}">
+      <navigator class="fundInfoBlock" url="/pages/fundDetail/fundDetail?fundCode={{fundInfo.fundCode}}">
         <view class="fundNameAndCode">
-          <view class="fundName">{{fundInfo.name}}</view>
-          <view class="fundCode">{{fundInfo.code}}</view>
+          <view class="fundName">{{fundInfo.fundName}}</view>
+          <view class="fundCode">{{fundInfo.fundCode}}</view>
         </view>
-        <view class="fundNet">
+        <view class="expGrowthRed" wx:if="{{(fundInfo.lastRate-1)>=0}}">+{{filters.toFix2((fundInfo.lastRate-1)*100)}}%</view>
+        <view class="expGrowthGreen" wx:else>{{filters.toFix2((fundInfo.lastRate-1)*100)}}%</view>
+        <!-- <view class="fundNet">
           <view class="netWorth">{{fundInfo.netWorth}}</view>
           <view class="netDate">{{tool.my_slice(fundInfo.netWorthDate,5,10)}}</view>
-        </view>   
-        <view class="fundGrowth">
+        </view>    -->
+        <!-- <view class="fundGrowth">
           <block wx:if="{{periodType =='r'}}">
             <block wx:if="{{fundInfo.dayGrowth[0]=='-'}}">
               <view class="greenRate">{{fundInfo.dayGrowth}}%</view>
@@ -58,6 +61,6 @@
             <view class="redRate">{{fundInfo.lastYearGrowth}}%</view>
             </block>    
           </block>       
-        </view>  
+        </view>   -->
       </navigator>
 </view>

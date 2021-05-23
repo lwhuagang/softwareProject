@@ -18,11 +18,6 @@ Component({
       type:String,
       val:''
     },
-    //时期：'r','z','1y','3y','6y','1n'
-    periodType: {
-      type:String,
-      val:'',
-    },
     fundInfo:{
       type:JSON,
       val:{}
