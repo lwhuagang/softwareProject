@@ -18,7 +18,7 @@
   /* border: 1px solid red; */
   flex-wrap: nowrap;
   background-color: white;
-  height: 155rpx;
+  height: 200rpx;
 }
 
 .state {
@@ -46,7 +46,7 @@
   border-radius: 15rpx;
   font-size: 24rpx;
   margin-left: 1px;
-  padding-left: 14px;
+  padding-left: 20%;
   padding-top: 3px;
 }
 
@@ -57,7 +57,7 @@
   border-radius: 15rpx;
   font-size: 24rpx;
   margin-left: 1px;
-  padding-left: 10px;
+  padding-left: 20%;
   padding-top: 3px;
 }
 
@@ -85,31 +85,18 @@
   padding-top: 17px;
   padding-bottom: 10rpx;
   color: #555454;
-  overflow-wrap: break-word;
-  font-size: 30rpx;
+  overflow: auto;
+  font-size: 13px;
 }
 
 .delete {
   width: 90%;
-  padding-top: 4rpx;
-  padding-bottom: 4rpx;
-  border: solid #eaf0ff;
-  border-width: 1rpx;
-  background-color: #eaf0ff;
-  color: #252b33;
+  color: #ff4242;
   text-align: center;
-  border-radius: 20px;
   float: right;
-  font-size: 40%;
+  font-size: medium;
   margin-right: 5%;
 }
-
-.divLine {
-  width: 100%;
-  background: #9e9d9d;
-  height: 3rpx;
-}
-
 
 .btn1{
   background: #5484dd;
@@ -119,6 +106,10 @@
   display: flex;
   align-items: center;
   padding-left: 10rpx;
-  padding-right: 10rpx;
-  font-size: small;
+}
+
+.divLine {
+  width: 100%;
+  background: #9e9d9d;
+  height: 3rpx;
 }
