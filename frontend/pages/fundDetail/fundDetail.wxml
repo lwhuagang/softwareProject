@@ -1,6 +1,31 @@
 <!--pages/fundDetail/fundDetail.wxml-->
 <wxs src="../../utils/util.wxs" module="tool" />
 
+<view class="head">
+  <naviBar title="基金详情"></naviBar>
+</view>
+<!--
+  底部功能栏区
+-->
+<view class="bottomBar">
+  <navigator class="discussButton" url="/pages/fundDiscuss/fundDiscuss?fundCode={{fundInfo.code}}">
+    <view class="selfSelect">讨论区</view>
+  </navigator>
+  <block wx:if="{{isSelfSelect == false}}">
+    <view class="bottomButton" bindtap="selfSelect">
+      <view class="selfSelect">自选</view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="bottomButton" bindtap="deleteSelfSelect">
+      <view class="selfSelect">取消自选</view>
+    </view>
+  </block>
+  <view class="bottomButton" bindtap="gotoBuy">
+    <view class="buyIn">买入</view>
+  </view>
+</view>
+
 <view class="container">
   <view class="bluePad"></view>
   <view class="blueWave"></view>
@@ -49,9 +74,8 @@
   <!-- 走势图 -->
   <view class="linePart" >
     <view class="lineTitle">{{fundInfo.totalNetWorthData?"业绩走势":"对不起，我们还没有该基金走势数据"}}</view>
-    <ec-canvas wx:if="{{loadLineOK && fundInfo.totalNetWorthData}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line }}"
-      force-use-old-canvas="true"></ec-canvas>
-    <image src="../../image/nodata.jpg" wx:if="{{!(loadLineOK && fundInfo.totalNetWorthData)}}" mode="widthFix"></image>
+    <ec-canvas wx:if="{{loadLineOK && fundInfo.totalNetWorthData}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line }}"></ec-canvas>
+    <image src="../../image/nodata.jpg" wx:if="{{!(loadLineOK && fundInfo.totalNetWorthData)}}"  mode="widthFix"></image>
   </view>
   <!-- 涨幅数据 -->
   <view class="growthData">
@@ -113,8 +137,7 @@
   <!-- 持仓详情 -->
   <view class="positionPart">
     <view class="positionNote">基金持仓</view>
-    <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}"
-      force-use-old-canvas="true"></ec-canvas>
+    <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}"></ec-canvas>
     <view class="total" wx:if="{{fundPosition!=null}}">
       <view class="totalNum">{{fundPosition.total}}亿元</view>
       <view class="totalNote">净资产</view>
@@ -160,29 +183,5 @@
       <view class="docItemDiv"></view>
       <view class="docItemValue">{{fundInfo.manager}}</view>
     </view>
-  </view>
-</view>
-<view class="head">
-  <naviBar title="基金详情"></naviBar>
-</view>
-<!--
-  底部功能栏区
--->
-<view class="bottomBar">
-  <navigator class="discussButton" url="/pages/fundDiscuss/fundDiscuss?fundCode={{fundInfo.code}}">
-    <view class="selfSelect">讨论区</view>
-  </navigator>
-  <block wx:if="{{isSelfSelect == false}}">
-    <view class="bottomButton" bindtap="selfSelect">
-      <view class="selfSelect">自选</view>
-    </view>
-  </block>
-  <block wx:else>
-    <view class="bottomButton" bindtap="deleteSelfSelect">
-      <view class="selfSelect">取消自选</view>
-    </view>
-  </block>
-  <view class="bottomButton" bindtap="gotoBuy">
-    <view class="buyIn">买入</view>
   </view>
 </view>

@@ -160,7 +160,7 @@ drawPostionPie:function(canvas, width, height, dpr) {
   
     var option = {
       backgroundColor: "#ffffff",
-      color: ["#ef7340", "#eeb329", "#006fbe", "#33a1f0","#32a0ee"],
+      color: ["#a9bdda", "#eeb329", "#006fbe", "#33a1f0","#32a0ee"],
       // title: {
       //   text: '持仓详情',
       //   left: 'left'

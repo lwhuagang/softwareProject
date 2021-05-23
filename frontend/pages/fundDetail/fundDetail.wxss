@@ -141,8 +141,8 @@
   font-size: large;
 }
 .detailLine {
-  width: 100%;
-  height: 500rpx;
+  width: 90%;
+  height: 550rpx;
 }
 .linePart{
   width: 94%;
@@ -255,8 +255,8 @@
 }
 .total{
   position: absolute;
-  margin-top: 260rpx;
-  margin-left:280rpx;
+  margin-top: 270rpx;
+  margin-left:290rpx;
   /* 如果本模块前面样式修改了，这里很有可能对不到中心去 */
   display: flex;
   flex-direction: column;
@@ -441,7 +441,6 @@
   border-top: 2rpx solid #dcdcdc;
   border-right: 2rpx solid #dcdcdc;
 }
-
 .selfSelect{
   font-size:35rpx;
   color:black;
@@ -451,7 +450,6 @@
   text-align: center;
   line-height:95rpx;
 }
-
 .buyIn{
   font-size:35rpx;
   color:#ffffff;

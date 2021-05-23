@@ -213,10 +213,11 @@ Page({
     let firstNetWorth = twoDimArr[0][1];
     for (i=0; i <length;i++){
       if (num == 0 &&(i!=0 && i!= length-1)){
-        arr.push('');  //针对横坐标日期进行特殊的存取，只取第一个和最后一个日子，防止横坐标太乱
-      }else if(num == 1){     //将净值转化为净值涨幅百分比（相对于第一个点的）
-        var percent = (twoDimArr[i][num] - firstNetWorth)/firstNetWorth * 100;
-        arr.push(percent);
+        //arr.push('');  //针对横坐标日期进行特殊的存取，只取第一个和最后一个日子，防止横坐标太乱
+        arr.push(twoDimArr[i][num]);
+      } else if (num == 1) { //将净值转化为净值涨幅百分比（相对于第一个点的）
+        var percent = (twoDimArr[i][num] - firstNetWorth) / firstNetWorth * 100;
+        arr.push(percent.toFixed(2));
       }else{
         arr.push(twoDimArr[i][num]);
       }
@@ -254,7 +255,7 @@ Page({
     canvas.setChart(chart);
   
     var option = {
-      color: ["#37A2DA"],
+      color: ["#5484dd"],
       // legend: {
       //   data: ['本基金'],
       //   top: 20,
@@ -318,7 +319,7 @@ Page({
     var netWorthData = fundInfo.totalNetWorthData;
     var netWorth = this.getCertainDimension(netWorthData,1);
     var netDate = this.getCertainDimension(netWorthData,0);
-    console.log("netDate===>",netDate)
+    // console.log("netDate===>",netDate)
     // console.log("netWorth===>",netWorth)
     
     const chart = echarts.init(canvas, null, {
@@ -380,7 +381,7 @@ Page({
       },
       series: [{
         symbol:'none',
-        name: '本基金',
+        name: '基金涨幅(%)',
         type: 'line',
         smooth: false,
         data: netWorth

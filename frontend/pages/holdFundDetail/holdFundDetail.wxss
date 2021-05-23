@@ -178,7 +178,7 @@
   height: 500rpx;
 }
 .sublinePart{
-  height: 450rpx;
+  height: 550rpx;
 }
 .linePic{
   height: rpx;
@@ -186,7 +186,7 @@
 }
 /* 底部按钮 */
 .bottomBar{
-  background:#FFFFFF;
+  background:#a9bdda;
   display:flex;
   position:fixed; 
   width:100%;

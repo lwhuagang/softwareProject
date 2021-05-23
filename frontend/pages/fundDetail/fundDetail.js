@@ -40,7 +40,7 @@ Page({
   onLoad: function (options) {
     wx.showToast({
       title: '加载中',
-      icon:'loading',
+      icon: 'loading',
     })
     var code = options.fundCode;
     var that = this;
@@ -53,15 +53,15 @@ Page({
     this.loadFundPosition(function () {
       that.loadEcPosition();
     })
-    if(app.globalData.isLogin == false){
+    if (app.globalData.isLogin == false) {
       this.setData({
         isSelfSelect: false,
       });
-    }else{
+    } else {
       getSelfSelect(
         app.globalData.userInfo.email,
         res => {
-          if(res.data.obj.funds!="") {
+          if (res.data.obj.funds != "") {
             var funds = res.data.obj.funds.data;
             var i = 0;
             for (i = 0; i < funds.length; i++) {
@@ -73,14 +73,14 @@ Page({
             }
           } else {
             this.setData({
-              isSelfSelect:false
+              isSelfSelect: false
             })
           }
 
         }
       )
     }
-    
+
   },
 
   // 加载基金详情
@@ -153,10 +153,11 @@ Page({
     let firstNetWorth = twoDimArr[0][1];
     for (i = 0; i < length; i++) {
       if (num == 0 && (i != 0 && i != length - 1)) {
-        arr.push(''); //针对横坐标日期进行特殊的存取，只取第一个和最后一个日子，防止横坐标太乱
+        //arr.push(''); //针对横坐标日期进行特殊的存取，只取第一个和最后一个日子，防止横坐标太乱
+        arr.push(twoDimArr[i][num]);
       } else if (num == 1) { //将净值转化为净值涨幅百分比（相对于第一个点的）
         var percent = (twoDimArr[i][num] - firstNetWorth) / firstNetWorth * 100;
-        arr.push(percent);
+        arr.push(percent.toFixed(2));
       } else {
         arr.push(twoDimArr[i][num]);
       }
@@ -177,14 +178,14 @@ Page({
       devicePixelRatio: dpr // new
     });
     canvas.setChart(chart);
-    
+
     var option = {
       // title: {
       //   text: '业绩走势',
       //   left:'center',
       //   top:0
       // },
-      color: ["#37A2DA"],
+      color: ["#5484dd"],
       // legend: {
       //   data: ['本基金'],
       //   top: 20,
@@ -200,8 +201,17 @@ Page({
       tooltip: {
         show: true,
         trigger: 'axis',
-        extraCssText:"z-index:-1;"
       },
+      toolbox: {
+        show: true,
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            restore: {},
+        },
+        orient: 'vertical'
+    },
       xAxis: {
         type: 'category',
         boundaryGap: false,
@@ -236,7 +246,7 @@ Page({
       },
       series: [{
         symbol: 'none',
-        name: '本基金',
+        name: '涨幅(%)',
         type: 'line',
         smooth: false,
         data: netWorth
@@ -265,10 +275,6 @@ Page({
         title: {
           text: '暂无持仓数据',
           left: 'center',
-        },
-        tooltip: {
-          show: true,
-          extraCssText:"z-index:-1;"
         },
         series: [{
           label: {
@@ -301,7 +307,7 @@ Page({
 
       var option = {
         backgroundColor: "#ffffff",
-        color: ["#ef7340", "#eeb329", "#006fbe", "#33a1f0", "#32a0ee"],
+        color: ["#a9bdda", "#eeb329", "#006fbe", "#33a1f0", "#32a0ee"],
         // title: {
         //   text: '持仓详情',
         //   left: 'left'
@@ -347,15 +353,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if(app.globalData.isLogin == false){
+    if (app.globalData.isLogin == false) {
       this.setData({
         isSelfSelect: false,
       });
-    }else{
+    } else {
       getSelfSelect(
         app.globalData.userInfo.email,
         res => {
-          if(res.data.obj.funds!="") {
+          if (res.data.obj.funds != "") {
             var funds = res.data.obj.funds.data;
             var i = 0;
             for (i = 0; i < funds.length; i++) {
@@ -367,7 +373,7 @@ Page({
             }
           } else {
             this.setData({
-              isSelfSelect:false
+              isSelfSelect: false
             })
           }
         }
@@ -410,31 +416,31 @@ Page({
 
   },
   selfSelect: function () {
-    if (app.globalData.isLogin == false){
+    if (app.globalData.isLogin == false) {
       wx.showModal({
         cancelColor: 'cancelColor',
-        title:'请先登录',
-        content:'点击确定跳转到登录界面',
+        title: '请先登录',
+        content: '点击确定跳转到登录界面',
         success(res) {
-          if(res.confirm) {
-           wx.switchTab({
-             url: '/pages/mine/mine',
-           })
-          } else if(res.cancel) {
-            
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/mine/mine',
+            })
+          } else if (res.cancel) {
+
           }
         }
       })
-    }else{
+    } else {
       wx.request({
-        url: config.service+'/fund/addWatch',
+        url: config.service + '/fund/addWatch',
         method: "POST",
         data: {
           email: app.globalData.userInfo.email,
           fundCode: this.data.fundCode
         },
         success: res => {
-          console.log("==>",res);
+          console.log("==>", res);
           if (res.statusCode == "200") {
             wx.showModal({
               title: "关注成功",
@@ -454,12 +460,12 @@ Page({
         }
       })
     }
-    
+
   },
-  
+
   deleteSelfSelect: function () {
     wx.request({
-      url: config.service+'/fund/deleteWatch',
+      url: config.service + '/fund/deleteWatch',
       method: "POST",
       data: {
         email: app.globalData.userInfo.email,
@@ -491,27 +497,27 @@ Page({
     console.log(this.data.fundPosition) //如果输出是null，去看getFundPosition里面，极有可能是没有基金的持仓详情
     console.log("test over!");
   },
-  gotoBuy:function(e) {
-    if (app.globalData.isLogin == false){
+  gotoBuy: function (e) {
+    if (app.globalData.isLogin == false) {
       wx.showModal({
         cancelColor: 'cancelColor',
-        title:'请先登录',
-        content:'点击确定跳转到登录界面',
+        title: '请先登录',
+        content: '点击确定跳转到登录界面',
         success(res) {
-          if(res.confirm) {
-           wx.switchTab({
-             url: '/pages/mine/mine',
-           })
-          } else if(res.cancel) {
-            
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/mine/mine',
+            })
+          } else if (res.cancel) {
+
           }
         }
       })
-    }else{
+    } else {
       wx.navigateTo({
-        url: '/pages/buyIn/buyIn?fundCode='+this.data.fundCode+'&fundName='+this.data.fundInfo.name,
+        url: '/pages/buyIn/buyIn?fundCode=' + this.data.fundCode + '&fundName=' + this.data.fundInfo.name,
       })
     }
-    
+
   }
 })
