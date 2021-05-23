@@ -1,0 +1,21 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<view class="container">
+  <view class="content">
+    <text space="emsp"> 本项目是为了帮助新手更快、更稳健的上手基金，了解详细规则，体会交易步骤。在这里，你能够通过虚拟的货币进行基金交易；能够得到基于AI算法的基金推荐；能够了解基金的实时信息。</text>
+  </view>
+  <view class="content">开发人员(排名不分先后):
+    <view>
+      <text space="emsp"> 后端组:李伟，杨熙</text>
+    </view>
+    <view>
+      <text space="emsp"> 前端组:侯青莹，陶卓，石锦川，潘毅</text>
+    </view>
+  </view>
+  <view class="content">
+    <view>联系方式:</view>
+    <view>QQ:1767083617</view>
+  </view>
+</view>
+<view class="head">
+  <naviBar title="关于我们"></naviBar>
+</view>
