@@ -137,8 +137,9 @@ public class OperationController {
      * @return 返回是否更新成功
      */
     @GetMapping("update")
-    public Result update(){
+    public Result update() throws ParseException {
         List<Record> records = operationService.getAllUndoRecord();
+        RestTemplate restTemplate = new RestTemplate();
         for (Record record : records) {
             if (record.isFlag()) {
                 continue; // 该条交易记录已处理
@@ -146,10 +147,23 @@ public class OperationController {
             User user = userService.findUserByEmail(record.getUserEmail());
             Fund fund = fundService.searchFundByCode(Integer.parseInt(record.getFundCode()));
             Hold hold = holdService.getHoldByUserEmailAndFundCode(user.getEmail(),fund.getCode());
+
             if (!record.isFlagTime()){
-                // 代表这个交易记录今日不处理,设置为false后跳过
+                // 代表这个交易记录今日不处理,设置为true后跳过
                 record.setFlagTime(true);
                 operationService.insertDeal(record);
+                continue;
+            }
+            String code = fund.getCode();
+            String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=2021-04-01", String.class);
+            JSONObject jsonObject = JSON.parseObject(s);
+            JSONObject data =(JSONObject) jsonObject.get("data");
+            String netWorthDate  = data.getString("netWorthDate");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = dateFormat.parse(netWorthDate);
+            Date d=new Date();
+            if (date.getYear() != d.getYear() || date.getMonth() != d.getMonth() || date.getDay() != d.getDay()) {
+                // 说明是非交易日,直接跳过即可
                 continue;
             }
             if (!record.isType()){
@@ -158,10 +172,6 @@ public class OperationController {
                 double buyIn_fee = buyMoney * fund.getBuyRate() / 100; // 以当前买入费率为准,买入手续费
                 double net_buyMoney = buyMoney - buyIn_fee; // 净买入金额
                 // 获取当日净值
-                RestTemplate restTemplate = new RestTemplate();
-                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + fund.getCode() + "&startDate=2020-05-01", String.class);
-                JSONObject jsonObject = JSON.parseObject(s);
-                JSONObject data =(JSONObject) jsonObject.get("data");
                 double netWorth = Double.parseDouble(data.getString("netWorth"));
                 // 买入份额计算
                 double buyIn_share = net_buyMoney/netWorth;
@@ -209,11 +219,6 @@ public class OperationController {
                 // 卖出出操作更新
                 // 卖出操作更新数据定义
                 double sellShare = record.getCount(); // 用户卖出份额
-                // 获取当日净值
-                RestTemplate restTemplate = new RestTemplate();
-                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + fund.getCode() + "&startDate=2020-05-01", String.class);
-                JSONObject jsonObject = JSON.parseObject(s);
-                JSONObject data =(JSONObject) jsonObject.get("data");
                 double netWorth = Double.parseDouble(data.getString("netWorth"));
                 double sellMoney = sellShare * netWorth; // 卖出金额
                 // 计算持仓成本价
@@ -252,7 +257,6 @@ public class OperationController {
             List<Fund> funds = fundService.getHoldFund(email);
             Ret_HavingList ret = new Ret_HavingList(user, funds);
             double totalHold = 0;               // 总持有金额
-            RestTemplate restTemplate = new RestTemplate();
             for (Fund fund : ret.funds) {
                 String code = fund.getCode();
                 String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=2021-04-01", String.class);

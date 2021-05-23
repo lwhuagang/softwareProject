@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
 import java.util.List;
 
 @Component
@@ -29,7 +30,8 @@ public class TimingTask {
      *  工作日的每天晚上九点执行一次
      */
     @Scheduled(cron="0 30 21 ? * MON-FRI")
-    public void executeFileDownLoadTask() {
+    //@Scheduled(cron = "0/5 * * * * ?")
+    public void executeFileDownLoadTask() throws ParseException {
         userController.calculate();
         operationController.update();
 
