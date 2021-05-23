@@ -25,7 +25,8 @@
     "pages/myInfo/myInfo",
     "pages/forgotPswd/forgotPswd",
     "pages/myNews/myNews",
-    "pages/myComments/myComments"
+    "pages/myComments/myComments",
+    "pages/aboutUs/aboutUs"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -118,3 +118,9 @@
 .captchaBtn2{
   width: 100%;
 }
+.errorNote{
+  color:red;
+  margin-left:100rpx;
+  font-size: small;
+  height: 30rpx;
+}

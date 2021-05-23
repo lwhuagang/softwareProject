@@ -5,24 +5,30 @@
     <view class="part nickPart">
       <view class="instr nickIntr">昵称</view>
       <view class="inputBlock">
-        <input class="input inputNick" model:value="{{nickname}}" focus />
+        <input class="input inputNick" model:value="{{nickname}}" focus bindfocus="resetNameFlag" bindblur="checkNameEmpty"/>
       </view>
+      <view wx:if="{{nameEmpty!=''}}" class="errorNote">{{nameEmpty}}</view>
+      <view wx:else class="errorNote"></view>
     </view>
     <!--<view class="divLine"></view> -->
     <!-- 邮箱 -->
     <view class="part mailPart">
       <view class="instr mailInstr">邮箱</view>
       <view class="inputBlock">
-        <input class="input inputEmail" model:value="{{email}}" focus />
+        <input class="input inputEmail" model:value="{{email}}" focus bindfocus="resetMailFlag" bindblur="checkEmail"/>
       </view>
+      <view wx:if="{{wrongEmail!=''}}" class="errorNote">{{wrongEmail}}</view>
+      <view wx:else class="errorNote"></view>
     </view>
     <!-- <view class="divLine"></view> -->
     <!-- 密码 -->
     <view class="part pswdPart">
-      <view class="instr pswdIntr">密码</view>
+      <view class="instr pswdIntr">密码(至少6位，包含数字与大小写字母)</view>
       <view class="inputBlock">
-        <input class="input inputPswd" model:value="{{password}}" focus password />
+        <input class="input inputPswd" model:value="{{password}}" focus bindfocus="resetPswdFlag" password bindblur="checkPswdStrength"/>
       </view>
+      <view class="errorNote" wx:if="{{pswdToosimple!=''}}">{{pswdToosimple}}</view>
+      <view class="errorNote" wx:else></view>
     </view>
     <!-- <view class="divLine"></view> -->
     <!-- 确认密码 -->
@@ -31,7 +37,7 @@
       <view class="inputBlock">
         <input class="input inputConfirm" model:value="{{confirmPswd}}" focus password bindblur="checkPswd" />
       </view>
-    </view>
+    </view> 
     <!-- <view class="divLine"></view> -->
     <!-- 初始金额 -->
     <view class="part moneyPart">

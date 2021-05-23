@@ -52,29 +52,7 @@ Page({
                   tempRecords[i]["fundName"] = tempNames[tempRecords[i].fundCode];
                   if (tempRecords[i].flag == 0) {
                     var buytime = new Date(tempRecords[i].time); //买入基金的时间
-                    var nowtime = new Date();
-                    //console.log(tempRecords[i].fundName," ",buytime.getDate()," ",buytime.getHours()," ",nowtime.getDate()," ")
-                    if (buytime.getDate() == nowtime.getDate()) {
-                      console.log("date:", buytime.getDate(), ' ', nowtime.getDate());
-                      if (nowtime.getHours() < 15) {
-                        tempRecords[i]["delete"] = true;
-                      } else {
-                        if (buytime.getHours() >= 15) {
-                          tempRecords[i]["delete"] = true;
-                        } else {
-                          tempRecords[i]["delete"] = false;
-                        }
-                      }
-                    } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours() >= 15) {
-                      if (nowtime.getHours() < 15) {
-                        tempRecords[i]["delete"] = true;
-                      } else {
-                        tempRecords[i]["delete"] = false;
-                      }
-                    } else {
-                      tempRecords[i]["delete"] = false;
-                    }
-
+                    tempRecords[i]["delete"] = this.canDelete(buytime);
                   } else {
                     tempRecords[i]["delete"] = false;
                   }
@@ -132,29 +110,7 @@ Page({
                   tempRecords[i]["fundName"] = tempNames[tempRecords[i].fundCode];
                   if (tempRecords[i].flag == 0) {
                     var buytime = new Date(tempRecords[i].time); //买入基金的时间
-                    var nowtime = new Date();
-                    //console.log(tempRecords[i].fundName," ",buytime.getDate()," ",buytime.getHours()," ",nowtime.getDate()," ")
-                    if (buytime.getDate() == nowtime.getDate()) {
-                      console.log("date:", buytime.getDate(), ' ', nowtime.getDate());
-                      if (nowtime.getHours() < 15) {
-                        tempRecords[i]["delete"] = true;
-                      } else {
-                        if (buytime.getHours() >= 15) {
-                          tempRecords[i]["delete"] = true;
-                        } else {
-                          tempRecords[i]["delete"] = false;
-                        }
-                      }
-                    } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours() >= 15) {
-                      if (nowtime.getHours() < 15) {
-                        tempRecords[i]["delete"] = true;
-                      } else {
-                        tempRecords[i]["delete"] = false;
-                      }
-                    } else {
-                      tempRecords[i]["delete"] = false;
-                    }
-
+                    tempRecords[i]["delete"] = this.canDelete(buytime);
                   } else {
                     tempRecords[i]["delete"] = false;
                   }
@@ -205,7 +161,88 @@ Page({
   onShareAppMessage: function () {
 
   },
-
+  canDelete: function (buytime) {
+    var nowtime = new Date();
+    var result = false;
+    //console.log(tempRecords[i].fundName," ",buytime.getDate()," ",buytime.getHours()," ",nowtime.getDate()," ")
+    if (this.isFriday(buytime)) {
+      if (buytime.getDate() == nowtime.getDate()) {
+        if (nowtime.getHours() < 15) {
+          result = true;
+        } else {
+          if (buytime.getHours() >= 15) {
+            result = true;
+          } else {
+            result = false;
+          }
+        }
+      } else if (((buytime.getDate() == nowtime.getDate() - 1)||(buytime.getDate() == nowtime.getDate() - 2)) && buytime.getHours() >= 15) { //周五晚上交易，现在周六周天
+        result = true;
+      } else if ((buytime.getDate() == nowtime.getDate() - 2) && buytime.getHours() >= 15) { //现在周一
+        if (nowtime.getHours() < 15) {
+          result = true;
+        } else {
+          result = false;
+        }
+      } else {
+        result = false;
+      }
+    } else if (this.isSaturday(buytime)) {
+      if (buytime.getDate() == nowtime.getDate() || buytime.getDate() == nowtime.getDate() - 1) {
+        result = true;
+      } else if (buytime.getDate() == nowtime.getDate() - 2) { //周六购买，现在周一
+        if (nowtime.getHours() < 15) {
+          result = true;
+        } else {
+          result = false;
+        }
+      } else {
+        result = false;
+      }
+    } else if (this.isSunday(buytime)) {
+      if (buytime.getDate() == nowtime.getDate()) {
+        result = true;
+      } else if (buytime.getDate() == nowtime.getDate() - 1) { //周六购买，现在周一
+        if (nowtime.getHours() < 15) {
+          result = true;
+        } else {
+          result = false;
+        }
+      } else {
+        result = false;
+      }
+    } else {
+      if (buytime.getDate() == nowtime.getDate()) {
+        if (nowtime.getHours() < 15) {
+          result = true;
+        } else {
+          if (buytime.getHours() >= 15) {
+            result = true;
+          } else {
+            result = false;
+          }
+        }
+      } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours() >= 15) {
+        if (nowtime.getHours() < 15) {
+          result = true;
+        } else {
+          result = false;
+        }
+      } else {
+        result = false;
+      }
+    }
+    return result;
+  },
+  isFriday: function (date) {
+    if ("天一二三四五六".charAt(new Date(date).getDay()) == "五") return true;
+  },
+  isSaturday: function (date) {
+    if ("天一二三四五六".charAt(new Date(date).getDay()) == "六") return true;
+  },
+  isSunday: function (date) {
+    if ("天一二三四五六".charAt(new Date(date).getDay()) == "天") return true;
+  },
   UTCformat: function (utc) {
     var date = new Date(utc),
       year = date.getFullYear(),
@@ -222,103 +259,90 @@ Page({
     var code = e.currentTarget.dataset.code;
     var time = e.currentTarget.dataset.time;
     var count = e.currentTarget.dataset.count;
+    var canBeDelete = e.currentTarget.dataset.delete;
     //console.log("email & fundcode & time: ", app.globalData.userInfo.email," ", code, " ", time)
-    wx.request({
-      url: config.service + '/user/deleteOneRecord',
-      method: "POST",
-      data: {
-        userEmail: app.globalData.userInfo.email,
-        fundCode: code,
-        time: time,
-        count: count,
-      },
-      success: res => {
-        if (res.statusCode == "200") {
-          if (res.data.message == "删除一条未完成的处理记录") {
-            wx.showModal({
-              title: "删除成功!",
-              cancelColor: 'cancelColor',
-            });
-            var tempRecords;
-            getDealRecord(
-              app.globalData.userInfo.email,
-              res => {
-                tempRecords = res.data.obj;
-                var length = tempRecords.length;
-                var i;
-                var tempNames = new Array(); //
-                for (i = 0; i < length; i++) {
-                  if (i != length - 1) {
-                    getFundDetail({
-                        code: tempRecords[i].fundCode,
-                        token: "atTPd9c8sA"
-                      },
-                      res => {
-                        tempNames[res.data.data.code] = res.data.data.name;
-                      }
-                    );
-                  } else {
-                    getFundDetail({
-                        code: tempRecords[i].fundCode,
-                        token: "atTPd9c8sA"
-                      },
-                      res => {
-                        tempNames[res.data.data.code] = res.data.data.name;
-                        for (i = 0; i < length; i++) {
-                          tempRecords[i]["showTime"] = this.UTCformat(tempRecords[i].time);
-                          tempRecords[i]["fundName"] = tempNames[tempRecords[i].fundCode];
-                          if (tempRecords[i].flag == 0) {
-                            var buytime = new Date(tempRecords[i].time); //买入基金的时间
-                            var nowtime = new Date();
-                            //console.log(tempRecords[i].fundName," ",buytime.getDate()," ",buytime.getHours()," ",nowtime.getDate()," ")
-                            if (buytime.getDate() == nowtime.getDate()) {
-                              console.log("date:", buytime.getDate(), ' ', nowtime.getDate());
-                              if (nowtime.getHours() < 15) {
-                                tempRecords[i]["delete"] = true;
-                              } else {
-                                if (buytime.getHours() >= 15) {
-                                  tempRecords[i]["delete"] = true;
-                                } else {
-                                  tempRecords[i]["delete"] = false;
-                                }
-                              }
-                            } else if ((buytime.getDate() == nowtime.getDate() - 1) && buytime.getHours() >= 15) {
-                              if (nowtime.getHours() < 15) {
-                                tempRecords[i]["delete"] = true;
-                              } else {
-                                tempRecords[i]["delete"] = false;
-                              }
+    if (canBeDelete) {
+      wx.request({
+        url: config.service + '/user/deleteOneRecord',
+        method: "POST",
+        data: {
+          userEmail: app.globalData.userInfo.email,
+          fundCode: code,
+          time: time,
+          count: count,
+        },
+        success: res => {
+          if (res.statusCode == "200") {
+            if (res.data.message == "删除一条未完成的处理记录") {
+              wx.showModal({
+                title: "删除成功!",
+                cancelColor: 'cancelColor',
+              });
+              var tempRecords;
+              getDealRecord(
+                app.globalData.userInfo.email,
+                res => {
+                  tempRecords = res.data.obj;
+                  var length = tempRecords.length;
+                  var i;
+                  var tempNames = new Array(); //
+                  for (i = 0; i < length; i++) {
+                    if (i != length - 1) {
+                      getFundDetail({
+                          code: tempRecords[i].fundCode,
+                          token: "atTPd9c8sA"
+                        },
+                        res => {
+                          tempNames[res.data.data.code] = res.data.data.name;
+                        }
+                      );
+                    } else {
+                      getFundDetail({
+                          code: tempRecords[i].fundCode,
+                          token: "atTPd9c8sA"
+                        },
+                        res => {
+                          tempNames[res.data.data.code] = res.data.data.name;
+                          for (i = 0; i < length; i++) {
+                            tempRecords[i]["showTime"] = this.UTCformat(tempRecords[i].time);
+                            tempRecords[i]["fundName"] = tempNames[tempRecords[i].fundCode];
+                            if (tempRecords[i].flag == 0) {
+                              var buytime = new Date(tempRecords[i].time); //买入基金的时间
+                              tempRecords[i]["delete"] = this.canDelete(buytime);
                             } else {
                               tempRecords[i]["delete"] = false;
                             }
-                
-                          } else {
-                            tempRecords[i]["delete"] = false;
                           }
+                          console.log("Records:", tempRecords);
+                          this.setData({
+                            records: tempRecords
+                          })
                         }
-                        console.log("Records:", tempRecords);
-                        this.setData({
-                          records: tempRecords
-                        })
-                      }
-                    );
+                      );
+                    }
                   }
                 }
-              }
-            )
+              )
+            } else {
+              wx.showModal({
+                title: "删除失败！",
+                cancelColor: 'cancelColor',
+              })
+            }
           } else {
             wx.showModal({
               title: "删除失败！",
               cancelColor: 'cancelColor',
             })
           }
-        } else {
-          wx.showModal({
-            title: "删除失败！",
-            cancelColor: 'cancelColor',
-          })
         }
-      }
-    })
+      })
+    } else {
+      wx.showModal({
+        title: "不可撤销!",
+        content: "已收盘，按照基金交易规则，不可删除",
+        cancelColor: 'cancelColor',
+      });
+    }
   },
 })

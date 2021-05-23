@@ -53,9 +53,9 @@
           <view class="bottomBlockText">反馈与建议</view>
         </navigator>
         <view class="divLine"></view>
-        <view class="bottomBlock">
+        <navigator class="bottomBlock" url="/pages/aboutUs/aboutUs">
           <view class="bottomBlockText">关于我们</view>
-        </view>
+        </navigator>
       </view>
       <view class="logOutBtn" bindtap="logOut">
         <view class="logOutInfo">退出登录</view>
