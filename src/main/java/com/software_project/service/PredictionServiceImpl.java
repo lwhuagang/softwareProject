@@ -18,7 +18,7 @@ public class PredictionServiceImpl implements PredictionService {
     }
 
     @Override
-    public List<Prediction> getAllPrediction(int startIndex, int pageSize) {
-        return predictionDAO.getAllPrediction(startIndex, pageSize);
+    public List<Prediction> getAllPrediction() {
+        return predictionDAO.getAllPrediction();
     }
 }

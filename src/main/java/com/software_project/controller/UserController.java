@@ -537,6 +537,10 @@ public class UserController {
     @PostMapping("deleteOneRecord")
     public Result deleteOneRecord(@RequestBody Record record) {
         recordService.deleteOneRecord(record);
+        if (!record.isType()) {    // 买入
+            userService.updateUserMoney(record.getUserEmail(), record.getCount());      // 恢复原有的用户的剩余金额
+        }
+        // 卖出的时候不需要进行其他操作，因为只有当卖出的操作被执行了之后份额才会发生变化
         return new Result(200, record, "删除一条未完成的处理记录");
     }
 

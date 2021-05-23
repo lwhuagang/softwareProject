@@ -7,6 +7,6 @@
         select * from soft.prediction where fundCode = #{fundCode};
     </select>
     <select id="getAllPrediction" resultType="com.software_project.pojo.Prediction">
-        select * from soft.prediction limit #{startIndex},#{pageSize};
+        select * from soft.prediction;
     </select>
 </mapper>

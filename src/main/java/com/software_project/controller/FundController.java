@@ -162,16 +162,23 @@ public class FundController {
     @GetMapping("getAllPre")
     public Result getAllPre(int pageIndex, int pageSize) {     // 获取所有的ai推荐基金，涨幅排序之后的结果
         int startIndex = (pageIndex-1)*pageSize;
-        List<Prediction> allPrediction = predictionService.getAllPrediction(startIndex, pageSize);
+        List<Prediction> allPrediction = predictionService.getAllPrediction();
         List<Prediction> ret_prediction = new ArrayList<>();
         for (Prediction prediction : allPrediction) {
+            prediction.setLastRate(lastWorthRate(prediction));
+        }
+        Collections.sort(allPrediction);
+        int nullCount = 0;
+        for (int i = startIndex; i < startIndex + pageSize + nullCount; i++) {
+            Prediction prediction = allPrediction.get(i);
             if (getFundName(prediction.getFundCode()) != null) {
-                prediction.setLastRate(lastWorthRate(prediction));
                 prediction.setFundName(getFundName(prediction.getFundCode()));  //设置fundName
                 ret_prediction.add(prediction);
             }
+            else {
+                nullCount ++;
+            }
         }
-        Collections.sort(allPrediction);
         return new Result(200, ret_prediction, "获取所有基金的AI预测排序结果，包括十五天的涨幅和最后一天的涨幅");
     }
 

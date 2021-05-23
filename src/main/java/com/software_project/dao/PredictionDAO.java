@@ -14,7 +14,7 @@ public interface PredictionDAO {
 
     Prediction getPreByFundCode(String fundCode);
 
-    List<Prediction> getAllPrediction(@Param("startIndex") int startIndex, @Param("pageSize") int pageSize);
+    List<Prediction> getAllPrediction();
 
 
 }
