@@ -186,7 +186,7 @@
 }
 /* 底部按钮 */
 .bottomBar{
-  background:#a9bdda;
+  background:#ffffff;
   display:flex;
   position:fixed; 
   width:100%;
