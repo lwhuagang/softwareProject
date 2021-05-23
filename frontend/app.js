@@ -18,7 +18,7 @@ App({
       //email:"18231096@buaa.edu.cn",
       //email:"906410752@qq.com",
       // email:"1767083617@qq.com",
-      //email:"",
+      email:"",
       password:"",
       nickname:"",
       money:0,

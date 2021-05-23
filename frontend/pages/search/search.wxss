@@ -54,7 +54,7 @@
   white-space: nowrap;
 }
 
-.hotPart{
+.FundList{
   width: 95%;
   margin: 5rpx 5rpx;
   display: flex;
@@ -123,4 +123,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.noFund {
+  text-align: center;
+  font-weight: 400;
+  color: rgba(107, 107, 107, 1);
+  margin-bottom: 30rpx;
 }

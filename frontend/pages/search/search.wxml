@@ -11,21 +11,23 @@
     <!-- 搜索按钮,调用搜索查询方法 -->
     <text class="search-bar_cancel" bindtap="jumpToIndex">取消</text>
   </view>
-  <view class="history" wx:if="{{isLogin && history}}">
+  <view class="history" wx:if="{{isLogin && history && newArray.length!=0}}">
     <view class="history_title">
       <text>历史搜索</text>
       <image src="../../image/delete.png" mode="widthFix" style="width:5%;" bindtap="cleanhistory"></image>
     </view>
     <view class="history_text">
+      <!-- <text wx:if="{{newArray.length==0}}">暂无搜索记录</text> -->
       <text wx:for="{{newArray}}" wx:key="key" data-text="{{item}}" bindtap="textfz">{{item}}</text>
     </view>
   </view>
     <!-- inputValue长度判断：文本框中内容删除太快的情况下，渲染和清空缓存出现时差，导致文本框中无内容，但是仍存在搜索结果 -->
-  <view class="hotPart" wx:if="{{funds.length!=0 && inputValue.length!=0}}">
+  <view class="FundList" wx:if="{{inputValue.length!=0}}">
     <block wx:for="{{funds.length}}">
       <blankFundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}" bindtap="addHistory"></blankFundGeneral>
       <view class="divLine"></view>
     </block>
+    <!-- <view class='noFund' wx:if="{{inputValue.length!=0 && funds.length==0}}">暂无相关内容</view> -->
   </view>
 </view>
 <view class="head">
