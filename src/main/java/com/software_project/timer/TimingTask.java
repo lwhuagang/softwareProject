@@ -29,8 +29,8 @@ public class TimingTask {
     /**
      *  工作日的每天晚上九点执行一次
      */
-    //@Scheduled(cron="0 30 21 ? * MON-FRI")
-    @Scheduled(cron = "0/5 * * * * ?")
+    @Scheduled(cron="0 30 21 ? * MON-FRI")
+    //@Scheduled(cron = "0/5 * * * * ?")
     public void executeFileDownLoadTask() throws ParseException {
         userController.calculate();
         operationController.update();
