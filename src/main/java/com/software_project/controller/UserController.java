@@ -355,12 +355,20 @@ public class UserController {
             Hold hold = holdService.getHoldByUserEmailAndFundCode(email, fund.getFundCode());
             HoldVO holdVO = new HoldVO(email, fund, hold);
             holdVO.setTotalProfit(redisTemplate.opsForList().range(user.getEmail().substring(0,8)+":"+fund.getFundCode(), 0, -1));
-            holdVO.setToVerifyMoney(getVerifyMoney(user.getEmail(), fund.getFundCode()));     // 设置待确认金额
-            // holdVO.setShare(fund.getShare() * netWorth);
+            double verifyMoney = getVerifyMoney(user.getEmail(), fund.getFundCode());
+            if ((verifyMoney < Math.pow(10, -7) ) && (holdVO.getShare() < Math.pow(10, -7))) {       // 如果verifyMoney为0且没有持有份额，则删除对应的持有基金
+                // 只需要删除用户的持有基金，不需要删除交易记录
+                holdService.deleteOneHold(holdVO.getUserEmail(), holdVO.getFundCode());
+            }
+            else {
+                holdVO.setToVerifyMoney(verifyMoney);     // 设置待确认金额
+                // holdVO.setShare(fund.getShare() * netWorth);
+                // 计算
+                //holdVOS.s
+                holdVOS.add(holdVO);
+            }
 
-            // 计算
-            //holdVOS.s
-            holdVOS.add(holdVO);
+
         }
         Ret_HoldVOList ret = new Ret_HoldVOList(user, holdVOS);
         return new Result(200, ret, "根据用户邮箱获取用户和该用户持有的所有基金及其持有信息");
@@ -539,7 +547,13 @@ public class UserController {
         recordService.deleteOneRecord(record);
         if (!record.isType()) {    // 买入
             userService.updateUserMoney(record.getUserEmail(), record.getCount());      // 恢复原有的用户的剩余金额
+            // 需要判断用户是否真的持有这个基金，根据verifyMoney和share进行判断
+            double verifyMoney = getVerifyMoney(record.getUserEmail(), record.getFundCode());
+            if ((verifyMoney < Math.pow(10, -7)) && (holdService.getHoldByUserEmailAndFundCode(record.getUserEmail(), record.getFundCode()).getShare() < Math.pow(10, -7))) {
+                holdService.deleteOneHold(record.getUserEmail(), record.getFundCode());
+            }
         }
+
         // 卖出的时候不需要进行其他操作，因为只有当卖出的操作被执行了之后份额才会发生变化
         return new Result(200, record, "删除一条未完成的处理记录");
     }

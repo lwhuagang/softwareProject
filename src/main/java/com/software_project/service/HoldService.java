@@ -31,4 +31,11 @@ public interface HoldService {
     void insertHold(Hold hold);
 
     void deleteHold(String email);
+
+    /**
+     * 删除一条持有基金
+     * @param userEmail 用户邮箱
+     * @param fundCode 基金代码
+     */
+    void deleteOneHold(String userEmail, String fundCode);
 }

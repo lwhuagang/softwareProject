@@ -35,5 +35,10 @@ public class HoldServiceImpl implements HoldService{
         holdDAO.deleteHold(email);
     }
 
+    @Override
+    public void deleteOneHold(String userEmail, String fundCode) {
+        holdDAO.deleteOneHold(userEmail,fundCode);
+    }
+
 
 }

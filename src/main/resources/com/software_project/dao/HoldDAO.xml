@@ -13,6 +13,9 @@
     <delete id="deleteHold">
         delete from soft.hold where userEmail = #{email}
     </delete>
+    <delete id="deleteOneHold">
+        delete from soft.hold where userEmail = #{userEmail} and fundCode = #{fundCode};
+    </delete>
     <select id="getHoldByUserEmailAndFundCode" resultType="com.software_project.pojo.Hold">
         select * from soft.hold where userEmail = #{email} and fundCode = #{fundCode}
     </select>
