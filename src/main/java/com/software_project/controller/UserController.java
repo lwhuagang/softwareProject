@@ -26,7 +26,10 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -237,7 +240,7 @@ public class UserController {
      * @return 封装为result返回
      */
     @GetMapping("/calculate")
-    public Result calculate() {
+    public Result calculate() throws ParseException {
         // 获取所有的用户
         List<User> users = userService.getAllUsers();
         for (User user1 : users) {
@@ -255,6 +258,38 @@ public class UserController {
                 String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=2021-04-01", String.class);
                 JSONObject jsonObject = JSON.parseObject(s);
                 JSONObject data =(JSONObject) jsonObject.get("data");
+
+                String netWorthDate  = data.getString("netWorthDate");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = dateFormat.parse(netWorthDate);
+
+                Date d=new Date();
+
+                if (date.getYear() != d.getYear() || date.getMonth() != d.getMonth() || date.getDay() != d.getDay()) {
+                    // 说明非工作日净值没有更新,只需要让累计收益添加一个即可
+                    String s1;
+                    double total;
+                    try {
+                        s1 = redisTemplate.opsForList().rightPop(user.getEmail().substring(0,8) + ":" + fund.getFundCode());
+                        total = Double.parseDouble(s1);
+                        redisTemplate.opsForList().rightPush(user.getEmail().substring(0,8) + ":" + fund.getFundCode(), s1);
+                    }
+                    catch (Exception e){
+                        total = 0;
+                    }
+                    String key = user.getEmail().substring(0,8) + ":" + fund.getFundCode();
+                    if (redisTemplate.opsForList().range(key,0,-1).size() >= 30) {
+                        // 只存储三十天的累计收益
+                        redisTemplate.opsForList().leftPop(key);
+                        redisTemplate.opsForList().rightPush(key, String.valueOf(total));
+                        System.out.println(redisTemplate.opsForList().range(key,0,-1));
+                    }
+                    else{
+                        redisTemplate.opsForList().rightPush(key, String.valueOf(total));
+                        System.out.println(redisTemplate.opsForList().range(key,0,-1));
+                    }
+                    continue;
+                }
 
                 // 先更新基金的单位净值：这个之后不会使用，我们是直接通过比例和持有金额计算之后的持有金额
                 double netWorth = Double.parseDouble(data.getString("netWorth"));   // 基金的单位净值
