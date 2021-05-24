@@ -28,7 +28,7 @@
 
 <view class="container">
   <view class="bluePad"></view>
-  <view class="blueWave"></view>
+  <!-- <view class="blueWave"></view> -->
   <view class="fundCard">
     <view class="fundName">{{fundInfo.name}}</view>
     <view class="fundCodeAndType">

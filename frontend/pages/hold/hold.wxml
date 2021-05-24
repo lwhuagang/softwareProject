@@ -3,7 +3,7 @@
 
 <view class="container" wx:if="{{isLogin}}">
   <view class="bluePad"></view>
-  <view class="blueWave"></view>
+  <!-- <view class="blueWave"></view> -->
   <view class="content">
     <view class="fundCard">
       <view class="holdTotalTitle">总金额(元)</view>

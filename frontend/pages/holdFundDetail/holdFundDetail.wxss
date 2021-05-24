@@ -19,8 +19,8 @@
   border-top: 2rpx solid #dcdcdc;
   padding-left: 10rpx;
   padding-right: 10rpx;
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
 }
 .fundName{
   width: 100%;
@@ -59,7 +59,7 @@
   margin-top: 2rpx;
   display: flex;
   flex-direction: column;
-  margin-bottom: 30rpx;
+  margin-bottom: 15rpx;
   /* border-bottom: 1rpx solid #dcdcdc; */
 }
 .moneyPart{
@@ -171,7 +171,7 @@
   padding-right: 10rpx;
 }
 .subLineHead{
-  width: 33%;
+  width: 50%;
   margin-top: 15rpx;
 }
 .lineBody{
@@ -181,8 +181,9 @@
   height: 550rpx;
 }
 .linePic{
-  height: rpx;
+  height: 100%;
   margin-top: 0;
+  margin-bottom: 500rpx;
 }
 /* 底部按钮 */
 .bottomBar{
