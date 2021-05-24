@@ -23,6 +23,8 @@
   </view> -->
   <view class="conts">
     <textarea class="areas" placeholder='请在此描述您的问题或建议' minlength="{{min}}" maxlength="{{max}}" bindinput="handleTextInput"></textarea>
+    <text class="hint">{{texts}}</text>
+    <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
   </view>
   <view class="form_btn_wrap">
       <button bindtap="handleFormSubmit" type="red">
