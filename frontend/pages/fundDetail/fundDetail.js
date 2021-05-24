@@ -442,10 +442,14 @@ Page({
         success: res => {
           console.log("==>", res);
           if (res.statusCode == "200") {
-            wx.showModal({
-              title: "关注成功",
-              content: "您已成功关注该基金!",
-              cancelColor: 'cancelColor',
+            // wx.showModal({
+            //   title: "关注成功",
+            //   content: "您已成功关注该基金!",
+            //   cancelColor: 'cancelColor',
+            // })
+            wx.showToast({
+              title: '关注成功!',
+              mask:true
             })
             this.setData({
               isSelfSelect: true
@@ -473,10 +477,13 @@ Page({
       },
       success: res => {
         if (res.statusCode == "200") {
-          wx.showModal({
-            title: "删除成功",
-            content: "您已取消关注该基金!",
-            cancelColor: 'cancelColor',
+          // wx.showModal({
+          //   title: "删除成功",
+          //   content: "您已取消关注该基金!",
+          //   cancelColor: 'cancelColor',
+          // })
+          wx.showToast({
+            title: '取消成功!',
           })
           this.setData({
             isSelfSelect: false
