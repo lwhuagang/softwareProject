@@ -285,6 +285,16 @@ Page({
         }
         //show: false
       },
+      toolbox: {
+        show: true,
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            restore: {},
+        },
+        orient: 'vertical'
+      },
       yAxis: {
         x: 'center',
         type: 'value',
@@ -340,6 +350,16 @@ Page({
       tooltip: {
         show: true,
         trigger: 'axis'
+      },
+      toolbox: {
+        show: true,
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            restore: {},
+        },
+        orient: 'vertical'
       },
       xAxis: {
         type: 'category',
