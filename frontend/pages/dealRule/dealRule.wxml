@@ -36,7 +36,7 @@
           T日申请，将按T日基金净值确认份额。份额确认当日，基金净值更新后即可查看首笔盈亏。开放赎回的基金在买入确认后下一T日可卖出。
         </view>
       </view>
-      <!-- <view class="ratioPart">
+      <view class="ratioPart">
         <view class="ratioTitle">买入费率(前端申购)</view>
         <view class="ratioFormHead">
           <view class="headItem">金额</view>
@@ -52,18 +52,64 @@
             <view class="divLine"></view>
           </view>
         </view>
-      </view> -->
+      </view>
       <!-- 申购计算 -->
-      <!-- <view class="calcRule">
+      <view class="calcRule">
         <view class="calcRuleTitle">申购计算:</view>
         <view class="calcRuleItem">净申购金额=申购金额/(1+申购费率)</view>
         <view class="calcRuleItem">申购费用=申购金额-净申购金额</view>
         <view class="calcRuleItem">申购份额=净申购金额/T日基金份额净值</view>
-      </view> -->
+      </view>
     </block>
     <!-- 卖出规则界面 -->
     <block wx:else>
-
+      <view class="buyInProcedure">
+        <view class="buyInProTitle">卖出流程</view>
+        <image src="/image/selloutProc.jpg" style="width:100%" mode="widthFix"></image>
+        <view class="sellProcNote">
+          <view class="first">
+            <view>T日</view>
+            <view class="word">卖出提交</view>
+          </view>
+          <view class="second">
+            <view>T+1日</view>
+            <view>确认金额</view>
+          </view>
+          <view class="third">
+            <view>T+1日</view>
+            <view>资金到账</view>
+          </view>
+        </view>
+        <view class="ruleNote">
+          T日:交易日，以每天{{buyInStart}}为界限，{{buyInStart}}(不含)之前为T日，{{buyInStart}}(含)及之后为T+1日。周末和法定节假日属于非交易日，以支付成功时间为准。
+        </view>
+        <view class="ruleNote">
+          T日申请，将按T日基金净值确认卖出金额。金额确认当日，基金净值更新后即可查看资金到账。
+        </view>
+      </view>
+      <view class="ratioPart">
+        <view class="ratioTitle">卖出费率(前端申购)</view>
+        <view class="ratioFormHead">
+          <view class="headItem">金额</view>
+          <view class="headItem">优惠费率</view>
+        </view>
+        <view class="buyInRatePart">
+          <view wx:for="{{buyInRateList.length}}" class="buyInRateItem">
+            <view class="subBuyInItem">
+              <view class="buyInStep">{{sellOutRateList[index].step}}</view>
+              <view class="buyInSrcRate">{{sellOutRateList[index].srcRate}}</view>
+              <view class="buyInRate">{{sellOutRateList[index].rate}}</view>
+            </view>
+            <view class="divLine"></view>
+          </view>
+        </view>
+      </view>
+      <view class="calcRule">
+        <view class="calcRuleTitle">赎回计算公式:</view>
+        <view class="calcRuleItem">赎回总额=赎回数量×T日基金份额净值</view>
+        <view class="calcRuleItem">赎回费用=赎回总额×赎回费率</view>
+        <view class="calcRuleItem">申购金额=赎回总额-赎回费用</view>
+      </view>
     </block>
   </view>
 </view>

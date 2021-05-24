@@ -7,7 +7,7 @@
   <view class="buyPart">
     <view class="buyTitle">
       <view class="buyNote">买入金额</view>
-      <navigator class="toDealRule" url="/pages/dealRule/dealRule">交易规则</navigator>
+      <navigator class="toDealRule" url="/pages/dealRule/dealRule?fundCode={{fundCode}}">交易规则</navigator>
     </view>
     <view class="valPart">
       <view class="inputPart">

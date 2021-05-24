@@ -126,4 +126,25 @@
   padding-bottom: 5rpx;
   
 }
+.sellProcNote{
+  display: flex;
+}
+.first{
+  text-align: center;
+  font-size: 10px;
+  word-break:keep-all;
+
+}
+.second{
+  text-align: center;
+  font-size: 10px;
+  margin-left: 125px;
+  word-break: keep-all;
+}
+.third{
+  text-align: center;
+  margin-left: 125px;
+  font-size: 10px;
+  word-break: keep-all;
+}
 
