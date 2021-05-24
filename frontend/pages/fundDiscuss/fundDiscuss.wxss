@@ -7,13 +7,13 @@
   top:0;
 }
 .container {
-  height: 3000rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   width:100%;
   position: absolute;
   margin-top: 130rpx;
+  margin-bottom: 140rpx;
 }
 
 .fundCard {
