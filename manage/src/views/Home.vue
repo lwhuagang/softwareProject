@@ -14,7 +14,7 @@
           <div style="color: #fff;" @click="isCollapse=!isCollapse">|||</div>
           <!-- 导航菜单 -->
           <el-menu
-                  default-active="2"
+                  default-active="1"
                   class="el-menu-vertical-demo"
                   background-color="#333744"
                   text-color="#fff"

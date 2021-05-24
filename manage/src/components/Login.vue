@@ -10,11 +10,11 @@
             <el-form :model="user" ref="LoginFormRef" :rules="loginFormRules" label-width="0px" class="login_form">
                 <!-- 用户名 -->
                 <el-form-item prop="username">
-                    <el-input v-model="user.email" prefix-icon="el-icon-user" ></el-input>
+                    <el-input v-model="user.email" prefix-icon="el-icon-user" placeholder="管理员邮箱"></el-input>
                 </el-form-item> 
                 <!-- 密码 -->
                 <el-form-item prop="password">
-                    <el-input type="password" v-model="user.password" prefix-icon="el-icon-lock"></el-input>
+                    <el-input type="password" v-model="user.password" prefix-icon="el-icon-lock" placeholder="密码"></el-input>
                 </el-form-item> 
                 <!-- 按钮 -->
                 <el-form-item class="btns">
@@ -57,7 +57,7 @@ export default {
     login() {
         this.$http.post('/user/login',this.user).then(res=>{
             console.log(res);
-            if(res.data.code===200 && res.data.message==="登陆成功" && res.data.obj.admin===false) {
+            if(res.data.code===200 && res.data.message==="登陆成功" && res.data.obj.admin===true) {
                 this.$message.success("登陆成功");
                 window.sessionStorage.setItem('token',res.data.email);
                 this.$router.push('/home');

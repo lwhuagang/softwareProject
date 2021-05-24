@@ -100,7 +100,7 @@
 					email: '',
 					money: 0,
 					avatarLink:'',
-					admin:false,
+					// admin:false,
 				},
 				//修改用户dialog,控制显示隐藏
 				editUserVisible: false,
@@ -163,8 +163,10 @@
 				}).then(() => {
 					//这里填写删除逻辑，并更新列表
 					console.log(e);
-					this.$http.get('/admin/userDelete?email='+e.email).then(res=>{
-						console.log(res);
+					let mail = e.email;
+					console.log("mail:",mail);
+					this.$http.get('/admin/userDelete?email='+mail).then(res=>{
+						console.log("res:",res);
 						if(res.data.code===200 && res.data.message==="用户删除成功") {
 							this.$message.success("用户删除成功!");
 							this.getUserList();
@@ -183,16 +185,17 @@
 			//修改用户信息事件
 			editUserlist(item){
 				this.editUserVisible = !this.editUserVisible;
-				console.log("item:",item);
+				// console.log("item:",item);
 				this.param={
 					name:item.nickname,
 					email: item.email,
 					money:item.money,
-					admin:item.admin,
+					avatarLink: ''
 				}
 			},
 			//点击确定发送请求修改用户信息
 			editUser(){
+				console.log("param==>",this.param);
 				this.$http.post('/user/update',this.param).then(res=>{
 					console.log(res);
 					if(res.data.code===200 && res.data.message==="用户信息修改成功!") {
@@ -212,17 +215,15 @@
 				this.currentname = row.nickname;
 				this.param.admin = row.admin;
 				this.param.email = row.email;
-				this.param.money = row.money;
-				this.param.name = row.nickname;
 			},
 			editRollist(){
 				//分配用户角色
 				console.log(this.selectVal);
 				this.param.admin=(this.selectVal !== '普通用户');
 				console.log(this.param);
-				this.$http.post('/user/update',this.param).then(res=>{
+				this.$http.post('/admin/setAdmin',this.param).then(res=>{
 					console.log(res);
-					if(res.data.code===200 && res.data.message==="用户信息修改成功!") {
+					if(res.data.code===200 && res.data.message==="修改管理员权限成功") {
 						this.$message.success("权限修改成功!");
 						this.getUserList();
 					} else {
@@ -232,7 +233,19 @@
 				});
 			}
 
-		}
+		},
+		// created() {
+		// 	this.$http.post('/admin/setAdmin',{email:this.param.email,admin:this.param.admin}).then(res=>{
+		// 		console.log(res);
+		// 		if(res.data.code===200 && res.data.message==="修改管理员权限成功") {
+		// 			this.$message.success("权限修改成功!");
+		// 			this.getUserList();
+		// 		} else {
+		// 			this.$message.error("权限修改失败!");
+		// 		}
+		// 		this.editRoleVisible = !this.editRoleVisible;
+		// 	});
+		// }
 	}
 </script>
 
