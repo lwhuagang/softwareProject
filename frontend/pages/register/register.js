@@ -58,23 +58,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      nickname:'', 
-      email:'',
-      password:'',
-      confirmPswd:'',
-      captcha:'',
-      pic_url:'',
-      money:10, 
-      sendTime:'发送验证码',
-      smsFlag:false,
-      snsMsgWait: 60,
-      maxMoney:20,//用户设置的最大初始金额
-      defaultMoney:10,//默认用户的初始金额
-      pswdToosimple:'',
-      wrongEmail:'',
-      nameEmpty:'',
-    })
   },
 
   /**
