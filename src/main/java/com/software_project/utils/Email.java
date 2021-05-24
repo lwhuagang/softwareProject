@@ -28,9 +28,9 @@ public class Email {
         message.setRecipients(Message.RecipientType.TO, new InternetAddress[]{new InternetAddress(email)});
         //message.setRecipient(Message.RecipientType.TO, new InternetAddress("xxx@qq.com"));//一个收件人
         // 设置邮件标题
-        message.setSubject("基金模拟交易平台账号注册验证码");
+        message.setSubject("Identifying Code");
         // 设置邮件内容
-        message.setText("尊敬的用户您好,您的账号注册验证码如下:"+captcha);//这是我们的邮件要发送的信息内容
+        message.setText("Your identifying code is "+captcha);//这是我们的邮件要发送的信息内容
         // 得到邮差对象
         Transport transport = session.getTransport();
         // 连接自己的邮箱账户
