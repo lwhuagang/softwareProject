@@ -5,7 +5,7 @@
       <!-- 搜索框 -->
       <view class="search-bar__box">
         <icon class="search-bar_icon" type="search" size="22"></icon>
-        <input type="text" class="search-bar__input" bindinput="bindKeyInput" placeholder="请在此输入基金代码或基金名称" value="{{inputValue}}" bindblur="addHistory" />
+        <input type="text" class="search-bar__input" bindinput="bindKeyInput" placeholder="请在此输入基金代码或基金名称" value="{{inputValue}}"/>
       </view>
     </view>
     <!-- 搜索按钮,调用搜索查询方法 -->
@@ -22,7 +22,7 @@
     </view>
   </view>
     <!-- inputValue长度判断：文本框中内容删除太快的情况下，渲染和清空缓存出现时差，导致文本框中无内容，但是仍存在搜索结果 -->
-  <view class="FundList" wx:if="{{inputValue.length!=0}}">
+  <view class="FundList" wx:if="{{inputValue.length!=0 && funds[0]!=null}}">
     <block wx:for="{{funds.length}}">
       <blankFundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}" bindtap="addHistory"></blankFundGeneral>
       <view class="divLine"></view>
