@@ -41,7 +41,8 @@
   height: 80%;
   display: flex;
   align-items: center;
-  padding-left: 5rpx;
+  justify-content: center;
+  /* padding-left: 10rpx; */
   /* padding-right: 10rpx; */
   font-size: smaller;
   width: 20%;

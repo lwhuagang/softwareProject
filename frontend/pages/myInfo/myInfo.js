@@ -190,7 +190,14 @@ Page({
         duration:2000,
         icon:"error",
       })
-    } else {
+    } else if(!this.checkPswdStrength()){
+      wx.showToast({
+        title: '密码强度过低',
+        duration:2000,
+        icon:"error",
+      })
+    }
+    else{
         wx.request({
           url: config.service+'/user/login',
           method:"POST",
@@ -236,5 +243,27 @@ Page({
           }
         })
     }
-  }
+  },
+  checkPswdStrength:function() {
+    let pswd = this.data.newPswd;
+    console.log("检查密码===>",pswd);
+    if(pswd=='') {
+        return true;
+    }else if(  pswd.length<6) {
+      console.log("密码长度小于6位");
+      return false;
+    } else if(/[0-9]/.test(pswd)==false) {
+      console.log("密码缺少数字");
+      return false;
+    } else if(/[a-z]/.test(pswd)==false) {
+      console.log("密码缺少小写字母");
+      return false;
+    } else if(/[A-Z]/.test(pswd)==false) {
+      console.log("密码缺少大写字母");
+      return false;
+    } else {
+      console.log("密码合格");
+      return true;
+    }
+  },
 })
