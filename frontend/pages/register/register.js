@@ -271,7 +271,7 @@ checkPswdStrength:function() {
   //   return false;
   // } else 
   if(pswd=='') {
-
+      return true;
   }else if(  pswd.length<6) {
     console.log("密码长度小于6位");
     this.setData({

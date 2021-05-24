@@ -6,7 +6,7 @@
   </view>
   <view class="item">
     <view class="itemInfo">新密码</view>
-    <input class="itemContent" model:value="{{newPswd}}" password />
+    <input class="itemContent" model:value="{{newPswd}}" password placeholder="至少6位，包含数字与大小写字母" placeholder-style="font-size:smaller;"/>
   </view>
   <view class="item">
     <view class="itemInfo">确认密码</view>
