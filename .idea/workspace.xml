@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="将邮件改为英文避免编码问题">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/RuangongApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/RuangongApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/utils/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/utils/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/AttentionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/AttentionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/OperationServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/OperationServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/RecordServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/RecordServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/utils/Email.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/utils/Email.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621867529384</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="将邮件改为英文避免编码问题">
+      <created>1621871103043</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1621871103043</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,6 +316,7 @@
     <MESSAGE value="修改预测基金排序的bug和撤销交易记录时的money未恢复的bug" />
     <MESSAGE value="pull codes" />
     <MESSAGE value="修改用户删除的问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改用户删除的问题" />
+    <MESSAGE value="将邮件改为英文避免编码问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="将邮件改为英文避免编码问题" />
   </component>
 </project>
