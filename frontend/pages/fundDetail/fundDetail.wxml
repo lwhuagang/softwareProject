@@ -37,7 +37,7 @@
     </view>
     <view class="ratios">
       <!-- 成立以来涨跌幅 -->
-      <view class="totalGrowthRatio" wx:if="{{fundInfo.netWorthData}}">
+      <view class="totalGrowthRatio" wx:if="{{fundInfo.type!='货币型' && fundInfo.netWorthData}}">
         <view class="totalGrowth">
           <block wx:if="{{fundInfo.netWorthData[fundInfo.netWorthData.length-1][1]>=fundInfo.netWorthData[0][1]}}">
             <view class="redTotalGrowth">
@@ -52,8 +52,23 @@
         </view>
         <view class="note1">成立以来涨跌幅</view>
       </view>
+      <view class="totalGrowthRatio" wx:if="{{fundInfo.type=='货币型' && fundInfo.sevenDaysYearIncomeData}}">
+        <view class="totalGrowth">
+          <block wx:if="{{fundInfo.sevenDaysYearIncome>=0}}">
+            <view class="redTotalGrowth">
+              {{tool.my_toFix(fundInfo.sevenDaysYearIncome,2)}}%
+            </view>
+          </block>
+          <block wx:else>
+            <view class="greenTotalGrowth">
+              {{tool.my_toFix(fundInfo.sevenDaysYearIncome,2)}}%
+            </view>
+          </block>
+        </view>
+        <view class="note1">七日年化</view>
+      </view>
       <!-- 日涨跌幅 -->
-      <view class="dayGrowthRatio" wx:if="{{fundInfo.dayGrowth}}">
+      <view class="dayGrowthRatio" wx:if="{{fundInfo.type!='货币型' &&  fundInfo.dayGrowth}}">
         <view class="dayGrowth">
           <block wx:if="{{fundInfo.dayGrowth[0]=='-'}}">
             <view class="greenDayGrowth">{{fundInfo.dayGrowth}}%</view>
@@ -64,6 +79,10 @@
         </view>
         <view class="note2">日涨跌幅</view>
       </view>
+      <view class="millionCopiesIncome " wx:if="{{fundInfo.type=='货币型' &&  fundInfo.millionCopiesIncome}}">
+        <view class="netWorth">{{fundInfo.millionCopiesIncome}}</view>
+        <view class="note2">万分收益{{tool.my_slice(fundInfo.millionCopiesIncomeDate,5,10)}}</view>
+      </view>
       <!-- 净值 -->
       <view class="netWorthPart" wx:if="{{fundInfo.netWorth}}">
         <view class="netWorth">{{fundInfo.netWorth}}</view>
@@ -72,10 +91,39 @@
     </view>
   </view>
   <!-- 走势图 -->
-  <view class="linePart" >
+  <view class="linePart" wx:if="{{fundInfo.type!='货币型'}}">
     <view class="lineTitle">{{fundInfo.totalNetWorthData?"业绩走势":"对不起，我们还没有该基金走势数据"}}</view>
-    <ec-canvas wx:if="{{loadLineOK && fundInfo.totalNetWorthData}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line }}"></ec-canvas>
-    <image src="../../image/nodata.jpg" wx:if="{{!(loadLineOK && fundInfo.totalNetWorthData)}}"  mode="widthFix"></image>
+    <ec-canvas wx:if="{{loadLineOK_1 && fundInfo.totalNetWorthData}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line_1 }}"></ec-canvas>
+    <image src="../../image/nodata.jpg" wx:if="{{!(loadLineOK_1 && fundInfo.totalNetWorthData)}}"  mode="widthFix"></image>
+  </view>
+  <!-- 货币基金 -->
+  <view class="linePart" wx:else>
+    <view class="lineHead">
+      <view class="subLineHead seven">
+        <block wx:if="{{lineChoice=='七日年化'}}">
+          <view class="sevenNote" style="color:#2e9cec;text-align:center;">七日年化</view>
+          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:5rpx;"></view>
+        </block>
+        <block wx:else>
+          <view class="sevenNote" style="text-align:center;" bindtap="swap2Seven">七日年化</view>
+          <view class="noteLine" style="background:#f6f6f6;margin-top:15rpx;width:100%;height:2rpx;"></view>
+        </block>
+      </view>
+      <view class="subLineHead worthGrowth">
+        <block wx:if="{{lineChoice=='万分收益'}}">
+          <view class="millionNote" style="color:#2e9cec;text-align:center;">万分收益</view>
+          <view class="noteLine" style="background:#2e9cec;margin-top:15rpx;width:100%;height:5rpx;"></view>
+        </block>
+        <block wx:else>
+          <view class="millionNote" style="text-align:center;" bindtap="swap2Million">万分收益</view>
+          <view class="noteLine" style="background:#f6f6f6;margin-top:15rpx;width:100%;height:2rpx;"></view>
+        </block>
+      </view>
+    </view>
+    <ec-canvas wx:if="{{lineChoice=='七日年化'&& loadLineOK_2 && fundInfo.sevenDaysYearIncomeData}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line_2 }}"></ec-canvas>
+    <image src="../../image/nodata.jpg" wx:if="{{lineChoice=='七日年化' && !( loadLineOK_2 && fundInfo.sevenDaysYearIncomeData)}}"  mode="widthFix"></image>
+    <ec-canvas wx:if="{{lineChoice=='万分收益' &&  loadLineOK_3 && fundInfo.millionCopiesIncomeData}}" class="detailLine" canvas-id="mychart-line" ec="{{ ec_line_3 }}"></ec-canvas>
+    <image src="../../image/nodata.jpg" wx:if="{{lineChoice=='万分收益' && !( loadLineOK_3 && fundInfo.millionCopiesIncomeData)}}"  mode="widthFix"></image>
   </view>
   <!-- 涨幅数据 -->
   <view class="growthData">
@@ -135,7 +183,7 @@
     </view>
   </view>
   <!-- 持仓详情 -->
-  <view class="positionPart">
+  <view class="positionPart" wx:if="{{fundInfo.type!='货币型'}}">
     <view class="positionNote">基金持仓</view>
     <ec-canvas wx:if="{{loadPositionOK}}" class="positionPie" canvas-id="mychart-pie" ec="{{ ec_position }}"></ec-canvas>
     <view class="total" wx:if="{{fundPosition!=null}}">
@@ -176,7 +224,7 @@
     <view class="docItem">
       <view class="docItemNote">成立时间</view>
       <view class="docItemDiv"></view>
-      <view class="docItemValue">{{fundInfo.totalNetWorthData[0][0]}}</view>
+      <view class="docItemValue">{{fundInfo.millionCopiesIncomeData[0][0]}}</view>
     </view>
     <view class="docItem">
       <view class="docItemNote">基金经理</view>

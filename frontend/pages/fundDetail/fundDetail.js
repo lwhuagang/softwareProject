@@ -27,11 +27,16 @@ Page({
     fundPosition: {}, //基金持仓
     ec_position: null, //绘制饼状图
     loadPositionOK: false, //只有这样设置才能等后端数据加载完成之后再渲染前端(前端放在了block里面)
-    ec_line: null, //折线图
-    loadLineOK: false, //取到数据，才能绘制折线图
+    ec_line_1: null, //非货币折线图
+    ec_line_2: null,//货币七日年化
+    ec_line_3: null,//货币万分收益
+    loadLineOK_1: false, //取到数据，才能绘制折线图
+    loadLineOK_2:false,
+    loadLineOK_3:false,
     totalGrowthRatio: 0, //累计涨幅
     isSelfSelect: false,
     isHold: false,
+    lineChoice:'七日年化',
   },
 
   /**
@@ -48,7 +53,12 @@ Page({
       fundCode: code, //全局变量
     });
     this.loadFundDetail(function () {
-      that.loadEcLine()
+      if(that.data.fundInfo.type!='货币型') {
+        that.loadEcLine_1();
+      } else {
+        that.loadEcLine_2();
+        that.loadEcLine_3();
+      }
     });
     this.loadFundPosition(function () {
       that.loadEcPosition();
@@ -136,13 +146,33 @@ Page({
     })
   },
 
-  loadEcLine: function () { //有可能后端也没有数据
+  loadEcLine_1: function () { //有可能后端也没有数据
     if (this.data.fundInfo != null) {
       this.setData({
-        ec_line: {
-          onInit: this.drawLineChart
+        ec_line_1: {
+          onInit: this.drawLineChart_1
         },
-        loadLineOK: true
+        loadLineOK_1: true
+      })
+    }
+  },
+  loadEcLine_2: function () { //有可能后端也没有数据
+    if (this.data.fundInfo != null) {
+      this.setData({
+        ec_line_2: {
+          onInit: this.drawLineChart_2
+        },
+        loadLineOK_2: true
+      })
+    }
+  },
+  loadEcLine_3: function () { //有可能后端也没有数据
+    if (this.data.fundInfo != null) {
+      this.setData({
+        ec_line_3: {
+          onInit: this.drawLineChart_3
+        },
+        loadLineOK_3: true
       })
     }
   },
@@ -158,14 +188,17 @@ Page({
       } else if (num == 1) { //将净值转化为净值涨幅百分比（相对于第一个点的）
         var percent = (twoDimArr[i][num] - firstNetWorth) / firstNetWorth * 100;
         arr.push(percent.toFixed(2));
-      } else {
+      } else if(num==2){//万分收益，不做百分比
+        var tmp = twoDimArr[i][1]-0;
+        arr.push(tmp.toFixed(2));
+      }else{
         arr.push(twoDimArr[i][num]);
       }
     }
     return arr;
   },
 
-  drawLineChart: function (canvas, width, height, dpr) {
+  drawLineChart_1: function (canvas, width, height, dpr) {
     var fundInfo = this.data.fundInfo;
     var netWorthData = fundInfo.totalNetWorthData;
     var netWorth = this.getCertainDimension(netWorthData, 1);
@@ -241,6 +274,190 @@ Page({
         },
         axisLabel: {
           formatter: '{value} %'
+        }
+        //show: false
+      },
+      series: [{
+        symbol: 'none',
+        name: '涨幅(%)',
+        type: 'line',
+        smooth: false,
+        data: netWorth
+      }]
+    };
+
+    chart.setOption(option);
+    return chart;
+  },
+  //七日年化
+  drawLineChart_2: function (canvas, width, height, dpr) {
+    var fundInfo = this.data.fundInfo;
+    var netWorthData = fundInfo.sevenDaysYearIncomeData;
+    var netWorth = this.getCertainDimension(netWorthData, 1);
+    var netDate = this.getCertainDimension(netWorthData, 0);
+    //console.log("netDate===>",netDate)
+
+    const chart = echarts.init(canvas, null, {
+      width: width,
+      height: height,
+      devicePixelRatio: dpr // new
+    });
+    canvas.setChart(chart);
+
+    var option = {
+      // title: {
+      //   text: '业绩走势',
+      //   left:'center',
+      //   top:0
+      // },
+      color: ["#5484dd"],
+      // legend: {
+      //   data: ['本基金'],
+      //   top: 20,
+      //   left: 'center',
+      //   z: 100
+      // },
+      grid: {
+        containLabel: true,
+        bottom: 20,
+        left: 10,
+        y: 20
+      },
+      tooltip: {
+        show: true,
+        trigger: 'axis',
+      },
+      toolbox: {
+        show: true,
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            restore: {},
+        },
+        orient: 'vertical'
+    },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: netDate,
+        axisLabel: {
+          showMaxLabel: true,
+          showMinLable: true
+        },
+        axisTick: {
+          show: false
+        },
+        axisLine: {
+          lineStyle: {
+            type: 'dashed',
+            opacity: 0
+          },
+        }
+        //show: false
+      },
+      yAxis: {
+        x: 'center',
+        type: 'value',
+        splitLine: {
+          lineStyle: {
+            type: 'dashed'
+          }
+        },
+        axisLabel: {
+          formatter: '{value} %'
+        }
+        //show: false
+      },
+      series: [{
+        symbol: 'none',
+        name: '涨幅(%)',
+        type: 'line',
+        smooth: false,
+        data: netWorth
+      }]
+    };
+
+    chart.setOption(option);
+    return chart;
+  },
+  //万分收益
+  drawLineChart_3: function (canvas, width, height, dpr) {
+    var fundInfo = this.data.fundInfo;
+    var netWorthData = fundInfo.millionCopiesIncomeData;
+    var netWorth = this.getCertainDimension(netWorthData, 2);
+    var netDate = this.getCertainDimension(netWorthData, 0);
+    //console.log("netDate===>",netDate)
+
+    const chart = echarts.init(canvas, null, {
+      width: width,
+      height: height,
+      devicePixelRatio: dpr // new
+    });
+    canvas.setChart(chart);
+
+    var option = {
+      // title: {
+      //   text: '业绩走势',
+      //   left:'center',
+      //   top:0
+      // },
+      color: ["#5484dd"],
+      // legend: {
+      //   data: ['本基金'],
+      //   top: 20,
+      //   left: 'center',
+      //   z: 100
+      // },
+      grid: {
+        containLabel: true,
+        bottom: 20,
+        left: 10,
+        y: 20
+      },
+      tooltip: {
+        show: true,
+        trigger: 'axis',
+      },
+      toolbox: {
+        show: true,
+        feature: {
+            dataZoom: {
+                yAxisIndex: 'none'
+            },
+            restore: {},
+        },
+        orient: 'vertical'
+    },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: netDate,
+        axisLabel: {
+          showMaxLabel: true,
+          showMinLable: true
+        },
+        axisTick: {
+          show: false
+        },
+        axisLine: {
+          lineStyle: {
+            type: 'dashed',
+            opacity: 0
+          },
+        }
+        //show: false
+      },
+      yAxis: {
+        x: 'center',
+        type: 'value',
+        splitLine: {
+          lineStyle: {
+            type: 'dashed'
+          }
+        },
+        axisLabel: {
+          formatter: '{value}'
         }
         //show: false
       },
@@ -518,6 +735,15 @@ Page({
         url: '/pages/buyIn/buyIn?fundCode=' + this.data.fundCode + '&fundName=' + this.data.fundInfo.name,
       })
     }
-
+  },
+  swap2Seven:function() {
+    this.setData({
+      lineChoice:"七日年化"
+    })
+  },
+  swap2Million:function() {
+    this.setData({
+      lineChoice:"万分收益"
+    })
   }
 })

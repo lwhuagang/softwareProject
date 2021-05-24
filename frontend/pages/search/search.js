@@ -113,6 +113,9 @@ Page({
 
   //搜索
   search: function (e) {
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
     var searchtext = this.data.inputValue; //搜索框的值
     if (searchtext != "") {
       // this.addHistory();
@@ -130,6 +133,7 @@ Page({
             });
             console.log("通过代码查询===>");
             console.log(this.data.funds[0]);
+            // wx.hideLoading();
           }
         )
       } else {
@@ -142,6 +146,7 @@ Page({
             });
             console.log("通过名字查询===>");
             console.log(this.data.funds);
+            // wx.hideLoading();
           }
         )
       }

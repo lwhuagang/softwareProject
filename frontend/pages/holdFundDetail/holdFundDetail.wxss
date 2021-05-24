@@ -10,6 +10,7 @@
   position: absolute;
   width: 100%;
   margin-top:130rpx;
+  height: 2000rpx;
 }
 .fundCard{
   height: 120rpx;
