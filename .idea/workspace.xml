@@ -7,19 +7,9 @@
     <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/dao/CommentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/dao/CommentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/CommentServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/CommentDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/CommentDAO.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/AdminController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/OperationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/OperationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/CommentDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/CommentDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/CommentDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/CommentDAO.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/CommentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/CommentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/service/CommentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/service/CommentServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/timer/TimingTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/timer/TimingTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/AttentionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/AttentionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/OperationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/OperationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/service/RecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/service/RecordServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621769065663</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="修改用户删除的问题">
+      <created>1621867529384</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1621867529384</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,17 +296,18 @@
     <MESSAGE value="添加删除单个交易记录的功能" />
     <MESSAGE value="修改预测基金排序的bug和撤销交易记录时的money未恢复的bug" />
     <MESSAGE value="pull codes" />
-    <option name="LAST_COMMIT_MESSAGE" value="pull codes" />
+    <MESSAGE value="修改用户删除的问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改用户删除的问题" />
   </component>
   <component name="WindowStateProjectService">
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser" timestamp="1621866530912">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="122" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1621866530912" />
-    <state x="304" y="6" key="CommitChangelistDialog2" timestamp="1621769064700">
+    <state x="304" y="6" key="CommitChangelistDialog2" timestamp="1621867523781">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="304" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1621769064700" />
+    <state x="304" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1621867523781" />
     <state width="834" height="285" key="GridCell.Tab.0.bottom" timestamp="1621866999424">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -346,6 +344,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="225" y="136" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1621679745611" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1621867534172">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1621867534172" />
     <state x="449" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1621751196210">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

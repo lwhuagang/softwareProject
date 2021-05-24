@@ -27,10 +27,10 @@ import java.util.List;
 @RequestMapping("admin")
 public class AdminController {
     @Autowired
-    FundService fundService;
+    private FundService fundService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
     private FeedBackService feedBackService;

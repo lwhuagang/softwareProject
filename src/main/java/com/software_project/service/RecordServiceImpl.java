@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class RecordServiceImpl implements RecordService{
     @Autowired
-    RecordDAO recordDAO;
+    private RecordDAO recordDAO;
 
     @Override
     public List<Record> getRecords(String userEmail, String fundCode) {

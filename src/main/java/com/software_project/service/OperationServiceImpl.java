@@ -11,7 +11,7 @@ import java.util.List;
 public class OperationServiceImpl implements OperationService{
 
     @Autowired
-    OperationDAO operationDAO;
+    private OperationDAO operationDAO;
 
     @Override
     public void insertDeal(Record record) {
