@@ -3,12 +3,12 @@
   <view class="regBlock">
     <!-- 昵称 -->
     <view class="part nickPart">
-      <view class="instr nickIntr">昵称</view>
+      <view class="instr nickIntr">昵称(15字符以内)</view>
       <view class="inputBlock">
-        <input class="input inputNick" model:value="{{nickname}}" focus bindfocus="resetNameFlag" bindblur="checkNameEmpty"/>
+        <input class="input inputNick" model:value="{{nickname}}" focus bindfocus="resetNameFlag" bindblur="checkNameLength"/>
       </view>
-      <!-- <view wx:if="{{nameEmpty!=''}}" class="errorNote">{{nameEmpty}}</view>
-      <view wx:else class="errorNote"></view> -->
+      <view wx:if="{{nameError!=''}}" class="errorNote">{{nameError}}</view>
+      <view wx:else class="errorNote"></view>
     </view>
     <!--<view class="divLine"></view> -->
     <!-- 邮箱 -->

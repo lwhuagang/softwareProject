@@ -21,7 +21,7 @@ Page({
       defaultMoney:10,//默认用户的初始金额
       pswdToosimple:'',
       wrongEmail:'',
-      nameEmpty:'',
+      nameError:'',
   },
 
   /**
@@ -172,7 +172,7 @@ checkPswd:function() {
 register:function() {
     console.log("注册====>");
     var that = this;
-    if(this.data.confirmPswd=='' || this.data.email=='' || this.data.nickname=='' || this.data.confirmPswd!=this.data.password || !this.checkEmail()) {
+    if(this.data.confirmPswd=='' || this.data.email=='' || this.data.nickname=='' || this.data.confirmPswd!=this.data.password || !this.checkEmail()||!this.checkNameLength()) {
       wx.showToast({
         title: '存在非法字段',
         icon:'error',
@@ -324,19 +324,20 @@ checkEmail:function() {
     return true;
   }
 },
-// checkNameEmpty:function(e) {
-//   if(e.detail.value=='') {
-//     this.setData({
-//       nameEmpty:'昵称不能为空',
-//     });
-//     return true;
-//   } else {
-//     this.setData({
-//       nameEmpty:'',
-//     })
-//     return false;
-//   }
-// },
+checkNameLength:function() {
+  let name = this.data.nickname;
+  if(name.length>15) {
+      this.setData({
+        nameError:"昵称在15个字符以内"
+      });
+      return false;
+  } else {
+    this.setData({
+      nameError:'',
+    });
+    return true;
+  }
+},
 resetPswdFlag:function() {
   this.setData({
     pswdToosimple:''
@@ -347,9 +348,9 @@ resetMailFlag:function() {
     wrongEmail:'',
   })
 },
-// resetNameFlag:function() {
-//   this.setData({
-//     nameEmpty:''
-//   })
-// }
+resetNameFlag:function() {
+  this.setData({
+    nameError:''
+  })
+}
 })
