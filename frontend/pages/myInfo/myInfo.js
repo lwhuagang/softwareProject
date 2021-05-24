@@ -137,7 +137,13 @@ Page({
           cancelColor: 'cancelColor',
           content:'昵称不能为空'
         })
-      } else {
+      } else if(this.data.nickname.length>15){
+        wx.showModal({
+          cancelColor: 'cancelColor',
+          content:"昵称须在15字符以内!"
+        })
+      }
+      else{
         var tmpParam = {
           email:this.data.userInfo.email,
           name:this.data.nickname,

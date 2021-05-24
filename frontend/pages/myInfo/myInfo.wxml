@@ -10,7 +10,7 @@
       </view>
       <view class="infoItem">
         <view class="infoHead">用户昵称</view>
-        <input wx:if="{{edit}}" class="infoContent" maxlength="15" model:value="{{nickname}}" />
+        <input wx:if="{{edit}}" class="infoContent" maxlength="15" model:value="{{nickname}}" placeholder="15字符以内" placeholder-style="font-size:medium;"/>
         <view wx:else class="infoContent">{{userInfo.nickname}}</view>
       </view>
     </view>
