@@ -32,8 +32,8 @@
 }
 .searchBox{
   display: flex;
-  margin-top: 25rpx;
-  margin-left: 20rpx;
+  margin-top: 45rpx;
+  margin-left: 30rpx;
   width: 65%;
   height: 55%;
   border-radius: 20rpx;
