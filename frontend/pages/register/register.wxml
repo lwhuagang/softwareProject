@@ -7,8 +7,8 @@
       <view class="inputBlock">
         <input class="input inputNick" model:value="{{nickname}}" focus bindfocus="resetNameFlag" bindblur="checkNameEmpty"/>
       </view>
-      <view wx:if="{{nameEmpty!=''}}" class="errorNote">{{nameEmpty}}</view>
-      <view wx:else class="errorNote"></view>
+      <!-- <view wx:if="{{nameEmpty!=''}}" class="errorNote">{{nameEmpty}}</view>
+      <view wx:else class="errorNote"></view> -->
     </view>
     <!--<view class="divLine"></view> -->
     <!-- 邮箱 -->

@@ -219,6 +219,7 @@ Page({
                   isEmpty: (res.data.obj.length == 0)
                 });
                 var allNews = res.data.obj;
+                console.log("allNews==>",allNews)
                 var i;
                 for (i = 0; i < allNews.length; i++) {
                   if (allNews[i].read == 1) {

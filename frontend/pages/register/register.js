@@ -258,12 +258,15 @@ setMoney:function(e) {
 checkPswdStrength:function() {
   let pswd = this.data.password;
   console.log("检查密码===>",pswd);
+  // if(pswd=='') {
+  //   this.setData({
+  //     pswdToosimple:'密码不能为空'
+  //   });
+  //   return false;
+  // } else 
   if(pswd=='') {
-    this.setData({
-      pswdToosimple:'密码不能为空'
-    });
-    return false;
-  } else if(pswd.length<6) {
+
+  }else if(  pswd.length<6) {
     console.log("密码长度小于6位");
     this.setData({
       pswdToosimple:'密码过于简单',
@@ -298,12 +301,13 @@ checkPswdStrength:function() {
 checkEmail:function(e) {
   console.log(e);
   let mail = e.detail.value;
-  if(mail=='') {
-    this.setData({
-      wrongEmail:'邮箱不能为空'
-    });
-    return false;
-  } else if(!(/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(mail))) {
+  // if(mail=='') {
+  //   this.setData({
+  //     wrongEmail:'邮箱不能为空'
+  //   });
+  //   return false;
+  // } else 
+  if(mail!='' && !(/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(mail))) {
     this.setData({
       wrongEmail:'邮箱格式错误',
     })
@@ -313,19 +317,19 @@ checkEmail:function(e) {
     })
   }
 },
-checkNameEmpty:function(e) {
-  if(e.detail.value=='') {
-    this.setData({
-      nameEmpty:'昵称不能为空',
-    });
-    return true;
-  } else {
-    this.setData({
-      nameEmpty:'',
-    })
-    return false;
-  }
-},
+// checkNameEmpty:function(e) {
+//   if(e.detail.value=='') {
+//     this.setData({
+//       nameEmpty:'昵称不能为空',
+//     });
+//     return true;
+//   } else {
+//     this.setData({
+//       nameEmpty:'',
+//     })
+//     return false;
+//   }
+// },
 resetPswdFlag:function() {
   this.setData({
     pswdToosimple:''
