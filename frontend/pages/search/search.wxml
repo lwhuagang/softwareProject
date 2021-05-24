@@ -5,7 +5,7 @@
       <!-- 搜索框 -->
       <view class="search-bar__box">
         <icon class="search-bar_icon" type="search" size="22"></icon>
-        <input type="text" class="search-bar__input" bindinput="bindKeyInput" placeholder="请在此输入基金代码或基金名称" value="{{inputValue}}" />
+        <input type="text" class="search-bar__input" bindinput="bindKeyInput" placeholder="请在此输入基金代码或基金名称" value="{{inputValue}}" bindblur="addHistory" />
       </view>
     </view>
     <!-- 搜索按钮,调用搜索查询方法 -->
