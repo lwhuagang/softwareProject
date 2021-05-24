@@ -5,6 +5,7 @@ import com.software_project.pojo.Fund;
 import com.software_project.pojo.User;
 import com.software_project.service.AttentionService;
 import com.software_project.service.BrowseService;
+import com.software_project.service.CommentService;
 import com.software_project.service.FeedBackService;
 import com.software_project.service.FundService;
 import com.software_project.service.HoldService;
@@ -55,6 +56,9 @@ public class AdminController {
     @Autowired
     private MessageService messageService;
 
+    @Autowired
+    private CommentService commentService;
+
     @GetMapping("fundOff")
     public Result FundOff(int fundCode){
         fundService.deleteFund(fundCode);
@@ -81,6 +85,10 @@ public class AdminController {
         browseService.deleteBrowse(email);
         feedBackService.deleteFeedBack(email);
         searchService.deleteSearch(email);
+        // comment
+        commentService.deleteCommentByUserEmail(email);
+        // message
+        messageService.deleteAllMessage(email);
         // 删除用户
         userService.deleteUser(email);
         return new Result(200,true,"用户删除成功");

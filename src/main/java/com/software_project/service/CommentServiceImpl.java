@@ -36,4 +36,9 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> getCommentByUserEmail(String userEmail) {
         return commentDAO.getCommentByUserEmail(userEmail);
     }
+
+    @Override
+    public void deleteCommentByUserEmail(String userEmail) {
+        commentDAO.deleteCommentByUserEmail(userEmail);
+    }
 }

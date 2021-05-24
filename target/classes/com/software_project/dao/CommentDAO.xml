@@ -9,6 +9,9 @@
     <delete id="deleteComment" parameterType="int">
         delete from soft.comment where id = #{id}
     </delete>
+    <delete id="deleteCommentByUserEmail" parameterType="java.lang.String">
+        delete from soft.comment where userEmail = #{userEmail};
+    </delete>
     <select id="getCommentsByFundCode" resultType="com.software_project.pojo.Comment"
             parameterType="java.lang.String">
         select * from soft.comment where fundCode = #{fundCode};

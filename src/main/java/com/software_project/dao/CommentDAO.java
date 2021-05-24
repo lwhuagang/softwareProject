@@ -45,4 +45,12 @@ public interface CommentDAO {
      * @return 该用户的所有评论
      */
     List<Comment> getCommentByUserEmail(String userEmail);
+
+    /**
+     * 删除一个用户的所有的评论
+     * @param userEmail 用户邮箱
+     */
+    void deleteCommentByUserEmail(String userEmail);
+
+
 }
