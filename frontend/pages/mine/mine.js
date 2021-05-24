@@ -41,7 +41,8 @@ Page({
               app.globalData.userInfo=res.data.obj
               that.setData({
                 userInfo:res.data.obj,
-                tmpInfo:res.data.obj
+                tmpInfo:res.data.obj,
+                hasMessage:false,
               });
               that.getMessage();
             }
@@ -83,7 +84,8 @@ Page({
             app.globalData.userInfo=res.data.obj
             that.setData({
               userInfo:res.data.obj,
-              tmpInfo:res.data.obj
+              tmpInfo:res.data.obj,
+              hasMessage:false,
             });
             that.getMessage();
           }
@@ -207,12 +209,16 @@ Page({
     var that = this;
     if(this.data.isLogin) {
       wx.request({
-        url: config.service+'/message/getAllNotReadMsg?userEmail='+this.data.userInfo.email,
+        url: config.service+'/message/getAllMessage?userEmail='+this.data.userInfo.email,
         method:"GET",
         success:res=>{
-          console.log("用户未读信息",res);
-          that.setData({
-            hasMessage:(res.data.obj.length>0),
+          console.log("用户所有信息",res);
+          res.data.obj.forEach(function(e){
+            if(e.read==false) {
+              that.setData({
+                hasMessage:true,
+              });
+            }
           })
         }
       })

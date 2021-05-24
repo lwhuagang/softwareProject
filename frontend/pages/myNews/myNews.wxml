@@ -56,6 +56,48 @@
       </view>
     </view>
   </block>
+  <block wx:for="{{already.length}}">
+    <view class="newsItem">
+      <view class="sendTime">{{already[index].showTime}}</view>
+      <view class="news">
+        <view class="senderImg">
+          <image src="../../image/userInfo.jpg"></image>
+        </view>
+        <view class="newsBlock" wx:if="{{already[index].messageType==0}}">
+          <view class="newsTitle">
+            <view class="titleText">基金{{(already[index].expectWorth-already[index].netWorth)>0?"加仓":"清仓"}}提醒</view>
+          </view>
+          <view class="newsContent">
+            <view class="contentText">{{already[index].fundCode}}  {{already[index].fundName}}</view>
+            <view class="contentText">预计基金净值将由：</view>
+            <view class="contentText">【{{already[index].netWorthDate}}】 {{already[index].netWorth}}</view>
+            <view class="contentText">{{(already[index].expectWorth-already[index].netWorth)>0?"上涨至":"下跌至"}}： </view>
+            <view class="contentText">【{{already[index].expectWorthDate}}】 {{already[index].expectWorth}}</view>
+            <view class="contentText">预计{{(already[index].expectWorth-already[index].netWorth)>0?"涨幅":"跌幅"}}({{filters.toFix2((already[index].expectWorth-already[index].netWorth)/already[index].netWorth*100)}}%)较大，请参考考虑是否{{(already[index].expectWorth-already[index].netWorth)>0?"加仓":"清仓"}}。</view>
+          </view>
+          <navigator class="more" url="/pages/holdFundDetail/holdFundDetail?fundCode={{already[index].fundCode}}">
+            <view class="moreText">查看持有基金详情</view>
+            <view class="moreImg">
+              <image src="../../image/right.png"></image>
+            </view>
+          </navigator>
+        </view>
+        <view class="newsBlock" wx:else>
+          <view class="newsTitle">
+            <view class="titleText">用户反馈处理</view>
+          </view>
+          <view class="newsContent">
+            <view class="contentText">您的反馈:</view>
+            <view class="contentText">{{already[index].message}}</view>
+            <view class="contentText">处理记录:</view>
+            <view class="contentText">{{already[index].result}}</view>
+          </view>
+          <view class="more"></view>
+        </view>
+        <view class="dot" wx:if="{{!already[index].read}}"> </view>
+      </view>
+    </view>
+  </block>
 </view>
 <view class="head">
   <naviBar title="消息中心"></naviBar>

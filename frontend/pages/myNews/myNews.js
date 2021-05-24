@@ -40,6 +40,7 @@ Page({
         messageType: 1, //0表示推送消息，1表示反馈消息
       },*/
     ],
+    already:[],
     isEmpty: false,
   },
 
@@ -188,62 +189,102 @@ Page({
   getMessage: function () {
     var that = this;
     wx.request({
-      url: config.service + '/message/getAllNotReadMsg?userEmail=' + app.globalData.userInfo.email,
+      url: config.service + '/message/getAllMessage?userEmail=' + app.globalData.userInfo.email,
       method: "GET",
-      success: res => { //先获得所有的未读信息，展示在首部
-        console.log("用户未读信息", res);
-        if (res.data.code == 200 && res.data.message == "获取所有未读的消息") {
+      success: res => {
+        console.log("用户所有信息", res);
+        let tmpNews = [];
+        let tmpAlready=[];
+        if (res.data.code == 200 && res.data.message == "获取该用户的所有信息") {
           that.setData({
-            news: res.data.obj,
             isEmpty: (res.data.obj.length == 0)
           });
+          var allNews = res.data.obj;
+          console.log("allNews==>",allNews)
           var i;
-          var tmpList = that.data.news;
-          for (i = 0; i < tmpList.length; i++) {
-            tmpList[i].showTime = that.BeijingTime(tmpList[i].time);
-            if (tmpList[i].messageType == 0) {
-              tmpList[i].expectWorthDate = that.BeijingTimeAddByDay(tmpList[i].time, 15).substring(0, 10);
-              tmpList[i].netWorthDate = that.BeijingTime(tmpList[i].time).substring(0, 10);
+          for (i = 0; i < allNews.length; i++) {
+            if (allNews[i].read == false) {
+              allNews[i].showTime = that.BeijingTime(allNews[i].time);
+              if (allNews[i].messageType == 0) {
+                allNews[i].expectWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
+                allNews[i].netWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
+              }
+              tmpNews.push(allNews[i]);
+            } else {
+              allNews[i].showTime = that.BeijingTime(allNews[i].time);
+              if (allNews[i].messageType == 0) {
+                allNews[i].expectWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
+                allNews[i].netWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
+              }
+              tmpAlready.push(allNews[i]);
             }
           }
           that.setData({
-            news: tmpList,
-          })
-          wx.request({
-            url: config.service + '/message/getAllMessage?userEmail=' + app.globalData.userInfo.email,
-            method: "GET",
-            success: res => {
-              console.log("用户所有信息", res);
-              if (res.data.code == 200 && res.data.message == "获取该用户的所有信息") {
-                that.setData({
-                  isEmpty: (res.data.obj.length == 0)
-                });
-                var allNews = res.data.obj;
-                console.log("allNews==>",allNews)
-                var i;
-                for (i = 0; i < allNews.length; i++) {
-                  if (allNews[i].read == 1) {
-                    allNews[i].showTime = that.BeijingTime(allNews[i].time);
-                    if (allNews[i].messageType == 0) {
-                      allNews[i].expectWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
-                      allNews[i].netWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
-                    }
-                    tmpList.push(allNews[i]);
-                  }
-                }
-                that.setData({
-                  news: tmpList,
-                })
-              } else {
-                console.log("消息加载失败");
-              }
-            }
+            news: tmpNews,
+            already:tmpAlready
           })
         } else {
           console.log("消息加载失败");
         }
       }
     })
+    // wx.request({
+    //   url: config.service + '/message/getAllNotReadMsg?userEmail=' + app.globalData.userInfo.email,
+    //   method: "GET",
+    //   success: res => { //先获得所有的未读信息，展示在首部
+    //     console.log("用户未读信息", res);
+    //     if (res.data.code == 200 && res.data.message == "获取所有未读的消息") {
+    //       that.setData({
+    //         news: res.data.obj,
+    //         isEmpty: (res.data.obj.length == 0)
+    //       });
+    //       var i;
+    //       var tmpList = that.data.news;
+    //       for (i = 0; i < tmpList.length; i++) {
+    //         tmpList[i].showTime = that.BeijingTime(tmpList[i].time);
+    //         if (tmpList[i].messageType == 0) {
+    //           tmpList[i].expectWorthDate = that.BeijingTimeAddByDay(tmpList[i].time, 15).substring(0, 10);
+    //           tmpList[i].netWorthDate = that.BeijingTime(tmpList[i].time).substring(0, 10);
+    //         }
+    //       }
+    //       that.setData({
+    //         news: tmpList,
+    //       })
+    //       wx.request({
+    //         url: config.service + '/message/getAllMessage?userEmail=' + app.globalData.userInfo.email,
+    //         method: "GET",
+    //         success: res => {
+    //           console.log("用户所有信息", res);
+    //           if (res.data.code == 200 && res.data.message == "获取该用户的所有信息") {
+    //             that.setData({
+    //               isEmpty: (res.data.obj.length == 0)
+    //             });
+    //             var allNews = res.data.obj;
+    //             console.log("allNews==>",allNews)
+    //             var i;
+    //             for (i = 0; i < allNews.length; i++) {
+    //               if (allNews[i].read == 1) {
+    //                 allNews[i].showTime = that.BeijingTime(allNews[i].time);
+    //                 if (allNews[i].messageType == 0) {
+    //                   allNews[i].expectWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
+    //                   allNews[i].netWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
+    //                 }
+    //                 tmpList.push(allNews[i]);
+    //               }
+    //             }
+    //             that.setData({
+    //               news: tmpList,
+    //             })
+    //           } else {
+    //             console.log("消息加载失败");
+    //           }
+    //         }
+    //       })
+    //     } else {
+    //       console.log("消息加载失败");
+    //     }
+    //   }
+    // })
 
   }
 })
