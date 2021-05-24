@@ -12,7 +12,7 @@
       <view class="fundName">螺旋直升基</view>
     </view>
   </view>
-  <view class="fb_main">
+  <!-- <view class="fb_main">
     <view class="fb_title">问题的种类</view>
     <view class="fb_tips">
       <text>功能建议</text>
@@ -20,7 +20,7 @@
       <text>性能问题</text>
       <text>其他</text>
     </view>
-  </view>
+  </view> -->
   <view class="conts">
     <textarea class="areas" placeholder='请在此描述您的问题或建议' minlength="{{min}}" maxlength="{{max}}" bindinput="handleTextInput"></textarea>
   </view>
