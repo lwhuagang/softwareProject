@@ -25,12 +25,14 @@
 }
 .itemInfo{
   width: 20%;
-  padding-right: 20rpx;
+  padding-right: 5rpx;
   border-right: 1rpx solid #dcdcdc;
   text-align: center;
+  font-size: medium;
 }
 .itemContent{
-  padding-left:20rpx;
+  padding-left:5rpx;
+  width: 55%;
 }
 .captchaBtn1{
   background: #5484dd;
@@ -39,9 +41,10 @@
   height: 80%;
   display: flex;
   align-items: center;
-  padding-left: 10rpx;
-  padding-right: 10rpx;
-  font-size: medium;
+  padding-left: 5rpx;
+  /* padding-right: 10rpx; */
+  font-size: smaller;
+  width: 20%;
 }
 .captchaBtn2{
   background: #fafafa;
@@ -52,7 +55,7 @@
   align-items: center;
   padding-left: 10rpx;
   padding-right: 10rpx;
-  font-size: medium;
+  font-size: smaller;
 }
 .confirmBtn1{
   margin-top: 50rpx;
