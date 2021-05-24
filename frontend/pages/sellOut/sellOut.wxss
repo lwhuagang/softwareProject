@@ -17,9 +17,8 @@
   margin-top:130rpx;
 }
 .fundName{
-  height: 100rpx;
-  width:100%;
-  height:100rpx;
+  width: 94%;
+  height: 120rpx;
   background: white;
   border-radius: 20rpx;
   justify-content: space-between;
@@ -28,10 +27,9 @@
   padding-left: 30rpx;
   margin-bottom: 20rpx;
   font-size: 45rpx;
-  
 }
 .redeem{
-  width:96%;
+  width:94%;
   background:white;
   border-radius: 20rpx;
   padding: 20rpx 30rpx;

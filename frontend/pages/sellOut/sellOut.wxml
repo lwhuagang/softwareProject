@@ -10,7 +10,7 @@
     </view>
     
     <view class="inputUnitView">
-      <input class="inputUnit" type="digit" placeholder="最多可卖出{{filters.toFix2(maxUnit)}}份" placeholder-style="font-size:35rpx" value="{{filters.toFix2(chooseUnit>maxUnit?maxUnit:chooseUnit)}}" 
+      <input class="inputUnit" type="digit" placeholder="最多可卖出{{filters.toFix2(maxUnit)}}份" placeholder-style="font-size:35rpx" value="{{chooseUnit}}" bindinput="moneyInput"
       model:value="{{chooseUnit}}">
       </input>
       <view class="img" bindtap="deleteUnit"> 

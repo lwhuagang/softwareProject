@@ -15,16 +15,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    fundCode:0,
-    fundName:"易方达蓝筹精选混合",
-    maxUnit:1000,
-    grey:"#666666",
-    blue:"#0081FF",
-    btn1Color:"",
-    btn2Color:"",
-    btn3Color:"",
-    btn3Color:"",
-    chooseUnit:null,
+    fundCode: 0,
+    fundName: "易方达蓝筹精选混合",
+    maxUnit: 1000,
+    grey: "#666666",
+    blue: "#0081FF",
+    btn1Color: "",
+    btn2Color: "",
+    btn3Color: "",
+    btn3Color: "",
+    chooseUnit: null,
   },
 
   /**
@@ -33,147 +33,162 @@ Page({
   onLoad: function (options) {
     var fundCode = options.fundCode;
     var fundName = options.fundName;
-    console.log("卖出===>",fundCode);
+    console.log("卖出===>", fundCode);
     this.setData({
-      fundCode:fundCode,
-      fundName:fundName,
-      btn1Color:this.data.grey,
-      btn2Color:this.data.grey,
-      btn3Color:this.data.grey,
-      btn4Color:this.data.grey,
-      maxUnit:options.share
+      fundCode: fundCode,
+      fundName: fundName,
+      btn1Color: this.data.grey,
+      btn2Color: this.data.grey,
+      btn3Color: this.data.grey,
+      btn4Color: this.data.grey,
+      maxUnit: options.share
     })
-    this.loadFundDetail(function(){
-    })
+    this.loadFundDetail(function () {})
   },
-  loadFundDetail:function(callback) {
+  loadFundDetail: function (callback) {
     var that = this;
-    getFundDetail(
-      {
-        code:this.data.fundCode,
-        token:"atTPd9c8sA"
+    getFundDetail({
+        code: this.data.fundCode,
+        token: "atTPd9c8sA"
       },
-      res=>{
+      res => {
         this.setData({
-          fundInfo:res.data.data,
-        });    
+          fundInfo: res.data.data,
+        });
       }
-    );
-    ;//同步不知道怎么搞，只好人为设置定时器了
+    );; //同步不知道怎么搞，只好人为设置定时器了
   },
-  unitBtn1:function(){
-    if (this.data.btn1Color == this.data.grey){
+  unitBtn1: function () {
+    if (this.data.btn1Color == this.data.grey) {
+      var num = this.data.maxUnit * 0.2;
       this.setData({
-        btn1Color:this.data.blue,
-        chooseUnit:this.data.maxUnit*0.2
+        btn1Color: this.data.blue,
+        chooseUnit: Math.floor(num * 100) / 100
       })
-    }else{
+    } else {
       this.setData({
-        btn1Color:this.data.grey
+        btn1Color: this.data.grey
       })
     }
     this.setData({
-      btn2Color:this.data.grey,
-      btn3Color:this.data.grey,
-      btn4Color:this.data.grey
+      btn2Color: this.data.grey,
+      btn3Color: this.data.grey,
+      btn4Color: this.data.grey
     })
-    
+
   },
-  unitBtn2:function(){
-    if (this.data.btn2Color == this.data.grey){
+  unitBtn2: function () {
+    if (this.data.btn2Color == this.data.grey) {
+      var num = this.data.maxUnit * 0.3;
       this.setData({
-        btn2Color:this.data.blue,
-        chooseUnit:this.data.maxUnit*0.3
+        btn2Color: this.data.blue,
+        chooseUnit: Math.floor(num * 100) / 100
       })
-    }else{
+    } else {
       this.setData({
-        btn2Color:this.data.grey
+        btn2Color: this.data.grey
       })
     }
     this.setData({
-      btn1Color:this.data.grey,
-      btn3Color:this.data.grey,
-      btn4Color:this.data.grey
+      btn1Color: this.data.grey,
+      btn3Color: this.data.grey,
+      btn4Color: this.data.grey
     })
-    
+
   },
-  unitBtn3:function(){
-    if (this.data.btn3Color == this.data.grey){
+  unitBtn3: function () {
+    if (this.data.btn3Color == this.data.grey) {
+      var num = this.data.maxUnit * 0.5;
       this.setData({
-        btn3Color:this.data.blue,
-        chooseUnit:this.data.maxUnit*0.5
+        btn3Color: this.data.blue,
+        chooseUnit: Math.floor(num * 100) / 100
       })
-    }else{
+    } else {
       this.setData({
-        btn3Color:this.data.grey
-      })
-    }
-    this.setData({
-      btn1Color:this.data.grey,
-      btn2Color:this.data.grey,
-      btn4Color:this.data.grey
-    })
-    
-  },
-  unitBtn4:function(){
-    if (this.data.btn4Color == this.data.grey){
-      this.setData({
-        btn4Color:this.data.blue,
-        chooseUnit:this.data.maxUnit
-      })
-    }else{
-      this.setData({
-        btn4Color:this.data.grey
+        btn3Color: this.data.grey
       })
     }
     this.setData({
-      btn1Color:this.data.grey,
-      btn2Color:this.data.grey,
-      btn3Color:this.data.grey
+      btn1Color: this.data.grey,
+      btn2Color: this.data.grey,
+      btn4Color: this.data.grey
     })
-    
   },
-  deleteUnit:function(){
+  unitBtn4: function () {
+    if (this.data.btn4Color == this.data.grey) {
+      var num = this.data.maxUnit;
+      this.setData({
+        btn4Color: this.data.blue,
+        chooseUnit: Math.floor(num * 100) / 100
+      })
+    } else {
+      this.setData({
+        btn4Color: this.data.grey
+      })
+    }
     this.setData({
-      chooseUnit:null,
-      btn1Color:this.data.grey,
-      btn2Color:this.data.grey,
-      btn3Color:this.data.grey,
-      btn4Color:this.data.grey
+      btn1Color: this.data.grey,
+      btn2Color: this.data.grey,
+      btn3Color: this.data.grey
+    })
+
+  },
+  deleteUnit: function () {
+    this.setData({
+      chooseUnit: null,
+      btn1Color: this.data.grey,
+      btn2Color: this.data.grey,
+      btn3Color: this.data.grey,
+      btn4Color: this.data.grey
     })
   },
-  sellSubmit:function(){
-    console.log("卖出份额=======>"+this.data.chooseUnit)
+  moneyInput: function (e) {
+    var money;
+    if (/^(\d?)+(\.\d{0,2})?$/.test(e.detail.value)) { //正则验证，提现金额小数点后不能大于两位数字
+      money = e.detail.value;
+    } else {
+      money = e.detail.value.substring(0, e.detail.value.length - 1);
+    }
+    this.setData({
+      chooseUnit: money,
+    })
+  },
+  sellSubmit: function () {
+    console.log("卖出份额=======>" + this.data.chooseUnit)
     wx.request({
-      url: config.service+'/fundOperation/sell',
-      method:"POST",
-      data:{
-        email:app.globalData.userInfo.email,
-        fundCode:this.data.fundCode,
-        sellShare:this.data.chooseUnit
+      url: config.service + '/fundOperation/sell',
+      method: "POST",
+      data: {
+        email: app.globalData.userInfo.email,
+        fundCode: this.data.fundCode,
+        sellShare: this.data.chooseUnit
       },
-      success:res=>{
+      success: res => {
         console.log(res)
-        if(res.statusCode=="200") {
-          if(res.data.message=="卖出操作记录成功") {
+        if (res.statusCode == "200") {
+          if (res.data.message == "卖出操作记录成功") {
             wx.showModal({
-              title:"卖出成功!",
+              title: "卖出成功!",
               cancelColor: 'cancelColor',
             });
-            setTimeout(function(){
+            setTimeout(function () {
               wx.navigateBack({
                 delta: 1,
               })
-            },1000)
+            }, 1000)
           } else {
             wx.showModal({
-              title:"份额不足！",
+              title: "份额不足！",
               cancelColor: 'cancelColor',
+            })
+            var num = this.data.maxUnit;
+            this.setData({
+              chooseUnit: Math.floor(num * 100) / 100
             })
           }
         } else {
           wx.showModal({
-            title:"操作失败！",
+            title: "操作失败！",
             cancelColor: 'cancelColor',
           })
         }

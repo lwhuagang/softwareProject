@@ -5,7 +5,7 @@
     <view class="part nickPart">
       <view class="instr nickIntr">昵称(15字符以内)</view>
       <view class="inputBlock">
-        <input class="input inputNick" model:value="{{nickname}}" focus bindfocus="resetNameFlag" bindblur="checkNameLength"/>
+        <input class="input inputNick" maxlength="15" model:value="{{nickname}}" focus bindfocus="resetNameFlag" bindblur="checkNameLength"/>
       </view>
       <view wx:if="{{nameError!=''}}" class="errorNote">{{nameError}}</view>
       <view wx:else class="errorNote"></view>

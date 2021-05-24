@@ -186,7 +186,7 @@ Page {
 }
 
 .center_name {
-  font-size: 20px;
+  font-size: 17px;
 }
 
 .center_email {

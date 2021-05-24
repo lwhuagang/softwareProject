@@ -46,6 +46,7 @@ Page {
 }
 .infoContent{
   padding-left:20rpx;
+  width: 65%;
 }
 .Btn{
   margin-top: 50rpx;
