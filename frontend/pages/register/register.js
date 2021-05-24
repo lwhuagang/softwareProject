@@ -118,6 +118,12 @@ Page({
           duration:2000,
           icon:"error",
         })
+      }else if(!this.checkEmail()){
+        wx.showToast({
+          title: '邮箱格式错误',
+          duration:2000,
+          icon:"error",
+        })
       } else {
         console.log("发送验证码=====>")
         var that = this;
@@ -166,7 +172,7 @@ checkPswd:function() {
 register:function() {
     console.log("注册====>");
     var that = this;
-    if(this.data.confirmPswd=='' || this.data.email=='' || this.data.nickname=='' || this.data.confirmPswd!=this.data.password) {
+    if(this.data.confirmPswd=='' || this.data.email=='' || this.data.nickname=='' || this.data.confirmPswd!=this.data.password || !this.checkEmail()) {
       wx.showToast({
         title: '存在非法字段',
         icon:'error',
@@ -298,9 +304,8 @@ checkPswdStrength:function() {
     return true;
   }
 },
-checkEmail:function(e) {
-  console.log(e);
-  let mail = e.detail.value;
+checkEmail:function() {
+  let mail = this.data.email;
   // if(mail=='') {
   //   this.setData({
   //     wrongEmail:'邮箱不能为空'
@@ -310,11 +315,13 @@ checkEmail:function(e) {
   if(mail!='' && !(/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(mail))) {
     this.setData({
       wrongEmail:'邮箱格式错误',
-    })
+    });
+    return false;
   } else {
     this.setData({
       wrongEmail:'',
-    })
+    });
+    return true;
   }
 },
 // checkNameEmpty:function(e) {
@@ -340,9 +347,9 @@ resetMailFlag:function() {
     wrongEmail:'',
   })
 },
-resetNameFlag:function() {
-  this.setData({
-    nameEmpty:''
-  })
-}
+// resetNameFlag:function() {
+//   this.setData({
+//     nameEmpty:''
+//   })
+// }
 })
