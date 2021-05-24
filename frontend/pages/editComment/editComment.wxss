@@ -112,13 +112,14 @@
 }
 .areas{
   border-radius: 15rpx;
-  width:100%;
+  width:90%;
   height:55vh;
   font-size: 30rpx;
   text-indent: 28rpx;
   border: 1rpx solid rgb(241, 241, 241);
   box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
   padding-top: 30rpx;
+  padding-right: 2em;
   margin: 0 auto;
   overflow: hidden;   
   position: relative; 

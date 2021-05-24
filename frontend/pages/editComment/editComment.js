@@ -16,7 +16,7 @@ Page({
     fundCode: "161005",
     fundInfo: {},
     min: 5,
-    max: 400,
+    max: 200,
     currentWordNumber: 0,
     texts: "",
     inputValue: "",
