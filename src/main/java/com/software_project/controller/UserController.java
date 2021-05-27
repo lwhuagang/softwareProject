@@ -28,10 +28,7 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @RestController
 @RequestMapping("user")
@@ -697,6 +694,29 @@ public class UserController {
 
         // 卖出的时候不需要进行其他操作，因为只有当卖出的操作被执行了之后份额才会发生变化
         return new Result(200, record, "删除一条未完成的处理记录");
+    }
+
+    /**
+     * @return 获取当前时间是否已经超过九点半
+     * 1 代表超过
+     * 0 代表未超过
+     */
+    @GetMapping("/totalProfitFlag")
+    public Result flag(){
+        Date time = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(time);
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int minutes = cal.get(Calendar.MINUTE);
+        if (hour < 21){
+            return new Result(200,0,"还未更新交易数据");
+        }
+        else if (hour == 21 && minutes < 30){
+            return new Result(200,0,"还未更新交易数据");
+        }
+        else {
+            return new Result(200,1,"已经更新交易数据");
+        }
     }
 
 

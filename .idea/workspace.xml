@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="让update和calculate支持外部调用">
+    <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="添加测试接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/OperationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/RuangongApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/RuangongApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/timer/TimingTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/timer/TimingTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController$Param_register.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController$Param_register.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +90,9 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -98,13 +101,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -150,7 +155,8 @@
       <workItem from="1621651816298" duration="5433000" />
       <workItem from="1621751196198" duration="2277000" />
       <workItem from="1621871970744" duration="624000" />
-      <workItem from="1621933366211" duration="2848000" />
+      <workItem from="1621933366211" duration="6091000" />
+      <workItem from="1622086075378" duration="2130000" />
     </task>
     <task id="LOCAL-00001" summary="添加details注释">
       <created>1618400399863</created>
@@ -264,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621871526401</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="添加测试接口">
+      <created>1621939687302</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1621939687302</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,6 +338,19 @@
     <MESSAGE value="修改用户删除的问题" />
     <MESSAGE value="将邮件改为英文避免编码问题" />
     <MESSAGE value="让update和calculate支持外部调用" />
-    <option name="LAST_COMMIT_MESSAGE" value="让update和calculate支持外部调用" />
+    <MESSAGE value="添加外部接口" />
+    <MESSAGE value="添加测试接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加测试接口" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
