@@ -149,6 +149,9 @@ Page({
     } else {
       money = e.detail.value.substring(0, e.detail.value.length - 1);
     }
+    if (money > this.data.maxUnit){
+      money = this.data.maxUnit
+    }
     this.setData({
       chooseUnit: money,
     })

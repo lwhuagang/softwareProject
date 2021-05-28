@@ -56,6 +56,8 @@
     </view>
   </view>
 </view>
+
 <view class="head">
   <naviBar title="持有" showBack="{{false}}"></naviBar>
 </view>
+

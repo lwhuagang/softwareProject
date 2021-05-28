@@ -88,13 +88,14 @@ Page({
         // console.log("获取到的基金详情===>");
         // console.log(this.data.fundInfo)
         // console.log(this.data.fundInfo.netWorthDate)  
+        callback()
       }
     );
-    setTimeout(
-      function () {
-        callback()
-      }, 1000
-    );
+    // setTimeout(
+    //   function () {
+    //     callback()
+    //   }, 1000
+    // );
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -219,104 +220,180 @@ Page({
     }
     return arr;
   },
+
   drawLineChart_acc: function (canvas, width, height, dpr) {
     var date = new Date();
     var timestamp = date.getTime() / 1000
 
     console.log(common.getMyData(timestamp, "Y-m-d"))
-    console.log()
     var x = []
     var totalProfit = this.data.totalProfit
     var length = totalProfit.length
-    for (var index in totalProfit) {
-      if (index == 0) {
-        x.push(common.getMyData(timestamp - 3600 * 24 * (length - 1), "Y-m-d"))
-      } else if (index == length - 1) {
-        x.push(common.getMyData(timestamp, "Y-m-d"))
-      } else {
-        x.push("")
-      }
-    }
-    console.log(x)
-    var y = this.data.totalProfit
-    // console.log("netWorth===>",netWorth)
-
-    const chart = echarts.init(canvas, null, {
-      width: width,
-      height: height,
-      devicePixelRatio: dpr // new
-    });
-    canvas.setChart(chart);
-
-    var option = {
-      color: ["#5484dd"],
-      // legend: {
-      //   data: ['本基金'],
-      //   top: 20,
-      //   left: 'center',
-      //   z: 100
-      // },
-      grid: {
-        containLabel: true,
-        bottom: 20,
-        left: 10,
-        y: 20
-      },
-      tooltip: {
-        show: true,
-        trigger: 'axis'
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: x,
-        axisLabel: {
-          showMaxLabel: true,
-          showMinLable: true
-        },
-        axisTick: {
-          show: false
-        },
-        axisLine: {
-          lineStyle: {
-            type: 'dashed',
-            opacity: 0
-          },
+    var totalProfitFlag
+    wx.request({
+      url: config.service+'/user/totalProfitFlag',
+      method:"GET",
+      success:(res)=>{
+        console.log(res)
+        totalProfitFlag = res.data.obj
+        var back = 0
+        if (totalProfitFlag == 0){
+          back = back+3600*24
         }
-        //show: false
-      },
-      toolbox: {
-        show: true,
-        feature: {
-            dataZoom: {
-                yAxisIndex: 'none'
+        back = back+3600*24*(length-1)
+        for (var index in totalProfit) {
+          x.push(common.getMyData(timestamp-back,"Y-m-d"))
+          back = back - 3600*24
+
+        }
+        console.log(x)
+        var y = this.data.totalProfit
+        // console.log("netWorth===>",netWorth)
+
+        const chart = echarts.init(canvas, null, {
+          width: width,
+          height: height,
+          devicePixelRatio: dpr // new
+        });
+        canvas.setChart(chart);
+
+        // var option = {
+        //   color: ["#5484dd"],
+        //   // legend: {
+        //   //   data: ['本基金'],
+        //   //   top: 20,
+        //   //   left: 'center',
+        //   //   z: 100
+        //   // },
+        //   grid: {
+        //     containLabel: true,
+        //     bottom: 20,
+        //     left: 10,
+        //     y: 20
+        //   },
+        //   tooltip: {
+        //     show: true,
+        //     trigger: 'axis'
+        //   },
+        //   xAxis: {
+        //     type: 'category',
+        //     boundaryGap: false,
+        //     data: x,
+        //     axisLabel: {
+        //       showMaxLabel: true,
+        //       showMinLable: true
+        //     },
+        //     axisTick: {
+        //       show: false
+        //     },
+        //     axisLine: {
+        //       lineStyle: {
+        //         type: 'dashed',
+        //         opacity: 0
+        //       },
+        //     }
+        //     //show: false
+        //   },
+        //   toolbox: {
+        //     show: true,
+        //     feature: {
+        //         dataZoom: {
+        //             yAxisIndex: 'none'
+        //         },
+        //         restore: {},
+        //     },
+        //     orient: 'vertical'
+        //   },
+        //   yAxis: {
+        //     x: 'center',
+        //     type: 'value',
+        //     splitLine: {
+        //       lineStyle: {
+        //         type: 'dashed'
+        //       }
+        //     },
+
+        //     //show: false
+        //   },
+        //   series: [{
+        //     symbol: 'none',
+        //     name: '本基金',
+        //     type: 'line',
+        //     smooth: false,
+        //     data: y
+        //   }]
+        // };
+        var option = {
+          color: ["#37A2DA"],
+          // legend: {
+          //   data: ['本基金'],
+          //   top: 20,
+          //   left: 'center',
+          //   z: 100
+          // },
+          grid: {
+            containLabel: true,
+            bottom: 20,
+            left: 10,
+            y: 20
+          },
+          tooltip: {
+            show: true,
+            trigger: 'axis'
+          },
+          toolbox: {
+            show: true,
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                restore: {},
             },
-            restore: {},
-        },
-        orient: 'vertical'
-      },
-      yAxis: {
-        x: 'center',
-        type: 'value',
-        splitLine: {
-          lineStyle: {
-            type: 'dashed'
-          }
-        },
-
-        //show: false
-      },
-      series: [{
-        symbol: 'none',
-        name: '本基金',
-        type: 'line',
-        smooth: false,
-        data: y
-      }]
-    };
-
-    chart.setOption(option);
-    return chart;
+            orient: 'vertical'
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: x,
+            axisLabel: {
+              showMaxLabel: true,
+              showMinLable: true
+            },
+            axisTick: {
+              show: false
+            },
+            axisLine: {
+              lineStyle: {
+                type: 'dashed',
+                opacity: 0
+              },
+            }
+            //show: false
+          },
+          yAxis: {
+            x: 'center',
+            type: 'value',
+            splitLine: {
+              lineStyle: {
+                type: 'dashed'
+              }
+            },
+            
+            //show: false
+          },
+          series: [{
+            symbol: 'none',
+            name: '基金涨幅(%)',
+            type: 'line',
+            smooth: false,
+            data: y
+          }]
+        };
+        chart.setOption(option);
+        return chart;
+      }
+    })
+    
   },
   drawLineChart_worth: function (canvas, width, height, dpr) {
     var fundInfo = this.data.fundInfo;

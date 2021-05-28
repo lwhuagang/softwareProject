@@ -1,5 +1,6 @@
 // pages/hold/hold.js
 const app = getApp();
+let config = require("../../config.js");
 let {
   getHold
 } = require("../../api/getUserFunds.js");
@@ -151,5 +152,15 @@ Page({
         }
       )
     }
+  },
+  goToNextDay(){
+    wx.request({
+      url: config.service+'/user/calculate',
+      method:"GET"
+    })
+    wx.request({
+      url: config.service+'/fundOperation/update',
+      method:"GET"
+    })
   }
 })
