@@ -675,6 +675,11 @@ public class UserController {
 
     @PostMapping("addMoney")
     public Result addMoney(@RequestBody UserVO userVO) {
+        double money = getUserMoney(userVO.getEmail());
+        double maxMoney = 10000000;     // 一千万
+        if (money + userVO.getMoney() > maxMoney) {
+            return new Result(200, null, "总金额超出1000万");
+        }
         userService.updateUserMoney(userVO.getEmail(), userVO.getMoney());
         User user = userService.findUserByEmail(userVO.getEmail());
         return new Result(200, user, "添加用户的剩余金额(返回的是现在用户的信息)");
@@ -717,6 +722,11 @@ public class UserController {
         else {
             return new Result(200,1,"已经更新交易数据");
         }
+    }
+
+    double getUserMoney(String userEmail) {
+        User user = userService.findUserByEmail(userEmail);
+        return user.getMoney();
     }
 
 
