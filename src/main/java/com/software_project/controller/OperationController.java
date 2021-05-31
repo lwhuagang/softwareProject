@@ -276,6 +276,138 @@ public class OperationController {
         return new Result(200, "", "update");
     }
 
+    @GetMapping("update_test")
+    public Result update_test() {
+        List<Record> records = operationService.getAllUndoRecord();
+        RestTemplate restTemplate = new RestTemplate();
+        for (Record record : records) {
+            if (record.isFlag()) {
+                continue; // 该条交易记录已处理
+            }
+            User user = userService.findUserByEmail(record.getUserEmail());
+            Fund fund = fundService.searchFundByCode(Integer.parseInt(record.getFundCode()));
+            Hold hold = holdService.getHoldByUserEmailAndFundCode(user.getEmail(),fund.getCode());
+
+            if (!record.isFlagTime()){
+                // 代表这个交易记录今日不处理,设置为true后跳过
+                record.setFlagTime(true);
+                operationService.insertDeal(record);
+                continue;
+            }
+            String code = fund.getCode();
+            String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=2021-04-01", String.class);
+            JSONObject jsonObject = JSON.parseObject(s);
+            JSONObject data =(JSONObject) jsonObject.get("data");
+            if (!record.isType()){
+                // 买入操作更新数据定义
+                double buyMoney = record.getCount(); // 用户买入金额
+                double buyIn_fee = buyMoney * fund.getBuyRate() / 100; // 以当前买入费率为准,买入手续费
+                double net_buyMoney = buyMoney - buyIn_fee; // 净买入金额
+                // 获取当日净值
+                double netWorth = Double.parseDouble(data.getString("netWorth"));
+                // 买入份额计算
+                double buyIn_share = net_buyMoney/netWorth;
+                // 更新hold表          TODO 更新的信息是否完整
+                //HoldVO hold_ret = new HoldVO();
+                System.out.println(hold.getShare()+buyIn_share);
+                hold.setShare(hold.getShare()+buyIn_share);
+
+                System.out.println(hold.getHoldCost());
+                System.out.println("net buyMoney:" + net_buyMoney);
+                hold.setHoldCost(hold.getHoldCost()+net_buyMoney);
+                hold.setHold(hold.getShare() * netWorth);
+                // 更新基金累计收益
+                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail().substring(0,8) + ":" + fund.getCode())));
+                total -= buyIn_fee;
+                redisTemplate.opsForList().rightPush(user.getEmail().substring(0,8) + ":" + fund.getFundCode(), String.valueOf(total));  // TODO 什么意思
+                holdService.updateHold(hold);
+//                // 设置hold返回数据
+//                hold_ret.setUserEmail(user.getEmail());
+//                hold_ret.setFundCode(fund.getCode());
+//                hold_ret.setHold(hold.getHold());
+//                hold_ret.setShare(hold.getShare()+buyIn_share);
+//                hold_ret.setHoldCost(hold.getHoldCost());
+//                hold_ret.setHold(hold.getShare() * netWorth);
+//                hold_ret.setHoldProfit(hold.getHold() - hold.getHoldCost());
+//                hold_ret.setYesProfit(hold.getYesProfit());
+//                hold_ret.setHoldProfitRate(hold_ret.getHoldProfit()/hold_ret.getHoldCost());
+//                hold_ret.setTotalProfit(redisTemplate.opsForList().range(user.getEmail()+""+fund.getCode(), 0, -1));
+                // 更新user表
+                user.setBuyMoney(user.getBuyMoney()+net_buyMoney);
+                user.setHoldCost(user.getHoldCost()+net_buyMoney);
+                user.setTotalProfit(user.getTotalProfit() - buyIn_fee);
+                userService.updateUser(user);           // TODO 这里是不是会不断的重复更新，应该可以在所有的信息都处理完毕之后一次性对用户的信息进行更新
+
+                // 设置user返回数据
+//                UserVO user_ret = new UserVO(user);
+//                user_ret.setPropertyProfitRate(user.getTotalProfit()/user.getInitMoney());
+//                user_ret.setHoldProfitRate(user.getHoldProfit()/user.getHoldCost());
+//                List<Object> result = new ArrayList<>();
+//                result.add(user_ret);
+//                result.add(hold_ret);
+//                return new Result(200,result,"买入操作更新成功");
+            }
+            else {
+                // 卖出出操作更新
+                // 卖出操作更新数据定义
+                double sellShare = record.getCount(); // 用户卖出份额
+                double netWorth = Double.parseDouble(data.getString("netWorth"));
+                double sellMoney = sellShare * netWorth; // 卖出金额
+                // 计算持仓成本价
+                double cost = user.getHoldCost() / hold.getShare();
+                double sellCost = sellShare*cost; // 卖出成本
+                double sellFee = sellCost * 0.1/100;//暂定卖出手续费为0.1%
+                double net_sellMoney = sellMoney - sellFee; // 净卖出金额
+                double sellProfit = sellMoney - sellCost;
+                //double net_sellProfit = sellProfit - sellFee; //净卖出收益
+                // 更新hold表
+                // HoldVO hold_ret = new HoldVO();
+                hold.setShare(hold.getShare()-sellShare);
+                hold.setHoldCost(hold.getHoldCost()-sellCost);
+                // 更新基金累计收益
+                Double total = Double.parseDouble(Objects.requireNonNull(redisTemplate.opsForList().rightPop(user.getEmail().substring(0,8) + ":" + fund.getFundCode())));
+                total -= sellFee;
+                redisTemplate.opsForList().rightPush(user.getEmail().substring(0,8) + ":" + fund.getFundCode(), String.valueOf(total));
+                holdService.updateHold(hold);
+                // 更新user表
+                user.setHoldProfit(user.getHoldProfit() - sellProfit);
+                user.setBuyMoney(user.getBuyMoney() - net_sellMoney);
+                user.setHoldCost(user.getHoldCost()- sellCost);
+                user.setMoney(user.getMoney() + net_sellMoney);
+                userService.updateUser(user);
+            }
+            // 将record的flag设置为true代表已经处理, 更新record
+            record.setFlag(true);
+            operationService.insertDeal(record);
+        }
+
+        // 更新用户的总持有金额，在update中更新而不是在calculate中更新
+        List<User> users = userService.getAllUsers();
+        for (User user1 : users) {
+            String email = user1.getEmail();
+            User user = userService.findUserByEmail(email); //待返回user
+            List<Fund> funds = fundService.getHoldFund(email);
+            Ret_HavingList ret = new Ret_HavingList(user, funds);
+            double totalHold = 0;               // 总持有金额
+            for (Fund fund : ret.funds) {
+                String code = fund.getCode();
+                String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=2021-04-01", String.class);
+                JSONObject jsonObject = JSON.parseObject(s);
+                JSONObject data =(JSONObject) jsonObject.get("data");
+
+                // 先更新基金的单位净值：这个之后不会使用，我们是直接通过比例和持有金额计算之后的持有金额
+                double netWorth = Double.parseDouble(data.getString("netWorth"));   // 基金的单位净值
+                fund.setNetWorth(netWorth);
+                totalHold += fund.getShare() * netWorth; //累加用户总持有金额
+            }
+            System.out.println(totalHold);
+            ret.user.setBuyMoney(totalHold);
+            userService.updateUserBHT(ret.user.getEmail(), ret.user.getBuyMoney(), ret.user.getHoldProfit(), ret.user.getTotalProfit(), ret.user.getDayProfit());
+        }
+
+        return new Result(200, "", "update");
+    }
+
     public static String addDateMinut(){
         Date date = new Date();//获得系统时间.
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
