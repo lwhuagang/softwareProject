@@ -47,6 +47,8 @@
 .netWorth {
   display: flex;
   justify-content: flex-end;
+  overflow: visible;
+  white-space: nowrap;
   align-items: center;
   margin-right: 20rpx;
 }

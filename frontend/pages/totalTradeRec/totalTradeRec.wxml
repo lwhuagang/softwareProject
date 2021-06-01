@@ -20,7 +20,7 @@
           </block>
         </view>
         <view class="fundNameAndTime">
-          <view class="fundName"> {{records[index].fundName}}</view>
+          <view class="fundName"> {{records[index].fundName?records[index].fundName:records[index].fundCode}}</view>
           <view class="tradeTime"> {{records[index].showTime}}</view>
         </view>
       </navigator>

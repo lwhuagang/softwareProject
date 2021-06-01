@@ -180,15 +180,15 @@ Page({
       num += 1;
       console.log('数字', value / fr, 'num:', num);
     }
-    if (num <= 5) { // 千\万,不处理
+    if (num <= 4) { // 千\万,不处理
       newValue[1] = '';
-      newValue[0] = value + '';
+      newValue[0] = parseFloat(Math.floor(value*100)/100).toFixed(2) + '';
     } else{ // 万
       const text1 = '万';
       // tslint:disable-next-line:no-shadowed-variable
       const fm = 10000;
       newValue[1] = text1;
-      newValue[0] = parseInt((value / fm)) + '';
+      newValue[0] =  parseFloat(Math.floor((value / fm)*100)/100).toFixed(1) + '';
     }
     return newValue.join('');
   }

@@ -12,7 +12,7 @@
     <view class="valPart">
       <view class="inputPart">
         <image src="/image/RMB.png" style="height:60rpx" mode="heightFix"></image>
-        <input class="inputSubPart" placeholder="最低买入{{tool.toFix2(fundInfo.buyMin)}}元 " type="number" value="{{money}}" model:value="{{money}}"  placeholder-style="font-size:35rpx"/>
+        <input class="inputSubPart" placeholder="最低买入{{tool.toFix2(fundInfo.buyMin)}}元 " type="number" value="{{money}}" model:value="{{money}}" bindinput="moneyInput" placeholder-style="font-size:35rpx"/>
         <view class="cancelPart" bindtap="cancel">
           <image wx:if="{{money!=null && money!=''}}" src="/image/delete.png" style="height:40rpx;" mode="heightFix" bindtap="cancel"/>
         </view>

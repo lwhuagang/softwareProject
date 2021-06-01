@@ -311,7 +311,7 @@ Page {
   display: flex;
   flex-direction: column;
   width: 91%;
-  height: 210rpx;
+  height: 230rpx;
   border-radius: 20rpx;
   margin-left: 30rpx;
   margin-right: 25rpx;

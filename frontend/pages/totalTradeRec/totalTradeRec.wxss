@@ -82,6 +82,7 @@
 
 .tradeNum {
   /* border: 1px solid blue; */
+  word-wrap:break-word;
   padding-top: 17px;
   padding-bottom: 10rpx;
   color: #555454;

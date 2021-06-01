@@ -63,6 +63,17 @@ Page({
       money:parseInt(e.currentTarget.dataset.item)//wxml中用了data-item
     })
   },
+  moneyInput: function (e) {
+    var money;
+    if (/^(\d?)+(\.\d{0,2})?$/.test(e.detail.value)) { //正则验证，提现金额小数点后不能大于两位数字
+      money = e.detail.value;
+    } else {
+      money = e.detail.value.substring(0, e.detail.value.length - 1);
+    }
+    this.setData({
+      money: money,
+    })
+  },
   buySubmit:function(){
       wx.request({
         url: config.service+'/fundOperation/buy',
