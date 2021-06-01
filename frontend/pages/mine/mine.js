@@ -18,6 +18,118 @@ Page({
       pic_url:''
     },
     hasMessage:false,
+    addMoneyShow: false,
+    resetMoneyShow: false,
+    buttons: [{text: '取消'}, {text: '确定'}],
+    oneButton: [{text: '取消'}, {text: '确定'}],
+    addMoneyVal:"",
+    resetMoneyVal:""
+  },
+  addMoney: function (e) {
+    this.setData({
+        addMoneyShow: true
+    })
+  },
+  addMoneyInput:function(e){
+    this.setData({
+      addMoneyVal:e.detail.value
+    })
+  },
+  resetMoneyInput:function(e){
+    this.setData({
+      resetMoneyVal:e.detail.value
+    })
+  },
+  addMoneyButton(e) {
+    console.log(e)
+    if (e.detail.index == 1){
+      if (!this.data.addMoneyVal.trim()){
+          // 不合法
+          wx.showToast({
+            title:'输入不合法',
+            icon:'none',
+            // 防止反复点击
+            mask: true
+          });
+      }else{
+        console.log(this.data.addMoneyVal)
+      wx.request({
+        url: config.service + '/user/addMoney',
+        method:"POST",
+        data:{
+          email:app.globalData.userInfo.email,
+          money:this.data.addMoneyVal
+        },
+        success:(res)=>{
+          console.log(res)
+          wx.showToast({
+            title: '增加成功',
+            icon:"success"
+          })
+        }    
+      })
+      }
+      
+    }
+    this.setData({
+        addMoneyShow: false,
+        resetMoneyShow: false,
+        addMoneyVal:""
+    })
+  },
+  resetMoneyButton:function(e){
+    if (e.detail.index == 1){
+      if (!this.data.resetMoneyVal.trim()){
+          // 不合法
+          wx.showToast({
+            title:'输入不合法',
+            icon:'none',
+            // 防止反复点击
+            mask: true
+          });
+      }else{
+        console.log(this.data.resetMoneyVal)
+        wx.request({
+          url: config.service + '/user/resetAll',
+          data:{
+            email: app.globalData.userInfo.email,
+            money: this.data.resetMoneyVal
+          },
+          method:"POST",
+          success:(res)=>{
+            console.log(res)
+            wx.showToast({
+              title: '重置成功',
+              icon:"success"
+            })
+          },
+          fail:(res)=>{
+            console.log(res)
+          }
+        })
+      }
+      
+    }
+    this.setData({
+        addMoneyShow: false,
+        resetMoneyShow: false,
+        resetMoneyVal:""
+    })
+  },
+  resetMoney(e) {
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title:"您确定要重置所有数据吗",
+      content:"重置数据会清空所有用户的数据，并且重新设置一个新的初始总资产,清谨慎选择",
+      success:(res)=>{
+        if(res.confirm){
+          this.setData({
+            resetMoneyShow: true
+          })
+        }
+      }
+    })
+    
   },
 
   /**
@@ -226,6 +338,7 @@ Page({
   },
 
   reset(){
+    var that = this
     wx.showModal({
       title: '确定要重置所有用户数据吗',
       content: '会重置所有的历史数据，并重新设置一个初始总资产',
@@ -239,24 +352,31 @@ Page({
             success:(res)=>{
               if (res.confirm){
                 console.log(res)
-                wx.request({
-                  url: config.service + '/user/resetAll',
-                  data:{
-                    email: app.globalData.userInfo.email,
-                    money: parseFloat(res.content) 
-                  },
-                  method:"POST",
-                  success:(res)=>{
-                    console.log(res)
-                    wx.showToast({
-                      title: '重置成功',
-                      icon:"success"
-                    })
-                  },
-                  fail:(res)=>{
-                    console.log(res)
-                  }
-                })
+                if(!that.isNumber(res.content)){
+                  wx.showToast({
+                    title: '输入不合法！',
+                    icon:"error"
+                  })
+                }else{
+                  wx.request({
+                    url: config.service + '/user/resetAll',
+                    data:{
+                      email: app.globalData.userInfo.email,
+                      money: parseFloat(res.content) 
+                    },
+                    method:"POST",
+                    success:(res)=>{
+                      console.log(res)
+                      wx.showToast({
+                        title: '重置成功',
+                        icon:"success"
+                      })
+                    },
+                    fail:(res)=>{
+                      console.log(res)
+                    }
+                  })
+                }        
               }
             }
           })
@@ -266,34 +386,15 @@ Page({
       }
     })
   },
-
-  addMoney(res){
-    // console.log(res)
-    wx.showModal({
-      cancelColor: 'cancelColor',
-      title:"请输入您想要增加的余额",
-      editable:true,
-      success(res){
-        if (res.confirm){
-          wx.request({
-            url: config.service + '/user/addMoney',
-            method:"POST",
-            data:{
-              email:app.globalData.userInfo.email,
-              money:parseFloat(res.content)
-            },
-            success:(res)=>{
-              console.log(res)
-              wx.showToast({
-                title: '增加成功',
-                icon:"success"
-              })
-            }    
-          })
+  isNumber:function(val) {
+    var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+    var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+    if(regPos.test(val)) {
+        return true;
+        } else {
+        return false;
         }
-        // console.log(res.content)
-       
-      }
-    })
-  }
+  },
+  
+  
 })
