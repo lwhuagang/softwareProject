@@ -11,9 +11,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "user": {
-    },
-    funds:[
+    "user": {},
+    funds: [
       /*
       {
           "name": "华夏成长混合",
@@ -42,9 +41,9 @@ Page({
           ],
           "toVerifyMoney": 0.0
       }*/
-  ],
-    isLogin:null,
-    totalMoney:0,
+    ],
+    isLogin: null,
+    totalMoney: 0,
   },
 
   /**
@@ -108,19 +107,19 @@ Page({
   },
   onShow: function () {
     this.setData({
-      isLogin:app.globalData.isLogin
+      isLogin: app.globalData.isLogin
     })
-    if(app.globalData.isLogin==false) {
+    if (app.globalData.isLogin == false) {
       wx.showModal({
         cancelColor: 'cancelColor',
-        title:'请先登录',
-        content:'点击确定跳转到登录界面',
+        title: '请先登录',
+        content: '点击确定跳转到登录界面',
         success(res) {
-          if(res.confirm) {
-           wx.switchTab({
-             url: '/pages/mine/mine',
-           })
-          } else if(res.cancel) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/mine/mine',
+            })
+          } else if (res.cancel) {
             wx.switchTab({
               url: '/pages/index/index',
             })
@@ -129,7 +128,7 @@ Page({
       })
     } else {
       wx.showLoading({
-        title: '加载中', 
+        title: '加载中',
       })
       getHold(
         app.globalData.userInfo.email,
@@ -139,12 +138,17 @@ Page({
             funds: res.data.obj.holdVOS
           });
           var tmpMoney = 0;
+          var newFunds = [];
           res.data.obj.holdVOS.forEach(element => {
-            tmpMoney+=element.holdProfit+element.holdCost+element.toVerifyMoney
+            tmpMoney += element.holdProfit + element.holdCost + element.toVerifyMoney
+            element["showMoney"] = this.transform(element.holdProfit + element.holdCost + element.toVerifyMoney);
+            newFunds.push(element);
           });
-          console.log("tmpMoney==>",tmpMoney)
+          console.log("tmpMoney==>", tmpMoney)
+          console.log("funds:", newFunds)
           this.setData({
-            totalMoney:tmpMoney
+            totalMoney: tmpMoney,
+            funds:newFunds,
           })
           console.log("获得hold===>");
           console.log(res);
@@ -153,14 +157,39 @@ Page({
       )
     }
   },
-  goToNextDay(){
+  goToNextDay() {
     wx.request({
-      url: config.service+'/user/calculate',
-      method:"GET"
+      url: config.service + '/user/calculate',
+      method: "GET"
     })
     wx.request({
-      url: config.service+'/fundOperation/update',
-      method:"GET"
+      url: config.service + '/fundOperation/update',
+      method: "GET"
     })
+  },
+
+  transform: function (money) {
+    var value = money;
+    let newValue = ['', '', ''];
+    let fr = 1000;
+    const ad = 1;
+    let num = 3;
+    const fm = 1;
+    while (value / fr >= 1) {
+      fr *= 10;
+      num += 1;
+      console.log('数字', value / fr, 'num:', num);
+    }
+    if (num <= 5) { // 千\万,不处理
+      newValue[1] = '';
+      newValue[0] = value + '';
+    } else{ // 万
+      const text1 = '万';
+      // tslint:disable-next-line:no-shadowed-variable
+      const fm = 10000;
+      newValue[1] = text1;
+      newValue[0] = parseInt((value / fm)) + '';
+    }
+    return newValue.join('');
   }
 })

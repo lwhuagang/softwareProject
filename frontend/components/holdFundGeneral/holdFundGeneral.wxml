@@ -11,7 +11,7 @@
     </view>
     <!-- 基金金额与昨日收益 -->
     <view class="fundMoneyAndLastProfit">
-      <view class="netWorth">{{filters.toFix2(fundInfo.holdCost+fundInfo.holdProfit+fundInfo.toVerifyMoney)}}</view>
+      <view class="netWorth">{{fundInfo.showMoney}}</view>
       <view class="netDate">{{filters.toFix2(fundInfo.yesProfit)}}</view>
     </view>
     <view class="fundProfitAndRate">
