@@ -2,16 +2,24 @@
 
 <view class="container">
   <view class="fundCard">
-    <block wx:if="{{fundInfo.dayGrowth>=0}}">
-      <view class="upGrowth">
-        <view class="growth">+{{fundInfo.dayGrowth}}%</view>
-        <view class="netWorthDate">{{fundInfo.netWorthDate}}</view>
-      </view>
+    <block wx:if="{{fundInfo.dayGrowth}}">
+      <block wx:if="{{fundInfo.dayGrowth>=0}}">
+        <view class="upGrowth">
+          <view class="growth">+{{fundInfo.dayGrowth}}%</view>
+          <view class="netWorthDate">{{fundInfo.netWorthDate}}</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="downGrowth">
+          <view class="growth">{{fundInfo.dayGrowth}}%</view>
+          <view class="netWorthDate">{{fundInfo.netWorthDate}}</view>
+        </view>
+      </block>
     </block>
     <block wx:else>
-      <view class="downGrowth">
-        <view class="growth">{{fundInfo.dayGrowth}}%</view>
-        <view class="netWorthDate">{{fundInfo.netWorthDate}}</view>
+      <view class="upGrowth">
+        <view class="growth">{{tool.my_toFix(fundInfo.sevenDaysYearIncome,2)}}%</view>
+        <view class="netWorthDate">七日年化 </view>
       </view>
     </block>
     <view class="baseInfo">

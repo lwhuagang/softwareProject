@@ -248,6 +248,12 @@ Page({
         }
         console.log(x)
         var y = this.data.totalProfit
+        var i
+        var length = y.length
+        for (i = 0; i < y.length; i++) {
+          y[i] = Math.floor(y[i]*100)/100;
+        }
+        console.log("y:", y)
         // console.log("netWorth===>",netWorth)
 
         const chart = echarts.init(canvas, null, {
@@ -383,7 +389,7 @@ Page({
           },
           series: [{
             symbol: 'none',
-            name: '基金涨幅(%)',
+            name: '盈亏幅度(%)',
             type: 'line',
             smooth: false,
             data: y
