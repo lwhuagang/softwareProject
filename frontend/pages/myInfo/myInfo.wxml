@@ -31,11 +31,11 @@
     <view class="hint">收益信息</view>
     <view class="infoItem" style="border-top:1rpx solid #dcdcdc;">
       <view class="infoHead">用户金额</view>
-      <view class="infoContent">{{tool.toFix2(userInfo.money)}}</view>
+      <view class="infoContent">{{userInfo.money}}</view>
     </view>
     <view class="infoItem">
       <view class="infoHead">总收益</view>
-      <view class="infoContent">{{tool.toFix2(userInfo.totalProfit)}}</view>
+      <view class="infoContent">{{userInfo.totalProfit}}</view>
     </view>
   </view>
   <block wx:if="{{ edit==false && changePswd==false}}">

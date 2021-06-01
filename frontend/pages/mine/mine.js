@@ -88,7 +88,7 @@ Page({
               })
             } else if (res.data.message == "总金额超出1000万"){
               wx.showToast({
-                title: 'x 账户总金额不得超出1000万',
+                title: 'x 超出1000万',
                 icon: "none"
               })
             }
