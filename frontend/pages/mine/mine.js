@@ -44,9 +44,9 @@ Page({
     })
   },
   resetMoneyInput:function(e){
-    if (e.detail.value>1e9){
+    if (e.detail.value>1e7){
       this.setData({
-        resetMoneyVal:1e9.toString()
+        resetMoneyVal:1e7.toString()
       })
       wx.showToast({
         title: '初始总资产最多为1000万',
