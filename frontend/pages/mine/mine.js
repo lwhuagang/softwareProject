@@ -43,10 +43,21 @@ Page({
       addMoneyVal: e.detail.value
     })
   },
-  resetMoneyInput: function (e) {
-    this.setData({
-      resetMoneyVal: e.detail.value
-    })
+  resetMoneyInput:function(e){
+    if (e.detail.value>1e7){
+      this.setData({
+        resetMoneyVal:1e7.toString()
+      })
+      wx.showToast({
+        title: '初始总资产最多为1000万',
+        icon:'none'
+      })
+    }else{
+      this.setData({
+        resetMoneyVal:e.detail.value
+      })
+    }
+    
   },
   addMoneyButton(e) {
     console.log(e)

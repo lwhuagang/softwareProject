@@ -15,6 +15,7 @@
   /* border: 1rpx solid red; */
 }
 .back .backIcon{
+  margin-top: 25rpx;
   height: 50%;
 }
 .title {
@@ -25,6 +26,8 @@
   /* border: 1rpx solid red; */
   font-size: 40rpx;
   color: white;
+  padding-top: 15rpx;
+  margin-top: 15rpx;
 }
 .filling {
   width: 50rpx;
@@ -35,7 +38,7 @@
   margin-top: 45rpx;
   margin-left: 30rpx;
   width: 65%;
-  height: 55%;
+  height: 60rpx;
   border-radius: 20rpx;
   background: white;
   /* border: 1rpx solid red; */
