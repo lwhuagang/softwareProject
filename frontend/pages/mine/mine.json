@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "naviBar":"../../components/naviBar/naviBar"
+    "naviBar":"../../components/naviBar/naviBar",
+    "mp-dialog": "weui-miniprogram/dialog/dialog"
   },
   "enablePullDownRefresh":true
 }

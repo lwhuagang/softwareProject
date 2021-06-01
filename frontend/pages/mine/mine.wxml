@@ -29,17 +29,29 @@
         </image>
       </view>
       <view class="middle">
-        <view class="middleBlock" bindtap="reset">
+        <view class="middleBlock" bindtap="resetMoney">
           <view class="middleBlockImg">
             <image src="../../image/setting.png"></image>
           </view>
           <view class="middleBlockText">重置数据</view>
+          <mp-dialog title="请输入您想要的初始总资产" show="{{resetMoneyShow}}" bindbuttontap="resetMoneyButton" buttons="{{oneButton}}">
+            <view>
+              <input type="digit" placeholder="请输入您想要的初始总资产" bindinput="resetMoneyInput"
+              value="{{resetMoneyVal}}" />
+            </view>
+          </mp-dialog>
         </view>
         <view class="middleBlock" bindtap="addMoney">
           <view class="middleBlockImg">
             <image src="../../image/money.png"></image>
           </view>
           <view class="middleBlockText">增加余额</view>
+          <mp-dialog title="请输入您想要增加的余额" show="{{addMoneyShow}}" bindbuttontap="addMoneyButton" buttons="{{buttons}}">
+            <view>
+              <input type="digit" placeholder="请输入您想要增加的余额" bindinput="addMoneyInput"
+              value="{{addMoneyVal}}" />
+            </view>
+          </mp-dialog>
         </view>
         <navigator url="/pages/myComments/myComments" class="middleBlock" >
           <view class="middleBlockImg">
