@@ -35,9 +35,9 @@
 .fundMoneyAndLastProfit {
   /* border: 1rpx solid red; */
   width: 24%;
-  border-left: 1rpx solid #dcdcdc;
+  /* border-left: 1rpx solid #dcdcdc; */
   padding-left: 3rpx;
-  border-right: 1rpx solid #dcdcdc;
+  /* border-right: 1rpx solid #dcdcdc; */
   padding-right: 3rpx;
   box-sizing: border-box;
   display: flex;

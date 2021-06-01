@@ -478,7 +478,14 @@
   text-align: center;
   line-height:95rpx;
 }
-
+.cantBuyIn{
+  font-size:35rpx;
+  color:#dfdfdf;
+  width:100%;
+  background: #cccccc;
+  text-align: center;
+  line-height:95rpx;
+}
 .lineHead{
   display: flex;
   padding-left: 10rpx;
