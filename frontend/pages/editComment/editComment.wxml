@@ -16,7 +16,7 @@
         </view>
       </block>
     </block>
-    <block wx:else>
+    <block wx:if="{{fundInfo.sevenDaysYearIncome}}">
       <view class="upGrowth">
         <view class="growth">{{tool.my_toFix(fundInfo.sevenDaysYearIncome,2)}}%</view>
         <view class="netWorthDate">七日年化 </view>
