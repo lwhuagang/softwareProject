@@ -27,7 +27,7 @@
   </view>
 </view>
 
-<view class="container">
+<view class="container" style="overflowx:hidden">
   <view class="bluePad"></view>
   <!-- <view class="blueWave"></view> -->
   <view class="fundCard">

@@ -35,10 +35,9 @@
           </view>
           <view class="middleBlockText">重置数据</view>
           <mp-dialog title="请输入您想要的初始总资产" show="{{resetMoneyShow}}" bindbuttontap="resetMoneyButton" buttons="{{oneButton}}">
-            <view>
-              <input type="digit" placeholder="请输入您想要的初始总资产" bindinput="resetMoneyInput"
-              value="{{resetMoneyVal}}" />
-            </view>
+            
+              <input type="digit" placeholder="请输入您想要的初始总资产" bindinput="resetMoneyInput" value="{{resetMoneyVal}}" ></input>
+            
           </mp-dialog>
         </view>
         <view class="middleBlock" bindtap="addMoney">
