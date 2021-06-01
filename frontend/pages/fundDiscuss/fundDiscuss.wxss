@@ -121,7 +121,7 @@
   width: 90%;
   height: 80rpx;
   margin-top: 20rpx;
-  background: rgb(231, 238, 252);
+  background: rgb(244, 246, 252);
   padding-left: 25rpx;
   padding-right: 25rpx;
 }
@@ -133,7 +133,7 @@
   border-radius: 30px;
   width: 9%;
   height: 50rpx;
-  background: rgb(12, 71, 128);
+  background: #5484dd;
   margin-top: 7px;
   margin-right: 7px;
 }
@@ -176,6 +176,7 @@
 
 .commentText {
   overflow:hidden; 
+  word-wrap:break-word;
   font-size: 16px;
   /* text-indent:2em; */
   padding-top: 5rpx;
