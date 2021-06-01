@@ -277,7 +277,7 @@ public class UserController {
                     }
                     String key = user.getEmail().substring(0,8) + ":" + fund.getFundCode();
                     if (redisTemplate.opsForList().range(key,0,-1).size() >= 30) {
-                        // 只存储三十天的累计收益
+                        // 只存储三十天getRecordsOfUser的累计收益
                         redisTemplate.opsForList().leftPop(key);
                         redisTemplate.opsForList().rightPush(key, String.valueOf(total));
                         System.out.println(redisTemplate.opsForList().range(key,0,-1));
@@ -621,7 +621,24 @@ public class UserController {
     @GetMapping("getRecordsOfUser")
     public Result getRecordsOfUser(String email) {
         List<Record> records = recordService.getRecordsByUserEmail(email);
+        for (Record record : records) {
+            record.setFundName(getFundName(record.getFundCode()));
+        }
         return new Result(200, records, "获取用户的所有交易记录");
+    }
+
+
+
+    private String getFundName(String fundCode) {
+//        System.out.println(fundCode);
+        Fund fund = fundService.searchFundByCode(Integer.parseInt(fundCode));
+//        System.out.println(fund);
+        if (fund == null) {
+            return null;
+        }
+        else {
+            return fund.getName();
+        }
     }
 
     @PostMapping("update")

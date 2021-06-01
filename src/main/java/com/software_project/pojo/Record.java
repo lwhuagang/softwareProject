@@ -15,6 +15,7 @@ public class Record {
     // record表属性
     private String userEmail;
     private String fundCode;
+    private String fundName;
     private boolean type;//false 代表 买入,true 代表 卖出
     private Date time;
     private boolean flag; //true 该交易已处理,false 未处理
