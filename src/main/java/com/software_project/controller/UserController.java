@@ -86,6 +86,7 @@ public class UserController {
     public Result register(@RequestBody Param_register params) {
         // 从params中获取对应属性
         User user = params.user;
+        user.setInitMoney(user.getMoney());     // 需要设置一下初始的金额，用money字段进行设置
         String captcha = params.captcha;
         // 先判断该用户是否已经注册过
         User user_find = userService.findUserByEmail(user.getEmail());
@@ -692,13 +693,15 @@ public class UserController {
 
     @PostMapping("addMoney")
     public Result addMoney(@RequestBody UserVO userVO) {
-        double money = getUserMoney(userVO.getEmail());
         double maxMoney = 10000000;     // 一千万
-        if (money + userVO.getMoney() > maxMoney) {
-            return new Result(200, null, "总金额超出1000万");
-        }
-        userService.updateUserMoney(userVO.getEmail(), userVO.getMoney());
         User user = userService.findUserByEmail(userVO.getEmail());
+        if (user.getInitMoney() + userVO.getMoney() > maxMoney) {
+            return new Result(200, user, "初始金额+增加的金额超出一千万超出1000万");
+        }
+        user.setInitMoney(user.getInitMoney() + userVO.getMoney());
+        user.setMoney(user.getMoney() + userVO.getMoney());
+        userService.updateUser(user);
+        user = userService.findUserByEmail(userVO.getEmail());
         return new Result(200, user, "添加用户的剩余金额(返回的是现在用户的信息)");
     }
 
