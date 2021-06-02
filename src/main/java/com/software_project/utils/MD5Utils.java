@@ -12,7 +12,7 @@ public class MD5Utils {
             md.update(str.getBytes());
             byte[]byteDigest = md.digest();
             int i;
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             for (byte b : byteDigest) {
                 i = b;
                 if (i < 0)

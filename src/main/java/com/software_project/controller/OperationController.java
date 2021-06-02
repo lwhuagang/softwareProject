@@ -55,7 +55,7 @@ public class OperationController {
             User user = userService.findUserByEmail(email);
             Fund fund = fundService.searchFundByCode(Integer.parseInt(fundCode));
             // 金额检查
-            if (money >= user.getMoney() || money < fund.getBuyMin()) {  // buyMin 起购额度
+            if (money > user.getMoney() || money < fund.getBuyMin()) {  // buyMin 起购额度
                 throw new Exception("买入金额输入有误,需满足范围");
             }
 
@@ -222,7 +222,7 @@ public class OperationController {
                 double netWorth = Double.parseDouble(data.getString("netWorth"));
                 double sellMoney = sellShare * netWorth; // 卖出金额
                 // 计算持仓成本价
-                double cost = user.getHoldCost() / hold.getShare();
+                double cost = hold.getHoldCost() / hold.getShare();
                 double sellCost = sellShare*cost; // 卖出成本
                 double sellFee = sellCost * 0.1/100;//暂定卖出手续费为0.1%
                 double net_sellMoney = sellMoney - sellFee; // 净卖出金额
@@ -354,7 +354,7 @@ public class OperationController {
                 double netWorth = Double.parseDouble(data.getString("netWorth"));
                 double sellMoney = sellShare * netWorth; // 卖出金额
                 // 计算持仓成本价
-                double cost = user.getHoldCost() / hold.getShare();
+                double cost = hold.getHoldCost() / hold.getShare();
                 double sellCost = sellShare*cost; // 卖出成本
                 double sellFee = sellCost * 0.1/100;//暂定卖出手续费为0.1%
                 double net_sellMoney = sellMoney - sellFee; // 净卖出金额
