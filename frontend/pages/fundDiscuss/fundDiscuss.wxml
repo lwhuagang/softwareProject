@@ -40,7 +40,7 @@
         </block>
       </view>
       <view class="commentPart">
-        <view class="commentText">{{comments[index].comment}}</view>
+        <text class="commentText">{{comments[index].comment}}</text>
       </view>
     </view>
   </block>
