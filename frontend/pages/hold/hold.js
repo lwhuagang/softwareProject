@@ -142,6 +142,7 @@ Page({
           res.data.obj.holdVOS.forEach(element => {
             tmpMoney += element.holdProfit + element.holdCost + element.toVerifyMoney
             element["showMoney"] = this.transform(element.holdProfit + element.holdCost + element.toVerifyMoney);
+            element["showProfit"] = this.transform(element.holdProfit);
             newFunds.push(element);
           });
           console.log("tmpMoney==>", tmpMoney)
