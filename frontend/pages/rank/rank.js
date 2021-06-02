@@ -54,7 +54,7 @@ Page({
     ],
     searchFunds: [],
     searchParam: {
-      fundType: ["gp"],
+      fundType: [""],
       sort: "r",
       pageIndex:1,
       pageSize: 18,

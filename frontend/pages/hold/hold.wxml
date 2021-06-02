@@ -28,7 +28,7 @@
         <!-- 净值 -->
         <view class="item">
           <view class="itemTitle">累计收益(元)</view>
-          <view class="itemValue">{{filters.toFix2(user.totalProfit)}}</view>
+          <view class="itemValue">-{{filters.toFix2(user.totalProfit)}}</view>
         </view>
       </view>
     </view>

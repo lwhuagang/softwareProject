@@ -16,10 +16,10 @@
     </view>
     <view class="fundProfitAndRate">
         <block wx:if="{{fundInfo.holdProfit < 0}}">
-          <view class="greenProfit">{{filters.toFix2(fundInfo.holdProfit)}}</view>
+          <view class="greenProfit">{{fundInfo.showProfit}}</view>
         </block>
         <block wx:else>
-          <view class="redProfit">+{{filters.toFix2(fundInfo.holdProfit)}}</view>
+          <view class="redProfit">+{{fundInfo.showProfit}}</view>
         </block>
         <block wx:if="{{fundInfo.holdProfitRate < 0}}">
           <view class="greenRate">{{filters.toFix2(fundInfo.holdProfitRate)}}%</view>

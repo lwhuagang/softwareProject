@@ -121,7 +121,7 @@ Page{
   text-align: center;
   padding-top: 15rpx;
   color: #4d4d4d;
-  font-size: 38rpx;
+  font-size: 35rpx;
 }
 
 .dayGrowthRatio {
