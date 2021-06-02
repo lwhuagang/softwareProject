@@ -44,8 +44,11 @@
           </view>
           <view class="middleBlockText">增加余额</view>
           <mp-dialog title="请输入您想要增加的余额" show="{{addMoneyShow}}" bindbuttontap="addMoneyButton" buttons="{{buttons}}">
-            <view>
-              <input type="number" placeholder="请在此输入(总资产不超过1000万" bindinput="addMoneyInput"
+            <view style="word-break:break-all;">
+              <view style="font-size:15px">(用户累计获得资金上限不超过1000万,含初始资金与增加的余额）</view>
+              <input style="word-break:break-all;color:#000000;font-size:30px;height:40px" type="number" placeholder=
+              "请在此输入" 
+               bindinput="addMoneyInput"
               value="{{addMoneyVal}}" />
             </view>
           </mp-dialog>
