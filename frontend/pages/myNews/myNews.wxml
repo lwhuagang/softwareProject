@@ -33,8 +33,8 @@
             <view class="contentText">【{{news[index].expectWorthDate}}】 {{news[index].expectWorth}}</view>
             <view class="contentText">预计{{(news[index].expectWorth-news[index].netWorth)>0?"涨幅":"跌幅"}}({{filters.toFix2((news[index].expectWorth-news[index].netWorth)/news[index].netWorth*100)}}%)较大，请参考考虑是否{{(news[index].expectWorth-news[index].netWorth)>0?"加仓":"清仓"}}。</view>
           </view>
-          <navigator class="more" url="/pages/holdFundDetail/holdFundDetail?fundCode={{news[index].fundCode}}">
-            <view class="moreText">查看持有基金详情</view>
+          <navigator class="more" url="/pages/fundDetail/fundDetail?fundCode={{news[index].fundCode}}">
+            <view class="moreText">查看基金详情</view>
             <view class="moreImg">
               <image src="../../image/right.png"></image>
             </view>
@@ -75,8 +75,8 @@
             <view class="contentText">【{{already[index].expectWorthDate}}】 {{already[index].expectWorth}}</view>
             <view class="contentText">预计{{(already[index].expectWorth-already[index].netWorth)>0?"涨幅":"跌幅"}}({{filters.toFix2((already[index].expectWorth-already[index].netWorth)/already[index].netWorth*100)}}%)较大，请参考考虑是否{{(already[index].expectWorth-already[index].netWorth)>0?"加仓":"清仓"}}。</view>
           </view>
-          <navigator class="more" url="/pages/holdFundDetail/holdFundDetail?fundCode={{already[index].fundCode}}">
-            <view class="moreText">查看持有基金详情</view>
+          <navigator class="more" url="/pages/fundDetail/fundDetail?fundCode={{already[index].fundCode}}">
+            <view class="moreText">查看基金详情</view>
             <view class="moreImg">
               <image src="../../image/right.png"></image>
             </view>
