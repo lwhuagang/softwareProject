@@ -1,7 +1,7 @@
 <wxs src="../../utils/util.wxs" module="tool" />
 <wxs module="filters" src="../../utils/addmul.wxs"></wxs>
 
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <view class="readAndClear" wx:if="{{isEmpty==false}}">
     <view class = "allRead">
       <view class="readText" bindtap="readAll">一键已读</view>

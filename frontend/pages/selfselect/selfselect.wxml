@@ -1,6 +1,6 @@
 <wxs src="../../utils/util.wxs" module="tool" />
 <wxs module="filters" src="../../utils/addmul.wxs"></wxs>
-<view class="container" wx:if="{{isLogin}}"> 
+<view class="container" wx:if="{{isLogin}}" style="overflow-x:hidden;width:100%"> 
   <view class="bluePad"></view>
   <view class="blueWave"></view>
   <image class="backImg" src="/image/background.png" mode="widthFix" />

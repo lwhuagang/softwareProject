@@ -1,6 +1,6 @@
 <!--pages/fundTradeRec/fundTradeRec.wxml-->
 <wxs src="../../utils/addmul.wxs" module="tool" />
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <block wx:for="{{records.length}}">
     
       <view class="record">

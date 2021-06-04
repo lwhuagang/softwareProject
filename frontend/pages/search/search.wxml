@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <!-- 搜索框 -->
   <view class="search-bar">
     <view class="search-bar__form">

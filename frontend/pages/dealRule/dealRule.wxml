@@ -1,5 +1,5 @@
 <!--pages/dealRule/dealRule.wxml-->
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <view class="header">
     <view class="subHeader buyIn">
       <block wx:if="{{selectRule=='买入规则'}}">

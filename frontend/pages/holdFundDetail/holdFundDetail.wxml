@@ -1,6 +1,6 @@
 <wxs src="../../utils/addmul.wxs" module="tool" />
 <wxs src="../../utils/util.wxs" module="tool2" />
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <!-- 基金卡片 -->
   <view class="fundCard">
     <view class="fundName">{{fundInfo.name}}</view>

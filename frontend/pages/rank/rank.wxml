@@ -1,5 +1,5 @@
 <!--pages/rank/rank.wxml-->
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <!-- 基金排行 -->
   <view class="divLine1"></view>
   <view class="searchResContainer">

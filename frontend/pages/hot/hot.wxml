@@ -1,5 +1,5 @@
 <!--pages/hot/hot.wxml-->
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <view>
     <block wx:for="{{funds.length}}">
       <fundGeneral showType="netWorth"  periodType="r" fundInfo="{{funds[index]}}"></fundGeneral>

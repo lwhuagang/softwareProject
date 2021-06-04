@@ -1,5 +1,5 @@
 
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <view class="space"></view>
   <block wx:for="{{comments}}">
     <view class="comment">

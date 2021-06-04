@@ -1,5 +1,5 @@
 <!--pages/forgotPswd/forgotPswd.wxml-->
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <view class="item" style="margin-top: 100rpx;border-top:1rpx solid #dcdcdc;">
     <view class="itemInfo">用户邮箱</view>
     <input class="itemContent" model:value="{{email}}" />

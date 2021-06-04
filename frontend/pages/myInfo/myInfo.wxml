@@ -1,6 +1,6 @@
 <!--pages/myInfo/myInfo.wxml-->
 <wxs src="../../utils/addmul.wxs" module="tool"/>
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <!-- 内容{{userInfo}} -->
   <view class="userInfoPart">
     <view class="idInfo">

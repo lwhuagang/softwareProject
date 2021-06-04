@@ -1,5 +1,5 @@
 <!--pages/hot/hot.wxml-->
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <view class="selectHead">
       <view class="nameHeader">基金名称</view>
       <view class="growthHeader">预计15天涨幅</view>

@@ -1,5 +1,5 @@
 <!--pages/aboutUs/aboutUs.wxml-->
-<view class="container">
+<view class="container" style="overflow-x:hidden;width:100%">
   <view class="content">
     <text space="emsp"> 本项目是为了帮助新手更快、更稳健的上手基金，了解详细规则，体会交易步骤。在这里，你能够通过虚拟的货币进行基金交易；能够得到基于AI算法的基金推荐；能够了解基金的实时信息。</text>
   </view>

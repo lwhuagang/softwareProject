@@ -1,7 +1,8 @@
 <!--index.wxml-->
 <!-- container的样式是全局样式，定义在app.wxss中 -->
 
-<view class="container">
+<view style="overflow-x:hidden;width:100%">
+  <view class="container">
   <view>
     <view class="top">
       <swiper indicator-dots indicator-color="gray" indicator-active-color="black" class="swpBlock">
@@ -41,4 +42,5 @@
 </view>
 <view class="head">
   <naviBar ifSearch="{{true}}"></naviBar>
+</view>
 </view>
