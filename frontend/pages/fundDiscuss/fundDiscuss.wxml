@@ -44,7 +44,7 @@
       </view>
     </view>
   </block>
-
+  <view class="blank"></view>
 </view>
 
 <view class="head">

@@ -1,3 +1,6 @@
+Page{
+  background-color: #f8f8f8;
+}
 
 .head{
   position: fixed;
@@ -9,14 +12,12 @@
 }
 
 .container {
-  height: 3000rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
   width:100%;
   position: absolute;
   margin-top: 130rpx;
-  background:white;
 }
 
 .readAndClear{
@@ -134,6 +135,7 @@
   padding-right: 25rpx;
   margin-bottom: 5rpx;
   overflow:hidden; 
+  word-wrap: break-word;
 }
 
 .contentText{
@@ -141,7 +143,6 @@
   margin-top:20rpx;
   color:rgb(44, 44, 44);
   overflow:hidden;
-  text-overflow: ellipsis;
 }
 
 .more{
@@ -188,4 +189,8 @@
 .noMsg{
   color:darkgray;
   margin-top:40rpx;
+}
+.blank{
+  height: 8vh;
+  width: 100%;
 }

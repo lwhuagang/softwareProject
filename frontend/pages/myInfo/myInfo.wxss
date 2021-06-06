@@ -1,6 +1,7 @@
 /* pages/myInfo/myInfo.wxss */
 Page {
   color:#313131;
+  background-color: #f8f8f8;
 }
 
 .head{
@@ -68,4 +69,8 @@ Page {
   font-size: large;
   color: rgb(245, 245, 245);
   padding-top: 5rpx;
+}
+.blank{
+  height: 5vh;
+  width: 100%;
 }

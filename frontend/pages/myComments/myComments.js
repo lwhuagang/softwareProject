@@ -46,7 +46,7 @@ Page({
                 }
                 console.log(tempNames)
                 this.setData({
-                  comments: comments,
+                  comments: comments.reverse(),
                 })
               }
             })
@@ -123,7 +123,7 @@ Page({
                       }
                       console.log(tempNames)
                       this.setData({
-                        comments: comments,
+                        comments: comments.reverse(),
                       })
                     }
                   })

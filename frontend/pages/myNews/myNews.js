@@ -220,8 +220,8 @@ Page({
             }
           }
           that.setData({
-            news: tmpNews,
-            already:tmpAlready
+            news: tmpNews.reverse(),
+            already:tmpAlready.reverse()
           })
         } else {
           console.log("消息加载失败");

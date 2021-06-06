@@ -98,6 +98,7 @@
       </view>
     </view>
   </block>
+  <view class="blank"></view>
 </view>
 <view class="head">
   <naviBar title="消息中心"></naviBar>

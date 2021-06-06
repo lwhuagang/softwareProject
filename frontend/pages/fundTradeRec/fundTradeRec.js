@@ -45,7 +45,7 @@ Page({
           }
         }
         this.setData({
-          records: tempRecords
+          records: tempRecords.reverse()
         })
       }
     )
@@ -232,7 +232,7 @@ Page({
                     }
                   }
                   this.setData({
-                    records: tempRecords
+                    records: tempRecords.reverse()
                   })
                 }
               )

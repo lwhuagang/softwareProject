@@ -1,5 +1,5 @@
 <!--pages/mine/mine.wxml-->
-<view class="container" style="overflow-x:hidden;width:100%">
+<view class="container">
   <view class="hasLoggedContainer" wx:if="{{isLogin}}">
     <view>
       <view class="top">
@@ -85,7 +85,7 @@
           </view>
           <view class="hint">密码</view>
           <view class="pswPart">
-            <input class="inputUsrPassword" name="password" password placeholder="请输入密码" focus />
+            <input class="inputUsrPassword" name="password" password placeholder="请输入密码"/>
           </view>
           <navigator class="forgotPswd" url="/pages/forgotPswd/forgotPswd">忘记密码</navigator>
         </view>

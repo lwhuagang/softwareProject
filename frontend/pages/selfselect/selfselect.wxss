@@ -1,4 +1,7 @@
 /* pages/selfselect/selfselect.wxss */
+.Page{
+  background-color: white;
+}
 .head{
   position: fixed;
   width: 100%;
@@ -7,11 +10,9 @@
   top:0;
 }
 .container {
-  height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background:#f5f5f5;
   width:100%;
   position: absolute;
   margin-top:130rpx;

@@ -9,16 +9,28 @@
       <view class="fundCode">{{fundInfo.code}}</view>
     </view>
     <!-- 净值 与 估值-->
-    <view class="fundMoneyAndLastProfit" >
-      <view class="netWorth" wx:if="{{fundInfo.netWorth}}">{{filters.toFix2(fundInfo.netWorth)}}</view>
+    <view class="fundMoneyAndLastProfit">
+      <block wx:if="{{fundInfo.netWorth}}">
+        <view class="netWorth">{{filters.toFix2(fundInfo.netWorth)}}</view>
         <block wx:if="{{fundInfo.dayGrowth[0] == '-'}}">
           <view class="greenRate" wx:if="{{fundInfo.dayGrowth}}">{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
         </block>
         <block wx:else>
           <view class="redRate" wx:if="{{fundInfo.dayGrowth}}">+{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
         </block>
+      </block>
+      <block wx:if="{{fundInfo.sevenDaysYearIncome}}">
+        <view class="netWorth">1.00</view>
+        <view class="redRate">+{{filters.toFix2(fundInfo.sevenDaysYearIncome)}}%</view>
+      </block>
+      <block wx:if="{{!(fundInfo.netWorth||fundInfo.sevenDaysYearIncome)}}">
+        <view class="netWorth">—</view>
+        <view class="netWorth">--</view>
+      </block>
     </view>
-    <view class="fundProfitAndRate" wx:if="{{fundInfo.expectWorth}}">
+
+    <block wx:if="{{fundInfo.expectWorth}}">
+      <view class="fundProfitAndRate" wx:if="{{fundInfo.expectWorth}}">
         <view class="netWorth">{{filters.toFix2(fundInfo.expectWorth)}}</view>
         <block wx:if="{{fundInfo.expectGrowth[0] == '-'}}">
           <view class="greenRate">{{filters.toFix2(fundInfo.expectGrowth)}}%</view>
@@ -26,6 +38,14 @@
         <block wx:else>
           <view class="redRate">+{{filters.toFix2(fundInfo.expectGrowth)}}%</view>
         </block>
-    </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="fundProfitAndRate">
+        <view class="netWorth">—</view>
+        <view class="netWorth">--</view>
+      </view>
+    </block>
+    
   </navigator>
 </view>

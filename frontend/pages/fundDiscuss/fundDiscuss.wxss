@@ -1,4 +1,7 @@
 /* pages/fundDetail/fundDetail.wxss */
+Page{
+  background-color: #f8f8f8;
+}
 .head{
   position: fixed;
   width: 100%;
@@ -23,7 +26,7 @@
   box-shadow:0px 2px 5px 5px rgb(240, 239, 239);
   border-radius: 15rpx;
   width: 85%;
-  height: 220rpx;
+  height: 240rpx;
   margin-top: 30rpx;
   background: white;
   padding-left: 25rpx;
@@ -39,7 +42,7 @@
   border-radius: 15rpx;
   width: 23%;
   height: 175rpx;
-  margin-top: 20rpx;
+  margin-top: 30rpx;
   background: linear-gradient(60deg, red, rgb(255, 136, 0)); 
   padding-left: 25rpx;
   padding-right: 25rpx;
@@ -53,7 +56,7 @@
   border-radius: 15rpx;
   width: 140rpx;
   height: 175rpx;
-  margin-top: 20rpx;
+  margin-top: 30rpx;
   background: linear-gradient(60deg, green, rgb(60, 173, 60)); 
   padding-left: 25rpx;
   padding-right: 25rpx;
@@ -152,7 +155,6 @@
 
 .deleteText {
   color: white;
-  padding-top: 5rpx;
   padding-left: 20rpx;
 }
 
@@ -231,4 +233,9 @@
   padding-left: 25rpx;
   padding-top: 10rpx;
   color: #41464b;
+}
+
+.blank{
+  height: 1vh;
+  width: 100%;
 }

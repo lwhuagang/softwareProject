@@ -15,7 +15,7 @@
     <view class="part mailPart">
       <view class="instr mailInstr">邮箱</view>
       <view class="inputBlock">
-        <input class="input inputEmail" model:value="{{email}}" focus bindfocus="resetMailFlag" bindblur="checkEmail"/>
+        <input class="input inputEmail" model:value="{{email}}" bindfocus="resetMailFlag" bindblur="checkEmail"/>
       </view>
       <view wx:if="{{wrongEmail!=''}}" class="errorNote">{{wrongEmail}}</view>
       <view wx:else class="errorNote"></view>
@@ -25,7 +25,7 @@
     <view class="part pswdPart">
       <view class="instr pswdIntr">密码(至少6位，包含数字与大小写字母)</view>
       <view class="inputBlock">
-        <input class="input inputPswd" model:value="{{password}}" focus bindfocus="resetPswdFlag" password bindblur="checkPswdStrength"/>
+        <input class="input inputPswd" model:value="{{password}}" bindfocus="resetPswdFlag" password bindblur="checkPswdStrength"/>
       </view>
       <view class="errorNote" wx:if="{{pswdToosimple!=''}}">{{pswdToosimple}}</view>
       <view class="errorNote" wx:else></view>
@@ -35,7 +35,7 @@
     <view class="part cfmPart">
       <view class="instr cfmInstr">确认密码</view>
       <view class="inputBlock">
-        <input class="input inputConfirm" model:value="{{confirmPswd}}" focus password bindblur="checkPswd" />
+        <input class="input inputConfirm" model:value="{{confirmPswd}}" password bindblur="checkPswd" />
       </view>
     </view> 
     <!-- <view class="divLine"></view> -->
@@ -50,7 +50,7 @@
     <!-- 验证码 -->
     <view class="instr" style="width:90%;margin-top:25rpx">验证码</view>
     <view class="captchaPart">
-      <input class="inputCaptcha" model:value="{{captcha}}" focus />
+      <input class="inputCaptcha" model:value="{{captcha}}" />
       <block wx:if="{{smsFlag==false}}">
         <button class="captchaBtn1" bindtap="getCaptcha" style="width:35%;height: 80rpx;border-radius: 50rpx;background: #5484dd;margin-left:20rpx;margin-right:0;padding-left:20rpx;padding-right:20rpx;box-shadow: 0px 2px 5px 5px rgb(228, 228, 228);padding-top:17rpx;color:white;">
           发送验证码
@@ -66,7 +66,9 @@
     <!-- 注册 -->
     <view class="registerPart">
       <button bindtap="register" class="regBtn" style="width:83%;margin-top: 50rpx;height:80rpx;border-radius: 50rpx;background:white;box-shadow: 0px 2px 5px 5px rgb(228, 228, 228);padding-top: 15rpx;color:#5484dd;">注册</button>
+      <view class="blank"></view>
     </view>
+
   </view>
 </view>
 <view class="head">
