@@ -150,7 +150,7 @@ drawPostionPie:function(canvas, width, height, dpr) {
     var bondPct = position.bond=="---"?0:parseFloat(position.bond.slice(0,5))
     var stockPct = position.stock=="---"?0:parseFloat(position.stock.slice(0,5));
     var cashPct = position.cash=="---"?0:parseFloat(position.cash.slice(0,5))
-    var other = (100-bondPct-stockPct-cashPct)>0?(100-bondPct-stockPct-cashPct):0;
+    var other = (100-bondPct-stockPct-cashPct)>0?(100-bondPct-stockPct-cashPct).toFixed(2):0;
     const chart = echarts.init(canvas, null, {
       width: width,
       height: height,

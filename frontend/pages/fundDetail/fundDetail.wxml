@@ -225,7 +225,8 @@
     <view class="docItem">
       <view class="docItemNote">成立时间</view>
       <view class="docItemDiv"></view>
-      <view class="docItemValue">{{fundInfo.millionCopiesIncomeData[0][0]}}</view>
+      <view class="docItemValue" wx:if="{{fundInfo.type=='货币型'}}">{{fundInfo.millionCopiesIncomeData[0][0]}}</view>
+      <view class="docItemValue" wx:else>{{fundInfo.totalNetWorthData[0][0]}}</view>
     </view>
     <view class="docItem">
       <view class="docItemNote">基金经理</view>
