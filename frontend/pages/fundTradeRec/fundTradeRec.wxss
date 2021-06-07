@@ -63,7 +63,7 @@
 
 .fundNameAndTime {
   width: 400rpx;
-  padding-left: 20px;
+  padding-left: 20rpx;
   margin-top: 30px;
   /* border: 1px solid purple; */
   font-size: 30rpx;
@@ -76,17 +76,18 @@
 }
 
 .MoneyAndDelete {
-  padding-left: 10px;
+  padding-left: 10rpx;
   float: right;
 }
 
 .tradeNum {
   /* border: 1px solid blue; */
-  padding-top: 17px;
+  word-wrap:break-word;
+  padding-top: 40rpx;
   padding-bottom: 10rpx;
   color: #555454;
   overflow: auto;
-  font-size: 13px;
+  font-size: 26rpx;
 }
 
 .delete {
