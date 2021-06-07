@@ -1,6 +1,6 @@
 /* pages/selfselect/selfselect.wxss */
 .Page{
-  background-color: white;
+  background-color: #f8f8f8;
 }
 .head{
   position: fixed;

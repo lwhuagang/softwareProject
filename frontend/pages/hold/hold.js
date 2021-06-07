@@ -50,60 +50,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onReady: function (options) {
-    /*
-    this.setData({
-      isLogin:app.globalData.isLogin
-    })
-    if(app.globalData.isLogin==false) {
-      console.log("isFalse!!!!");
-      wx.showModal({
-        cancelColor: 'cancelColor',
-        title:'请先登录',
-        content:'点击确定跳转到登录界面',
-        success(res) {
-          if(res.confirm) {
-           wx.switchTab({
-             url: '/pages/mine/mine',
-           })
-          } else if(res.cancel) {
-            wx.switchTab({
-              url: '/pages/index/index',
-            })
-          }
-        }
-      })
-    } else {
-          //console.log(app.globalData.userInfo.email)
-    wx.showLoading({
-      title: '加载中',
-    })
-    console.log("用户邮箱------>")
-    console.log(app.globalData.userInfo.email)
-    getHold(
-      app.globalData.userInfo.email,
-      res => {
-        console.log("----------------->")
-        console.log(res)
-        this.setData({
-          user: res.data.obj.user,
-          funds: res.data.obj.holdVOS
-        });
-        var tmpMoney = 0;
-        console.log("atHold:",res);
-        res.data.obj.holdVOS.forEach(element => {
-          tmpMoney+=element.holdCost+element.holdProfit+element.toVerifyMoney
-        });
-        console.log("tmpMoney==>",tmpMoney)
-        this.setData({
-          totalMoney:tmpMoney
-        })
-        console.log("获得hold===>");
-        console.log(res);
-        wx.hideLoading();
-      }
-    )
-    }
-    */
+
   },
   onShow: function () {
     this.setData({
@@ -134,22 +81,25 @@ Page({
         app.globalData.userInfo.email,
         res => {
           this.setData({
-            user: res.data.obj.user,
-            funds: res.data.obj.holdVOS
+            user: res.data.obj.user,   
           });
           var tmpMoney = 0;
           var newFunds = [];
           res.data.obj.holdVOS.forEach(element => {
             tmpMoney += element.holdProfit + element.holdCost + element.toVerifyMoney
             element["showMoney"] = this.transform(element.holdProfit + element.holdCost + element.toVerifyMoney);
-            element["showProfit"] = this.transform(element.holdProfit);
+            if (element.holdProfit >= 0) {
+              element["showProfit"] = this.transform(element.holdProfit);
+            } else {
+              element["showProfit"] = "-" + this.transform(-element.holdProfit);
+            }
             newFunds.push(element);
           });
           console.log("tmpMoney==>", tmpMoney)
           console.log("funds:", newFunds)
           this.setData({
             totalMoney: tmpMoney,
-            funds:newFunds,
+            funds: newFunds,
           })
           console.log("获得hold===>");
           console.log(res);
@@ -183,13 +133,13 @@ Page({
     }
     if (num <= 4) { // 千\万,不处理
       newValue[1] = '';
-      newValue[0] = parseFloat(Math.floor(value*100)/100).toFixed(2) + '';
-    } else{ // 万
+      newValue[0] = parseFloat(Math.floor(value * 100) / 100).toFixed(2) + '';
+    } else { // 万
       const text1 = '万';
       // tslint:disable-next-line:no-shadowed-variable
       const fm = 10000;
       newValue[1] = text1;
-      newValue[0] =  parseFloat(Math.floor((value / fm)*100)/100).toFixed(1) + '';
+      newValue[0] = parseFloat(Math.floor((value / fm) * 10) / 10).toFixed(1) + '';
     }
     return newValue.join('');
   }

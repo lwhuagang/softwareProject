@@ -36,7 +36,9 @@ Page({
     // holdPart:0,//持有份额
     lineChoice: "业绩走势",
     holdDetail: null,
-    totalProfit: []
+    totalProfit: [],
+    x: [],
+    y: [],
   },
   /**
    * 生命周期函数--监听页面加载
@@ -96,6 +98,44 @@ Page({
     //     callback()
     //   }, 1000
     // );
+    var date = new Date();
+    var timestamp = date.getTime() / 1000
+    console.log(common.getMyData(timestamp, "Y-m-d"))
+    var x = []
+    var totalProfit = this.data.totalProfit;
+    var totalProfitFlag
+    wx.request({
+      url: config.service + '/user/totalProfitFlag',
+      method: "GET",
+      success: (res) => {
+        console.log(res)
+        totalProfitFlag = res.data.obj
+        var back = 0
+        if (totalProfitFlag == 0) {
+          back = back + 3600 * 24
+        }
+        var length = totalProfit.length;
+        console.log("length:", length)
+        back = back + 3600 * 24 * (length - 1)
+        for (var index in totalProfit) {
+          x.push(common.getMyData(timestamp - back, "Y-m-d"))
+          back = back - 3600 * 24
+        }
+        console.log(x)
+        var y = this.data.totalProfit
+        var i
+        var length = y.length
+        for (i = 0; i < y.length; i++) {
+          y[i] = Math.floor(y[i] * 100) / 100;
+        }
+        console.log("y:", y)
+        // console.log("netWorth===>",netWorth)
+        this.setData({
+          x: x,
+          y: y
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -220,186 +260,85 @@ Page({
     }
     return arr;
   },
-
   drawLineChart_acc: function (canvas, width, height, dpr) {
-    var date = new Date();
-    var timestamp = date.getTime() / 1000
-
-    console.log(common.getMyData(timestamp, "Y-m-d"))
-    var x = []
-    var totalProfit = this.data.totalProfit
-    var length = totalProfit.length
-    var totalProfitFlag
-    wx.request({
-      url: config.service+'/user/totalProfitFlag',
-      method:"GET",
-      success:(res)=>{
-        console.log(res)
-        totalProfitFlag = res.data.obj
-        var back = 0
-        if (totalProfitFlag == 0){
-          back = back+3600*24
+    var x = this.data.x;
+    var y = this.data.y;
+    const chart = echarts.init(canvas, null, {
+      width: width,
+      height: height,
+      devicePixelRatio: dpr // new
+    });
+    canvas.setChart(chart);
+    var option = {
+      color: ["#37A2DA"],
+      // legend: {
+      //   data: ['本基金'],
+      //   top: 20,
+      //   left: 'center',
+      //   z: 100
+      // },
+      grid: {
+        containLabel: true,
+        bottom: 20,
+        left: 10,
+        y: 20
+      },
+      tooltip: {
+        show: true,
+        trigger: 'axis'
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          dataZoom: {
+            yAxisIndex: 'none'
+          },
+          restore: {},
+        },
+        orient: 'vertical'
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: x,
+        axisLabel: {
+          showMaxLabel: true,
+          showMinLable: true
+        },
+        axisTick: {
+          show: false
+        },
+        axisLine: {
+          lineStyle: {
+            type: 'dashed',
+            opacity: 0
+          },
         }
-        back = back+3600*24*(length-1)
-        for (var index in totalProfit) {
-          x.push(common.getMyData(timestamp-back,"Y-m-d"))
-          back = back - 3600*24
-
+        //show: false
+      },
+      yAxis: {
+        x: 'center',
+        type: 'value',
+        splitLine: {
+          lineStyle: {
+            type: 'dashed'
+          }
+        },
+        axisLabel: {
+          formatter: '{value} %'
         }
-        console.log(x)
-        var y = this.data.totalProfit
-        var i
-        var length = y.length
-        for (i = 0; i < y.length; i++) {
-          y[i] = Math.floor(y[i]*100)/100;
-        }
-        console.log("y:", y)
-        // console.log("netWorth===>",netWorth)
-
-        const chart = echarts.init(canvas, null, {
-          width: width,
-          height: height,
-          devicePixelRatio: dpr // new
-        });
-        canvas.setChart(chart);
-
-        // var option = {
-        //   color: ["#5484dd"],
-        //   // legend: {
-        //   //   data: ['本基金'],
-        //   //   top: 20,
-        //   //   left: 'center',
-        //   //   z: 100
-        //   // },
-        //   grid: {
-        //     containLabel: true,
-        //     bottom: 20,
-        //     left: 10,
-        //     y: 20
-        //   },
-        //   tooltip: {
-        //     show: true,
-        //     trigger: 'axis'
-        //   },
-        //   xAxis: {
-        //     type: 'category',
-        //     boundaryGap: false,
-        //     data: x,
-        //     axisLabel: {
-        //       showMaxLabel: true,
-        //       showMinLable: true
-        //     },
-        //     axisTick: {
-        //       show: false
-        //     },
-        //     axisLine: {
-        //       lineStyle: {
-        //         type: 'dashed',
-        //         opacity: 0
-        //       },
-        //     }
-        //     //show: false
-        //   },
-        //   toolbox: {
-        //     show: true,
-        //     feature: {
-        //         dataZoom: {
-        //             yAxisIndex: 'none'
-        //         },
-        //         restore: {},
-        //     },
-        //     orient: 'vertical'
-        //   },
-        //   yAxis: {
-        //     x: 'center',
-        //     type: 'value',
-        //     splitLine: {
-        //       lineStyle: {
-        //         type: 'dashed'
-        //       }
-        //     },
-
-        //     //show: false
-        //   },
-        //   series: [{
-        //     symbol: 'none',
-        //     name: '本基金',
-        //     type: 'line',
-        //     smooth: false,
-        //     data: y
-        //   }]
-        // };
-        var option = {
-          color: ["#37A2DA"],
-          // legend: {
-          //   data: ['本基金'],
-          //   top: 20,
-          //   left: 'center',
-          //   z: 100
-          // },
-          grid: {
-            containLabel: true,
-            bottom: 20,
-            left: 10,
-            y: 20
-          },
-          tooltip: {
-            show: true,
-            trigger: 'axis'
-          },
-          toolbox: {
-            show: true,
-            feature: {
-                dataZoom: {
-                    yAxisIndex: 'none'
-                },
-                restore: {},
-            },
-            orient: 'vertical'
-          },
-          xAxis: {
-            type: 'category',
-            boundaryGap: false,
-            data: x,
-            axisLabel: {
-              showMaxLabel: true,
-              showMinLable: true
-            },
-            axisTick: {
-              show: false
-            },
-            axisLine: {
-              lineStyle: {
-                type: 'dashed',
-                opacity: 0
-              },
-            }
-            //show: false
-          },
-          yAxis: {
-            x: 'center',
-            type: 'value',
-            splitLine: {
-              lineStyle: {
-                type: 'dashed'
-              }
-            },
-            
-            //show: false
-          },
-          series: [{
-            symbol: 'none',
-            name: '盈亏幅度(%)',
-            type: 'line',
-            smooth: false,
-            data: y
-          }]
-        };
-        chart.setOption(option);
-        return chart;
-      }
-    })
-    
+        //show: false
+      },
+      series: [{
+        symbol: 'none',
+        name: '基金涨幅(%)',
+        type: 'line',
+        smooth: false,
+        data: y
+      }]
+    };
+    chart.setOption(option);
+    return chart;
   },
   drawLineChart_worth: function (canvas, width, height, dpr) {
     var fundInfo = this.data.fundInfo;
@@ -437,10 +376,10 @@ Page({
       toolbox: {
         show: true,
         feature: {
-            dataZoom: {
-                yAxisIndex: 'none'
-            },
-            restore: {},
+          dataZoom: {
+            yAxisIndex: 'none'
+          },
+          restore: {},
         },
         orient: 'vertical'
       },

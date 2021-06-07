@@ -46,7 +46,7 @@ Page{
   border-radius: 200%;
 }
 .content{
-  margin-left: 5%;
+  margin-left: 3.5%;
   margin-bottom: 100rpx;
 }
 .fundCard {
@@ -55,13 +55,13 @@ Page{
   flex-direction: column;
   border: 1rpx solid #dcdcdc;
   border-radius: 15rpx;
-  width: 86%;
+  width: 93%;
   height: 410rpx;
   margin-top: 30rpx;
   margin-bottom: 40rpx;
   background: white;
-  padding-left: 25rpx;
-  padding-right: 25rpx;
+  padding-left: 15rpx;
+  padding-right: 0rpx;
 }
 
 .holdTotal {
@@ -172,7 +172,7 @@ Page{
   height: 500rpx;
 }
 .headPart{
-  width: 94%;
+  width: 96%;
   height: 90rpx;
   border-top: 1rpx solid #dcdcdc;
   border-left: 1rpx solid #dcdcdc;
@@ -234,7 +234,7 @@ Page{
   padding-left: 10 rpx;
 }
 .listPart{
-  width: 94%;
+  width: 96%;
   border: 1rpx solid #dcdcdc;
   border-radius: 10rpx;
   display: flex;
