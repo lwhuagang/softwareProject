@@ -22,7 +22,7 @@
     </view>
   </block>
   <view class="bottomButton" >
-    <view wx:if="{{fundInfo.type=='货币型'}}" class="cantBuyIn">暂不支持买入</view>
+    <view wx:if="{{fundInfo.type=='货币型'||fundInfo.buyMin==''}}" class="cantBuyIn">暂不支持买入</view>
     <view wx:else class="buyIn" bindtap="gotoBuy">买入</view>
   </view>
 </view>
