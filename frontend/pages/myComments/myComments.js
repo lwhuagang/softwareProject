@@ -18,46 +18,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var comments;
-    var tempNames = new Array();
-    wx.request({
-      url: config.service + '/comment/getCommentByUserEmail',
-      method: "GET",
-      data: {
-        userEmail: app.globalData.userInfo.email
-      },
-      success: res => {
-        console.log("------------------>")
-        console.log(res)
-        comments = res.data.obj
-        for (var commentIndex in comments) {
-          console.log(comments[commentIndex].time);
-          comments[commentIndex].time = this.BeijingTime(comments[commentIndex].time)
-          getFundDetail({
-              code: comments[commentIndex].fundCode,
-              token: "atTPd9c8sA"
-            },
-            res => {
-              console.log(res)
-              tempNames[res.data.data.code] = res.data.data.name;
-              if (commentIndex == comments.length - 1) {
-                for (var i = 0; i < comments.length; i++) {
-                  comments[i]["fundName"] = tempNames[comments[i].fundCode];
-                }
-                console.log(tempNames)
-                this.setData({
-                  comments: comments.reverse(),
-                })
-              }
-            })
-        }
-      },
-      fail: res => {
-        console.log("fail!!!!!!!!!!")
-      }
-
-    })
   },
+
   BeijingTime: function (time) {
     var firstDate = new Date(time);
     var datetime = new Date(firstDate.valueOf() - 8 * 60 * 60 * 1000);
@@ -69,6 +31,7 @@ Page({
     var second = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
     return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
   },
+
   UTCformat: function (utc) {
     var date = new Date(utc),
       year = date.getFullYear(),
@@ -80,6 +43,7 @@ Page({
     var res = year + '-' + month + '-' + day + ' ' + hour + ':' + minutes + ':' + seconds; //将上述拆分的数据整合，连接符可以自己决定，如ios无法识别2xxx-xx-xx格式可将'-'改为'/'
     return res;
   },
+
   deleteComment: function (e) {
     var id = e.currentTarget.dataset.id;
     console.log(id);
@@ -95,6 +59,19 @@ Page({
             title: "删除评论成功!",
             cancelColor: 'cancelColor',
           });
+          var comments = this.data.comments;
+          var i;
+          var length = comments.length;
+          for (i = 0; i < length; i++) {
+            if (comments[i].id == id) {
+              break;
+            }
+          }
+          comments.splice(i, 1);
+          this.setData({
+            comments:comments
+          })
+          /*
           var comments;
           var tempNames = new Array();
           wx.request({
@@ -123,7 +100,7 @@ Page({
                       }
                       console.log(tempNames)
                       this.setData({
-                        comments: comments.reverse(),
+                        comments: comments,
                       })
                     }
                   })
@@ -132,8 +109,7 @@ Page({
             fail: res => {
               console.log("fail!!!!!!!!!!")
             }
-      
-          })
+          })*/
         } else {
           wx.showModal({
             title: "删除失败!",
@@ -155,6 +131,46 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var comments;
+    var tempNames = new Array();
+    var alreadySet = 0;
+    wx.request({
+      url: config.service + '/comment/getCommentByUserEmail',
+      method: "GET",
+      data: {
+        userEmail: app.globalData.userInfo.email
+      },
+      success: res => {
+        console.log("------------------>")
+        console.log(res)
+        comments = res.data.obj
+        for (var commentIndex in comments) {
+          comments[commentIndex].time = this.BeijingTime(comments[commentIndex].time)
+          getFundDetail({
+              code: comments[commentIndex].fundCode,
+              token: "atTPd9c8sA"
+            },
+            res => {
+              tempNames[res.data.data.code] = res.data.data.name;
+              alreadySet += 1;
+              if (commentIndex == comments.length - 1 && alreadySet == comments.length) {
+                console.log(commentIndex);
+                for (var i = 0; i < comments.length; i++) {
+                  comments[i]["fundName"] = tempNames[comments[i].fundCode];
+                }
+                comments.reverse();
+                this.setData({
+                  comments: comments
+                })
+                console.log("comments:", comments)
+              }
+            })
+        }
+      },
+      fail: res => {
+        console.log("fail!!!!!!!!!!")
+      }
+    })
   },
 
   /**

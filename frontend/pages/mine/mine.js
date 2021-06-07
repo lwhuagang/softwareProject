@@ -86,7 +86,7 @@ Page({
                 title: '增加成功',
                 icon: "success"
               })
-            } else if (res.data.message == "总金额超出1000万"){
+            } else if (res.data.message == "初始金额+增加的金额超出一千万超出1000万"){
               wx.showToast({
                 title: 'x 超出1000万',
                 icon: "none"
@@ -397,7 +397,7 @@ Page({
                           title: '重置成功',
                           icon: "success"
                         })
-                      } else if (res.data.message == "总金额超出1000万"){
+                      } else if (res.data.message == "初始金额+增加的金额超出一千万超出1000万"){
                         wx.showToast({
                           title: '您申请的金额过大，账户总金额不得超出1000万',
                           icon: "none"
