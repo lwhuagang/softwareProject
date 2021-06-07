@@ -246,10 +246,10 @@ Page({
           back = back - 3600*24
 
         }
-        console.log(x)
+        console.log("x",x)
         var y = this.data.totalProfit
         var i
-        var length = y.length
+        
         for (i = 0; i < y.length; i++) {
           y[i] = Math.floor(y[i]*100)/100;
         }
