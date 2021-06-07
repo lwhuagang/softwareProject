@@ -41,7 +41,7 @@ Page({
       btn2Color: this.data.grey,
       btn3Color: this.data.grey,
       btn4Color: this.data.grey,
-      maxUnit: options.share
+      maxUnit: parseFloat(options.share).toFixed(2)
     })
     this.loadFundDetail(function () {})
   },
@@ -144,14 +144,19 @@ Page({
   },
   moneyInput: function (e) {
     var money;
+    //console.log("type:",typeof(this.data.maxUnit));
     if (/^(\d?)+(\.\d{0,2})?$/.test(e.detail.value)) { //正则验证，提现金额小数点后不能大于两位数字
-      money = e.detail.value;
+      money = parseFloat(e.detail.value);
+      if (money > this.data.maxUnit){
+        money = this.data.maxUnit
+      }
     } else {
-      money = e.detail.value.substring(0, e.detail.value.length - 1);
+      money = parseFloat(e.detail.value.substring(0, e.detail.value.length - 1));
+      if (money > this.data.maxUnit){
+        money = this.data.maxUnit
+      }
     }
-    if (money > this.data.maxUnit){
-      money = this.data.maxUnit
-    }
+
     this.setData({
       chooseUnit: money,
     })
