@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="添加测试接口">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/Result.java" afterDir="false" />
+    <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="金额检查修正,holdCost修正">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/software_project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/software_project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/OperationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/utils/MD5Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/utils/MD5Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/OperationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/OperationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/utils/MD5Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/utils/MD5Utils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/OperationDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/OperationDAO.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,19 +100,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="RuangongApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="software_project" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.software_project.RuangongApplication" />
@@ -161,6 +143,8 @@
       <workItem from="1621871970744" duration="624000" />
       <workItem from="1621933366211" duration="6091000" />
       <workItem from="1622086075378" duration="2130000" />
+      <workItem from="1622986479201" duration="663000" />
+      <workItem from="1623074525756" duration="1257000" />
     </task>
     <task id="LOCAL-00001" summary="添加details注释">
       <created>1618400399863</created>
@@ -281,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621939687302</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="金额检查修正,holdCost修正">
+      <created>1622598880140</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1622598880140</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,14 +335,15 @@
     <MESSAGE value="让update和calculate支持外部调用" />
     <MESSAGE value="添加外部接口" />
     <MESSAGE value="添加测试接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加测试接口" />
+    <MESSAGE value="金额检查修正,holdCost修正" />
+    <option name="LAST_COMMIT_MESSAGE" value="金额检查修正,holdCost修正" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java</url>
-          <line>83</line>
+          <line>90</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>

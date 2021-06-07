@@ -24,6 +24,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -53,9 +54,14 @@ public class TimingTask {
     /**
      *  工作日的每天晚上九点执行一次
      */
-    @Scheduled(cron="0 30 21 ? * MON-FRI")
+    @Scheduled(cron="0 30 23 ? * MON-FRI")
     //@Scheduled(cron = "0/5 * * * * ?")
     public void executeFileDownLoadTask() throws ParseException {
+        Date d=new Date();//获得系统时间
+        if (d.getMonth() == Calendar.JULY && (d.getDay() == 12 || d.getDay() == 13 || d.getDay() == 14)) {
+            // 端午节直接跳过
+            return;
+        }
         calculate();
         update();
 

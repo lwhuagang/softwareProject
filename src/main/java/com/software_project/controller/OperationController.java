@@ -158,14 +158,6 @@ public class OperationController {
             String s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund/detail?token=atTPd9c8sA&code=" + code + "&startDate=2021-04-01", String.class);
             JSONObject jsonObject = JSON.parseObject(s);
             JSONObject data =(JSONObject) jsonObject.get("data");
-            String netWorthDate  = data.getString("netWorthDate");
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = dateFormat.parse(netWorthDate);
-            Date d=new Date();
-            if (date.getYear() != d.getYear() || date.getMonth() != d.getMonth() || date.getDay() != d.getDay()) {
-                // 说明是非交易日,直接跳过即可
-                continue;
-            }
             if (!record.isType()){
                 // 买入操作更新数据定义
                 double buyMoney = record.getCount(); // 用户买入金额
