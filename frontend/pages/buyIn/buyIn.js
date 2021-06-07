@@ -84,6 +84,7 @@ Page({
           money:this.data.money
         },
         success:res=>{
+          console.log("买入结果===>",res);
           if(res.statusCode=="200") {
             if(res.data.message=="买入操作记录成功") {
               wx.showModal({
