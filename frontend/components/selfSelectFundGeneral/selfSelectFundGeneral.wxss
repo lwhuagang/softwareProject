@@ -87,3 +87,17 @@
   color: red;
   font-size: smaller;
 }
+.coinHint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(119, 119, 119);
+  font-size: smaller;
+}
+.coinType {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(31, 101, 180);
+  font-size: smaller;
+}

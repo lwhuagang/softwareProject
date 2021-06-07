@@ -114,8 +114,17 @@ Page({
         res => {
           console.log("selfselect==>",res)
           if(res.data.obj.funds!="") {
+            var funds = res.data.obj.funds.data;
+            var i;
+            var length = funds.length;
+            for (i=0; i<length; i++) {
+              if (funds[i].name.search("货币")!=-1) {
+                funds[i]["type"] = "货币型";
+              }
+            }
+            console.log("funds:", funds)
             this.setData({
-              funds: res.data.obj.funds.data
+              funds: funds
             });
           } else {
             this.setData({

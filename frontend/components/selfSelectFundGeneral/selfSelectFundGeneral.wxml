@@ -19,13 +19,15 @@
           <view class="redRate" wx:if="{{fundInfo.dayGrowth}}">+{{filters.toFix2(fundInfo.dayGrowth)}}%</view>
         </block>
       </block>
-      <block wx:if="{{fundInfo.sevenDaysYearIncome}}">
-        <view class="netWorth">1.00</view>
-        <view class="redRate">+{{filters.toFix2(fundInfo.sevenDaysYearIncome)}}%</view>
-      </block>
-      <block wx:if="{{!(fundInfo.netWorth||fundInfo.sevenDaysYearIncome)}}">
-        <view class="netWorth">—</view>
-        <view class="netWorth">--</view>
+      <block wx:else>
+        <block wx:if="{{fundInfo.type=='货币型'}}">
+          <view class="netWorth">1.00</view>
+          <text class="coinType">货币基金</text>
+        </block>
+        <block wx:else>
+          <view class="netWorth">—</view>
+          <view class="netWorth">--</view>
+        </block>
       </block>
     </view>
 
@@ -41,11 +43,19 @@
       </view>
     </block>
     <block wx:else>
-      <view class="fundProfitAndRate">
-        <view class="netWorth">—</view>
-        <view class="netWorth">--</view>
-      </view>
+      <block wx:if="{{fundInfo.type=='货币型'}}">
+        <view class="fundProfitAndRate">
+          <text class="coinHint">七日年化</text>
+          <text class="coinHint">见详情页</text>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="fundProfitAndRate">
+          <view class="netWorth">—</view>
+          <view class="netWorth">--</view>
+        </view>
+      </block>
     </block>
-    
+
   </navigator>
 </view>
