@@ -325,7 +325,7 @@ Page({
           }
         },
         axisLabel: {
-          formatter: '{value} %'
+          formatter: '{value}'
         }
         //show: false
       },
