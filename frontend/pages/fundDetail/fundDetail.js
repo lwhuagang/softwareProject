@@ -371,7 +371,7 @@ Page({
       },
       series: [{
         symbol: 'none',
-        name: '涨幅(%)',
+        name: '七日年化(%)',
         type: 'line',
         smooth: false,
         data: netWorth
@@ -463,7 +463,7 @@ Page({
       },
       series: [{
         symbol: 'none',
-        name: '涨幅(%)',
+        name: '万分收益',
         type: 'line',
         smooth: false,
         data: netWorth

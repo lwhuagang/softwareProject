@@ -331,7 +331,7 @@ Page({
       },
       series: [{
         symbol: 'none',
-        name: '基金涨幅(%)',
+        name: '累计盈亏(元)',
         type: 'line',
         smooth: false,
         data: y
