@@ -45,6 +45,14 @@ Page({
     isLogin: null,
     totalMoney: 0,
   },
+  onPullDownRefresh:function() {
+    wx.showLoading() //在标题栏中显示加载
+    //模拟加载
+    this.onShow();
+    wx.stopPullDownRefresh({
+      success: (res) => {},
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

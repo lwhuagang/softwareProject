@@ -3,5 +3,6 @@
     "naviBar":"../../components/naviBar/naviBar",
     "sectionHead":"../../components/sectionHead/sectionHead",
     "holdFundGeneral":"../../components/holdFundGeneral/holdFundGeneral"
-  }
+  },
+  "enablePullDownRefresh":true
 }
