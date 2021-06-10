@@ -206,14 +206,14 @@ Page({
             if (allNews[i].read == false) {
               allNews[i].showTime = that.BeijingTime(allNews[i].time);
               if (allNews[i].messageType == 0) {
-                allNews[i].expectWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
+                allNews[i].expectWorthDate = that.BeijingTimeAddByDay(allNews[i].time, 15).substring(0, 10);
                 allNews[i].netWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
               }
               tmpNews.push(allNews[i]);
             } else {
               allNews[i].showTime = that.BeijingTime(allNews[i].time);
               if (allNews[i].messageType == 0) {
-                allNews[i].expectWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
+                allNews[i].expectWorthDate = that.BeijingTimeAddByDay(allNews[i].time, 15).substring(0, 10);
                 allNews[i].netWorthDate = that.BeijingTime(allNews[i].time).substring(0, 10);
               }
               tmpAlready.push(allNews[i]);
