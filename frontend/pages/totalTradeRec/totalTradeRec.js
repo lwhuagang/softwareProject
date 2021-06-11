@@ -42,9 +42,10 @@ Page({
         var length = tempRecords.length;
         var i;
         for (i = 0; i < length; i++) {
-          tempRecords[i]["showTime"] = this.UTCformat(tempRecords[i].time);
+          tempRecords[i]["showTime"] = this.BeijingTime(tempRecords[i].time);
           if (tempRecords[i].flag == 0) {
             var buytime = new Date(tempRecords[i].time); //买入基金的时间
+            buytime = new Date(buytime.valueOf() - 8 * 60 * 60 * 1000);
             tempRecords[i]["delete"] = this.canDelete(buytime);
           } else {
             tempRecords[i]["delete"] = false;
@@ -174,6 +175,17 @@ Page({
   isSunday: function (date) {
     if ("天一二三四五六".charAt(new Date(date).getDay()) == "天") return true;
   },
+  BeijingTime: function (time) {
+    var firstDate = new Date(time);
+    var datetime = new Date(firstDate.valueOf() - 8 * 60 * 60 * 1000);
+    var year = datetime.getFullYear();
+    var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+    var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+    var hour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+    var minute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+    var second = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+    return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
+  },
   UTCformat: function (utc) {
     var date = new Date(utc),
       year = date.getFullYear(),
@@ -217,9 +229,10 @@ Page({
                   var length = tempRecords.length;
                   var i;
                   for (i = 0; i < length; i++) {
-                    tempRecords[i]["showTime"] = this.UTCformat(tempRecords[i].time);
+                    tempRecords[i]["showTime"] = this.BeijingTime(tempRecords[i].time);
                     if (tempRecords[i].flag == 0) {
                       var buytime = new Date(tempRecords[i].time); //买入基金的时间
+                      buytime = new Date(buytime.valueOf() - 8 * 60 * 60 * 1000);
                       tempRecords[i]["delete"] = this.canDelete(buytime);
                     } else {
                       tempRecords[i]["delete"] = false;
