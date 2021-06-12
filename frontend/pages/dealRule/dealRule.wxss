@@ -130,21 +130,25 @@
   display: flex;
 }
 .first{
-  text-align: center;
+  padding-left: 20rpx;
+  text-align: left;
   font-size: 10px;
   word-break:keep-all;
-
+  flex:1
 }
 .second{
   text-align: center;
   font-size: 10px;
-  margin-left: 125px;
   word-break: keep-all;
+  flex:1
+
 }
 .third{
-  text-align: center;
-  margin-left: 125px;
+  padding-right: 20rpx;
+  text-align: right;
   font-size: 10px;
   word-break: keep-all;
+  flex:1
+
 }
 

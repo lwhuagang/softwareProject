@@ -112,6 +112,12 @@
           "pathName": "pages/dealRule/dealRule",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/dealRule/dealRule",
+          "pathName": "pages/dealRule/dealRule",
+          "query": "fundCode=005297",
+          "scene": null
         }
       ]
     }
