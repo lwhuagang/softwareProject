@@ -1,105 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="ALL" />
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="金额检查修正,holdCost修正">
+    <list default="true" id="a1ae61d2-9916-4417-a2e5-3febcbd9b81f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/OperationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/OperationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/OperationDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/software_project/dao/OperationDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/software_project/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/OperationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/OperationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController$Param_register.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController$Param_register.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/dao/OperationDAO.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/dao/OperationDAO.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/software_project/timer/TimingTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/software_project/timer/TimingTask.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="soft@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-    </expand>
-    <select />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="FxmlFile" />
-        <option value="Tag Library Descriptor" />
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/master" />
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="MIXED" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
-  <component name="ProjectId" id="1r9tPfXR35pXU6aSYfoRmpEUqjx" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="21D6oYYcYUM5aTfs1BceyqoTvSh" />
   <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DatabaseDriversLRU" value="mysql" />
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenDatabaseViewOnStart" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.11709601" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="vue.rearranger.settings.migration" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
-  <component name="ReactorSettings">
-    <option name="notificationShown" value="true" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/software_project/vo" />
-      <recent name="D:\桌面\2021年秋季学期课程资料\软件工程\软工基金项目\后端\src\main\java\com\software_project\controller" />
-    </key>
-  </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.RuangongApplication">
+    <configuration name="RuangongApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.software_project.RuangongApplication" />
+      <module name="software_project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.software_project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RuangongApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="software_project" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.software_project.RuangongApplication" />
@@ -107,246 +58,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
+    <recent_temporary>
       <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
+        <item itemvalue="Application.RuangongApplication" />
       </list>
-    </option>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="40a63bb5-1482-4f3b-a36d-79e20cf3bff0" name="Default Changelist" comment="" />
-      <created>1618400110904</created>
+      <created>1637463982655</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1618400110904</updated>
-      <workItem from="1618400113449" duration="407000" />
-      <workItem from="1618734925610" duration="15909000" />
-      <workItem from="1619140111578" duration="10104000" />
-      <workItem from="1619589563565" duration="3087000" />
-      <workItem from="1620717324502" duration="52000" />
-      <workItem from="1621608924529" duration="461000" />
-      <workItem from="1621645253029" duration="586000" />
-      <workItem from="1621651816298" duration="5433000" />
-      <workItem from="1621751196198" duration="2277000" />
-      <workItem from="1621871970744" duration="624000" />
-      <workItem from="1621933366211" duration="6091000" />
-      <workItem from="1622086075378" duration="2130000" />
-      <workItem from="1622986479201" duration="663000" />
-      <workItem from="1623074525756" duration="1257000" />
+      <updated>1637463982655</updated>
+      <workItem from="1637463984939" duration="620000" />
+      <workItem from="1640244512899" duration="489000" />
+      <workItem from="1640245022648" duration="2005000" />
     </task>
-    <task id="LOCAL-00001" summary="添加details注释">
-      <created>1618400399863</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1618400399863</updated>
-    </task>
-    <task id="LOCAL-00002" summary="watchlist添加基金净值等信息">
-      <created>1619660834400</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1619660834400</updated>
-    </task>
-    <task id="LOCAL-00003" summary="watchlist添加基金净值等信息">
-      <created>1619661200227</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1619661200227</updated>
-    </task>
-    <task id="LOCAL-00004" summary="merge usercontroller和operationcontroller">
-      <created>1620290640756</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1620290640756</updated>
-    </task>
-    <task id="LOCAL-00005" summary="update阶段更新hold和share，增加selfMsg接口">
-      <created>1620301591153</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1620301591153</updated>
-    </task>
-    <task id="LOCAL-00006" summary="管理端：删除用户，基金上下架，反馈管理&#10;FundController：查询基金个数、基金分页查询&#10;UserController：个人信息修改更新，重置密码，重置个人数据">
-      <created>1620725249995</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1620725249995</updated>
-    </task>
-    <task id="LOCAL-00007" summary="修改getFundsByPage的bug">
-      <created>1620802588755</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1620802588755</updated>
-    </task>
-    <task id="LOCAL-00008" summary="修改selfMsg中的getFundCode的bug">
-      <created>1620803282924</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1620803282924</updated>
-    </task>
-    <task id="LOCAL-00009" summary="修改param_register注解上的问题">
-      <created>1620811474601</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1620811474601</updated>
-    </task>
-    <task id="LOCAL-00010" summary="修改用户信息param的兼容性">
-      <created>1621321186184</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1621321186184</updated>
-    </task>
-    <task id="LOCAL-00011" summary="获取未读消息、删除消息">
-      <created>1621524105877</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1621524105877</updated>
-    </task>
-    <task id="LOCAL-00012" summary="添加删除单个交易记录的功能">
-      <created>1621526962277</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1621526962277</updated>
-    </task>
-    <task id="LOCAL-00013" summary="pull codes">
-      <created>1621769065663</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1621769065663</updated>
-    </task>
-    <task id="LOCAL-00014" summary="修改用户删除的问题">
-      <created>1621867529384</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1621867529384</updated>
-    </task>
-    <task id="LOCAL-00015" summary="将邮件改为英文避免编码问题">
-      <created>1621871103043</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1621871103043</updated>
-    </task>
-    <task id="LOCAL-00016" summary="让update和calculate支持外部调用">
-      <created>1621871526401</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1621871526401</updated>
-    </task>
-    <task id="LOCAL-00017" summary="添加测试接口">
-      <created>1621939687302</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1621939687302</updated>
-    </task>
-    <task id="LOCAL-00018" summary="金额检查修正,holdCost修正">
-      <created>1622598880140</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1622598880140</updated>
-    </task>
-    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="1">
-          <value>
-            <State>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="HEAD" />
-                      </list>
-                    </value>
-                  </entry>
-                  <entry key="roots">
-                    <value>
-                      <list>
-                        <option value="$PROJECT_DIR$" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="添加details注释" />
-    <MESSAGE value="watchlist添加基金净值等信息" />
-    <MESSAGE value="merge usercontroller和operationcontroller" />
-    <MESSAGE value="update阶段更新hold和share，增加selfMsg接口" />
-    <MESSAGE value="管理端：删除用户，基金上下架，反馈管理&#10;FundController：查询基金个数、基金分页查询&#10;UserController：个人信息修改更新，重置密码，重置个人数据" />
-    <MESSAGE value="修改getFundsByPage的bug" />
-    <MESSAGE value="修改selfMsg中的getFundCode的bug" />
-    <MESSAGE value="修改param_register注解上的问题" />
-    <MESSAGE value="修改用户信息param的兼容性" />
-    <MESSAGE value="获取未读消息、删除消息" />
-    <MESSAGE value="添加删除单个交易记录的功能" />
-    <MESSAGE value="修改预测基金排序的bug和撤销交易记录时的money未恢复的bug" />
-    <MESSAGE value="pull codes" />
-    <MESSAGE value="修改用户删除的问题" />
-    <MESSAGE value="将邮件改为英文避免编码问题" />
-    <MESSAGE value="让update和calculate支持外部调用" />
-    <MESSAGE value="添加外部接口" />
-    <MESSAGE value="添加测试接口" />
-    <MESSAGE value="金额检查修正,holdCost修正" />
-    <option name="LAST_COMMIT_MESSAGE" value="金额检查修正,holdCost修正" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/software_project/timer/TimingTask.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

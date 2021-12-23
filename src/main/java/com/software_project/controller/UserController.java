@@ -547,7 +547,7 @@ public class UserController {
             System.out.println(fundCodes);
             String s;
             RestTemplate restTemplate = new RestTemplate();
-            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund?token=atTPd9c8sA&code=" + fundCodes, String.class);
+            s = restTemplate.getForObject("https://api.doctorxiong.club/v1/fund?code=" + fundCodes, String.class);
             parse = JSONObject.parse(s);
         }
         else {
