@@ -2,6 +2,7 @@ package com.software_project.service;
 
 import com.software_project.pojo.Fund;
 import org.apache.ibatis.annotations.Param;
+import org.apache.poi.ss.usermodel.Workbook;
 
 import java.util.List;
 
@@ -60,4 +61,6 @@ public interface FundService {
      * @return 部分的基金信息
      */
     List<Fund> getFundsByPage(int startIndex, int pageSize);
+
+    Workbook exportFund();
 }
